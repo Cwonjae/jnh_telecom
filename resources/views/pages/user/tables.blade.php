@@ -18,13 +18,12 @@
                                             Applicant</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                             Nationality</th>
-                                        <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Opening Status</th>
-                                        <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Registration date</th>
-                                        <th class="text-secondary opacity-7"> ETC</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            ETC</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -33,7 +32,7 @@
                                         <td>
                                             <div class="d-flex px-2 py-1">
                                                 <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">{{ $cell_phone->username }}</h6>
+                                                    <h6 class="mb-0 text-sm">{{ $cell_phone->cpb_applicant }}</h6>
                                                     <p class="text-xs text-secondary mb-0">{{ $cell_phone->email }}</p>
                                                 </div>
                                             </div>
@@ -52,9 +51,9 @@
                                             ">{{ $cell_phone->cpb_status }}</span>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <span class="text-secondary text-xs font-weight-bold">{{ $cell_phone->create_at }}</span>
+                                            <span class="text-secondary text-xs font-weight-bold">{{ date('Y-m-d H:i:s', strtotime($cell_phone->create_at)) }}</span>
                                         </td>
-                                        <td class="align-middle">
+                                        <td class="align-middle text-center">
                                             <a href="javascript:;" class="text-secondary font-weight-bold text-xs"
                                                 data-toggle="tooltip" data-original-title="Edit user">
                                                 Edit
