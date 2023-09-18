@@ -23,16 +23,22 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                $urlArr = explode('/', $request->url());
-                $res = end($urlArr);
-                $urlArr_cnt = count($urlArr);
-                $res_cnt_val = $urlArr[$urlArr_cnt-2];
+                // $urlArr = explode('/', $request->url());
+                // $res = end($urlArr);
+                // $urlArr_cnt = count($urlArr);
+                // $res_cnt_val = $urlArr[$urlArr_cnt-2];
                 
-                if($res == "user" || $res_cnt_val == "user") {
-                    // return redirect('/userhome');
+                // if($res == "user" || $res_cnt_val == "user") {
+                //     // return redirect('/userhome');
+                //     return redirect('/user/dashboard');
+                // } else {
+                //     // return redirect('/home');
+                //     return redirect('/dashboard');
+                // }
+
+                if($request->is('user/*')) {
                     return redirect('/user/dashboard');
                 } else {
-                    // return redirect('/home');
                     return redirect('/dashboard');
                 }
             }
