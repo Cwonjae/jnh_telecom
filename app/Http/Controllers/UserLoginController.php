@@ -29,7 +29,8 @@ class UserLoginController extends Controller
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $request->session()->regenerate();
 
-            return redirect()->intended('/user/dashboard');
+            // return redirect()->intended('/user/dashboard');
+            return redirect('/user/dashboard');
         }
 
         return back()->withErrors([
