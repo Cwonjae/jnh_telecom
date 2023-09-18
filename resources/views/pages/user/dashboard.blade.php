@@ -390,7 +390,7 @@
                 </div>
             </div>
         </div>
-        @include('layouts.user.footers.auth.footer')
+        @include('layouts.footers.auth.user.footer')
     </div>
 @endsection
 
