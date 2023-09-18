@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class UserPageController extends Controller
 {
@@ -14,8 +16,29 @@ class UserPageController extends Controller
      */
     public function index(string $page)
     {
+        $admin_email_checks = DB::table('user')->where('id', Auth::id())->value('email');
+
+        /**
+         * admin 일 경우 등록된 모든 정보 리스트업
+         * 등록한사람(일반 user)일 경우 본인이 작성한 정보 리스트업
+         */
+        if($admin_email_checks == "admin@argon.com") {
+            $cell_phones = DB::table('cellphone_boards')
+                            ->join('user', 'cellphone_boards.u_id', '=' ,'user.id')
+                            ->where('u_id', Auth::id())
+                            ->select('user.username', 'user.email', 'cellphone_boards.cpb_applicant', 'cellphone_boards.cpb_nationality', 'cellphone_boards.cpb_status', 'cellphone_boards.create_at')
+                            ->get();
+        } else {
+            $cell_phones = DB::table('cellphone_boards')
+                            ->join('user', 'cellphone_boards.u_id', '=' ,'user.id')
+                            ->select('user.username', 'user.email', 'cellphone_boards.cpb_applicant', 'cellphone_boards.cpb_nationality', 'cellphone_boards.cpb_status', 'cellphone_boards.create_at')
+                            ->get();
+        }
+
         if (view()->exists("pages.user.{$page}")) {
-            return view("pages.user.{$page}");
+
+
+            return view("pages.user.{$page}", ['cell_phones' => $cell_phones]);
         }
 
         return abort(404);
