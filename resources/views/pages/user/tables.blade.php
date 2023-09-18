@@ -61,8 +61,8 @@
                                         </td>
                                     </tr>
                                     @empty
-                                    <tr class="align-middle text-center">
-                                        don't have a history of applying for cell phone opening
+                                    <tr>
+                                        <td class="align-middle text-center" colspan="5">don't have a history of applying for cell phone opening</td>
                                     </tr>
                                     @endforelse
                                 </tbody>
