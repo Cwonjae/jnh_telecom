@@ -16,7 +16,7 @@ class UserPageController extends Controller
      */
     public function index(string $page)
     {
-        $admin_email_checks = DB::table('user')->where('id', Auth::id())->value('email');
+        $admin_email_checks = DB::table('users')->where('id', Auth::id())->value('email');
 
         /**
          * admin 일 경우 등록된 모든 정보 리스트업
