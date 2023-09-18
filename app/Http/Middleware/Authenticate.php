@@ -19,7 +19,7 @@ class Authenticate extends Middleware
             $res = end($urlArr);
             
             if($res == "user") {
-                return route('user/login');
+                return route('userlogin');
             } else {
                 return route('login');
             }
