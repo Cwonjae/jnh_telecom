@@ -14,8 +14,8 @@ class UserPageController extends Controller
      */
     public function index(string $page)
     {
-        if (view()->exists("pages.{$page}")) {
-            return view("pages.{$page}");
+        if (view()->exists("pages.user.{$page}")) {
+            return view("pages.user.{$page}");
         }
 
         return abort(404);
