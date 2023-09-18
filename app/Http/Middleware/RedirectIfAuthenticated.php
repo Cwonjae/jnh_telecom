@@ -27,9 +27,9 @@ class RedirectIfAuthenticated
                 $res = end($urlArr);
                 
                 if($res == "user") {
-                    return redirect('/user/dashboard');
+                    return redirect('/userhome');
                 } else {
-                    return redirect('/dashboard');
+                    return redirect('/home');
                 }
             }
         }
