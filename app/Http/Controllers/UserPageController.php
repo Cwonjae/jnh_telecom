@@ -25,12 +25,12 @@ class UserPageController extends Controller
         if($admin_email_checks == "admin@argon.com") {
             $cell_phones = DB::table('cellphone_boards')
                             ->join('users', 'cellphone_boards.u_id', '=' ,'users.id')
-                            ->where('u_id', Auth::id())
                             ->select('users.username', 'users.email', 'cellphone_boards.cpb_applicant', 'cellphone_boards.cpb_nationality', 'cellphone_boards.cpb_status', 'cellphone_boards.create_at')
                             ->get();
         } else {
             $cell_phones = DB::table('cellphone_boards')
                             ->join('users', 'cellphone_boards.u_id', '=' ,'users.id')
+                            ->where('u_id', Auth::id())
                             ->select('users.username', 'users.email', 'cellphone_boards.cpb_applicant', 'cellphone_boards.cpb_nationality', 'cellphone_boards.cpb_status', 'cellphone_boards.create_at')
                             ->get();
         }
