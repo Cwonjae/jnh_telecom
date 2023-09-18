@@ -62,3 +62,7 @@ Route::get('/user', function () {return redirect('/user/dashboard');})->middlewa
 Route::get('/user/login', [UserLoginController::class, 'show'])->middleware('guest')->name('userlogin');
 Route::post('/user/login', [UserLoginController::class, 'login'])->middleware('guest')->name('userlogin.perform');
 Route::get('/user/dashboard', [UserHomeController::class, 'index'])->name('userhome')->middleware('userauth');
+
+Route::group(['middleware' => 'userauth'], function () {
+	Route::post('/user/logout', [UserLoginController::class, 'logout'])->name('userlogout');
+});
