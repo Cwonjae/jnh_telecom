@@ -5,7 +5,7 @@
             aria-hidden="true" id="iconSidenav"></i>
         <a class="navbar-brand m-0" href="{{ route('userhome') }}"
             target="_blank">
-            <img src="/img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo">
+            <img src="/img/logo-jnh-png.png" class="navbar-brand-img h-100" alt="main_logo">
             <span class="ms-1 font-weight-bold">User Dashboard</span>
         </a>
     </div>
