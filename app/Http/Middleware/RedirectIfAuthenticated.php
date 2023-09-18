@@ -29,9 +29,11 @@ class RedirectIfAuthenticated
                 $res_cnt_val = $urlArr[$urlArr_cnt-2];
                 
                 if($res == "user" || $res_cnt_val == "user") {
-                    return redirect('/userhome');
+                    // return redirect('/userhome');
+                    return redirect('/user/dashboard');
                 } else {
-                    return redirect('/home');
+                    // return redirect('/home');
+                    return redirect('/dashboard');
                 }
             }
         }
