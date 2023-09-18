@@ -27,24 +27,25 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($cell_phones as $cell_phone)
+                                    @forelse ($cell_phones as $cell_phone)
                                     <tr>
                                         <td>
                                             <div class="d-flex px-2 py-1">
                                                 <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">{{ $cell_phone->cpb_applicant }}</h6>
-                                                    <p class="text-xs text-secondary mb-0">{{ $cell_phone->email }}</p>
+                                                    <h6 class="mb-0 text-sm text-center">{{ $cell_phone->cpb_applicant }}</h6>
+                                                    <p class="text-xs text-secondary text-center mb-0">{{ $cell_phone->email }}</p>
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
-                                            <p class="text-xs font-weight-bold mb-0">{{ $cell_phone->cpb_nationality }}</p>
+                                            <p class="text-xs font-weight-bold text-center mb-0">{{ $cell_phone->cpb_nationality }}</p>
                                         </td>
                                         <td class="align-middle text-center text-sm">
                                             <span class="badge badge-sm
                                             @if ($cell_phone->cpb_status == 'opening') 
                                                 bg-gradient-success
                                             @elseif ($cell_phone->cpb_status == 'pending')
+                                                bg-gradient-danger
                                             @else
                                                 bg-gradient-secondary
                                             @endif
@@ -54,13 +55,18 @@
                                             <span class="text-secondary text-xs font-weight-bold">{{ date('Y-m-d H:i:s', strtotime($cell_phone->create_at)) }}</span>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <a href="javascript:;" class="text-secondary font-weight-bold text-xs"
-                                                data-toggle="tooltip" data-original-title="Edit user">
+                                            <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                                                 Edit
                                             </a>
                                         </td>
                                     </tr>
-                                    @endforeach
+                                    @empty
+                                    <tr>
+                                        <td class="align-middle text-center">
+                                            don't have a history of applying for cell phone opening
+                                        </td>
+                                    </tr>
+                                    @endforelse
                                 </tbody>
                             </table>
                         </div>
