@@ -23,8 +23,8 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                // $urlArr = explode('/', $request->url());
-                // $res = end($urlArr);
+                $urlArr = explode('/', $request->url());
+                $res = end($urlArr);
                 // $urlArr_cnt = count($urlArr);
                 // $res_cnt_val = $urlArr[$urlArr_cnt-2];
                 
@@ -36,7 +36,7 @@ class RedirectIfAuthenticated
                 //     return redirect('/dashboard');
                 // }
 
-                if($request->is('user/*')) {
+                if($request->is('user/*') || $res == "user") {
                     return redirect('/user/dashboard');
                 } else {
                     return redirect('/dashboard');

@@ -15,8 +15,8 @@ class Authenticate extends Middleware
     protected function redirectTo($request)
     {
         if (! $request->expectsJson()) {
-            // $urlArr = explode('/', $request->url());
-            // $res = end($urlArr);
+            $urlArr = explode('/', $request->url());
+            $res = end($urlArr);
             // $urlArr_cnt = count($urlArr);
             // $res_cnt_val = $urlArr[$urlArr_cnt-2];
             
@@ -26,7 +26,7 @@ class Authenticate extends Middleware
             //     return route('login');
             // }
 
-            if($request->is('user/*')) {
+            if($request->is('user/*') || $res == "user") {
                 return route('userlogin');
             } else {
                 return route('login');
