@@ -31,6 +31,7 @@ use App\Http\Controllers\ChangePassword;
 //user 전용 page
 use App\Http\Controllers\UserHomeController;
 use App\Http\Controllers\UserLoginController;
+use App\Http\Controllers\UserPageController;
 
 
 //admin 전용 Route

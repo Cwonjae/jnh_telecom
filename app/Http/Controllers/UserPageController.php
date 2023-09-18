@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class PageController extends Controller
+class UserPageController extends Controller
 {
     /**
      * Display all the static pages when authenticated
