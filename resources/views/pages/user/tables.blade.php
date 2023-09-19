@@ -8,6 +8,11 @@
                 <div class="card mb-4">
                     <div class="card-header pb-0">
                         <h6>Cell Phone Opening</h6>
+                    </div>>
+                    <div class="pb-0">
+                        <div style="float:right; width:120px; height:40px;">
+                            <a class="bg-gradient-success" style="padding:10px; font-weight:bold; color:#fff;">Register</a>
+                        </div>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
@@ -29,7 +34,7 @@
                                 <tbody>
                                     @forelse ($cell_phones as $cell_phone)
                                     <tr>
-                                        <td>
+                                        <td class="align-middle text-center">
                                             <div class="d-flex px-2 py-1">
                                                 <div class="d-flex flex-column justify-content-center">
                                                     <h6 class="mb-0 text-sm text-center">{{ $cell_phone->cpb_applicant }}</h6>
