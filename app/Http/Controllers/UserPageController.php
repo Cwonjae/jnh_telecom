@@ -36,12 +36,18 @@ class UserPageController extends Controller
         }
 
         if (view()->exists("pages.user.{$page}")) {
-
-
             return view("pages.user.{$page}", ['cell_phones' => $cell_phones]);
         }
 
         return abort(404);
+    }
+
+    public function register(string $page) {
+
+
+        if (view()->exists("pages.user.{$page}_register")) {
+            return view("pages.user.{$page}_register");
+        }
     }
 
     public function vr()

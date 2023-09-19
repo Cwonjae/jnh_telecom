@@ -66,5 +66,6 @@ Route::get('/user/dashboard', [UserHomeController::class, 'index'])->name('userh
 
 Route::group(['middleware' => 'userauth'], function () {
 	Route::get('/user/{page}', [UserPageController::class, 'index'])->name('userpage');
+	Route::get('/user/{page}/register', [UserPageController::class, 'register'])->name('userpage.register');
 	Route::post('/user/logout', [UserLoginController::class, 'logout'])->name('userlogout');
 });

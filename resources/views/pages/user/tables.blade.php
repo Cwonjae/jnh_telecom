@@ -11,7 +11,10 @@
                     </div>
                     <div class="pb-0">
                         <div style="float:right; width:120px; height:40px;">
-                            <a class="bg-gradient-success" style="padding:10px; font-weight:bold; color:#fff; border-radius:10px 10px 10px 10px; cursor: pointer">Register</a>
+                            <a class="bg-gradient-success" style="padding:10px; font-weight:bold; color:#fff; border-radius:10px 10px 10px 10px; cursor: pointer" 
+                            href="{{ route('userpage.register', ['page' => 'tables']) }}">
+                                Register
+                            </a>
                         </div>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
@@ -35,8 +38,8 @@
                                     @forelse ($cell_phones as $cell_phone)
                                     <tr>
                                         <td class="align-middle text-center">
-                                            <div class="d-flex px-2 py-1">
-                                                <div class="d-flex flex-column justify-content-center">
+                                            <div class="px-2 py-1">
+                                                <div class="flex-column justify-content-center">
                                                     <h6 class="mb-0 text-sm text-center">{{ $cell_phone->cpb_applicant }}</h6>
                                                     <p class="text-xs text-secondary text-center mb-0">{{ $cell_phone->email }}</p>
                                                 </div>
