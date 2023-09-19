@@ -8,10 +8,10 @@
                 <div class="card mb-4">
                     <div class="card-header pb-0">
                         <h6>Cell Phone Opening</h6>
-                    </div>>
+                    </div>
                     <div class="pb-0">
                         <div style="float:right; width:120px; height:40px;">
-                            <a class="bg-gradient-success" style="padding:10px; font-weight:bold; color:#fff;">Register</a>
+                            <a class="bg-gradient-success" style="padding:10px; font-weight:bold; color:#fff; border-radius:10px 10px 10px 10px; cursor: pointer">Register</a>
                         </div>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
@@ -72,6 +72,9 @@
                                     @endforelse
                                 </tbody>
                             </table>
+                            <div class="card-header pb-0">
+                                {{ $cell_phones->links() }}
+                            </div>
                         </div>
                     </div>
                 </div>

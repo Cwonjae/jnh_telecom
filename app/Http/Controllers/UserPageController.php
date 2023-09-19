@@ -26,13 +26,13 @@ class UserPageController extends Controller
             $cell_phones = DB::table('cellphone_boards')
                             ->join('users', 'cellphone_boards.u_id', '=' ,'users.id')
                             ->select('users.username', 'users.email', 'cellphone_boards.cpb_applicant', 'cellphone_boards.cpb_nationality', 'cellphone_boards.cpb_status', 'cellphone_boards.create_at')
-                            ->get();
+                            ->paginete(10);
         } else {
             $cell_phones = DB::table('cellphone_boards')
                             ->join('users', 'cellphone_boards.u_id', '=' ,'users.id')
                             ->where('u_id', Auth::id())
                             ->select('users.username', 'users.email', 'cellphone_boards.cpb_applicant', 'cellphone_boards.cpb_nationality', 'cellphone_boards.cpb_status', 'cellphone_boards.create_at')
-                            ->get();
+                            ->paginete(10);
         }
 
         if (view()->exists("pages.user.{$page}")) {
