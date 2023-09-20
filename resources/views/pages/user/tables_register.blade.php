@@ -35,7 +35,7 @@
                                     @error('dateofbirth') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="form-radio form-check-info text-start">
-                                    <label>Gander</label>
+                                    <label>Gander</label><br>
                                     <input class="form-radio-input" type="radio" name="gander" id="flexRadioDefault_m" value="male">
                                     <label class="form-radio-label" for="flexRadioDefault_m">Male</label>
                                     <input class="form-radio-input" type="radio" name="gander" id="flexRadioDefault_f" value="female">
@@ -43,7 +43,7 @@
                                     @error('gander') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="form-radio form-check-info text-start">
-                                    <label>Device</label>
+                                    <label>Device</label><br>
                                     <input class="form-radio-input" type="radio" name="device" id="flexRadioDefault_ap" value="apple">
                                     <label class="form-radio-label" for="flexRadioDefault_ap">Apple</label>
                                     <input class="form-radio-input" type="radio" name="device" id="flexRadioDefault_s" value="samsung">
@@ -68,7 +68,7 @@
                                     @error('imeinumber') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="form-radio form-check-info text-start">
-                                    <label>Plan</label>
+                                    <label>Plan</label><br>
                                     <input class="form-radio-input" type="radio" name="plan" id="flexRadioDefault_p" value="ok">
                                     <label class="form-radio-label" for="flexRadioDefault_p">30,000 KRW($23)</label>
                                     <p>Please note that devices purchased from the United States may not be compatible with our 5G plan.</p>
@@ -85,11 +85,12 @@
                                     <div class='js-signature'></div>
                                 </div>
                                 <div class="flex flex-col mb-3">
+                                    <label>Referral</label>
                                     <input type="text" name="referral" class="form-control" placeholder="Please enter the referral's email address, phone number and name" aria-label="Referral" value="{{ old('referral') }}" >
                                     @error('referral') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="form-radio form-check-info text-start">
-                                    <label>Add International Calling Service</label>
+                                    <label>Add International Calling Service</label><br>
                                     <input class="form-radio-input" type="radio" name="callservice" id="flexRadioDefault_y" value="yes">
                                     <label class="form-radio-label" for="flexRadioDefault_y">Yes</label>
                                     <input class="form-radio-input" type="radio" name="callservice" id="flexRadioDefault_n" value="no">
@@ -97,7 +98,7 @@
                                     @error('callservice') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="form-radio form-check-info text-start">
-                                    <label>Service</label>
+                                    <label>Service</label><br>
                                     <input class="form-radio-input" type="radio" name="service" id="flexRadioDefault_ag" value="annual_agreement">
                                     <label class="form-radio-label" for="flexRadioDefault_ag">Annual Agreement (25% discount)</label>
                                     <input class="form-radio-input" type="radio" name="service" id="flexRadioDefault_mp" value="monthly_plan">
@@ -105,7 +106,7 @@
                                     @error('service') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="form-radio form-check-info text-start">
-                                    <label>Connectivity</label>
+                                    <label>Connectivity</label><br>
                                     <input class="form-radio-input" type="radio" name="connectivity" id="flexRadioDefault_4g" value="4g">
                                     <label class="form-radio-label" for="flexRadioDefault_4g">4G</label>
                                     <input class="form-radio-input" type="radio" name="connectivity" id="flexRadioDefault_5g" value="5g">
