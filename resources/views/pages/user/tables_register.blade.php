@@ -26,7 +26,7 @@
             $('#dateofbirth').keyup(function() {
                 var val = $(this).val().replace(/[^0-9]/g, '');
 
-                if(val.length < 9){
+                if(val.length < 11){
                     $(this).val(val.substring(0,2) + "-" + val.substring(2,4) + "-" + val.substring(4,7));
                 }
             });
