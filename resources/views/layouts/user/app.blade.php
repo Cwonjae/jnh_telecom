@@ -19,6 +19,9 @@
     <link href="/assets/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="/assets/css/argon-dashboard.css" rel="stylesheet" />
+</head>
+
+<body class="{{ $class ?? '' }}">
 
     <!--   Core JS Files   -->
     <script src="/assets/js/core/popper.min.js"></script>
@@ -39,10 +42,7 @@
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="/assets/js/argon-dashboard.js"></script>
     @stack('js');
-</head>
-
-<body class="{{ $class ?? '' }}">
-
+    
     @guest
         @yield('content')
     @endguest
