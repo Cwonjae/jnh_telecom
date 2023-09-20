@@ -57,11 +57,11 @@
                                     <span style="margin-left:30px;">᛫ Switch to Postpaid later and receive a bonus equivalent to your charged amount.</span><br>
                                     <span style="margin-left:30px;">᛫ We provide a cash deposit to your account for the exact amount you top-up.</span><br>
                                     <span style="margin-left:30px;">᛫ Your deposited funds match the amount you top up. Don't miss out on this fantastic offer!</span><br>
-                                    <p>Join our Prepaid Plan today and enjoy the convenience and flexibility of our services. </p>
                                     <br>
-                                    <p>After activating our prepaid service, if you switch to postpaid service using a foreigner registration card, we'll provide a 50,000 KRW ($38) subsidy towards your first bill. </p>
-                                    <p style="text-decoration:underline; width:100%; height:1px;"></p>
-                                    <p>The exchange rate applied is 1,300 KRW.</p>
+                                    <span>Join our Prepaid Plan today and enjoy the convenience and flexibility of our services. </span><br>
+                                    <span>After activating our prepaid service, if you switch to postpaid service using a foreigner registration card, we'll provide a 50,000 KRW ($38) subsidy towards your first bill. </span><br>
+                                    <hr style="width:100%;">
+                                    <span>The exchange rate applied is 1,300 KRW.</span>
                                 </div>
                             </div>
                             
