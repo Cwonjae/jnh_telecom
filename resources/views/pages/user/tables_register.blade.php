@@ -10,27 +10,32 @@
                         <h6>Cell Phone Opening Register</h6>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
-                        <div class="table-responsive p-0">
+                        <div class="table-responsive p-0" style="width:92%; margin:auto; margin-top:30px;">
                             
                             <form method="POST" action="{{ route('userpage.insert', ['page' => 'tables']) }}">
                             @csrf
                                 <div class="flex flex-col mb-3">
-                                    <input type="text" name="applicant" class="form-control" placeholder="Subscriber" aria-label="Name" value="{{ old('applicant') }}" >
+                                    <label>Name</label>
+                                    <input type="text" name="applicant" class="form-control" placeholder="Name" aria-label="Name" value="{{ old('applicant') }}" >
                                     @error('applicant') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
+                                    <label>Nationality</label>
                                     <input type="text" name="nationality" class="form-control" placeholder="Nationality" aria-label="Nationality" value="{{ old('nationality') }}" >
                                     @error('nationality') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
+                                    <label>Passport</label>
                                     <input type="file" name="passport" class="form-control" aria-label="Passport">
                                     @error('passport') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
+                                    <label>Date Of Birth</label>
                                     <input type="text" name="dateofbirth" class="form-control" placeholder="Date Of Birth" aria-label="Date Of Birth" value="{{ old('dateofbirth') }}" >
                                     @error('dateofbirth') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="form-radio form-check-info text-start">
+                                    <label>Gander</label>
                                     <input class="form-radio-input" type="radio" name="gander" id="flexRadioDefault_m" value="male">
                                     <label class="form-radio-label" for="flexRadioDefault_m">Male</label>
                                     <input class="form-radio-input" type="radio" name="gander" id="flexRadioDefault_f" value="female">
@@ -38,6 +43,7 @@
                                     @error('gander') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="form-radio form-check-info text-start">
+                                    <label>Device</label>
                                     <input class="form-radio-input" type="radio" name="device" id="flexRadioDefault_ap" value="apple">
                                     <label class="form-radio-label" for="flexRadioDefault_ap">Apple</label>
                                     <input class="form-radio-input" type="radio" name="device" id="flexRadioDefault_s" value="samsung">
@@ -45,20 +51,31 @@
                                     <input class="form-radio-input" type="radio" name="device" id="flexRadioDefault_o" value="other">
                                     <label class="form-radio-label" for="flexRadioDefault_o">Other</label>
                                     @error('device') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
+                                </div>
+                                <div class="flex flex-col mb-3">
+                                    <label>Device Model</label>
                                     <input type="text" name="devicemodel" class="form-control" placeholder="Ex) Iphone 13, Iphone 13 mini, Galaxy S22, ETC" aria-label="Device Model" value="{{ old('devicemodel') }}" >
                                     @error('devicemodel') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
+                                </div>
+                                <div class="flex flex-col mb-3">
+                                    <label>OS Version</label>
                                     <input type="text" name="osversion" class="form-control" placeholder="Ex) Android Version 13, IOS version 16.5" aria-label="Os Version" value="{{ old('osversion') }}" >
                                     @error('osversion') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
+                                </div>
+                                <div class="flex flex-col mb-3">
+                                    <label>IMEI Number</label>
                                     <input type="text" name="imeinumber" class="form-control" placeholder="IMEI Number" aria-label="IMEI Number" value="{{ old('imeinumber') }}" >
                                     @error('imeinumber') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="form-radio form-check-info text-start">
+                                    <label>Plan</label>
                                     <input class="form-radio-input" type="radio" name="plan" id="flexRadioDefault_p" value="ok">
                                     <label class="form-radio-label" for="flexRadioDefault_p">30,000 KRW($23)</label>
                                     <p>Please note that devices purchased from the United States may not be compatible with our 5G plan.</p>
                                     @error('plan') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
+                                    <label>Choose Last Number</label>
                                     <input type="text" name="chooselastnumber" class="form-control" placeholder="Please choose the last four digits of your phone number." aria-label="Please choose the last four digits of your phone number." value="{{ old('chooselastnumber') }}" >
                                     @error('chooselastnumber') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                     <p>If the phone number you have chosen is already taken, please note that it can be activated with different last four digits.</p>
@@ -72,7 +89,7 @@
                                     @error('referral') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="form-radio form-check-info text-start">
-                                    <p>Add International Calling Service</p>
+                                    <label>Add International Calling Service</label>
                                     <input class="form-radio-input" type="radio" name="callservice" id="flexRadioDefault_y" value="yes">
                                     <label class="form-radio-label" for="flexRadioDefault_y">Yes</label>
                                     <input class="form-radio-input" type="radio" name="callservice" id="flexRadioDefault_n" value="no">
@@ -80,7 +97,7 @@
                                     @error('callservice') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="form-radio form-check-info text-start">
-                                    <p>Service</p>
+                                    <label>Service</label>
                                     <input class="form-radio-input" type="radio" name="service" id="flexRadioDefault_ag" value="annual_agreement">
                                     <label class="form-radio-label" for="flexRadioDefault_ag">Annual Agreement (25% discount)</label>
                                     <input class="form-radio-input" type="radio" name="service" id="flexRadioDefault_mp" value="monthly_plan">
@@ -88,7 +105,7 @@
                                     @error('service') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="form-radio form-check-info text-start">
-                                    <p>Connectivity</p>
+                                    <label>Connectivity</label>
                                     <input class="form-radio-input" type="radio" name="connectivity" id="flexRadioDefault_4g" value="4g">
                                     <label class="form-radio-label" for="flexRadioDefault_4g">4G</label>
                                     <input class="form-radio-input" type="radio" name="connectivity" id="flexRadioDefault_5g" value="5g">
