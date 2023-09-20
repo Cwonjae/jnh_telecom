@@ -22,7 +22,6 @@
 
 
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="/assets/js/argon-dashboard.js"></script>
     <script src="/assets/js/core/jquery-3.7.1.min.js"></script>
     <script src="/assets/js/plugins/jq-signature.min.js"></script>
 </head>
@@ -52,6 +51,7 @@
     @endauth
 
     <!--   Core JS Files   -->
+    <script src="/assets/js/argon-dashboard.js"></script>
     <script src="/assets/js/core/popper.min.js"></script>
     <script src="/assets/js/core/bootstrap.min.js"></script>
     <script src="/assets/js/plugins/perfect-scrollbar.min.js"></script>
