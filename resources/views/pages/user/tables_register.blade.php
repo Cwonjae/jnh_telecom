@@ -16,44 +16,45 @@
          * */
         const dataList = ["Albania","Algeria","Afghanistan","Kabol","America","Angola","Antigua and Barbuda Armenia","Republic of Armenia","Australia","Azerbaijan","Bahrain","Barbados","Belarus","Belgium","Bolivia","Bosnia","Brazil","Bulgaria","Burundi","Cambodia","Cameroon","Canada","Central African Republic","Chad","Chile ",
 "China","Colombia","Croatia","Cuba","Cyprus","Czech","Denmark","Egypt","El Salvador","Eritrea","Estonia","Finland","France","Georgia","Germany","Greece","Hong Kong","China","Hungary","India","Indonesia","Iran","Iraq","ireland","Israel","Italy","Japan","Jordan","Kazakhstan","Kenya","Korea","Kuwait","Kyrgyzstan","Latvia","Republic of Latvia","Lebanon","Liberia","Libya","Lithuania","Macedonia","Madagascar","Malaysia","Malta","Mexico","Monaco","Mongolia ","Morocco","Karabakh","Nagorno","Karabakh","Namibia","Netherlands","arab","Nicaragua","Nigeria","Oman","Pakistan","Islamic Republic of Pakistan","Palestine","Panama","Peru","Philippines","Portugal","Qatar","Romania","Russia","Saudi Arabia","Serbia","Singapore","Slovakia","Slovenia","Somalia","South Africa","spain","Sri Lanka","Sudan","Sweden","Switzerland","Syria","Tajikistan","Tanzania","Thailand","See East Timor","Türkiye","Turkmenistan","Turks","Ukraine","United Arab Emirates","United Kingdom","Great Britain and Northern Ireland","United States America","Uzbekistan","Vatican City"];
-    const $search = document.querySelector("#search");
-    const $autoComplete = document.querySelector(".autocomplete");
-    let nowIndex = 0;
 
-    $search.onkeyup = (event) => {
-        const value = $search.value.trim();
-        const matchDataList = value ? dataList.filter((label) => label.includes(value)) : [];
+        const search = document.querySelector("#search");
+        const autoComplete = document.querySelector(".autocomplete");
+        let nowIndex = 0;
 
-        switch (event.keyCode) {
-            case 38:
-                nowIndex = Math.max(nowIndex - 1, 0);
-                break;
-            case 40:
-                nowIndex = Math.min(nowIndex + 1, matchDataList.length - 1);
-                break;
-            case 13:
-                document.querySelector("#search").value = matchDataList[nowIndex] || "";
-                nowIndex = 0;
-                matchDataList.length = 0;
-                break;
-            default:
-                nowIndex = 0;
-                break;
-        }
+        search.onkeyup = (event) => {
+            const value = search.value.trim();
+            const matchDataList = value ? dataList.filter((label) => label.includes(value)) : [];
 
-        showList(matchDataList, value, nowIndex);
-    };
+            switch (event.keyCode) {
+                case 38:
+                    nowIndex = Math.max(nowIndex - 1, 0);
+                    break;
+                case 40:
+                    nowIndex = Math.min(nowIndex + 1, matchDataList.length - 1);
+                    break;
+                case 13:
+                    document.querySelector("#search").value = matchDataList[nowIndex] || "";
+                    nowIndex = 0;
+                    matchDataList.length = 0;
+                    break;
+                default:
+                    nowIndex = 0;
+                    break;
+            }
 
-    const showList = (data, value, nowIndex) => {
-        const regex = new RegExp(`(${value})`, "g");
-        $autoComplete.innerHTML = data.map((label, index) => 
-            `
-            <div class='${nowIndex === index ? "active" : ""}'>
-                ${label.replace(regex, "<mark>$1</mark>")}
-            </div>
-            `
-        ).join("");
-    };
+            showList(matchDataList, value, nowIndex);
+        };
+
+        const showList = (data, value, nowIndex) => {
+            const regex = new RegExp(`(${value})`, "g");
+            autoComplete.innerHTML = data.map((label, index) => 
+                `
+                <div class='${nowIndex === index ? "active" : ""}'>
+                    ${label.replace(regex, "<mark>$1</mark>")}
+                </div>
+                `
+            ).join("");
+        };
     </script>
 
     @include('layouts.navbars.auth.user.topnav', ['title' => 'Cell Phone Opening Register'])
