@@ -5,7 +5,7 @@
     <script>
         $(function () {
             $('.js-signature').jqSignature();
-            
+
             /**
              *  국가 입력시 자동완성 기능 추가
              * */
@@ -21,6 +21,14 @@
                 minLength: 1,
                 delay: 100,
                 autoFocus: true,
+            });
+
+            $('#dateofbirth').keyup(function() {
+                var val = $(this).val().replace(/[^0-9]/g, '');
+
+                if(val.length < 9){
+                    $(this).val(val.substring(0,2) + "-" + val.substring(2,4) + "-" + val.substring(4,7));
+                }
             });
         });
 
@@ -83,11 +91,11 @@
                                 </div>
                                 <div class="flex flex-col mb-3">
                                     <h6>Date Of Birth</h6>
-                                    <input type="text" name="dateofbirth" class="form-control" placeholder="Date Of Birth" aria-label="Date Of Birth" value="{{ old('dateofbirth') }}" >
+                                    <input type="text" name="dateofbirth" class="form-control" placeholder="MM-DD-YYYY" aria-label="Date Of Birth" value="{{ old('dateofbirth') }}" id="dateofbirth" maxlength="8">
                                     @error('dateofbirth') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="form-radio form-check-info text-start">
-                                    <h6>Gander</h6><br>
+                                    <h6>Gander</h6>
                                     <input class="form-radio-input" type="radio" name="gander" id="flexRadioDefault_m" value="male">
                                     <label class="form-radio-label" for="flexRadioDefault_m">Male</label>
                                     <input class="form-radio-input" type="radio" name="gander" id="flexRadioDefault_f" value="female">
@@ -95,7 +103,7 @@
                                     @error('gander') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="form-radio form-check-info text-start">
-                                    <h6>Device</h6><br>
+                                    <h6>Device</h6>
                                     <input class="form-radio-input" type="radio" name="device" id="flexRadioDefault_ap" value="apple">
                                     <label class="form-radio-label" for="flexRadioDefault_ap">Apple</label>
                                     <input class="form-radio-input" type="radio" name="device" id="flexRadioDefault_s" value="samsung">
@@ -139,7 +147,7 @@
                                     <p>Cancelling prepaid after switching: No refund for charged amount.</p>
                                 </div>
                                 <div class="form-radio form-check-info text-start">
-                                    <h6>Plan</h6><br>
+                                    <h6>Plan</h6>
                                     <input class="form-radio-input" type="radio" name="plan" id="flexRadioDefault_p" value="ok">
                                     <label class="form-radio-label" for="flexRadioDefault_p">30,000 KRW($23)</label>
                                     <p>Please note that devices purchased from the United States may not be compatible with our 5G plan.</p>
@@ -162,7 +170,7 @@
                                     @error('referral') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="form-radio form-check-info text-start">
-                                    <h6>Add International Calling Service</h6><br>
+                                    <h6>Add International Calling Service</h6>
                                     <input class="form-radio-input" type="radio" name="callservice" id="flexRadioDefault_y" value="yes">
                                     <label class="form-radio-label" for="flexRadioDefault_y">Yes</label>
                                     <input class="form-radio-input" type="radio" name="callservice" id="flexRadioDefault_n" value="no">
@@ -175,7 +183,7 @@
                                     <img src="/img/tables/tables7.png" alt="4G" style="max-width: 100%; height: auto;">
                                 </div>
                                 <div class="form-radio form-check-info text-start">
-                                    <h6>Service</h6><br>
+                                    <h6>Service</h6>
                                     <input class="form-radio-input" type="radio" name="service" id="flexRadioDefault_ag" value="annual_agreement">
                                     <label class="form-radio-label" for="flexRadioDefault_ag">Annual Agreement (25% discount)</label>
                                     <input class="form-radio-input" type="radio" name="service" id="flexRadioDefault_mp" value="monthly_plan">
@@ -183,7 +191,7 @@
                                     @error('service') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="form-radio form-check-info text-start">
-                                    <h6>Connectivity</h6><br>
+                                    <h6>Connectivity</h6>
                                     <input class="form-radio-input" type="radio" name="connectivity" id="flexRadioDefault_4g" value="4g">
                                     <label class="form-radio-label" for="flexRadioDefault_4g">4G</label>
                                     <input class="form-radio-input" type="radio" name="connectivity" id="flexRadioDefault_5g" value="5g">
