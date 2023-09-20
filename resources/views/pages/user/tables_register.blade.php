@@ -15,7 +15,6 @@
 
     function clearCanvas() {
         $('.js-signature').jqSignature('clearCanvas');
-        $('#saveBtn').css('display', 'none');
     }
 
     // function saveSignature() {
@@ -114,6 +113,7 @@
                                 <div class="flex flex-col mb-3">
                                     <label>Signature</label>
                                     <div class='js-signature'></div>
+                                    <button id="clearBtn" class="btn btn-default" onclick="clearCanvas();">Clear Canvas</button>
                                 </div>
                                 <div class="flex flex-col mb-3">
                                     <label>Referral</label>
