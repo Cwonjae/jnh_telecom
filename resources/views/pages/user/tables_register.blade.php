@@ -3,32 +3,51 @@
 @section('content')
 
     <script>
-    // $(document).on('ready', function() {
-    //     if ($('.js-signature').length) {
-    //         $('.js-signature').jqSignature();
-    //     }
-    // });
+        $(function () {
+            $('.js-signature').jqSignature();
+        });
 
-    $(function () {
-        $('.js-signature').jqSignature();
-    });
+        function clearCanvas() {
+            $('.js-signature').jqSignature('clearCanvas');
+        }
 
-    function clearCanvas() {
-        $('.js-signature').jqSignature('clearCanvas');
-    }
+        /**
+         *  국가 입력시 자동완성 기능 추가
+         * */
+        const dataList = ["Albania","Algeria","Afghanistan","Kabol","America","Angola","Antigua and Barbuda Armenia","Republic of Armenia","Australia","Azerbaijan","Bahrain","Barbados","Belarus","Belgium","Bolivia","Bosnia","Brazil","Bulgaria","Burundi","Cambodia","Cameroon","Canada","Central African Republic","Chad","Chile ",
+"China","Colombia","Croatia","Cuba","Cyprus","Czech","Denmark","Egypt","El Salvador","Eritrea","Estonia","Finland","France","Georgia","Germany","Greece","Hong Kong","China","Hungary","India","Indonesia","Iran","Iraq","ireland","Israel","Italy","Japan","Jordan","Kazakhstan","Kenya","Korea","Kuwait","Kyrgyzstan","Latvia","Republic of Latvia","Lebanon","Liberia","Libya","Lithuania","Macedonia","Madagascar","Malaysia","Malta","Mexico","Monaco","Mongolia ","Morocco","Karabakh","Nagorno","Karabakh","Namibia","Netherlands","arab","Nicaragua","Nigeria","Oman","Pakistan","Islamic Republic of Pakistan","Palestine","Panama","Peru","Philippines","Portugal","Qatar","Romania","Russia","Saudi Arabia","Serbia","Singapore","Slovakia","Slovenia","Somalia","South Africa","spain","Sri Lanka","Sudan","Sweden","Switzerland","Syria","Tajikistan","Tanzania","Thailand","See East Timor","Türkiye","Turkmenistan","Turks","Ukraine","United Arab Emirates","United Kingdom","Great Britain and Northern Ireland","United States America","Uzbekistan","Vatican City"];
+    const $search = document.querySelector("#search");
+    const $autoComplete = document.querySelector(".autocomplete");
+    let nowIndex = 0;
 
-    // function saveSignature() {
-    // 	$('#signature').empty();
-    // 	var dataUrl = $('.js-signature').eq(1).jqSignature('getDataURL');
-    // 	var img = $('<img>').attr('src', dataUrl);
-    // 	$('#signature').append($('<p>').text("Here's your signature:"));
-    // 	$('#signature').append(img);
-    // }
+    $search.onkeyup = (event) => {
+        const value = $search.value.trim();
+        const matchDataList = value ? dataList.filter((label) => label.includes(value)) : [];
 
-    // $('.js-signature').eq(1).on('jq.signature.changed', function() {
-    // 	$('#saveBtn').attr('disabled', false);
-    // });
+        switch (event.keyCode) {
+            case 38:
+                nowIndex = Math.max(nowIndex - 1, 0);
+                break;
+            case 40:
+                nowIndex = Math.min(nowIndex + 1, matchDataList.length - 1);
+                break;
+            case 13:
+                document.querySelector("#search").value = matchDataList[nowIndex] || "";
+                nowIndex = 0;
+                matchDataList.length = 0;
+                break;
+            default:
+                nowIndex = 0;
+                break;
+        }
 
+        showList(matchDataList, value, nowIndex);
+    };
+
+    const showList = (data, value, nowIndex) => {
+        const regex = new RegExp("(${value})", "g");
+        $autoComplete.innerHTML = data.map((label, index) => "<div class='${nowIndex === index ? "active" : ""}'>${label.replace(regex, "<mark>$1</mark>")}</div>").join("");
+    };
     </script>
 
     @include('layouts.navbars.auth.user.topnav', ['title' => 'Cell Phone Opening Register'])
@@ -68,27 +87,28 @@
                             <form method="POST" action="{{ route('userpage.insert', ['page' => 'tables']) }}">
                             @csrf
                                 <div class="flex flex-col mb-3">
-                                    <label>Name</label>
+                                    <h6>Name</h6>
                                     <input type="text" name="applicant" class="form-control" placeholder="Name" aria-label="Name" value="{{ old('applicant') }}" >
                                     @error('applicant') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <label>Nationality</label>
-                                    <input type="text" name="nationality" class="form-control" placeholder="Nationality" aria-label="Nationality" value="{{ old('nationality') }}" >
+                                    <h6>Nationality</h6>
+                                    <input type="text" name="nationality" class="form-control" placeholder="Nationality" aria-label="Nationality" value="{{ old('nationality') }}" autocomplete="off" id="search">
+                                    <div class="autocomplete"></div>
                                     @error('nationality') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <label>Passport</label>
+                                    <h6>Passport</h6>
                                     <input type="file" name="passport" class="form-control" aria-label="Passport">
                                     @error('passport') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <label>Date Of Birth</label>
+                                    <h6>Date Of Birth</h6>
                                     <input type="text" name="dateofbirth" class="form-control" placeholder="Date Of Birth" aria-label="Date Of Birth" value="{{ old('dateofbirth') }}" >
                                     @error('dateofbirth') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="form-radio form-check-info text-start">
-                                    <label>Gander</label><br>
+                                    <h6>Gander</h6><br>
                                     <input class="form-radio-input" type="radio" name="gander" id="flexRadioDefault_m" value="male">
                                     <label class="form-radio-label" for="flexRadioDefault_m">Male</label>
                                     <input class="form-radio-input" type="radio" name="gander" id="flexRadioDefault_f" value="female">
@@ -96,7 +116,7 @@
                                     @error('gander') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="form-radio form-check-info text-start">
-                                    <label>Device</label><br>
+                                    <h6>Device</h6><br>
                                     <input class="form-radio-input" type="radio" name="device" id="flexRadioDefault_ap" value="apple">
                                     <label class="form-radio-label" for="flexRadioDefault_ap">Apple</label>
                                     <input class="form-radio-input" type="radio" name="device" id="flexRadioDefault_s" value="samsung">
@@ -106,12 +126,12 @@
                                     @error('device') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <label>Device Model</label>
+                                    <h6>Device Model</h6>
                                     <input type="text" name="devicemodel" class="form-control" placeholder="Ex) Iphone 13, Iphone 13 mini, Galaxy S22, ETC" aria-label="Device Model" value="{{ old('devicemodel') }}" >
                                     @error('devicemodel') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <label>OS Version</label>
+                                    <h6>OS Version</h6>
                                     <input type="text" name="osversion" class="form-control" placeholder="Ex) Android Version 13, IOS version 16.5" aria-label="Os Version" value="{{ old('osversion') }}" >
                                     @error('osversion') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
@@ -120,7 +140,7 @@
                                     <p>Dial *#06# or go to setting - about to find IMEI number.</p>
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <label>IMEI Number</label>
+                                    <h6>IMEI Number</h6>
                                     <input type="text" name="imeinumber" class="form-control" placeholder="IMEI Number" aria-label="IMEI Number" value="{{ old('imeinumber') }}" >
                                     @error('imeinumber') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
@@ -140,30 +160,30 @@
                                     <p>Cancelling prepaid after switching: No refund for charged amount.</p>
                                 </div>
                                 <div class="form-radio form-check-info text-start">
-                                    <label>Plan</label><br>
+                                    <h6>Plan</h6><br>
                                     <input class="form-radio-input" type="radio" name="plan" id="flexRadioDefault_p" value="ok">
                                     <label class="form-radio-label" for="flexRadioDefault_p">30,000 KRW($23)</label>
                                     <p>Please note that devices purchased from the United States may not be compatible with our 5G plan.</p>
                                     @error('plan') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <label>Choose Last Number</label>
+                                    <h6>Choose Last Number</h6>
                                     <input type="text" name="chooselastnumber" class="form-control" placeholder="Please choose the last four digits of your phone number." aria-label="Please choose the last four digits of your phone number." value="{{ old('chooselastnumber') }}" >
                                     @error('chooselastnumber') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                     <p>If the phone number you have chosen is already taken, please note that it can be activated with different last four digits.</p>
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <label>Signature</label>
+                                    <h6>Signature</h6>
                                     <div class='js-signature'></div>
                                     <a id="clearBtn" class="btn btn-default" onclick="clearCanvas();">Clear Canvas</a>
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <label>Referral</label>
+                                    <h6>Referral</h6>
                                     <input type="text" name="referral" class="form-control" placeholder="Please enter the referral's email address, phone number and name" aria-label="Referral" value="{{ old('referral') }}" >
                                     @error('referral') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="form-radio form-check-info text-start">
-                                    <label>Add International Calling Service</label><br>
+                                    <h6>Add International Calling Service</h6><br>
                                     <input class="form-radio-input" type="radio" name="callservice" id="flexRadioDefault_y" value="yes">
                                     <label class="form-radio-label" for="flexRadioDefault_y">Yes</label>
                                     <input class="form-radio-input" type="radio" name="callservice" id="flexRadioDefault_n" value="no">
@@ -176,7 +196,7 @@
                                     <img src="/img/tables/tables7.png" alt="4G" style="max-width: 100%; height: auto;">
                                 </div>
                                 <div class="form-radio form-check-info text-start">
-                                    <label>Service</label><br>
+                                    <h6>Service</h6><br>
                                     <input class="form-radio-input" type="radio" name="service" id="flexRadioDefault_ag" value="annual_agreement">
                                     <label class="form-radio-label" for="flexRadioDefault_ag">Annual Agreement (25% discount)</label>
                                     <input class="form-radio-input" type="radio" name="service" id="flexRadioDefault_mp" value="monthly_plan">
@@ -184,7 +204,7 @@
                                     @error('service') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="form-radio form-check-info text-start">
-                                    <label>Connectivity</label><br>
+                                    <h6>Connectivity</h6><br>
                                     <input class="form-radio-input" type="radio" name="connectivity" id="flexRadioDefault_4g" value="4g">
                                     <label class="form-radio-label" for="flexRadioDefault_4g">4G</label>
                                     <input class="form-radio-input" type="radio" name="connectivity" id="flexRadioDefault_5g" value="5g">
