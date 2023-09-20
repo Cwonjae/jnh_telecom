@@ -50,6 +50,16 @@ class UserPageController extends Controller
         }
     }
 
+    public function register_insert(Request $request) {
+
+
+        $upload_file = $request->passport->store('images/passport');
+
+        // DB::table('cellphone_boards')
+        //     ->()        
+    }
+
+
     public function vr()
     {
         return view("pages.virtual-reality");
