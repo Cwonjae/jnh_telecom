@@ -20,7 +20,9 @@
     <!-- CSS Files -->
     <link id="pagestyle" href="/assets/css/argon-dashboard.css" rel="stylesheet" />
 
-    
+
+    <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="/assets/js/argon-dashboard.js"></script>
     <script src="/assets/js/core/jquery-3.7.1.min.js"></script>
     <script src="/assets/js/plugins/jq-signature.min.js"></script>
 </head>
@@ -63,10 +65,6 @@
             Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
         }
     </script>
-    <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="/assets/js/argon-dashboard.js"></script>
-    <script src="/assets/js/plugins/perfect-scrollbar.esm.js.map"></script>
-    <script src="/assets/js/plugins/perfect-scrollbar.js.map"></script>
     @stack('js');
 </body>
 
