@@ -30,6 +30,10 @@
                     $(this).val(val.substring(0,2) + "-" + val.substring(2,4) + "-" + val.substring(4,8));
                 }
             });
+
+            $('#imeinumber').keyup(function() {
+                var val = $(this).val().replace(/[^0-9]/g, '');
+            });
         });
 
         function clearCanvas() {
@@ -128,7 +132,7 @@
                                 </div>
                                 <div class="flex flex-col mb-3">
                                     <h6>IMEI Number</h6>
-                                    <input type="text" name="imeinumber" class="form-control" placeholder="IMEI Number" aria-label="IMEI Number" value="{{ old('imeinumber') }}" >
+                                    <input type="text" name="imeinumber" class="form-control" placeholder="IMEI Number" aria-label="IMEI Number" value="{{ old('imeinumber') }}" id="imeinumber">
                                     @error('imeinumber') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
