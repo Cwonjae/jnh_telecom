@@ -51,12 +51,12 @@
                                 </div>
                                 <div>
                                     <h6>Limited-time Prepaid Plan Promotion - Enjoy an Initial top-up on Us!</h6>
-                                    <span style="text-indent:30px;">᛫ Sign up for our Prepaid Plan and get the first top-up of 30,000 KRW ($23) from us!</span>
-                                    <span style="text-indent:30px;">᛫ Your first top-up is our treat to you as part of this special promotion.</span>
-                                    <span style="text-indent:30px;">᛫ After the initial top-up, you'll be responsible for future top-ups. Use the charged amount for services with a flexible validity period.</span>
-                                    <span style="text-indent:30px;">᛫ Switch to Postpaid later and receive a bonus equivalent to your charged amount.</span>
-                                    <span style="text-indent:30px;">᛫ We provide a cash deposit to your account for the exact amount you top-up.</span>
-                                    <span style="text-indent:30px;">᛫ Your deposited funds match the amount you top up. Don't miss out on this fantastic offer!</span>
+                                    <span style="margin-left:30px;">᛫ Sign up for our Prepaid Plan and get the first top-up of 30,000 KRW ($23) from us!</span><br>
+                                    <span style="margin-left:30px;">᛫ Your first top-up is our treat to you as part of this special promotion.</span><br>
+                                    <span style="margin-left:30px;">᛫ After the initial top-up, you'll be responsible for future top-ups. Use the charged amount for services with a flexible validity period.</span><br>
+                                    <span style="margin-left:30px;">᛫ Switch to Postpaid later and receive a bonus equivalent to your charged amount.</span><br>
+                                    <span style="margin-left:30px;">᛫ We provide a cash deposit to your account for the exact amount you top-up.</span><br>
+                                    <span style="margin-left:30px;">᛫ Your deposited funds match the amount you top up. Don't miss out on this fantastic offer!</span><br>
                                     <p>Join our Prepaid Plan today and enjoy the convenience and flexibility of our services. </p>
                                     <br>
                                     <p>After activating our prepaid service, if you switch to postpaid service using a foreigner registration card, we'll provide a 50,000 KRW ($38) subsidy towards your first bill. </p>
