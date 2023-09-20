@@ -1,6 +1,37 @@
 @extends('layouts.user.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
+
+    <script>
+    // $(document).on('ready', function() {
+    //     if ($('.js-signature').length) {
+    //         $('.js-signature').jqSignature();
+    //     }
+    // });
+
+    $(function () {
+        $('.js-signature').jqSignature();
+    });
+
+    function clearCanvas() {
+        $('.js-signature').jqSignature('clearCanvas');
+        $('#saveBtn').css('display', 'none');
+    }
+
+    // function saveSignature() {
+    // 	$('#signature').empty();
+    // 	var dataUrl = $('.js-signature').eq(1).jqSignature('getDataURL');
+    // 	var img = $('<img>').attr('src', dataUrl);
+    // 	$('#signature').append($('<p>').text("Here's your signature:"));
+    // 	$('#signature').append(img);
+    // }
+
+    // $('.js-signature').eq(1).on('jq.signature.changed', function() {
+    // 	$('#saveBtn').attr('disabled', false);
+    // });
+
+    </script>
+
     @include('layouts.navbars.auth.user.topnav', ['title' => 'Cell Phone Opening Register'])
     <div class="container-fluid py-4">
         <div class="row">
@@ -127,31 +158,4 @@
         </div>
         @include('layouts.footers.auth.user.footer')
     </div>
-
-    <script>
-        
-	$(document).on('ready', function() {
-		if ($('.js-signature').length) {
-			$('.js-signature').jqSignature();
-		}
-	});
-
-	function clearCanvas() {
-		$('.js-signature').jqSignature('clearCanvas');
-        $('#saveBtn').css('display', 'none');
-	}
-
-	// function saveSignature() {
-	// 	$('#signature').empty();
-	// 	var dataUrl = $('.js-signature').eq(1).jqSignature('getDataURL');
-	// 	var img = $('<img>').attr('src', dataUrl);
-	// 	$('#signature').append($('<p>').text("Here's your signature:"));
-	// 	$('#signature').append(img);
-	// }
-
-	// $('.js-signature').eq(1).on('jq.signature.changed', function() {
-	// 	$('#saveBtn').attr('disabled', false);
-	// });
-
-    </script>
 @endsection
