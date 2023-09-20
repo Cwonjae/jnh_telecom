@@ -41,6 +41,15 @@
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0" style="width:92%; margin:auto; margin-top:30px;">
+
+                            <div class="flex flex-col mb-3">
+                                <span>Welcome to Korea!</span>
+                                <div>
+                                    <img src="/img/tables/tables1.jpeg" alt="Korea City IMG">
+                                    <img src="/img/tables/tables2.jpeg" alt="K-Telecom Introduction">
+                                    <img src="/img/tables/tables3.png" alt="How to Save Big?">
+                                </div>
+                            </div>
                             
                             <form method="POST" action="{{ route('userpage.insert', ['page' => 'tables']) }}">
                             @csrf
