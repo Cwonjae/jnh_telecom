@@ -12,7 +12,7 @@
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
                             
-                            <form method="POST" action="{{ route('userpage.insert') }}">
+                            <form method="POST" action="{{ route('userpage.insert', ['page' => 'tables']) }}">
                             @csrf
                                 <div class="flex flex-col mb-3">
                                     <input type="text" name="applicant" class="form-control" placeholder="Subscriber" aria-label="Name" value="{{ old('applicant') }}" >
