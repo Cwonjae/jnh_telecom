@@ -43,11 +43,24 @@
                         <div class="table-responsive p-0" style="width:92%; margin:auto; margin-top:30px;">
 
                             <div class="flex flex-col mb-3">
-                                <span>Welcome to Korea!</span>
+                                <h4>Welcome to Korea!</h4>
                                 <div>
-                                    <img src="/img/tables/tables1.jpeg" alt="Korea City IMG">
-                                    <img src="/img/tables/tables2.jpeg" alt="K-Telecom Introduction">
-                                    <img src="/img/tables/tables3.png" alt="How to Save Big?">
+                                    <img src="/img/tables/tables1.jpeg" alt="Korea City IMG" style="max-width: 100%; height: auto;">
+                                    <img src="/img/tables/tables2.jpeg" alt="K-Telecom Introduction" style="max-width: 100%; height: auto;">
+                                    <img src="/img/tables/tables3.png" alt="How to Save Big?" style="max-width: 100%; height: auto;">
+                                </div>
+                                <div>
+                                    <h6>Limited-time Prepaid Plan Promotion - Enjoy an Initial top-up on Us!</h6>
+                                    <p>Sign up for our Prepaid Plan and get the first top-up of 30,000 KRW ($23) from us!</p>
+                                    <p>Your first top-up is our treat to you as part of this special promotion.</p>
+                                    <p>After the initial top-up, you'll be responsible for future top-ups. Use the charged amount for services with a flexible validity period.</p>
+                                    <p>Switch to Postpaid later and receive a bonus equivalent to your charged amount.</p>
+                                    <p>We provide a cash deposit to your account for the exact amount you top-up.</p>
+                                    <p>Your deposited funds match the amount you top up. Don't miss out on this fantastic offer!</p>
+                                    <p>Join our Prepaid Plan today and enjoy the convenience and flexibility of our services. </p>
+                                    <p>After activating our prepaid service, if you switch to postpaid service using a foreigner registration card, we'll provide a 50,000 KRW ($38) subsidy towards your first bill. </p>
+                                    <p style="text-decoration:underline; width:100%"></p>
+                                    <p>The exchange rate applied is 1,300 KRW.</p>
                                 </div>
                             </div>
                             
@@ -102,9 +115,28 @@
                                     @error('osversion') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
+                                    <img src="/img/tables/tables4.png" alt="IMEI and S/N" style="max-width: 100%; height: auto;">
+                                    <p>Dial *#06# or go to setting - about to find IMEI number.</p>
+                                </div>
+                                <div class="flex flex-col mb-3">
                                     <label>IMEI Number</label>
                                     <input type="text" name="imeinumber" class="form-control" placeholder="IMEI Number" aria-label="IMEI Number" value="{{ old('imeinumber') }}" >
                                     @error('imeinumber') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
+                                </div>
+                                <div class="flex flex-col mb-3">
+                                    <p>[Prepaid Plan]</p>
+                                    <img src="/img/tables/tables5.png" alt="Prepaid Plan" style="max-width: 100%; height: auto;">
+                                    <p>Prepaid Plan: Use charged amount for services.</p>
+                                    <p>Validity: Depends on recharge amount, balance expires after.</p>
+                                    <p>No refunds or cancellations available.</p>
+                                    <p>During validity: Use remaining balance.</p>
+                                    <p>After validity: Outgoing calls restricted, then 14 days incoming only, 30 days both suspended, then automatic termination.</p>
+                                    <p>Recharge within validity extends period (max 2 years).</p>
+                                    <p>Some benefits don't accumulate (e.g., KT mobile-to-mobile calls).</p>
+                                    <p>No discounts, points, memberships, rentals, roaming, and specific services.</p>
+                                    <p>Switching won't transfer balances or provide refunds.</p>
+                                    <p>Postpaid to prepaid: Benefits won't transfer.</p>
+                                    <p>Cancelling prepaid after switching: No refund for charged amount.</p>
                                 </div>
                                 <div class="form-radio form-check-info text-start">
                                     <label>Plan</label><br>
@@ -136,6 +168,11 @@
                                     <input class="form-radio-input" type="radio" name="callservice" id="flexRadioDefault_n" value="no">
                                     <label class="form-radio-label" for="flexRadioDefault_n">No</label>
                                     @error('callservice') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
+                                    <p>Extra $5/ month per line</p>
+                                </div>
+                                <div class="flex flex-col mb-3">
+                                    <img src="/img/tables/tables6.png" alt="5G" style="max-width: 100%; height: auto;">
+                                    <img src="/img/tables/tables7.png" alt="4G" style="max-width: 100%; height: auto;">
                                 </div>
                                 <div class="form-radio form-check-info text-start">
                                     <label>Service</label><br>
