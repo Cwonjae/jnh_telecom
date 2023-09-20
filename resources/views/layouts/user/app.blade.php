@@ -19,10 +19,12 @@
     <link href="/assets/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="/assets/css/argon-dashboard.css" rel="stylesheet" />
+    <link href="/assets/css/jquery-ui.min.css" rel="stylesheet" />
 
 
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="/assets/js/core/jquery-3.7.1.min.js"></script>
+    <script src="/assets/js/core/jquery-ui.min.js"></script>
     <script src="/assets/js/plugins/jq-signature.min.js"></script>
 </head>
 
