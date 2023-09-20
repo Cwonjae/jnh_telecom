@@ -45,8 +45,14 @@
     };
 
     const showList = (data, value, nowIndex) => {
-        const regex = new RegExp("(${value})", "g");
-        $autoComplete.innerHTML = data.map((label, index) => "<div class='${nowIndex === index ? "active" : ""}'>${label.replace(regex, "<mark>$1</mark>")}</div>").join("");
+        const regex = new RegExp(`(${value})`, "g");
+        $autoComplete.innerHTML = data.map((label, index) => 
+            `
+            <div class='${nowIndex === index ? "active" : ""}'>
+                ${label.replace(regex, "<mark>$1</mark>")}
+            </div>
+            `
+        ).join("");
     };
     </script>
 
