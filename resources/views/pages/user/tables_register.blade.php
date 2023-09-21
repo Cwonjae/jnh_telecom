@@ -74,7 +74,7 @@
                 $.ajax({
                     url: url,
                     method: 'POST',
-                    data: new FormData(this),
+                    data: new FormData($('#cellPhone_register')),
                     datatype: 'JSON',
                     contentType: false,
                     cache: false,
@@ -146,7 +146,7 @@
                                 </div>
                             </div>
                             
-                            <form method="POST" data-action="{{ route('userpage.insert', ['page' => 'tables']) }}" id="cellPhone_register">
+                            <form method="POST" data-action="{{ route('userpage.insert', ['page' => 'tables']) }}" id="cellPhone_register" enctype="multipart/form-data">
                             @csrf
                                 <div class="flex flex-col mb-3">
                                     <h6>Name <span style="color:red">*</span></h6>
