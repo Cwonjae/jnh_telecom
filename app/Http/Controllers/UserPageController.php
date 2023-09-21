@@ -68,20 +68,10 @@ class UserPageController extends Controller
             'connectivity' => 'required|in:4g,5g',
         ]);
 
-        if ($validated->fails()) {
-            $errors = $validated->errors()->getMessages();            
-            $clientErrors = array();
-            foreach ($errors as $key => $value) {
-                $clientErrors[$key] = $value[0];
-            }
-            $response = array(
-                'status' => 'error',
-                'response_code' => 201,
-                'errors' => $clientErrors
-            );    
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()->all()]);
+            // return json_encode($response);
         }
-
-        echo print_r(json_encode($response));
 
         // $all_data = $request->post();
         // echo print_r($all_data);
