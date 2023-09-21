@@ -36,7 +36,9 @@
                 $('#saveBtn').css('display', 'inline-block');
             });
 
-            $('#form_submit').click(function() {
+            $('#form_submit').click(function(e) {
+                e.preventDefault();
+
                 var applicant = $("#applicant").val();
                 var nationality = $("#inputSearch").val();
                 var passport = $("#passport").val();
@@ -50,20 +52,42 @@
                 var chooselastnumber = $("#chooselastnumber").val();
                 var signature = $('.js-signature').jqSignature('getDataURL');
                 // var signature_lengh_check = $('#jq-signature-canvas-1').children().length;
+                var signature_img_length = $('#signature').find('#signature_img').length;
 
                 var referral = $("#referral").val();
                 var callservice = $('input[name=callservice]:checked', '#cellPhone_register').val();
                 var service = $('input[name=service]:checked', '#cellPhone_register').val();
                 var connectivity = $('input[name=connectivity]:checked', '#cellPhone_register').val();
 
-                // console.log(signature);
-                // var signature_length_check = $('#jq-signature-canvas-1').children().length;
-                // var signature_length_check = $('.js-signature').children().length;
-                // var signature_check = $('#jq-signature-canvas-1').getContext;
-                // alert(signature_length_check);
-                
-                var find_img_length = $('#signature').find('#signature_img').length;
-                console.log(find_img_length);
+                if(signature_img_length == 0 || !signature_img_length) {
+                    alert('Please Use your mouse or finger to draw your signature above');
+                    return false;
+                }
+
+                var url = $(this).attr('data-action');
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                $.ajax({
+                    url: url,
+                    method: 'POST',
+                    data: new FormData(this),
+                    datatype: 'JSON',
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success:function(response) {
+                        $(form).trigger("reset");
+                        alert(response.success)
+                    },
+                    error: function(response) {
+
+                    }
+                });
+
             });
         });
 
@@ -122,7 +146,7 @@
                                 </div>
                             </div>
                             
-                            <form method="POST" action="{{ route('userpage.insert', ['page' => 'tables']) }}" id="cellPhone_register">
+                            <form method="POST" data-action="{{ route('userpage.insert', ['page' => 'tables']) }}" id="cellPhone_register">
                             @csrf
                                 <div class="flex flex-col mb-3">
                                     <h6>Name <span style="color:red">*</span></h6>
