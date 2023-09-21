@@ -70,6 +70,7 @@
         function clearCanvas() {
             $('.js-signature').jqSignature('clearCanvas');
 		    $('#saveBtn').css('display', 'none');
+            $("#signature").empty();
         }
 
         function saveSignature() {
