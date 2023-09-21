@@ -58,7 +58,7 @@
                 // var signature_check = $('#jq-signature-canvas-1').getContext;
                 // alert(signature_length_check);
 
-                $enc = windows.atob(signature);
+                $enc = $.base64.decode(signature);
                 $enc_len = strlen($enc);
 
                 console.log($enc);
