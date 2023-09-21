@@ -53,7 +53,6 @@
                 var signature = $('.js-signature').jqSignature('getDataURL');
                 // var signature_lengh_check = $('#jq-signature-canvas-1').children().length;
                 var signature_img_length = $('#signature').find('#signature_img').length;
-
                 var referral = $("#referral").val();
                 var callservice = $('input[name=callservice]:checked', '#cellPhone_register').val();
                 var service = $('input[name=service]:checked', '#cellPhone_register').val();
@@ -71,10 +70,29 @@
                     }
                 });
 
+                var datas = {
+                    applicant: applicant,
+                    nationality: nationality,
+                    passport: passport,
+                    dateofbirth: dateofbirth,
+                    gander: gander,
+                    device: device,
+                    devicemodel: devicemodel,
+                    osversion: osversion,
+                    imeinumber: imeinumber,
+                    plan: plan,
+                    chooselastnumber: chooselastnumber,
+                    signature: signature,
+                    referral: referral,
+                    callservice: callservice,
+                    service: service,
+                    connectivity: connectivity
+                }
+
                 $.ajax({
                     url: url,
                     method: 'POST',
-                    data: new FormData($('#cellPhone_register')[0]),
+                    data: datas,
                     datatype: 'JSON',
                     contentType: false,
                     cache: false,
