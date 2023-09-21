@@ -53,9 +53,10 @@
                 var connectivity = $('input[name=connectivity]:checked', '#cellPhone_register').val();
 
                 console.log("모임????");
-                var signature_length_check = $('#jq-signature-canvas-1').children().length;
+                // var signature_length_check = $('#jq-signature-canvas-1').children().length;
+                var signature_length_check = $('.js-signature').children().length;
                 var signature_check = $('#jq-signature-canvas-1').getContext;
-                alert(signature_check);
+                alert(signature_length_check);
             });
         });
 
