@@ -1,7 +1,7 @@
 @extends('layouts.user.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
-
+<meta name="csrf-token" content="{{ csrf_token() }}">
     <script>
         $(function () {
             $('.js-signature').jqSignature();
