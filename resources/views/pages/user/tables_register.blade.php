@@ -103,6 +103,7 @@
                     },
                     error: function(response) {
                         alert(response.status);
+                        console.log(response);
                         // $.each(response.errors, function(key, value) {
                         //     $('p#error_'+key).text(value);
                         // });
