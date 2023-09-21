@@ -33,7 +33,7 @@
             
 
             $('.js-signature').on('jq.signature.changed', function() {
-                $('#saveBtn').css('display', 'block');
+                $('#saveBtn').css('display', 'inline-block');
             });
 
             $('#form_submit').click(function() {
