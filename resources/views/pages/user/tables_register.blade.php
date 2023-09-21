@@ -76,34 +76,34 @@
                     imeinumber: imeinumber,
                     plan: plan,
                     chooselastnumber: chooselastnumber,
-                    signature: signature,
+                    // signature: signature,
                     referral: referral,
                     callservice: callservice,
                     service: service,
                     connectivity: connectivity
                 }
-                console.log(datas);
+                // console.log(datas);
 
-                // $.ajax({
-                //     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                //     url: url,
-                //     method: 'POST',
-                //     data: datas,
-                //     datatype: 'JSON',
-                //     contentType: 'application/json',
-                //     success:function(response) {
-                //         alert("하이?");
-                //     },
-                //     error: function(response) {
-                //         alert('Please enter required entries');
-                //         $.each(response.responseJSON.errors, function(key, value) {
-                //             if(key == "applicant") {
-                //                 value = "The name field is required.";
-                //             }
-                //             $('p#error_'+key).text(value);
-                //         });
-                //     }
-                // });
+                $.ajax({
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    url: url,
+                    method: 'POST',
+                    data: datas,
+                    datatype: 'JSON',
+                    contentType: 'application/json',
+                    success:function(response) {
+                        alert("하이?");
+                    },
+                    error: function(response) {
+                        alert('Please enter required entries');
+                        $.each(response.responseJSON.errors, function(key, value) {
+                            if(key == "applicant") {
+                                value = "The name field is required.";
+                            }
+                            $('p#error_'+key).text(value);
+                        });
+                    }
+                });
 
             });
         });
