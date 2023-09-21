@@ -63,18 +63,19 @@
 
         function clearCanvas() {
             $('.js-signature').jqSignature('clearCanvas');
-		    $('#saveBtn').attr('disabled', true);
+		    $('#saveBtn').css('display', 'none');
         }
 
         function saveSignature() {
 		    $('#signature').empty();
             var dataUrl = $('.js-signature').jqSignature('getDataURL');
-            var img = $('<img>').attr('src', dataUrl);
+            var img = $('<img id="signature_img">').attr('src', dataUrl);
             $('#signature').append(img);
+		    $('#signature_img').css('display', 'none');
         }
 
         $('.js-signature').on('jq.signature.changed', function() {
-            $('#saveBtn').attr('disabled', false);
+		    $('#saveBtn').css('display', 'none');
         });
 
         function checkInputNum(){
