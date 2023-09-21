@@ -42,9 +42,7 @@
             }
         }
 
-        $('#form_submit').click(function(e) {
-            e.preventDefault();
-
+        $('#form_submit').click(function() {
             var applicant = $("#applicant").val();
             var nationality = $("#inputSearch").val();
             var passport = $("#passport").val();
@@ -62,7 +60,7 @@
             var service = $('input[name=service]:checked', '#cellPhone_register').val();
             var connectivity = $('input[name=connectivity]:checked', '#cellPhone_register').val();
 
-
+            console.log("모임????");
             alert(signature);
         });
     </script>
