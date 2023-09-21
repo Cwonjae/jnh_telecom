@@ -53,7 +53,7 @@ class UserPageController extends Controller
     public function register_insert(Request $request) {
 
         $validated = $request->validate([
-            'applicant' => 'required|unique',
+            'applicant' => 'required',
             'nationality' => 'required',
             'passport' => 'required',
             'dateofbirth' => 'required',
