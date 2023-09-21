@@ -63,7 +63,6 @@ class UserPageController extends Controller
             'osversion' => 'required',
             'imeinumber' => 'required',
             'plan' => 'required|in:ok',
-            'chooselastnumber' => 'numeric',
             'callservice' => 'required|in:yes,no',
             'service' => 'required|in:annual_agreement,monthly_plan',
             'connectivity' => 'required|in:4g,5g',
@@ -73,8 +72,8 @@ class UserPageController extends Controller
             return response()->json(['error' => $validator->errors()->all()]);
         }
 
-        $all_data = $request->post();
-        echo print_r($all_data);
+        // $all_data = $request->post();
+        // echo print_r($all_data);
 
         // $upload_file = $request->passport->store('images/passport');
 

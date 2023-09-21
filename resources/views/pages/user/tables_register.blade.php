@@ -84,7 +84,9 @@
                         alert(response.success)
                     },
                     error: function(response) {
-
+                        $.each(response.errors, function(key, value) {
+                            $('p#error_'+key).text(value);
+                        });
                     }
                 });
 
@@ -152,21 +154,25 @@
                                 <div class="flex flex-col mb-3">
                                     <h6>Name <span style="color:red">*</span></h6>
                                     <input type="text" name="applicant" class="form-control" placeholder="Name" aria-label="Name" value="{{ old('applicant') }}" id="applicant">
+                                    <p class='text-danger text-xs pt-1' id="error_applicant"></p>
                                     @error('applicant') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
                                     <h6>Nationality <span style="color:red">*</span></h6>
                                     <input type="text" name="nationality" class="form-control" placeholder="Nationality" aria-label="Nationality" value="{{ old('nationality') }}" autocomplete="off" id="inputSearch">
+                                    <p class='text-danger text-xs pt-1' id="error_nationality"></p>
                                     @error('nationality') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
                                     <h6>Passport <span style="color:red">*</span></h6>
                                     <input type="file" name="passport" class="form-control" aria-label="Passport" id="passport">
+                                    <p class='text-danger text-xs pt-1' id="error_passport"></p>
                                     @error('passport') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
                                     <h6>Date Of Birth <span style="color:red">*</span></h6>
                                     <input type="text" name="dateofbirth" class="form-control" placeholder="MM-DD-YYYY" aria-label="Date Of Birth" value="{{ old('dateofbirth') }}" id="dateofbirth" maxlength="11">
+                                    <p class='text-danger text-xs pt-1' id="error_dateofbirth"></p>
                                     @error('dateofbirth') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="form-radio form-check-info text-start">
@@ -175,6 +181,7 @@
                                     <label class="form-radio-label" for="flexRadioDefault_m">Male</label>
                                     <input class="form-radio-input" type="radio" name="gander" id="flexRadioDefault_f" value="female">
                                     <label class="form-radio-label" for="flexRadioDefault_f">FeMale</label>
+                                    <p class='text-danger text-xs pt-1' id="error_gander"></p>
                                     @error('gander') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="form-radio form-check-info text-start">
@@ -185,16 +192,19 @@
                                     <label class="form-radio-label" for="flexRadioDefault_s">Samsung</label>
                                     <input class="form-radio-input" type="radio" name="device" id="flexRadioDefault_o" value="other">
                                     <label class="form-radio-label" for="flexRadioDefault_o">Other</label>
+                                    <p class='text-danger text-xs pt-1' id="error_device"></p>
                                     @error('device') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
                                     <h6>Device Model <span style="color:red">*</span></h6>
                                     <input type="text" name="devicemodel" class="form-control" placeholder="Ex) Iphone 13, Iphone 13 mini, Galaxy S22, ETC" aria-label="Device Model" value="{{ old('devicemodel') }}" id="devicemodel">
+                                    <p class='text-danger text-xs pt-1' id="error_devicemodel"></p>
                                     @error('devicemodel') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
                                     <h6>OS Version <span style="color:red">*</span></h6>
                                     <input type="text" name="osversion" class="form-control" placeholder="Ex) Android Version 13, IOS version 16.5" aria-label="Os Version" value="{{ old('osversion') }}" id="osversion">
+                                    <p class='text-danger text-xs pt-1' id="error_osversion"></p>
                                     @error('osversion') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
@@ -204,6 +214,7 @@
                                 <div class="flex flex-col mb-3">
                                     <h6>IMEI Number <span style="color:red">*</span></h6>
                                     <input type="text" name="imeinumber" class="form-control" placeholder="IMEI Number" aria-label="IMEI Number" value="{{ old('imeinumber') }}" id="imeinumber">
+                                    <p class='text-danger text-xs pt-1' id="error_imeinumber"></p>
                                     @error('imeinumber') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
@@ -226,6 +237,7 @@
                                     <input class="form-radio-input" type="radio" name="plan" id="flexRadioDefault_p" value="ok">
                                     <label class="form-radio-label" for="flexRadioDefault_p">30,000 KRW($23)</label>
                                     <p>Please note that devices purchased from the United States may not be compatible with our 5G plan.</p>
+                                    <p class='text-danger text-xs pt-1' id="error_plan"></p>
                                     @error('plan') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
@@ -253,6 +265,7 @@
                                     <label class="form-radio-label" for="flexRadioDefault_y">Yes</label>
                                     <input class="form-radio-input" type="radio" name="callservice" id="flexRadioDefault_n" value="no">
                                     <label class="form-radio-label" for="flexRadioDefault_n">No</label>
+                                    <p class='text-danger text-xs pt-1' id="error_callservice"></p>
                                     @error('callservice') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
                                     <p>Extra $5/ month per line</p>
                                 </div>
@@ -266,6 +279,7 @@
                                     <label class="form-radio-label" for="flexRadioDefault_ag">Annual Agreement (25% discount)</label>
                                     <input class="form-radio-input" type="radio" name="service" id="flexRadioDefault_mp" value="monthly_plan">
                                     <label class="form-radio-label" for="flexRadioDefault_mp">Monthly Plan</label>
+                                    <p class='text-danger text-xs pt-1' id="error_service"></p>
                                     @error('service') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="form-radio form-check-info text-start">
@@ -274,6 +288,7 @@
                                     <label class="form-radio-label" for="flexRadioDefault_4g">4G</label>
                                     <input class="form-radio-input" type="radio" name="connectivity" id="flexRadioDefault_5g" value="5g">
                                     <label class="form-radio-label" for="flexRadioDefault_5g">5G</label>
+                                    <p class='text-danger text-xs pt-1' id="error_connectivity"></p>
                                     @error('connectivity') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
                                 </div>
                             </form>
