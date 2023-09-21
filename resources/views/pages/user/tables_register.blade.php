@@ -61,12 +61,9 @@
                 // var signature_length_check = $('.js-signature').children().length;
                 // var signature_check = $('#jq-signature-canvas-1').getContext;
                 // alert(signature_length_check);
-
-                const imgLoadCheck = document.getElementById("signature_img");
-                imgLoadCheck.addEventListener("load", () => {
-                    console.log('image create complete');
-                });
-
+                
+                var find_img_length = $('#signature').find('#signature_img').length;
+                console.log(find_img_length);
             });
         });
 
