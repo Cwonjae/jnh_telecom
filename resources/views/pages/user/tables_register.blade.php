@@ -32,6 +32,10 @@
             });
             
 
+            $('.js-signature').on('jq.signature.changed', function() {
+                $('#saveBtn').css('display', 'none');
+            });
+
             $('#form_submit').click(function() {
                 var applicant = $("#applicant").val();
                 var nationality = $("#inputSearch").val();
@@ -73,10 +77,6 @@
             $('#signature').append(img);
 		    $('#signature_img').css('display', 'none');
         }
-
-        $('.js-signature').on('jq.signature.changed', function() {
-		    $('#saveBtn').css('display', 'none');
-        });
 
         function checkInputNum(){
             if ((event.keyCode < 48) || (event.keyCode > 57)){
