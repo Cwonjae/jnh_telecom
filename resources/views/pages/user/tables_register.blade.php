@@ -87,7 +87,7 @@
                     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                     url: url,
                     method: 'POST',
-                    data: datas,
+                    data: $(this).serialize(),
                     datatype: 'JSON',
                     contentType: 'application/json',
                     cache: false,
