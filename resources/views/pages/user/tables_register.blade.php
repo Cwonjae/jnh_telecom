@@ -133,23 +133,23 @@
                                 </div>
                                 <div class="flex flex-col mb-3">
                                     <h6>IMEI Number</h6>
-                                    <input type="text" name="imeinumber" class="form-control" placeholder="IMEI Number" aria-label="IMEI Number" value="{{ old('imeinumber') }}" onkeyPress="checkInputNum();">
+                                    <input type="text" name="imeinumber" class="form-control" placeholder="IMEI Number" aria-label="IMEI Number" value="{{ old('imeinumber') }}">
                                     @error('imeinumber') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
                                     <p>[Prepaid Plan]</p>
                                     <img src="/img/tables/tables5.png" alt="Prepaid Plan" style="max-width: 100%; height: auto;">
-                                    <p>Prepaid Plan: Use charged amount for services.</p>
-                                    <p>Validity: Depends on recharge amount, balance expires after.</p>
-                                    <p>No refunds or cancellations available.</p>
-                                    <p>During validity: Use remaining balance.</p>
-                                    <p>After validity: Outgoing calls restricted, then 14 days incoming only, 30 days both suspended, then automatic termination.</p>
-                                    <p>Recharge within validity extends period (max 2 years).</p>
-                                    <p>Some benefits don't accumulate (e.g., KT mobile-to-mobile calls).</p>
-                                    <p>No discounts, points, memberships, rentals, roaming, and specific services.</p>
-                                    <p>Switching won't transfer balances or provide refunds.</p>
-                                    <p>Postpaid to prepaid: Benefits won't transfer.</p>
-                                    <p>Cancelling prepaid after switching: No refund for charged amount.</p>
+                                    <span style="margin-left:30px;">᛫ Prepaid Plan: Use charged amount for services.</span>
+                                    <span style="margin-left:30px;">᛫ Validity: Depends on recharge amount, balance expires after.</span>
+                                    <span style="margin-left:30px;">᛫ No refunds or cancellations available.</span>
+                                    <span style="margin-left:30px;">᛫ During validity: Use remaining balance.</span>
+                                    <span style="margin-left:30px;">᛫ After validity: Outgoing calls restricted, then 14 days incoming only, 30 days both suspended, then automatic termination.</span>
+                                    <span style="margin-left:30px;">᛫ Recharge within validity extends period (max 2 years).</span>
+                                    <span style="margin-left:30px;">᛫ Some benefits don't accumulate (e.g., KT mobile-to-mobile calls).</span>
+                                    <span style="margin-left:30px;">᛫ No discounts, points, memberships, rentals, roaming, and specific services.</span>
+                                    <span style="margin-left:30px;">᛫ Switching won't transfer balances or provide refunds.</span>
+                                    <span style="margin-left:30px;">᛫ Postpaid to prepaid: Benefits won't transfer.</span>
+                                    <span style="margin-left:30px;">᛫ Cancelling prepaid after switching: No refund for charged amount.</span>
                                 </div>
                                 <div class="form-radio form-check-info text-start">
                                     <h6>Plan</h6>
@@ -159,8 +159,8 @@
                                     @error('plan') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <h6>Choose Last Number</h6>
-                                    <input type="text" name="chooselastnumber" class="form-control" placeholder="Please choose the last four digits of your phone number." aria-label="Please choose the last four digits of your phone number." value="{{ old('chooselastnumber') }}" >
+                                    <h6>Please choose the last four digits of your phone number</h6>
+                                    <input type="text" name="chooselastnumber" class="form-control" placeholder="Please choose the last four digits of your phone number." aria-label="Please choose the last four digits of your phone number." value="{{ old('chooselastnumber') }}" onKeyPress="javascript:checkInputNum();">
                                     @error('chooselastnumber') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                     <p>If the phone number you have chosen is already taken, please note that it can be activated with different last four digits.</p>
                                 </div>
@@ -168,6 +168,7 @@
                                     <h6>Signature</h6>
                                     <div class='js-signature'></div>
                                     <a id="clearBtn" class="btn btn-default" onclick="clearCanvas();">Clear Canvas</a>
+                                    <p>Use your mouse or finger to draw your signature above</p>
                                 </div>
                                 <div class="flex flex-col mb-3">
                                     <h6>Referral</h6>
