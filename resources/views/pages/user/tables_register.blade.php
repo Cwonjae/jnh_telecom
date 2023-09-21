@@ -94,7 +94,7 @@
                     method: 'POST',
                     data: datas,
                     datatype: 'JSON',
-                    contentType: false,
+                    contentType: 'application/json',
                     cache: false,
                     processData: false,
                     success:function(response) {
@@ -102,9 +102,10 @@
                         alert(response.success)
                     },
                     error: function(response) {
-                        $.each(response.errors, function(key, value) {
-                            $('p#error_'+key).text(value);
-                        });
+                        alert(response.status);
+                        // $.each(response.errors, function(key, value) {
+                        //     $('p#error_'+key).text(value);
+                        // });
                     }
                 });
 
