@@ -58,16 +58,17 @@
                 // var signature_check = $('#jq-signature-canvas-1').getContext;
                 // alert(signature_length_check);
 
-                $enc = $.base64.decode(signature);
-                $enc_len = strlen($enc);
-
-                console.log($enc);
-                console.log($enc_len);
             });
         });
 
         function clearCanvas() {
             $('.js-signature').jqSignature('clearCanvas');
+        }
+
+        function saveSignature() {
+            var dataUrl = $('.js-signature').jqSignature('getDataURL');
+            var img = $('<img>').attr('src', dataUrl);
+            $('#signature').append(img);
         }
 
         function checkInputNum(){
@@ -202,7 +203,9 @@
                                     <h6>Signature <span style="color:red">*</span></h6>
                                     <div class='js-signature'></div>
                                     <a id="clearBtn" class="btn btn-default" onclick="clearCanvas();">Clear Canvas</a>
+                                    <a id="saveBtn" class="btn btn-default" onclick="saveSignature();">Save Signature</a>
                                     <p>Use your mouse or finger to draw your signature above</p>
+                                    <div id="signature"></div>
                                 </div>
                                 <div class="flex flex-col mb-3">
                                     <h6>Referral</h6>
