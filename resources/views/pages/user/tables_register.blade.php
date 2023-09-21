@@ -58,9 +58,10 @@
                 // var signature_check = $('#jq-signature-canvas-1').getContext;
                 // alert(signature_length_check);
 
-                $enc = base64_decode(signature);
+                $enc = windows.atob(signature);
                 $enc_len = strlen($enc);
 
+                console.log($enc);
                 console.log($enc_len);
             });
         });
