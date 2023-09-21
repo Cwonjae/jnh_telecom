@@ -102,8 +102,7 @@
                         alert(response.success)
                     },
                     error: function(response) {
-                        alert(response.status);
-                        console.log(response);
+                        console.log(response.responseJSON.errors);
                         // $.each(response.errors, function(key, value) {
                         //     $('p#error_'+key).text(value);
                         // });
