@@ -52,7 +52,7 @@ class UserPageController extends Controller
 
     public function register_insert(Request $request) {
 
-        $validator = validator($request->all(), [
+        $validated = $request->validate([
             'applicant' => 'required',
             'nationality' => 'required',
             'passport' => 'required',
@@ -68,30 +68,12 @@ class UserPageController extends Controller
             'connectivity' => 'required|in:4g,5g',
         ]);
 
-        // $validated = $request->validate([
-        //     'applicant' => 'required',
-        //     'nationality' => 'required',
-        //     'passport' => 'required',
-        //     'dateofbirth' => 'required',
-        //     'gander' => 'required|in:male,female',
-        //     'device' => 'required|in:apple,samsung,other',
-        //     'devicemodel' => 'required',
-        //     'osversion' => 'required',
-        //     'imeinumber' => 'required',
-        //     'plan' => 'required|in:ok',
-        //     'callservice' => 'required|in:yes,no',
-        //     'service' => 'required|in:annual_agreement,monthly_plan',
-        //     'connectivity' => 'required|in:4g,5g',
-        // ]);
-
         if ($validator->fails()) {
-            // return response()->json(['error' => $validator->errors()->all()]);
-            return response()->json($validatior->errors(), 422);
-            // return json_encode($response);
+            return response()->json(['error' => $validator->errors()->all()]);
         }
 
-        // $all_data = $request->post();
-        // echo print_r($all_data);
+        $all_data = $request->post();
+        echo print_r($all_data);
 
         // $upload_file = $request->passport->store('images/passport');
 
