@@ -83,13 +83,8 @@
                     connectivity: connectivity
                 }
 
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf- token"]').attr('content')          
-                    }
-                });
-
                 $.ajax({
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                     url: url,
                     method: 'POST',
                     data: datas,
