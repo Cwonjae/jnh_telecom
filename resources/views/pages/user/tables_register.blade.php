@@ -52,13 +52,13 @@
                 var service = $('input[name=service]:checked', '#cellPhone_register').val();
                 var connectivity = $('input[name=connectivity]:checked', '#cellPhone_register').val();
 
-                console.log("모임????");
+                console.log(signature);
                 // var signature_length_check = $('#jq-signature-canvas-1').children().length;
                 // var signature_length_check = $('.js-signature').children().length;
                 // var signature_check = $('#jq-signature-canvas-1').getContext;
                 // alert(signature_length_check);
 
-                if(typeof($('.js-signature').jqSignature('getData', 'native')) != 'undefined') {
+                if(typeof($('.js-signature').jqSignature('getDataURL', 'native')) != 'undefined') {
                     alert('없다.');
                 } else {
                     alert('있다.');
