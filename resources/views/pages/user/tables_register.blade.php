@@ -45,13 +45,15 @@
                 var plan = $('input[name=plan]:checked', '#cellPhone_register').val();
                 var chooselastnumber = $("#chooselastnumber").val();
                 var signature = $('.js-signature').jqSignature('getDataURL');
+                var signature_lengh_check = $('#jq-signature-canvas-1').children().length;
+
                 var referral = $("#referral").val();
                 var callservice = $('input[name=callservice]:checked', '#cellPhone_register').val();
                 var service = $('input[name=service]:checked', '#cellPhone_register').val();
                 var connectivity = $('input[name=connectivity]:checked', '#cellPhone_register').val();
 
                 console.log("모임????");
-                alert(signature);
+                alert(signature_lengh_check);
             });
         });
 
