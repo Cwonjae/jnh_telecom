@@ -62,7 +62,7 @@
                 // var signature_check = $('#jq-signature-canvas-1').getContext;
                 // alert(signature_length_check);
 
-                const imgLoadCheck = document.getElementById("signature_img-daum");
+                const imgLoadCheck = document.getElementById("signature_img");
                 imgLoadCheck.addEventListener("load", () => {
                     console.log('image create complete');
                 });
