@@ -81,7 +81,7 @@ class UserPageController extends Controller
             );    
         }
 
-        echo json_encode($response);
+        echo print_r(json_encode($response));
 
         // $all_data = $request->post();
         // echo print_r($all_data);
