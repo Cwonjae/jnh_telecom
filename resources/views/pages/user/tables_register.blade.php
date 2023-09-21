@@ -41,6 +41,30 @@
                 event.returnValue = false;
             }
         }
+
+        $('#form_submit').click(function(e) {
+            e.preventDefault();
+
+            var applicant = $("#applicant").val();
+            var nationality = $("#inputSearch").val();
+            var passport = $("#passport").val();
+            var dateofbirth = $("#dateofbirth").val();
+            var gander = $('input[name=gander]:checked', '#cellPhone_register').val();
+            var device = $('input[name=device]:checked', '#cellPhone_register').val();
+            var devicemodel = $("#devicemodel").val();
+            var osversion = $("#osversion").val();
+            var imeinumber = $("#imeinumber").val();
+            var plan = $('input[name=plan]:checked', '#cellPhone_register').val();
+            var chooselastnumber = $("#chooselastnumber").val();
+            var signature = $('.js-signature').jqSignature('getDataURL');
+            var referral = $("#referral").val();
+            var callservice = $('input[name=callservice]:checked', '#cellPhone_register').val();
+            var service = $('input[name=service]:checked', '#cellPhone_register').val();
+            var connectivity = $('input[name=connectivity]:checked', '#cellPhone_register').val();
+
+
+            alert(signature);
+        });
     </script>
 
     @include('layouts.navbars.auth.user.topnav', ['title' => 'Cell Phone Opening Register'])
@@ -77,30 +101,30 @@
                                 </div>
                             </div>
                             
-                            <form method="POST" action="{{ route('userpage.insert', ['page' => 'tables']) }}">
+                            <form method="POST" action="{{ route('userpage.insert', ['page' => 'tables']) }}" id="cellPhone_register">
                             @csrf
                                 <div class="flex flex-col mb-3">
-                                    <h6>Name</h6>
-                                    <input type="text" name="applicant" class="form-control" placeholder="Name" aria-label="Name" value="{{ old('applicant') }}" >
+                                    <h6>Name <span style="color:red">*</span></h6>
+                                    <input type="text" name="applicant" class="form-control" placeholder="Name" aria-label="Name" value="{{ old('applicant') }}" id="applicant">
                                     @error('applicant') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <h6>Nationality</h6>
+                                    <h6>Nationality <span style="color:red">*</span></h6>
                                     <input type="text" name="nationality" class="form-control" placeholder="Nationality" aria-label="Nationality" value="{{ old('nationality') }}" autocomplete="off" id="inputSearch">
                                     @error('nationality') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <h6>Passport</h6>
-                                    <input type="file" name="passport" class="form-control" aria-label="Passport">
+                                    <h6>Passport <span style="color:red">*</span></h6>
+                                    <input type="file" name="passport" class="form-control" aria-label="Passport" id="passport">
                                     @error('passport') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <h6>Date Of Birth</h6>
+                                    <h6>Date Of Birth <span style="color:red">*</span></h6>
                                     <input type="text" name="dateofbirth" class="form-control" placeholder="MM-DD-YYYY" aria-label="Date Of Birth" value="{{ old('dateofbirth') }}" id="dateofbirth" maxlength="11">
                                     @error('dateofbirth') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="form-radio form-check-info text-start">
-                                    <h6>Gander</h6>
+                                    <h6>Gander <span style="color:red">*</span></h6>
                                     <input class="form-radio-input" type="radio" name="gander" id="flexRadioDefault_m" value="male">
                                     <label class="form-radio-label" for="flexRadioDefault_m">Male</label>
                                     <input class="form-radio-input" type="radio" name="gander" id="flexRadioDefault_f" value="female">
@@ -108,7 +132,7 @@
                                     @error('gander') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="form-radio form-check-info text-start">
-                                    <h6>Device</h6>
+                                    <h6>Device <span style="color:red">*</span></h6>
                                     <input class="form-radio-input" type="radio" name="device" id="flexRadioDefault_ap" value="apple">
                                     <label class="form-radio-label" for="flexRadioDefault_ap">Apple</label>
                                     <input class="form-radio-input" type="radio" name="device" id="flexRadioDefault_s" value="samsung">
@@ -118,13 +142,13 @@
                                     @error('device') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <h6>Device Model</h6>
-                                    <input type="text" name="devicemodel" class="form-control" placeholder="Ex) Iphone 13, Iphone 13 mini, Galaxy S22, ETC" aria-label="Device Model" value="{{ old('devicemodel') }}" >
+                                    <h6>Device Model <span style="color:red">*</span></h6>
+                                    <input type="text" name="devicemodel" class="form-control" placeholder="Ex) Iphone 13, Iphone 13 mini, Galaxy S22, ETC" aria-label="Device Model" value="{{ old('devicemodel') }}" id="devicemodel">
                                     @error('devicemodel') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <h6>OS Version</h6>
-                                    <input type="text" name="osversion" class="form-control" placeholder="Ex) Android Version 13, IOS version 16.5" aria-label="Os Version" value="{{ old('osversion') }}" >
+                                    <h6>OS Version <span style="color:red">*</span></h6>
+                                    <input type="text" name="osversion" class="form-control" placeholder="Ex) Android Version 13, IOS version 16.5" aria-label="Os Version" value="{{ old('osversion') }}" id="osversion">
                                     @error('osversion') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
@@ -132,8 +156,8 @@
                                     <p>Dial *#06# or go to setting - about to find IMEI number.</p>
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <h6>IMEI Number</h6>
-                                    <input type="text" name="imeinumber" class="form-control" placeholder="IMEI Number" aria-label="IMEI Number" value="{{ old('imeinumber') }}">
+                                    <h6>IMEI Number <span style="color:red">*</span></h6>
+                                    <input type="text" name="imeinumber" class="form-control" placeholder="IMEI Number" aria-label="IMEI Number" value="{{ old('imeinumber') }}" id="imeinumber">
                                     @error('imeinumber') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
@@ -152,7 +176,7 @@
                                     <span style="margin-left:30px;">᛫ Cancelling prepaid after switching: No refund for charged amount.</span>
                                 </div>
                                 <div class="form-radio form-check-info text-start">
-                                    <h6>Plan</h6>
+                                    <h6>Plan <span style="color:red">*</span></h6>
                                     <input class="form-radio-input" type="radio" name="plan" id="flexRadioDefault_p" value="ok">
                                     <label class="form-radio-label" for="flexRadioDefault_p">30,000 KRW($23)</label>
                                     <p>Please note that devices purchased from the United States may not be compatible with our 5G plan.</p>
@@ -160,23 +184,23 @@
                                 </div>
                                 <div class="flex flex-col mb-3">
                                     <h6>Please choose the last four digits of your phone number</h6>
-                                    <input type="text" name="chooselastnumber" class="form-control" placeholder="Please choose the last four digits of your phone number." aria-label="Please choose the last four digits of your phone number." value="{{ old('chooselastnumber') }}" onKeyPress="javascript:checkInputNum();">
+                                    <input type="text" name="chooselastnumber" class="form-control" placeholder="Please choose the last four digits of your phone number." aria-label="Please choose the last four digits of your phone number." value="{{ old('chooselastnumber') }}" onKeyPress="javascript:checkInputNum();" maxlength="4" id="chooselastnumber">
                                     @error('chooselastnumber') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                     <p>If the phone number you have chosen is already taken, please note that it can be activated with different last four digits.</p>
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <h6>Signature</h6>
+                                    <h6>Signature <span style="color:red">*</span></h6>
                                     <div class='js-signature'></div>
                                     <a id="clearBtn" class="btn btn-default" onclick="clearCanvas();">Clear Canvas</a>
                                     <p>Use your mouse or finger to draw your signature above</p>
                                 </div>
                                 <div class="flex flex-col mb-3">
                                     <h6>Referral</h6>
-                                    <input type="text" name="referral" class="form-control" placeholder="Please enter the referral's email address, phone number and name" aria-label="Referral" value="{{ old('referral') }}" >
+                                    <input type="text" name="referral" class="form-control" placeholder="Please enter the referral's email address, phone number and name" aria-label="Referral" value="{{ old('referral') }}" id="referral">
                                     @error('referral') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="form-radio form-check-info text-start">
-                                    <h6>Add International Calling Service</h6>
+                                    <h6>Add International Calling Service <span style="color:red">*</span></h6>
                                     <input class="form-radio-input" type="radio" name="callservice" id="flexRadioDefault_y" value="yes">
                                     <label class="form-radio-label" for="flexRadioDefault_y">Yes</label>
                                     <input class="form-radio-input" type="radio" name="callservice" id="flexRadioDefault_n" value="no">
@@ -189,7 +213,7 @@
                                     <img src="/img/tables/tables7.png" alt="4G" style="max-width: 100%; height: auto;">
                                 </div>
                                 <div class="form-radio form-check-info text-start">
-                                    <h6>Service</h6>
+                                    <h6>Service <span style="color:red">*</span></h6>
                                     <input class="form-radio-input" type="radio" name="service" id="flexRadioDefault_ag" value="annual_agreement">
                                     <label class="form-radio-label" for="flexRadioDefault_ag">Annual Agreement (25% discount)</label>
                                     <input class="form-radio-input" type="radio" name="service" id="flexRadioDefault_mp" value="monthly_plan">
@@ -197,7 +221,7 @@
                                     @error('service') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="form-radio form-check-info text-start">
-                                    <h6>Connectivity</h6>
+                                    <h6>Connectivity <span style="color:red">*</span></h6>
                                     <input class="form-radio-input" type="radio" name="connectivity" id="flexRadioDefault_4g" value="4g">
                                     <label class="form-radio-label" for="flexRadioDefault_4g">4G</label>
                                     <input class="form-radio-input" type="radio" name="connectivity" id="flexRadioDefault_5g" value="5g">
@@ -206,7 +230,7 @@
                                 </div>
 
                                 <div class="text-center">
-                                    <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Submit Form</button>
+                                    <a class="btn bg-gradient-dark w-100 my-4 mb-2" id="form_submit">Submit Form</a>
                                 </div>
 
                             </form>
