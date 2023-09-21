@@ -1,7 +1,6 @@
 @extends('layouts.user.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
-<meta name="csrf-token" content="{{ csrf_token() }}">
     <script>
         $(function () {
             $('.js-signature').jqSignature();
@@ -64,11 +63,6 @@
                 }
 
                 var url = $(this).attr('data-action');
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
 
                 var datas = {
                     applicant: applicant,
@@ -98,12 +92,14 @@
                     cache: false,
                     processData: false,
                     success:function(response) {
-                        $(form).trigger("reset");
-                        alert(response.success)
+                        alert("하이?");
                     },
                     error: function(response) {
                         console.log("어휴");
                         $.each(response.responseJSON.errors, function(key, value) {
+                            if(key == "applicant") {
+                                value = "The name field is required.";
+                            }
                             $('p#error_'+key).text(value);
                         });
                     }
