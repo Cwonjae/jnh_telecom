@@ -226,13 +226,11 @@
                                     <label class="form-radio-label" for="flexRadioDefault_5g">5G</label>
                                     @error('connectivity') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
                                 </div>
-
-                                <div class="text-center">
-                                    <a class="btn bg-gradient-dark w-100 my-4 mb-2" id="form_submit">Submit Form</a>
-                                </div>
-
                             </form>
 
+                            <div class="text-center">
+                                    <a class="btn bg-gradient-dark w-100 my-4 mb-2" id="form_submit">Submit Form</a>
+                            </div>
                         </div>
                     </div>
                 </div>
