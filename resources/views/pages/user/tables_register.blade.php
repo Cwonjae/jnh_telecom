@@ -63,13 +63,19 @@
 
         function clearCanvas() {
             $('.js-signature').jqSignature('clearCanvas');
+		    $('#saveBtn').attr('disabled', true);
         }
 
         function saveSignature() {
+		    $('#signature').empty();
             var dataUrl = $('.js-signature').jqSignature('getDataURL');
             var img = $('<img>').attr('src', dataUrl);
             $('#signature').append(img);
         }
+
+        $('.js-signature').on('jq.signature.changed', function() {
+            $('#saveBtn').attr('disabled', false);
+        });
 
         function checkInputNum(){
             if ((event.keyCode < 48) || (event.keyCode > 57)){
