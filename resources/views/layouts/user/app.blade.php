@@ -26,6 +26,7 @@
     <script src="/assets/js/core/jquery-3.7.1.min.js"></script>
     <script src="/assets/js/core/jquery-ui.min.js"></script>
     <script src="/assets/js/plugins/jq-signature.min.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 <body class="{{ $class ?? '' }}">
