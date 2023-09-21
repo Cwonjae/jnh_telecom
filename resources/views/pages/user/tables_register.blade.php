@@ -62,6 +62,63 @@
                     return false;
                 }
 
+                /**
+                 * 유효성검사를 스크립트로 해보자
+                 */
+                if(!applicant) {
+                    key = "applicant";
+                    value = "The name field is required.";
+                    $('p#error_'+key).text(value);
+                } else if(!nationality) {
+                    key = "nationality";
+                    value = "The "+key+" field is required.";
+                    $('p#error_'+key).text(value);
+                } else if(!passport) {
+                    key = "passport";
+                    value = "The "+key+" field is required.";
+                    $('p#error_'+key).text(value);
+                } else if(!dateofbirth) {
+                    key = "dateofbirth";
+                    value = "The "+key+" field is required.";
+                    $('p#error_'+key).text(value);
+                } else if(!gander) {
+                    key = "gander";
+                    value = "The "+key+" field is required.";
+                    $('p#error_'+key).text(value);
+                } else if(!device) {
+                    key = "device";
+                    value = "The "+key+" field is required.";
+                    $('p#error_'+key).text(value);
+                } else if(!devicemodel) {
+                    key = "devicemodel";
+                    value = "The "+key+" field is required.";
+                    $('p#error_'+key).text(value);
+                } else if(!osversion) {
+                    key = "osversion";
+                    value = "The "+key+" field is required.";
+                    $('p#error_'+key).text(value);
+                } else if(!imeinumber) {
+                    key = "imeinumber";
+                    value = "The "+key+" field is required.";
+                    $('p#error_'+key).text(value);
+                } else if(!plan) {
+                    key = "plan";
+                    value = "The "+key+" field is required.";
+                    $('p#error_'+key).text(value);
+                } else if(!callservice) {
+                    key = "callservice";
+                    value = "The "+key+" field is required.";
+                    $('p#error_'+key).text(value);
+                } else if(!service) {
+                    key = "service";
+                    value = "The "+key+" field is required.";
+                    $('p#error_'+key).text(value);
+                } else if(!connectivity) {
+                    key = "connectivity";
+                    value = "The "+key+" field is required.";
+                    $('p#error_'+key).text(value);
+                }
+
                 var url = $(this).attr('data-action');
 
                 var datas = {
@@ -76,7 +133,7 @@
                     imeinumber: imeinumber,
                     plan: plan,
                     chooselastnumber: chooselastnumber,
-                    // signature: signature,
+                    signature: signature,
                     referral: referral,
                     callservice: callservice,
                     service: service,
