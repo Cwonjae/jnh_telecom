@@ -49,7 +49,7 @@
                 var plan = $('input[name=plan]:checked', '#cellPhone_register').val();
                 var chooselastnumber = $("#chooselastnumber").val();
                 var signature = $('.js-signature').jqSignature('getDataURL');
-                var signature_lengh_check = $('#jq-signature-canvas-1').children().length;
+                // var signature_lengh_check = $('#jq-signature-canvas-1').children().length;
 
                 var referral = $("#referral").val();
                 var callservice = $('input[name=callservice]:checked', '#cellPhone_register').val();
@@ -61,6 +61,11 @@
                 // var signature_length_check = $('.js-signature').children().length;
                 // var signature_check = $('#jq-signature-canvas-1').getContext;
                 // alert(signature_length_check);
+
+                const imgLoadCheck = document.getElementById("signature_img-daum");
+                imgLoadCheck.addEventListener("load", () => {
+                    console.log('image create complete');
+                });
 
             });
         });
