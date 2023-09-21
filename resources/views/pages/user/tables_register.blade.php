@@ -87,14 +87,14 @@
                     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                     url: url,
                     method: 'POST',
-                    data: $(this).serialize(),
+                    data: datas,
                     datatype: 'JSON',
                     contentType: 'application/json',
                     success:function(response) {
                         alert("하이?");
                     },
                     error: function(response) {
-                        console.log("어휴");
+                        alert('Please enter required entries');
                         $.each(response.responseJSON.errors, function(key, value) {
                             if(key == "applicant") {
                                 value = "The name field is required.";
