@@ -74,7 +74,7 @@
                 $.ajax({
                     url: url,
                     method: 'POST',
-                    data: new FormData($('#cellPhone_register')),
+                    data: new FormData($('#cellPhone_register')[0]),
                     datatype: 'JSON',
                     contentType: false,
                     cache: false,
@@ -103,6 +103,7 @@
             var img = $('<img id="signature_img">').attr('src', dataUrl);
             $('#signature').append(img);
 		    $('#signature_img').css('display', 'none');
+            alert('Sign Saved Successfully');
         }
 
         function checkInputNum(){
@@ -207,17 +208,17 @@
                                 </div>
                                 <div class="flex flex-col mb-3">
                                     <p>[Prepaid Plan]</p>
-                                    <img src="/img/tables/tables5.png" alt="Prepaid Plan" style="max-width: 100%; height: auto;">
-                                    <span style="margin-left:30px;">᛫ Prepaid Plan: Use charged amount for services.</span>
-                                    <span style="margin-left:30px;">᛫ Validity: Depends on recharge amount, balance expires after.</span>
-                                    <span style="margin-left:30px;">᛫ No refunds or cancellations available.</span>
-                                    <span style="margin-left:30px;">᛫ During validity: Use remaining balance.</span>
-                                    <span style="margin-left:30px;">᛫ After validity: Outgoing calls restricted, then 14 days incoming only, 30 days both suspended, then automatic termination.</span>
-                                    <span style="margin-left:30px;">᛫ Recharge within validity extends period (max 2 years).</span>
-                                    <span style="margin-left:30px;">᛫ Some benefits don't accumulate (e.g., KT mobile-to-mobile calls).</span>
-                                    <span style="margin-left:30px;">᛫ No discounts, points, memberships, rentals, roaming, and specific services.</span>
-                                    <span style="margin-left:30px;">᛫ Switching won't transfer balances or provide refunds.</span>
-                                    <span style="margin-left:30px;">᛫ Postpaid to prepaid: Benefits won't transfer.</span>
+                                    <img src="/img/tables/tables5.png" alt="Prepaid Plan" style="max-width: 100%; height: auto;"><br>
+                                    <span style="margin-left:30px;">᛫ Prepaid Plan: Use charged amount for services.</span><br>
+                                    <span style="margin-left:30px;">᛫ Validity: Depends on recharge amount, balance expires after.</span><br>
+                                    <span style="margin-left:30px;">᛫ No refunds or cancellations available.</span><br>
+                                    <span style="margin-left:30px;">᛫ During validity: Use remaining balance.</span><br>
+                                    <span style="margin-left:30px;">᛫ After validity: Outgoing calls restricted, then 14 days incoming only, 30 days both suspended, then automatic termination.</span><br>
+                                    <span style="margin-left:30px;">᛫ Recharge within validity extends period (max 2 years).</span><br>
+                                    <span style="margin-left:30px;">᛫ Some benefits don't accumulate (e.g., KT mobile-to-mobile calls).</span><br>
+                                    <span style="margin-left:30px;">᛫ No discounts, points, memberships, rentals, roaming, and specific services.</span><br>
+                                    <span style="margin-left:30px;">᛫ Switching won't transfer balances or provide refunds.</span><br>
+                                    <span style="margin-left:30px;">᛫ Postpaid to prepaid: Benefits won't transfer.</span><br>
                                     <span style="margin-left:30px;">᛫ Cancelling prepaid after switching: No refund for charged amount.</span>
                                 </div>
                                 <div class="form-radio form-check-info text-start">
