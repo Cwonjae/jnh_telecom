@@ -35,148 +35,8 @@
                 $('#saveBtn').css('display', 'inline-block');
             });
 
-            $('#form_submit').click(function(e) {
-                e.preventDefault();
-
-                var applicant = $("#applicant").val();
-                var nationality = $("#inputSearch").val();
-                var passport = $("#passport").val();
-                var dateofbirth = $("#dateofbirth").val();
-                var gander = $('input[name=gander]:checked', '#cellPhone_register').val();
-                var device = $('input[name=device]:checked', '#cellPhone_register').val();
-                var devicemodel = $("#devicemodel").val();
-                var osversion = $("#osversion").val();
-                var imeinumber = $("#imeinumber").val();
-                var plan = $('input[name=plan]:checked', '#cellPhone_register').val();
-                var chooselastnumber = $("#chooselastnumber").val();
-                var signature = $('.js-signature').jqSignature('getDataURL');
-                // var signature_lengh_check = $('#jq-signature-canvas-1').children().length;
-                var signature_img_length = $('#signature').find('#signature_img').length;
-                var referral = $("#referral").val();
-                var callservice = $('input[name=callservice]:checked', '#cellPhone_register').val();
-                var service = $('input[name=service]:checked', '#cellPhone_register').val();
-                var connectivity = $('input[name=connectivity]:checked', '#cellPhone_register').val();
-
-                if(signature_img_length == 0 || !signature_img_length) {
-                    alert('Please Use your mouse or finger to draw your signature above');
-                    return false;
-                }
-
-                /**
-                 * 유효성검사를 스크립트로 해보자
-                 */
-                if(!applicant || !nationality || !passport || !dateofbirth || !gander || !gander || !device || !devicemodel || !osversion || !imeinumber || !plan || !callservice || !service || !connectivity) {
-                    if(!applicant) {
-                        key = "applicant";
-                        value = "The name field is required.";
-                        $('p#error_'+key).text(value);
-                    }
-                    if(!nationality) {
-                        key = "nationality";
-                        value = "The "+key+" field is required.";
-                        $('p#error_'+key).text(value);
-                    }
-                    if(!passport) {
-                        key = "passport";
-                        value = "The "+key+" field is required.";
-                        $('p#error_'+key).text(value);
-                    }
-                    if(!dateofbirth) {
-                        key = "dateofbirth";
-                        value = "The "+key+" field is required.";
-                        $('p#error_'+key).text(value);
-                    }
-                    if(!gander) {
-                        key = "gander";
-                        value = "The "+key+" field is required.";
-                        $('p#error_'+key).text(value);
-                    }
-                    if(!device) {
-                        key = "device";
-                        value = "The "+key+" field is required.";
-                        $('p#error_'+key).text(value);
-                    }
-                    if(!devicemodel) {
-                        key = "devicemodel";
-                        value = "The "+key+" field is required.";
-                        $('p#error_'+key).text(value);
-                    }
-                    if(!osversion) {
-                        key = "osversion";
-                        value = "The "+key+" field is required.";
-                        $('p#error_'+key).text(value);
-                    }
-                    if(!imeinumber) {
-                        key = "imeinumber";
-                        value = "The "+key+" field is required.";
-                        $('p#error_'+key).text(value);
-                    }
-                    if(!plan) {
-                        key = "plan";
-                        value = "The "+key+" field is required.";
-                        $('p#error_'+key).text(value);
-                    }
-                    if(!callservice) {
-                        key = "callservice";
-                        value = "The "+key+" field is required.";
-                        $('p#error_'+key).text(value);
-                    }
-                    if(!service) {
-                        key = "service";
-                        value = "The "+key+" field is required.";
-                        $('p#error_'+key).text(value);
-                    }
-                    if(!connectivity) {
-                        key = "connectivity";
-                        value = "The "+key+" field is required.";
-                        $('p#error_'+key).text(value);
-                    }
-                    return false;
-                }
-
-                var url = $(this).attr('data-action');
-
-                var datas = {
-                    applicant: applicant,
-                    nationality: nationality,
-                    passport: passport,
-                    dateofbirth: dateofbirth,
-                    gander: gander,
-                    device: device,
-                    devicemodel: devicemodel,
-                    osversion: osversion,
-                    imeinumber: imeinumber,
-                    plan: plan,
-                    chooselastnumber: chooselastnumber,
-                    signature: signature,
-                    referral: referral,
-                    callservice: callservice,
-                    service: service,
-                    connectivity: connectivity
-                }
-                // console.log(datas);
-
-                $.ajax({
-                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                    url: url,
-                    method: 'POST',
-                    data: datas,
-                    datatype: 'JSON',
-                    contentType: 'application/json',
-                    success:function(response) {
-                        alert("하이?");
-                    },
-                    error: function(response) {
-                        alert('Please enter required entries');
-                        $.each(response.responseJSON.errors, function(key, value) {
-                            if(key == "applicant") {
-                                value = "The name field is required.";
-                            }
-                            $('p#error_'+key).text(value);
-                        });
-                    }
-                });
-
+            $('#form_submit').click(function() {
+                ajaxCall();
             });
         });
 
@@ -199,6 +59,147 @@
             if ((event.keyCode < 48) || (event.keyCode > 57)){
                 event.returnValue = false;
             }
+        }
+
+        function ajaxCall() {
+            var applicant = $("#applicant").val();
+            var nationality = $("#inputSearch").val();
+            var passport = $("#passport").val();
+            var dateofbirth = $("#dateofbirth").val();
+            var gander = $('input[name=gander]:checked', '#cellPhone_register').val();
+            var device = $('input[name=device]:checked', '#cellPhone_register').val();
+            var devicemodel = $("#devicemodel").val();
+            var osversion = $("#osversion").val();
+            var imeinumber = $("#imeinumber").val();
+            var plan = $('input[name=plan]:checked', '#cellPhone_register').val();
+            var chooselastnumber = $("#chooselastnumber").val();
+            var signature = $('.js-signature').jqSignature('getDataURL');
+            // var signature_lengh_check = $('#jq-signature-canvas-1').children().length;
+            var signature_img_length = $('#signature').find('#signature_img').length;
+            var referral = $("#referral").val();
+            var callservice = $('input[name=callservice]:checked', '#cellPhone_register').val();
+            var service = $('input[name=service]:checked', '#cellPhone_register').val();
+            var connectivity = $('input[name=connectivity]:checked', '#cellPhone_register').val();
+
+            if(signature_img_length == 0 || !signature_img_length) {
+                alert('Please Use your mouse or finger to draw your signature above');
+                return false;
+            }
+
+            /**
+             * 유효성검사를 스크립트로 해보자
+             */
+            if(!applicant || !nationality || !passport || !dateofbirth || !gander || !gander || !device || !devicemodel || !osversion || !imeinumber || !plan || !callservice || !service || !connectivity) {
+                if(!applicant) {
+                    key = "applicant";
+                    value = "The name field is required.";
+                    $('p#error_'+key).text(value);
+                }
+                if(!nationality) {
+                    key = "nationality";
+                    value = "The "+key+" field is required.";
+                    $('p#error_'+key).text(value);
+                }
+                if(!passport) {
+                    key = "passport";
+                    value = "The "+key+" field is required.";
+                    $('p#error_'+key).text(value);
+                }
+                if(!dateofbirth) {
+                    key = "dateofbirth";
+                    value = "The "+key+" field is required.";
+                    $('p#error_'+key).text(value);
+                }
+                if(!gander) {
+                    key = "gander";
+                    value = "The "+key+" field is required.";
+                    $('p#error_'+key).text(value);
+                }
+                if(!device) {
+                    key = "device";
+                    value = "The "+key+" field is required.";
+                    $('p#error_'+key).text(value);
+                }
+                if(!devicemodel) {
+                    key = "devicemodel";
+                    value = "The "+key+" field is required.";
+                    $('p#error_'+key).text(value);
+                }
+                if(!osversion) {
+                    key = "osversion";
+                    value = "The "+key+" field is required.";
+                    $('p#error_'+key).text(value);
+                }
+                if(!imeinumber) {
+                    key = "imeinumber";
+                    value = "The "+key+" field is required.";
+                    $('p#error_'+key).text(value);
+                }
+                if(!plan) {
+                    key = "plan";
+                    value = "The "+key+" field is required.";
+                    $('p#error_'+key).text(value);
+                }
+                if(!callservice) {
+                    key = "callservice";
+                    value = "The "+key+" field is required.";
+                    $('p#error_'+key).text(value);
+                }
+                if(!service) {
+                    key = "service";
+                    value = "The "+key+" field is required.";
+                    $('p#error_'+key).text(value);
+                }
+                if(!connectivity) {
+                    key = "connectivity";
+                    value = "The "+key+" field is required.";
+                    $('p#error_'+key).text(value);
+                }
+                return false;
+            }
+
+            var url = $(this).attr('data-action');
+
+            var datas = {
+                applicant: applicant,
+                nationality: nationality,
+                passport: passport,
+                dateofbirth: dateofbirth,
+                gander: gander,
+                device: device,
+                devicemodel: devicemodel,
+                osversion: osversion,
+                imeinumber: imeinumber,
+                plan: plan,
+                chooselastnumber: chooselastnumber,
+                signature: signature,
+                referral: referral,
+                callservice: callservice,
+                service: service,
+                connectivity: connectivity
+            }
+            // console.log(datas);
+
+            $.ajax({
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                url: url,
+                method: 'POST',
+                data: datas,
+                datatype: 'JSON',
+                contentType: 'application/json',
+                success:function(response) {
+                    alert("하이?");
+                },
+                error: function(response) {
+                    alert('Please enter required entries');
+                    $.each(response.responseJSON.errors, function(key, value) {
+                        if(key == "applicant") {
+                            value = "The name field is required.";
+                        }
+                        $('p#error_'+key).text(value);
+                    });
+                }
+            });
         }
     </script>
 
