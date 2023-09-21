@@ -69,8 +69,19 @@ class UserPageController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()->all()]);
+            $errors = $validator->errors()->getMessages();            
+            $clientErrors = array();
+            foreach ($errors as $key => $value) {
+                $clientErrors[$key] = $value[0];
+            }
+            $response = array(
+                'status' => 'error',
+                'response_code' => 201,
+                'errors' => $clientErrors
+            );    
         }
+        
+        echo json_encode($response);
 
         // $all_data = $request->post();
         // echo print_r($all_data);
