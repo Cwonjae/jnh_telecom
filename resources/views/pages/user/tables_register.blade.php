@@ -102,10 +102,10 @@
                         alert(response.success)
                     },
                     error: function(response) {
-                        console.log(response.responseJSON.errors);
-                        // $.each(response.errors, function(key, value) {
-                        //     $('p#error_'+key).text(value);
-                        // });
+                        console.log("어휴");
+                        $.each(response.responseJSON.errors, function(key, value) {
+                            $('p#error_'+key).text(value);
+                        });
                     }
                 });
 
