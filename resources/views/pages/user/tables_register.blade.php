@@ -90,8 +90,6 @@
                     data: $(this).serialize(),
                     datatype: 'JSON',
                     contentType: 'application/json',
-                    cache: false,
-                    processData: false,
                     success:function(response) {
                         alert("하이?");
                     },
