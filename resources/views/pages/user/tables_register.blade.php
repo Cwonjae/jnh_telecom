@@ -33,7 +33,7 @@
             
 
             $('.js-signature').on('jq.signature.changed', function() {
-                $('#saveBtn').css('display', 'none');
+                $('#saveBtn').css('display', 'block');
             });
 
             $('#form_submit').click(function() {
@@ -210,7 +210,7 @@
                                     <h6>Signature <span style="color:red">*</span></h6>
                                     <div class='js-signature'></div>
                                     <a id="clearBtn" class="btn btn-default" onclick="clearCanvas();">Clear Canvas</a>
-                                    <a id="saveBtn" class="btn btn-default" onclick="saveSignature();">Save Signature</a>
+                                    <a id="saveBtn" class="btn btn-default" onclick="saveSignature();" style="display:none;">Save Signature</a>
                                     <p>Use your mouse or finger to draw your signature above</p>
                                     <div id="signature"></div>
                                 </div>
