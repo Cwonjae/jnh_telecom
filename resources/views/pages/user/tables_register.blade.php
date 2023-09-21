@@ -89,99 +89,122 @@
             /**
              * 유효성검사를 스크립트로 해보자
              */
-            if(!applicant || !nationality || !passport || !dateofbirth || !gander || !gander || !device || !devicemodel || !osversion || !imeinumber || !plan || !callservice || !service || !connectivity) {
-                if(!applicant) {
-                    key = "applicant";
-                    value = "The name field is required.";
-                    $('p#error_'+key).text(value);
-                } else {
-                    $('p#error_'+key).text();
-                }
+            if(!applicant) {
+                key = "applicant";
+                value = "The name field is required.";
+                $('p#error_'+key).text(value);
+                return false;
+            } else {
+                key = "applicant";
+                $('p#error_'+key).text();
                 if(!nationality) {
                     key = "nationality";
                     value = "The "+key+" field is required.";
                     $('p#error_'+key).text(value);
+                    return false;
                 } else {
+                    key = "nationality";
                     $('p#error_'+key).text();
+                    if(!passport) {
+                        key = "passport";
+                        value = "The "+key+" field is required.";
+                        $('p#error_'+key).text(value);
+                        return false;
+                    } else {
+                        key = "passport";
+                        $('p#error_'+key).text();
+                        if(!dateofbirth) {
+                            key = "dateofbirth";
+                            value = "The "+key+" field is required.";
+                            $('p#error_'+key).text(value);
+                            return false;
+                        } else {
+                            key = "dateofbirth";
+                            $('p#error_'+key).text();
+                            if(!gander) {
+                                key = "gander";
+                                value = "The "+key+" field is required.";
+                                $('p#error_'+key).text(value);
+                                return false;
+                            } else {
+                                key = "gander";
+                                $('p#error_'+key).text();
+                                if(!device) {
+                                    key = "device";
+                                    value = "The "+key+" field is required.";
+                                    $('p#error_'+key).text(value);
+                                    return false;
+                                } else {
+                                    key = "device";
+                                    $('p#error_'+key).text();
+                                    if(!devicemodel) {
+                                        key = "devicemodel";
+                                        value = "The "+key+" field is required.";
+                                        $('p#error_'+key).text(value);
+                                        return false;
+                                    } else {
+                                        key = "devicemodel";
+                                        $('p#error_'+key).text();
+                                        if(!osversion) {
+                                            key = "osversion";
+                                            value = "The "+key+" field is required.";
+                                            $('p#error_'+key).text(value);
+                                            return false;
+                                        } else {
+                                            key = "osversion";
+                                            $('p#error_'+key).text();
+                                            if(!imeinumber) {
+                                                key = "imeinumber";
+                                                value = "The "+key+" field is required.";
+                                                $('p#error_'+key).text(value);
+                                                return false;
+                                            } else {
+                                                key = "imeinumber";
+                                                $('p#error_'+key).text();
+                                                if(!plan) {
+                                                    key = "plan";
+                                                    value = "The "+key+" field is required.";
+                                                    $('p#error_'+key).text(value);
+                                                    return false;
+                                                } else {
+                                                    key = "plan";
+                                                    $('p#error_'+key).text();
+                                                    if(!callservice) {
+                                                        key = "callservice";
+                                                        value = "The "+key+" field is required.";
+                                                        $('p#error_'+key).text(value);
+                                                        return false;
+                                                    } else {
+                                                        key = "callservice";
+                                                        $('p#error_'+key).text();
+                                                        if(!service) {
+                                                            key = "service";
+                                                            value = "The "+key+" field is required.";
+                                                            $('p#error_'+key).text(value);
+                                                            return false;
+                                                        } else {
+                                                            key = "service";
+                                                            $('p#error_'+key).text();
+                                                            if(!connectivity) {
+                                                                key = "connectivity";
+                                                                value = "The "+key+" field is required.";
+                                                                $('p#error_'+key).text(value);
+                                                                return false;
+                                                            } else {
+                                                                key = "connectivity";
+                                                                $('p#error_'+key).text();
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
-                if(!passport) {
-                    key = "passport";
-                    value = "The "+key+" field is required.";
-                    $('p#error_'+key).text(value);
-                } else {
-                    $('p#error_'+key).text();
-                }
-                if(!dateofbirth) {
-                    key = "dateofbirth";
-                    value = "The "+key+" field is required.";
-                    $('p#error_'+key).text(value);
-                } else {
-                    $('p#error_'+key).text();
-                }
-                if(!gander) {
-                    key = "gander";
-                    value = "The "+key+" field is required.";
-                    $('p#error_'+key).text(value);
-                } else {
-                    $('p#error_'+key).text();
-                }
-                if(!device) {
-                    key = "device";
-                    value = "The "+key+" field is required.";
-                    $('p#error_'+key).text(value);
-                } else {
-                    $('p#error_'+key).text();
-                }
-                if(!devicemodel) {
-                    key = "devicemodel";
-                    value = "The "+key+" field is required.";
-                    $('p#error_'+key).text(value);
-                } else {
-                    $('p#error_'+key).text();
-                }
-                if(!osversion) {
-                    key = "osversion";
-                    value = "The "+key+" field is required.";
-                    $('p#error_'+key).text(value);
-                } else {
-                    $('p#error_'+key).text();
-                }
-                if(!imeinumber) {
-                    key = "imeinumber";
-                    value = "The "+key+" field is required.";
-                    $('p#error_'+key).text(value);
-                } else {
-                    $('p#error_'+key).text();
-                }
-                if(!plan) {
-                    key = "plan";
-                    value = "The "+key+" field is required.";
-                    $('p#error_'+key).text(value);
-                } else {
-                    $('p#error_'+key).text();
-                }
-                if(!callservice) {
-                    key = "callservice";
-                    value = "The "+key+" field is required.";
-                    $('p#error_'+key).text(value);
-                } else {
-                    $('p#error_'+key).text();
-                }
-                if(!service) {
-                    key = "service";
-                    value = "The "+key+" field is required.";
-                    $('p#error_'+key).text(value);
-                } else {
-                    $('p#error_'+key).text();
-                }
-                if(!connectivity) {
-                    key = "connectivity";
-                    value = "The "+key+" field is required.";
-                    $('p#error_'+key).text(value);
-                } else {
-                    $('p#error_'+key).text();
-                }
-                return false;
             }
 
             var url = $(this).attr('data-action');
