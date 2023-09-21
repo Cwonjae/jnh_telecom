@@ -30,6 +30,29 @@
                     $(this).val(val.substring(0,2) + "-" + val.substring(2,4) + "-" + val.substring(4,8));
                 }
             });
+            
+
+            $('#form_submit').click(function() {
+                var applicant = $("#applicant").val();
+                var nationality = $("#inputSearch").val();
+                var passport = $("#passport").val();
+                var dateofbirth = $("#dateofbirth").val();
+                var gander = $('input[name=gander]:checked', '#cellPhone_register').val();
+                var device = $('input[name=device]:checked', '#cellPhone_register').val();
+                var devicemodel = $("#devicemodel").val();
+                var osversion = $("#osversion").val();
+                var imeinumber = $("#imeinumber").val();
+                var plan = $('input[name=plan]:checked', '#cellPhone_register').val();
+                var chooselastnumber = $("#chooselastnumber").val();
+                var signature = $('.js-signature').jqSignature('getDataURL');
+                var referral = $("#referral").val();
+                var callservice = $('input[name=callservice]:checked', '#cellPhone_register').val();
+                var service = $('input[name=service]:checked', '#cellPhone_register').val();
+                var connectivity = $('input[name=connectivity]:checked', '#cellPhone_register').val();
+
+                console.log("모임????");
+                alert(signature);
+            });
         });
 
         function clearCanvas() {
@@ -41,28 +64,6 @@
                 event.returnValue = false;
             }
         }
-
-        $('#form_submit').click(function() {
-            var applicant = $("#applicant").val();
-            var nationality = $("#inputSearch").val();
-            var passport = $("#passport").val();
-            var dateofbirth = $("#dateofbirth").val();
-            var gander = $('input[name=gander]:checked', '#cellPhone_register').val();
-            var device = $('input[name=device]:checked', '#cellPhone_register').val();
-            var devicemodel = $("#devicemodel").val();
-            var osversion = $("#osversion").val();
-            var imeinumber = $("#imeinumber").val();
-            var plan = $('input[name=plan]:checked', '#cellPhone_register').val();
-            var chooselastnumber = $("#chooselastnumber").val();
-            var signature = $('.js-signature').jqSignature('getDataURL');
-            var referral = $("#referral").val();
-            var callservice = $('input[name=callservice]:checked', '#cellPhone_register').val();
-            var service = $('input[name=service]:checked', '#cellPhone_register').val();
-            var connectivity = $('input[name=connectivity]:checked', '#cellPhone_register').val();
-
-            console.log("모임????");
-            alert(signature);
-        });
     </script>
 
     @include('layouts.navbars.auth.user.topnav', ['title' => 'Cell Phone Opening Register'])
