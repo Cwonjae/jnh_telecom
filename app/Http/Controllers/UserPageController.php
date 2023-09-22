@@ -52,30 +52,36 @@ class UserPageController extends Controller
 
     public function register_insert(Request $request) {
 
-        $validated = $request->validate([
-            'applicant' => 'required',
-            'nationality' => 'required',
-            'passport' => 'required',
-            'dateofbirth' => 'required',
-            'gander' => 'required|in:male,female',
-            'device' => 'required|in:apple,samsung,other',
-            'devicemodel' => 'required',
-            'osversion' => 'required',
-            'imeinumber' => 'required',
-            'plan' => 'required|in:ok',
-            'callservice' => 'required|in:yes,no',
-            'service' => 'required|in:annual_agreement,monthly_plan',
-            'connectivity' => 'required|in:4g,5g',
-        ]);
+        // $validated = $request->validate([
+        //     'applicant' => 'required',
+        //     'nationality' => 'required',
+        //     'passport' => 'required',
+        //     'dateofbirth' => 'required',
+        //     'gander' => 'required|in:male,female',
+        //     'device' => 'required|in:apple,samsung,other',
+        //     'devicemodel' => 'required',
+        //     'osversion' => 'required',
+        //     'imeinumber' => 'required',
+        //     'plan' => 'required|in:ok',
+        //     'callservice' => 'required|in:yes,no',
+        //     'service' => 'required|in:annual_agreement,monthly_plan',
+        //     'connectivity' => 'required|in:4g,5g',
+        // ]);
 
-        if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()->all()]);
-        }
+        // if ($validator->fails()) {
+        //     return response()->json(['error' => $validator->errors()->all()]);
+        // }
 
-        $all_data = $request->post();
-        echo print_r($all_data);
+        // $all_data = $request->post();
+        // echo print_r($all_data);
 
         // $upload_file = $request->passport->store('images/passport');
+        $upload_file = $request->file('passport')->store('images/passport');
+        echo $upload_file;
+
+
+        // $file_name = $request->file('passport')->getClientDoriginalName();
+        // $file_extension = $request->file('passport')->extension();
 
         // DB::table('cellphone_boards')
         //     ->()        
