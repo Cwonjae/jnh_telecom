@@ -61,13 +61,10 @@
 		    $('#signature').empty();
             var dataUrl = $('.js-signature').jqSignature('getDataURL');
             var img = $('<img id="signature_img">').attr('src', dataUrl);
-            var txt = $('<input type="text">').attr('id', 'signature_txt');
 
             $('#signature').append(img);
-            $('#signature').append(txt);
             $('#signature_txt').val(dataUrl);
 		    $('#signature_img').css('display', 'none');
-		    $('#signature_txt').css('display', 'none');
             alert('Sign Saved Successfully');
         }
 
@@ -205,7 +202,9 @@
                                     <a id="clearBtn" class="btn btn-default" onclick="clearCanvas();">Clear Canvas</a>
                                     <a id="saveBtn" class="btn btn-default" onclick="saveSignature();" style="display:none;">Save Signature</a>
                                     <p>Use your mouse or finger to draw your signature above</p>
-                                    <div id="signature"></div>
+                                    <div id="signature">
+                                        <input type="hidden" id="signature_txt" />
+                                    </div>
                                 </div>
                                 <div class="flex flex-col mb-3">
                                     <h6>Referral</h6>
