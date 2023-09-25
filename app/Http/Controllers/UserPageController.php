@@ -27,13 +27,13 @@ class UserPageController extends Controller
         if($admin_email_checks == "admin@argon.com") {
             $cell_phones = DB::table('cellphone_boards')
                             ->join('users', 'cellphone_boards.u_id', '=' ,'users.id')
-                            ->select('users.username', 'users.email', 'cellphone_boards.cpb_applicant', 'cellphone_boards.cpb_nationality', 'cellphone_boards.cpb_status', 'cellphone_boards.create_at')
+                            ->select('users.username', 'users.email', 'cellphone_boards.id', 'cellphone_boards.cpb_applicant', 'cellphone_boards.cpb_nationality', 'cellphone_boards.cpb_status', 'cellphone_boards.create_at')
                             ->paginate(10);
         } else {
             $cell_phones = DB::table('cellphone_boards')
                             ->join('users', 'cellphone_boards.u_id', '=' ,'users.id')
-                            ->where('u_id', Auth::id())
-                            ->select('users.username', 'users.email', 'cellphone_boards.cpb_applicant', 'cellphone_boards.cpb_nationality', 'cellphone_boards.cpb_status', 'cellphone_boards.create_at')
+                            ->where('cellphone_boards.u_id', Auth::id())
+                            ->select('users.username', 'users.email', 'cellphone_boards.id', 'cellphone_boards.cpb_applicant', 'cellphone_boards.cpb_nationality', 'cellphone_boards.cpb_status', 'cellphone_boards.create_at')
                             ->paginate(10);
         }
 
@@ -45,7 +45,6 @@ class UserPageController extends Controller
     }
 
     public function register(string $page) {
-
 
         if (view()->exists("pages.user.{$page}_register")) {
             return view("pages.user.{$page}_register");
@@ -76,10 +75,6 @@ class UserPageController extends Controller
             'service' => 'required|in:annual_agreement,monthly_plan',
             'connectivity' => 'required|in:4g,5g',
         ]);
-
-        // if ($validated->fails()) {
-        //     return response()->json(['error' => $validated->errors()->all()]);
-        // }
 
         // PassPort Upload 구성
         $upload_file = $request->file('passport')->store('images/passport');
@@ -162,6 +157,7 @@ class UserPageController extends Controller
             'cpb_callservice' => $callservice,
             'cpb_service' => $service,
             'cpb_connectivity' => $connectivity,
+            'cpb_telecoms' => 'kt',
             'create_at' => $now_date_time
         ]);
 
@@ -169,6 +165,25 @@ class UserPageController extends Controller
             return redirect('/user/tables');
         } else {
             return back()->with('error', 'Cell phone opening registration failed.');
+        }
+    }
+
+    public function modify(string $page, $num) {
+        
+        $board_check = DB::table('cellphone_boards')->where('u_id', Auth::id())->where('id', $num)->exists();
+        if($board_check) {
+            $cell_phones = DB::table('cellphone_boards')
+                            ->join('signature_uploads', 'cellphone_boards.stu_id', '=' ,'signature_uploads.id')
+                            ->join('passport_uploads', 'cellphone_boards.ppu_id', '=' ,'passport_uploads.id')
+                            ->where('cellphone_boards.u_id', Auth::id())
+                            ->where('cellphone_boards.id', $num)
+                            ->first();
+
+            if (view()->exists("pages.user.{$page}_modify")) {
+                return view("pages.user.{$page}_modify", ['cell_phones' => $cell_phones]);
+            }
+        } else {
+            return abort(404);
         }
     }
 
