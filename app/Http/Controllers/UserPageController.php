@@ -101,9 +101,9 @@ class UserPageController extends Controller
         // }
 
         $base64_img = $request->post('signaturetxt');
-        echo $base64_img;
+        // echo $base64_img;
         $base64_img = str_replace('data:image/png;base64,', '', $base64_img);
-        $base64_img = str_replace(' ', '+', $img);
+        $base64_img = str_replace(' ', '+', $base64_img);
         $base64_decoding_img = base64_decode($base64_img);
         $file = $user_name_check.time().'.png';
 
