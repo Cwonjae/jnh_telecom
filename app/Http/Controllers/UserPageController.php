@@ -107,7 +107,7 @@ class UserPageController extends Controller
         $base64_decoding_img = base64_decode($base64_img);
         $file = $user_name_check.time().'.png';
 
-        Storage::put('/signatures/'.$file, $base64_decoding_img);
+        Storage::put('/images/signatures/'.$file, $base64_decoding_img);
         // $all_data = $request->post();
         // echo print_r($all_data);
 
