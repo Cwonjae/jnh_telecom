@@ -84,7 +84,6 @@ class UserPageController extends Controller
 
         if($upload_file) {
             $file_name = $request->file('passport')->getClientOriginalName();
-            $file_extension = $request->file('passport')->extension();
             $random_explode = explode('images/passport/', $upload_file);
             $extension_cut = explode('.png', $random_explode[1]);
             $random_file_name = $extension_cut[0];
@@ -92,7 +91,6 @@ class UserPageController extends Controller
             DB::table('passport_uploads')->insert([
                 'u_id' => $user_id_check,
                 'ppu_filename' => $file_name,
-                'ppu_extension' => $file_extension,
                 'ppu_encode_filename' => $random_file_name,
                 'create_at' => $now_date_time
             ]);
