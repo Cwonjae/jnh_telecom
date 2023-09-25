@@ -55,7 +55,7 @@ class UserPageController extends Controller
     public function register_insert(Request $request) {
         
         $user_id_check = DB::table('users')->where('id', Auth::id())->value('id');
-        $user_name_check = DB::table('users')->where('id', Auth::id())->value('name');
+        $user_name_check = DB::table('users')->where('id', Auth::id())->value('username');
         $currentDateTime = Carbon::now()->timezone('Asia/Seoul');
         $now_date_time = $currentDateTime->toDateTimeString();
 
