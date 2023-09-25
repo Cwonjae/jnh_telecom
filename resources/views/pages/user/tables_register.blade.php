@@ -202,8 +202,8 @@
                                     <a id="clearBtn" class="btn btn-default" onclick="clearCanvas();">Clear Canvas</a>
                                     <a id="saveBtn" class="btn btn-default" onclick="saveSignature();" style="display:none;">Save Signature</a>
                                     <p>Use your mouse or finger to draw your signature above</p>
-                                    @error('signatures') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
-                                    <input type="hidden" id="signature_txt" name="signaturetxt" />
+                                    @error('signaturetxt') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
+                                    <input type="hidden" id="signature_txt" name="signaturetxt" value="{{ old('signaturetxt') }}"/>
                                     <div id="signature"></div>
                                 </div>
                                 <div class="flex flex-col mb-3">

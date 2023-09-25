@@ -77,9 +77,9 @@ class UserPageController extends Controller
             'connectivity' => 'required|in:4g,5g',
         ]);
 
-        if ($validated->fails()) {
-            return response()->json(['error' => $validated->errors()->all()]);
-        }
+        // if ($validated->fails()) {
+        //     return response()->json(['error' => $validated->errors()->all()]);
+        // }
 
         // PassPort Upload 구성
         $upload_file = $request->file('passport')->store('images/passport');
