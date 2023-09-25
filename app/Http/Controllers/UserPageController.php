@@ -83,7 +83,7 @@ class UserPageController extends Controller
         $upload_file = $request->file('passport')->store('images/passport');
 
         if($upload_file) {
-            $file_name = $request->file('passport')->getClientDoriginalName();
+            $file_name = $request->file('passport')->getClientOriginalName();
             $file_extension = $request->file('passport')->extension();
             $random_explode = explode('images/passport/', $upload_file);
             $extension_cut = explode('.png', $random_explode[1]);
