@@ -77,8 +77,8 @@ class UserPageController extends Controller
             'connectivity' => 'required|in:4g,5g',
         ]);
 
-        if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()->all()]);
+        if ($validated->fails()) {
+            return response()->json(['error' => $validated->errors()->all()]);
         }
 
         // PassPort Upload 구성
