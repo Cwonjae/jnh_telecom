@@ -129,7 +129,7 @@
                                     @php
                                         $check_extension = explode('.', $cell_phones[0]->ppu_filename);
                                     @endphp
-                                        <a href="{{ url('storage/images/'.$cell_phones[0]->ppu_encode_filename.'.'.$check_extension[1]) }}" target="_blank">
+                                        <a href="{{ url('storage/images/passport/'.$cell_phones[0]->ppu_encode_filename.'.'.$check_extension[1]) }}" target="_blank">
                                             View saved passports
                                         </a>
                                     @endif
