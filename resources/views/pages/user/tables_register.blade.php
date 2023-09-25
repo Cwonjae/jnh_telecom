@@ -132,12 +132,12 @@
                                     @error('dateofbirth') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="form-radio form-check-info text-start">
-                                    <h6>Gander <span style="color:red">*</span></h6>
-                                    <input class="form-radio-input" type="radio" name="gander" id="flexRadioDefault_m" value="male">
+                                    <h6>Gender <span style="color:red">*</span></h6>
+                                    <input class="form-radio-input" type="radio" name="gender" id="flexRadioDefault_m" value="male">
                                     <label class="form-radio-label" for="flexRadioDefault_m">Male</label>
-                                    <input class="form-radio-input" type="radio" name="gander" id="flexRadioDefault_f" value="female">
+                                    <input class="form-radio-input" type="radio" name="gender" id="flexRadioDefault_f" value="female">
                                     <label class="form-radio-label" for="flexRadioDefault_f">FeMale</label>
-                                    @error('gander') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
+                                    @error('gender') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="form-radio form-check-info text-start">
                                     <h6>Device <span style="color:red">*</span></h6>

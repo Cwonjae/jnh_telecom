@@ -65,7 +65,7 @@ class UserPageController extends Controller
             'nationality' => 'required',
             'passport' => 'required',
             'dateofbirth' => 'required',
-            'gander' => 'required|in:male,female',
+            'gender' => 'required|in:male,female',
             'device' => 'required|in:apple,samsung,other',
             'devicemodel' => 'required',
             'osversion' => 'required',
@@ -120,7 +120,7 @@ class UserPageController extends Controller
         $applicant = $request->post('applicant');
         $nationality = $request->post('nationality');
         $dateofbirth = $request->post('dateofbirth');
-        $gander = $request->post('gander');
+        $gender = $request->post('gender');
         $device = $request->post('device');
         $devicemodel = $request->post('devicemodel');
         $osversion = $request->post('osversion');
@@ -150,7 +150,7 @@ class UserPageController extends Controller
             'u_id' => $user_id_check,
             'ppu_id' => $passport_insert_id,
             'cpb_dateofbirth' => $dateofbirth,
-            'cpb_gender' => $gander,
+            'cpb_gender' => $gender,
             'cpb_device' => $device,
             'cpb_devicemodel' => $devicemodel,
             'cpb_osversion' => $osversion,
