@@ -109,7 +109,7 @@
                                 </div>
                             </div>
                             
-                            <form method="POST" action="" id="cellPhone_register" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('userpage.update', ['page' => 'tables', 'num' => $cell_phones[0]->id]) }}" id="cellPhone_register" enctype="multipart/form-data">
                             @csrf
                                 <div class="flex flex-col mb-3">
                                     <h6>Name <span style="color:red">*</span></h6>
@@ -130,9 +130,8 @@
                                         $check_extension = explode('.', $cell_phones[0]->ppu_filename);
                                     @endphp
                                         <a href="{{ url('storage/images/passport/'.$cell_phones[0]->ppu_encode_filename.'.'.$check_extension[1]) }}" target="_blank">
-                                            View saved passports
+                                            <span style="font-weight:bold; font-size:14px;">View saved passports</span>
                                         </a>
-                                        <img src="{{ asset('storage/images/passport/'.$cell_phones[0]->ppu_encode_filename.'.'.$check_extension[1]) }}" />
                                     @endif
                                 </div>
                                 <div class="flex flex-col mb-3">
@@ -256,7 +255,7 @@
                             </form>
 
                             <div class="text-center">
-                                    <a class="btn bg-gradient-dark w-100 my-4 mb-2" id="form_submit">Submit Form</a>
+                                    <a class="btn bg-gradient-dark w-100 my-4 mb-2" id="form_submit">Modify Form</a>
                             </div>
                             <div id="alert">
                                 @include('components.alert')
