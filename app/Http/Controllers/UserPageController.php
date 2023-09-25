@@ -112,7 +112,7 @@ class UserPageController extends Controller
 
         $signatures = Storage::put('/images/signatures/'.$file_name, $base64_decoding_img);
         if($signatures) {
-            DB::table('passport_uploads')->insert([
+            DB::table('signature_uploads')->insert([
                 'u_id' => $user_id_check,
                 'stu_filename' => $file_name,
                 'create_at' => $now_date_time
