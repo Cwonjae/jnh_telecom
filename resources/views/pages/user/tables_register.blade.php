@@ -202,9 +202,8 @@
                                     <a id="clearBtn" class="btn btn-default" onclick="clearCanvas();">Clear Canvas</a>
                                     <a id="saveBtn" class="btn btn-default" onclick="saveSignature();" style="display:none;">Save Signature</a>
                                     <p>Use your mouse or finger to draw your signature above</p>
-                                    <div id="signature">
-                                        <input type="hidden" id="signature_txt" />
-                                    </div>
+                                    <input type="hidden" id="signature_txt" />
+                                    <div id="signature"></div>
                                 </div>
                                 <div class="flex flex-col mb-3">
                                     <h6>Referral</h6>
