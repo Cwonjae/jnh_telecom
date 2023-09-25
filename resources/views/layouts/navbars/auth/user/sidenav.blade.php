@@ -12,7 +12,7 @@
     <hr class="horizontal dark mt-0">
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
         <ul class="navbar-nav">
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link {{ Route::currentRouteName() == 'userhome' ? 'active' : '' }}" href="{{ route('userhome') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -20,7 +20,7 @@
                     </div>
                     <span class="nav-link-text ms-1">Main Page</span>
                 </a>
-            </li>
+            </li> -->
             <li class="nav-item mt-3">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Boards</h6>
             </li>
