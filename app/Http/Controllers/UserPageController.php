@@ -177,7 +177,8 @@ class UserPageController extends Controller
                             ->join('passport_uploads', 'cellphone_boards.ppu_id', '=' ,'passport_uploads.id')
                             ->where('cellphone_boards.u_id', Auth::id())
                             ->where('cellphone_boards.id', $num)
-                            ->first();
+                            ->select('cellphone_boards.*', 'signature_uploads.stu_filename', 'signature_uploads.stu_base64', 'passport_uploads.ppu_filename', 'passport_uploads.ppu_encode_filename')
+                            ->get();
 
             if (view()->exists("pages.user.{$page}_modify")) {
                 return view("pages.user.{$page}_modify", ['cell_phones' => $cell_phones]);
