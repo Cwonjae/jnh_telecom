@@ -77,7 +77,7 @@ class UserPageController extends Controller
         ]);
 
         // PassPort Upload 구성
-        $upload_file = $request->file('passport')->store('images/passport');
+        $upload_file = $request->file('passport')->store('public/images/passport');
         if($upload_file) {
             $file_name = $request->file('passport')->getClientOriginalName();
             $random_explode = explode('images/passport/', $upload_file);
@@ -100,7 +100,7 @@ class UserPageController extends Controller
         $base64_img = str_replace(' ', '+', $base64_img);
         $base64_decoding_img = base64_decode($base64_img);
         $file_name = $user_name_check.time().'.png';
-        $signatures = Storage::put('/images/signatures/'.$file_name, $base64_decoding_img);
+        $signatures = Storage::put('/public/images/signatures/'.$file_name, $base64_decoding_img);
         if($signatures) {
             $signature_insert_id = DB::table('signature_uploads')->insertGetId([
                 'u_id' => $user_id_check,
