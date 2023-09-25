@@ -61,9 +61,11 @@
 		    $('#signature').empty();
             var dataUrl = $('.js-signature').jqSignature('getDataURL');
             var img = $('<img id="signature_img">').attr('src', dataUrl);
-            var txt = $('<input type="text" id="signature_txt">').attr('value', dataUrl);
+            var txt = $('<input type="text">').attr('id', 'signature_txt');
+
             $('#signature').append(img);
             $('#signature').append(txt);
+            $('#signature_txt').val(dataUrl);
 		    $('#signature_img').css('display', 'none');
 		    $('#signature_txt').css('display', 'none');
             alert('Sign Saved Successfully');
