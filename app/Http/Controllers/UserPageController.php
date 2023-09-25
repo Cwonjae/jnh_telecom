@@ -98,8 +98,10 @@ class UserPageController extends Controller
         //     ]);
         // }
 
-        $base64_img = $request->post('signature_txt');
-        echo $base64_img;
+        // $base64_img = $request->post('signature_txt');
+        // echo $base64_img;
+        $all_data = $request->post();
+        echo print_r($all_data);
 
 
 
