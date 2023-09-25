@@ -60,48 +60,44 @@ class UserPageController extends Controller
         $now_date_time = $currentDateTime->toDateTimeString();
 
         // Form validate 구성
-        // $validated = $request->validate([
-        //     'applicant' => 'required',
-        //     'nationality' => 'required',
-        //     'passport' => 'required',
-        //     'dateofbirth' => 'required',
-        //     'gander' => 'required|in:male,female',
-        //     'device' => 'required|in:apple,samsung,other',
-        //     'devicemodel' => 'required',
-        //     'osversion' => 'required',
-        //     'imeinumber' => 'required',
-        //     'plan' => 'required|in:ok',
-        //     'signaturetxt' => 'required',
-        //     'callservice' => 'required|in:yes,no',
-        //     'service' => 'required|in:annual_agreement,monthly_plan',
-        //     'connectivity' => 'required|in:4g,5g',
-        // ]);
+        $validated = $request->validate([
+            'applicant' => 'required',
+            'nationality' => 'required',
+            'passport' => 'required',
+            'dateofbirth' => 'required',
+            'gander' => 'required|in:male,female',
+            'device' => 'required|in:apple,samsung,other',
+            'devicemodel' => 'required',
+            'osversion' => 'required',
+            'imeinumber' => 'required',
+            'plan' => 'required|in:ok',
+            'signaturetxt' => 'required',
+            'callservice' => 'required|in:yes,no',
+            'service' => 'required|in:annual_agreement,monthly_plan',
+            'connectivity' => 'required|in:4g,5g',
+        ]);
 
-        // if ($validator->fails()) {
-        //     return response()->json(['error' => $validator->errors()->all()]);
-        // }
-
-        // $all_data = $request->post();
-        // echo print_r($all_data);
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()->all()]);
+        }
 
         // PassPort Upload 구성
-        // $upload_file = $request->file('passport')->store('images/passport');
+        $upload_file = $request->file('passport')->store('images/passport');
+        if($upload_file) {
+            $file_name = $request->file('passport')->getClientOriginalName();
+            $random_explode = explode('images/passport/', $upload_file);
+            $extension_cut = explode('.png', $random_explode[1]);
+            $random_file_name = $extension_cut[0];
 
-        // if($upload_file) {
-        //     $file_name = $request->file('passport')->getClientOriginalName();
-        //     $random_explode = explode('images/passport/', $upload_file);
-        //     $extension_cut = explode('.png', $random_explode[1]);
-        //     $random_file_name = $extension_cut[0];
-
-        //     DB::table('passport_uploads')->insert([
-        //         'u_id' => $user_id_check,
-        //         'ppu_filename' => $file_name,
-        //         'ppu_encode_filename' => $random_file_name,
-        //         'create_at' => $now_date_time
-        //     ]);
-        // } else {
-        //     return back()->with('error', 'The passport was not uploaded successfully.');
-        // }
+            $passport_insert_id = DB::table('passport_uploads')->insertGetId([
+                'u_id' => $user_id_check,
+                'ppu_filename' => $file_name,
+                'ppu_encode_filename' => $random_file_name,
+                'create_at' => $now_date_time
+            ]);
+        } else {
+            return back()->with('error', 'The passport was not uploaded successfully.');
+        }
 
         // Signature Upload 구성
         $base64_img = $request->post('signaturetxt');
@@ -109,25 +105,71 @@ class UserPageController extends Controller
         $base64_img = str_replace(' ', '+', $base64_img);
         $base64_decoding_img = base64_decode($base64_img);
         $file_name = $user_name_check.time().'.png';
-
         $signatures = Storage::put('/images/signatures/'.$file_name, $base64_decoding_img);
         if($signatures) {
-            DB::table('signature_uploads')->insert([
+            $signature_insert_id = DB::table('signature_uploads')->insertGetId([
                 'u_id' => $user_id_check,
                 'stu_filename' => $file_name,
+                'stu_base64' => $base64_img,
                 'create_at' => $now_date_time
             ]);
         } else {
             return back()->with('error', 'The signature was not uploaded successfully.');
         }
+        
+        $applicant = $request->post('applicant');
+        $nationality = $request->post('nationality');
+        $dateofbirth = $request->post('dateofbirth');
+        $gander = $request->post('gander');
+        $device = $request->post('device');
+        $devicemodel = $request->post('devicemodel');
+        $osversion = $request->post('osversion');
+        $imeinumber = $request->post('imeinumber');
+        $plan = $request->post('plan');
+        $callservice = $request->post('callservice');
+        $service = $request->post('service');
+        $connectivity = $request->post('connectivity');
 
-        // $all_data = $request->post();
-        // echo print_r($all_data);
+        if($request->post('referral')) {
+            $referral = $request->post('referral');
+        } else {
+            $referral = null;
+        }
 
+        if($request->post('chooselastnumber')) {
+            $chooselastnumber = $request->post('chooselastnumber');
+        } else {
+            $chooselastnumber = null;
+        }
 
+        
+        $cellphone_insert_id = DB::table('cellphone_boards')->insertGetId([
+            'cpb_applicant' => $applicant,
+            'cpb_nationality' => $nationality,
+            'cpb_status' => 'opening',
+            'u_id' => $user_id_check,
+            'ppu_id' => $passport_insert_id,
+            'cpb_dateofbirth' => $dateofbirth,
+            'cpb_gender' => $gander,
+            'cpb_device' => $device,
+            'cpb_devicemodel' => $devicemodel,
+            'cpb_osversion' => $osversion,
+            'cpb_imeinumber' => $imeinumber,
+            'cpb_plan' => $plan,
+            'cpb_chooselastnumber' => $chooselastnumber,
+            'stu_id' => $signature_insert_id,
+            'cpb_referral' => $referral,
+            'cpb_callservice' => $callservice,
+            'cpb_service' => $service,
+            'cpb_connectivity' => $connectivity,
+            'create_at' => $now_date_time
+        ]);
 
-        // DB::table('cellphone_boards')
-        //     ->()        
+        if($cellphone_insert_id) {
+            return redirect('/user/tables');
+        } else {
+            return back()->with('error', 'Cell phone opening registration failed.');
+        }
     }
 
 
