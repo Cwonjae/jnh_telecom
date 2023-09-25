@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 
 class UserPageController extends Controller
@@ -54,6 +55,7 @@ class UserPageController extends Controller
     public function register_insert(Request $request) {
         
         $user_id_check = DB::table('users')->where('id', Auth::id())->value('id');
+        $user_name_check = DB::table('users')->where('id', Auth::id())->value('name');
         $currentDateTime = Carbon::now()->timezone('Asia/Seoul');
         $now_date_time = $currentDateTime->toDateTimeString();
 
@@ -98,10 +100,16 @@ class UserPageController extends Controller
         //     ]);
         // }
 
-        // $base64_img = $request->post('signature_txt');
-        // echo $base64_img;
-        $all_data = $request->post();
-        echo print_r($all_data);
+        $base64_img = $request->post('signaturetxt');
+        echo $base64_img;
+        $base64_img = str_replace('data:image/png;base64,', '', $base64_img);
+        $base64_img = str_replace(' ', '+', $img);
+        $base64_decoding_img = base64_decode($base64_img);
+        $file = $user_name_check.time().'.png';
+
+        Storage::disk('signatures')->put($file, $base64_decoding_img);
+        // $all_data = $request->post();
+        // echo print_r($all_data);
 
 
 
