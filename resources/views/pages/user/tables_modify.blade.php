@@ -126,7 +126,12 @@
                                     <input type="file" name="passport" class="form-control" aria-label="Passport" id="passport">
                                     @error('passport') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                     @if($cell_phones[0]->ppu_filename)
-                                        <a href="/images/passport/g7ikW7BwO8raRXjcytI9UdEdAPSOJti5caikJxEY.png" target="_blank">저장된 여권 보기</a>
+                                    @php
+                                        $check_extension = explode('.', $cell_phones[0]->ppu_filename);
+                                    @endphp
+                                        <a href="{{ url('storage/images/'.$cell_phones[0]->ppu_encode_filename.'.'.$check_extension[1]) }}" target="_blank">
+                                            View saved passports
+                                        </a>
                                     @endif
                                 </div>
                                 <div class="flex flex-col mb-3">
@@ -206,10 +211,10 @@
                                     <a id="saveBtn" class="btn btn-default" onclick="saveSignature();" style="display:none;">Save Signature</a>
                                     <p>Use your mouse or finger to draw your signature above</p>
                                     @error('signaturetxt') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
-                                    <input type="hidden" id="signature_txt" name="signaturetxt" value="{{ old('signaturetxt') }}"/>
+                                    <input type="hidden" id="signature_txt" name="signaturetxt" value="data:image/png;base64,{{ $cell_phones[0]->stu_base64 }}"/>
                                     <div id="signature">
                                     @if($cell_phones[0]->stu_filename)
-                                        <img id="signature_img" src="{{ $cell_phones[0]->stu_base64 }}"/>
+                                        <img id="signature_img" src="data:image/png;base64,{{ $cell_phones[0]->stu_base64 }}"/>
                                     @endif
                                     </div>
                                 </div>
