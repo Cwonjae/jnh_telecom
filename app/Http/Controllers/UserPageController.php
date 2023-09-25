@@ -329,7 +329,7 @@ class UserPageController extends Controller
                                     'update_at' => $now_date_time
                                 ]);
 
-            if($cellphone_insert_id) {
+            if($cellphone_update) {
                 return redirect('/user/tables');
             } else {
                 return back()->with('error', 'Cell phone opening modify failed.');
