@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class UserPageController extends Controller
 {
@@ -51,6 +52,10 @@ class UserPageController extends Controller
     }
 
     public function register_insert(Request $request) {
+        
+        $user_id_check = DB::table('users')->where('id', Auth::id())->value('id');
+        $currentDateTime = Carbon::now();
+        $now_date_time = $currentDateTime->toDateTimeString();
 
         // $validated = $request->validate([
         //     'applicant' => 'required',
@@ -75,13 +80,26 @@ class UserPageController extends Controller
         // $all_data = $request->post();
         // echo print_r($all_data);
 
-        // $upload_file = $request->passport->store('images/passport');
         $upload_file = $request->file('passport')->store('images/passport');
-        echo $upload_file;
 
+        if($upload_file) {
+            $file_name = $request->file('passport')->getClientDoriginalName();
+            $file_extension = $request->file('passport')->extension();
+            $random_explode = explode('images/passport/', $upload_file);
+            $extension_cut = explode('.png', $random_explode[1]);
+            $random_file_name = $extension_cut[0];
 
-        // $file_name = $request->file('passport')->getClientDoriginalName();
-        // $file_extension = $request->file('passport')->extension();
+            DB::table('passport_uploads')->insert([
+                'u_id' => $user_id_check,
+                'ppu_filename' => $file_name,
+                'ppu_extension' => $file_extension,
+                'ppu_excode_filename' => $random_file_name,
+                'create_at' => $now_date_time
+            ]);
+        }
+
+        // images/passport/fp8OYAVtSl0ULGvw9cN0AhCJxdLbxLovkMl6Y3bQ.png
+
 
         // DB::table('cellphone_boards')
         //     ->()        
