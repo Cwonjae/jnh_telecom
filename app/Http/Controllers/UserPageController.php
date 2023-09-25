@@ -220,32 +220,34 @@ class UserPageController extends Controller
                 // PassPort Upload 구성
                 // $upload_file = $request->file('passport')->store('public/images/passport');
                 $upload_file = Storage::putFile('/public/images/passport/',$request->file('passport'));
-                if($upload_file) {
-                    $file_name = $request->file('passport')->getClientOriginalName();
-                    $random_explode = explode('/public/images/passport/', $upload_file);
-                    $extension_cut = explode('.png', $random_explode[1]);
-                    $random_file_name = $extension_cut[0];
+                echo $upload_file;
+                exit;
+                // if($upload_file) {
+                //     $file_name = $request->file('passport')->getClientOriginalName();
+                //     $random_explode = explode('/public/images/passport/', $upload_file);
+                //     $extension_cut = explode('.png', $random_explode[1]);
+                //     $random_file_name = $extension_cut[0];
 
-                    $passport_insert_id = DB::table('passport_uploads')->insertGetId([
-                        'u_id' => $user_id_check,
-                        'ppu_filename' => $file_name,
-                        'ppu_encode_filename' => $random_file_name,
-                        'create_at' => $now_date_time
-                    ]);
+                //     $passport_insert_id = DB::table('passport_uploads')->insertGetId([
+                //         'u_id' => $user_id_check,
+                //         'ppu_filename' => $file_name,
+                //         'ppu_encode_filename' => $random_file_name,
+                //         'create_at' => $now_date_time
+                //     ]);
 
-                    $cellphone_update = DB::table('cellphone_boards')
-                                        ->where('u_id', Auth::id())
-                                        ->where('id', $num)
-                                        ->update([
-                                            'ppu_id' => $passport_insert_id,
-                                            'update_at' => $now_date_time
-                                        ]);
-                    if(!$cellphone_update) {
-                        return back()->with('error', 'The passport was not DB Insert successfully.');
-                    }
-                } else {
-                    return back()->with('error', 'The passport was not uploaded successfully.');
-                }
+                //     $cellphone_update = DB::table('cellphone_boards')
+                //                         ->where('u_id', Auth::id())
+                //                         ->where('id', $num)
+                //                         ->update([
+                //                             'ppu_id' => $passport_insert_id,
+                //                             'update_at' => $now_date_time
+                //                         ]);
+                //     if(!$cellphone_update) {
+                //         return back()->with('error', 'The passport was not DB Insert successfully.');
+                //     }
+                // } else {
+                //     return back()->with('error', 'The passport was not uploaded successfully.');
+                // }
             }
 
             // Signature Upload 구성
