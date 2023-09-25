@@ -54,9 +54,10 @@ class UserPageController extends Controller
     public function register_insert(Request $request) {
         
         $user_id_check = DB::table('users')->where('id', Auth::id())->value('id');
-        $currentDateTime = Carbon::now();
+        $currentDateTime = Carbon::now()->timezone('Asia/Seoul');
         $now_date_time = $currentDateTime->toDateTimeString();
 
+        // Form validate 구성
         // $validated = $request->validate([
         //     'applicant' => 'required',
         //     'nationality' => 'required',
@@ -80,23 +81,26 @@ class UserPageController extends Controller
         // $all_data = $request->post();
         // echo print_r($all_data);
 
-        $upload_file = $request->file('passport')->store('images/passport');
+        // PassPort Upload 구성
+        // $upload_file = $request->file('passport')->store('images/passport');
 
-        if($upload_file) {
-            $file_name = $request->file('passport')->getClientOriginalName();
-            $random_explode = explode('images/passport/', $upload_file);
-            $extension_cut = explode('.png', $random_explode[1]);
-            $random_file_name = $extension_cut[0];
+        // if($upload_file) {
+        //     $file_name = $request->file('passport')->getClientOriginalName();
+        //     $random_explode = explode('images/passport/', $upload_file);
+        //     $extension_cut = explode('.png', $random_explode[1]);
+        //     $random_file_name = $extension_cut[0];
 
-            DB::table('passport_uploads')->insert([
-                'u_id' => $user_id_check,
-                'ppu_filename' => $file_name,
-                'ppu_encode_filename' => $random_file_name,
-                'create_at' => $now_date_time
-            ]);
-        }
+        //     DB::table('passport_uploads')->insert([
+        //         'u_id' => $user_id_check,
+        //         'ppu_filename' => $file_name,
+        //         'ppu_encode_filename' => $random_file_name,
+        //         'create_at' => $now_date_time
+        //     ]);
+        // }
 
-        // images/passport/fp8OYAVtSl0ULGvw9cN0AhCJxdLbxLovkMl6Y3bQ.png
+        $base64_img = $request->input('signature_txt');
+        echo $base64_img;
+
 
 
         // DB::table('cellphone_boards')
