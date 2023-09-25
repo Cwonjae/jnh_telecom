@@ -93,7 +93,7 @@ class UserPageController extends Controller
                 'u_id' => $user_id_check,
                 'ppu_filename' => $file_name,
                 'ppu_extension' => $file_extension,
-                'ppu_excode_filename' => $random_file_name,
+                'ppu_encode_filename' => $random_file_name,
                 'create_at' => $now_date_time
             ]);
         }
