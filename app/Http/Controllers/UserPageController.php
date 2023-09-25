@@ -71,6 +71,7 @@ class UserPageController extends Controller
         //     'osversion' => 'required',
         //     'imeinumber' => 'required',
         //     'plan' => 'required|in:ok',
+        //     'signaturetxt' => 'required',
         //     'callservice' => 'required|in:yes,no',
         //     'service' => 'required|in:annual_agreement,monthly_plan',
         //     'connectivity' => 'required|in:4g,5g',
@@ -98,16 +99,28 @@ class UserPageController extends Controller
         //         'ppu_encode_filename' => $random_file_name,
         //         'create_at' => $now_date_time
         //     ]);
+        // } else {
+        //     return back()->with('error', 'The passport was not uploaded successfully.');
         // }
 
+        // Signature Upload 구성
         $base64_img = $request->post('signaturetxt');
-        // echo $base64_img;
         $base64_img = str_replace('data:image/png;base64,', '', $base64_img);
         $base64_img = str_replace(' ', '+', $base64_img);
         $base64_decoding_img = base64_decode($base64_img);
-        $file = $user_name_check.time().'.png';
+        $file_name = $user_name_check.time().'.png';
 
-        Storage::put('/images/signatures/'.$file, $base64_decoding_img);
+        $signatures = Storage::put('/images/signatures/'.$file_name, $base64_decoding_img);
+        if($signatures) {
+            DB::table('passport_uploads')->insert([
+                'u_id' => $user_id_check,
+                'stu_filename' => $file_name,
+                'create_at' => $now_date_time
+            ]);
+        } else {
+            return back()->with('error', 'The signature was not uploaded successfully.');
+        }
+
         // $all_data = $request->post();
         // echo print_r($all_data);
 

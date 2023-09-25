@@ -59,7 +59,7 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 //user 전용 Route
-Route::get('/user', function () {return redirect('/user/dashboard');})->middleware('userauth');
+Route::get('/user', function () {return redirect('/user/tables');})->middleware('userauth');
 Route::get('/user/login', [UserLoginController::class, 'show'])->middleware('guest')->name('userlogin');
 Route::post('/user/login', [UserLoginController::class, 'login'])->middleware('guest')->name('userlogin.perform');
 Route::get('/user/dashboard', [UserHomeController::class, 'index'])->name('userhome')->middleware('userauth');

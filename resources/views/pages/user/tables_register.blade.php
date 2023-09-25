@@ -202,6 +202,7 @@
                                     <a id="clearBtn" class="btn btn-default" onclick="clearCanvas();">Clear Canvas</a>
                                     <a id="saveBtn" class="btn btn-default" onclick="saveSignature();" style="display:none;">Save Signature</a>
                                     <p>Use your mouse or finger to draw your signature above</p>
+                                    @error('signatures') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
                                     <input type="hidden" id="signature_txt" name="signaturetxt" />
                                     <div id="signature"></div>
                                 </div>
@@ -243,6 +244,9 @@
 
                             <div class="text-center">
                                     <a class="btn bg-gradient-dark w-100 my-4 mb-2" id="form_submit">Submit Form</a>
+                            </div>
+                            <div id="alert">
+                                @include('components.alert')
                             </div>
                         </div>
                     </div>
