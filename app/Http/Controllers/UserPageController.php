@@ -222,15 +222,18 @@ class UserPageController extends Controller
                 $upload_file = Storage::putFile('/public/images/passport',$request->file('passport'));
                 if($upload_file) {
                     $file_name = $request->file('passport')->getClientOriginalName();
-                    $random_explode = explode('/public/images/passport/', $upload_file);
-                    $extension_cut = explode('.png', $random_explode[1]);
-                    $random_file_name = $extension_cut[0];
-                    
+
                     echo $upload_file;
                     echo "<br>";
+
+                    $random_explode = explode('/public/images/passport/', $upload_file);
                     echo print_r($random_explode);
-                    echo "<br>";
-                    echo print_r($extension_cut);
+                    
+                    // $extension_cut = explode('.png', $random_explode[1]);
+                    // echo "<br>";
+                    // echo print_r($extension_cut);
+                    // $random_file_name = $extension_cut[0];
+                    
                     exit;
 
                     // $passport_insert_id = DB::table('passport_uploads')->insertGetId([
