@@ -33,6 +33,12 @@ use App\Http\Controllers\UserHomeController;
 use App\Http\Controllers\UserLoginController;
 use App\Http\Controllers\UserPageController;
 
+//email 검증 핸들러
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+
+//email 검증 재발송
+use Illuminate\Http\Request;
+
 
 //admin 전용 Route
 Route::get('/', function () {return redirect('/dashboard');})->middleware('auth');
@@ -59,7 +65,7 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 //user 전용 Route
-Route::get('/user', function () {return redirect('/user/tables');})->middleware('userauth');
+Route::get('/user', function () {return redirect('/user/tables');})->middleware(['userauth', 'verified']);
 Route::get('/user/login', [UserLoginController::class, 'show'])->middleware('guest')->name('userlogin');
 Route::post('/user/login', [UserLoginController::class, 'login'])->middleware('guest')->name('userlogin.perform');
 Route::get('/user/dashboard', [UserHomeController::class, 'index'])->name('userhome')->middleware('userauth');
@@ -72,3 +78,22 @@ Route::group(['middleware' => 'userauth'], function () {
 	Route::post('/user/{page}/modify/{num}', [UserPageController::class, 'modify_update'])->name('userpage.update');
 	Route::post('/user/logout', [UserLoginController::class, 'logout'])->name('userlogout');
 });
+
+//email 검증 링크 발송
+Route::get('/email/verify', function() {
+	return view('auth.user.verify-email');
+})->middleware('userauth')->name('verification.notice');
+
+//email 검증 핸들러
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+
+    return redirect('/user/tables');
+})->middleware(['userauth', 'signed'])->name('verification.verify');
+
+//email 검증 재발송
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+
+    return back()->with('message', 'Verification link sent!');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
