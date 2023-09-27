@@ -32,6 +32,7 @@ use App\Http\Controllers\ChangePassword;
 use App\Http\Controllers\UserHomeController;
 use App\Http\Controllers\UserLoginController;
 use App\Http\Controllers\UserPageController;
+use App\Http\Controllers\UserRegisterController;
 
 //email 검증 핸들러
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
