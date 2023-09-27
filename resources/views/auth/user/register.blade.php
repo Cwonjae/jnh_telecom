@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.user.app')
 
 @section('content')
-    @include('layouts.navbars.guest.navbar')
+    @include('layouts.navbars.guest.user.navbar')
     <main class="main-content  mt-0">
         <div class="page-header align-items-start min-vh-50 pt-5 pb-11 m-3 border-radius-lg"
             style="background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/signup-cover.jpg'); background-position: top;">
