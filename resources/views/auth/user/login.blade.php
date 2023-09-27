@@ -42,7 +42,7 @@
                                 <div class="card-footer text-center pt-0 px-lg-2 px-1">
                                     <p class="mb-4 text-sm mx-auto">
                                         Don't have an account?
-                                        <a href="{{ route('register') }}" class="text-primary text-gradient font-weight-bold">Sign up</a>
+                                        <a href="{{ route('userregister') }}" class="text-primary text-gradient font-weight-bold">Sign up</a>
                                     </p>
                                 </div>
                             </div>
