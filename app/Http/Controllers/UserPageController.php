@@ -63,6 +63,7 @@ class UserPageController extends Controller
             'applicant' => 'required',
             'nationality' => 'required',
             'passport' => 'required',
+            'passportnumber' => 'required',
             'dateofbirth' => 'required',
             'gender' => 'required|in:male,female',
             // 'device' => 'required|in:apple,samsung,other',
@@ -116,6 +117,7 @@ class UserPageController extends Controller
         $applicant = $request->post('applicant');
         $nationality = $request->post('nationality');
         $dateofbirth = $request->post('dateofbirth');
+        $passport_number = $request->post('passportnumber');
         $gender = $request->post('gender');
         // $device = $request->post('device');
         // $devicemodel = $request->post('devicemodel');
@@ -144,6 +146,7 @@ class UserPageController extends Controller
             'cpb_nationality' => $nationality,
             'cpb_status' => 'opening',
             'u_id' => $user_id_check,
+            'cpb_passportnumber' => $passport_number,
             'ppu_id' => $passport_insert_id,
             'cpb_dateofbirth' => $dateofbirth,
             'cpb_gender' => $gender,
@@ -203,6 +206,7 @@ class UserPageController extends Controller
                 'applicant' => 'required',
                 'nationality' => 'required',
                 'dateofbirth' => 'required',
+                'passportnumber' => 'required',
                 'gender' => 'required|in:male,female',
                 // 'device' => 'required|in:apple,samsung,other',
                 // 'devicemodel' => 'required',
@@ -284,6 +288,7 @@ class UserPageController extends Controller
             $applicant = $request->post('applicant');
             $nationality = $request->post('nationality');
             $dateofbirth = $request->post('dateofbirth');
+            $passport_number = $request->post('passportnumber');
             $gender = $request->post('gender');
             // $device = $request->post('device');
             // $devicemodel = $request->post('devicemodel');
@@ -314,6 +319,7 @@ class UserPageController extends Controller
                                     'cpb_applicant' => $applicant,
                                     'cpb_nationality' => $nationality,
                                     'cpb_dateofbirth' => $dateofbirth,
+                                    'cpb_passportnumber' => $passport_number,
                                     'cpb_gender' => $gender,
                                     // 'cpb_device' => $device,
                                     // 'cpb_devicemodel' => $devicemodel,

@@ -72,18 +72,32 @@
             if ((event.keyCode < 48) || (event.keyCode > 57)){
                 event.returnValue = false;
             }
-            var value = this.value;
-            console.log(value);
+        }
+
+        function checkInputValue(_this){
+            var value = $("#"+_this.id).val();
+            var split_value = value.split(",");
+            var val_add;
+
+            if(val_split.length > 0 && val_split.length < 4) {
+                if(val.length == 4) {
+                    val_add = val + ",";
+                    $("#"+_this.id).val(val_add);
+                } else if(val.length == 9) {
+                    val_add = val + ",";
+                    $("#"+_this.id).val(val_add);
+                }
+            }
         }
     </script>
 
-    @include('layouts.navbars.auth.user.topnav', ['title' => 'Cell Phone Opening Register'])
+    @include('layouts.navbars.auth.user.topnav', ['title' => 'Olleh Mobile Application Form'])
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <h6>Cell Phone Opening Register</h6>
+                        <h6>Olleh Mobile Application Form</h6>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0" style="width:92%; margin:auto; margin-top:30px;">
@@ -122,6 +136,11 @@
                                     <h6>Nationality <span style="color:red">*</span></h6>
                                     <input type="text" name="nationality" class="form-control" placeholder="Nationality" aria-label="Nationality" value="{{ old('nationality') }}" autocomplete="off" id="inputSearch">
                                     @error('nationality') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
+                                </div>
+                                <div class="flex flex-col mb-3">
+                                    <h6>Passport Number <span style="color:red">*</span></h6>
+                                    <input type="text" name="passportnumber" class="form-control" aria-label="PassportNumber" id="passportnumber" placeholder="Your PassPort Number" >
+                                    @error('passportnumber') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
                                     <h6>Passport <span style="color:red">*</span></h6>
@@ -193,8 +212,8 @@
                                     @error('plan') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <h6>Please choose the last four digits of your phone number</h6>
-                                    <input type="text" name="chooselastnumber" class="form-control" placeholder="Please choose the last four digits of your phone number." aria-label="Please choose the last four digits of your phone number." value="{{ old('chooselastnumber') }}" onKeyPress="javascript:checkInputNum();" maxlength="14" id="chooselastnumber">
+                                    <h6>Please choose the last four digits of your phone number (Up to 3 items can be entered)</h6>
+                                    <input type="text" name="chooselastnumber" class="form-control" placeholder="Please choose the last four digits of your phone number." aria-label="Please choose the last four digits of your phone number." value="{{ old('chooselastnumber') }}" onKeyPress="javascript:checkInputNum();" onKeyUp="javascript:checkInputValue(this);" maxlength="14" id="chooselastnumber">
                                     @error('chooselastnumber') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                     <p>If the phone number you have chosen is already taken, please note that it can be activated with different last four digits.</p>
                                 </div>
