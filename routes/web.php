@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 
 //admin 전용 page
@@ -34,11 +34,11 @@ use App\Http\Controllers\UserLoginController;
 use App\Http\Controllers\UserPageController;
 use App\Http\Controllers\UserRegisterController;
 
-//email 검증 핸들러
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
+// //email 검증 핸들러
+// use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
-//email 검증 재발송
-use Illuminate\Http\Request;
+// //email 검증 재발송
+// use Illuminate\Http\Request;
 
 
 //admin 전용 Route
@@ -66,9 +66,9 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 //user 전용 Route
-Route::get('/user', function () {return redirect('/user/tables');})->middleware(['userauth', 'verified']);
+Route::get('/user', function () {return redirect('/user/tables');})->middleware(['userauth', 'verify_email']);
 Route::get('/user/register', [UserRegisterController::class, 'create'])->middleware('guest')->name('userregister');
-Route::post('/user/register', [UserRegisterController::class, 'store'])->middleware('guest')->name('userregister.perform');
+Route::post('/user/register', [UserRegisterController::class, 'registration'])->middleware('guest')->name('userregister.perform');
 Route::get('/user/login', [UserLoginController::class, 'show'])->middleware('guest')->name('userlogin');
 Route::post('/user/login', [UserLoginController::class, 'login'])->middleware('guest')->name('userlogin.perform');
 Route::get('/user/dashboard', [UserHomeController::class, 'index'])->name('userhome')->middleware('userauth');
@@ -82,21 +82,24 @@ Route::group(['middleware' => 'userauth'], function () {
 	Route::post('/user/logout', [UserLoginController::class, 'logout'])->name('userlogout');
 });
 
-//email 검증 링크 발송
-Route::get('/email/verify', function() {
-	return view('auth.user.verify-email');
-})->middleware('userauth')->name('verification.notice');
+// //email 검증 링크 발송
+// Route::get('/email/verify', function() {
+// 	return view('auth.user.verify-email');
+// })->middleware('userauth')->name('verification.notice');
 
-//email 검증 핸들러
-Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-    $request->fulfill();
+// //email 검증 핸들러
+// Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+//     $request->fulfill();
 
-    return redirect('/user/tables');
-})->middleware(['userauth', 'signed'])->name('verification.verify');
+//     return redirect('/user/tables');
+// })->middleware(['userauth', 'signed'])->name('verification.verify');
 
-//email 검증 재발송
-Route::post('/email/verification-notification', function (Request $request) {
-    $request->user()->sendEmailVerificationNotification();
+// //email 검증 재발송
+// Route::post('/email/verification-notification', function (Request $request) {
+//     $request->user()->sendEmailVerificationNotification();
 
-    return back()->with('message', 'Verification link sent!');
-})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+//     return back()->with('message', 'Verification link sent!');
+// })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+//email 검증 관련 Route
+Route::get('/user/account/verify/{token}', [UserRegisterController::class, 'verifyAccount'])->name('userregister.verify'); 
