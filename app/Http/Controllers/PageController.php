@@ -42,7 +42,7 @@ class PageController extends Controller
     }
 
     public function print(string $page, $num) {        
-        $board_check = DB::table('cellphone_boards')->where('u_id', Auth::id())->where('id', $num)->exists();
+        $board_check = DB::table('cellphone_boards')->where('id', $num)->exists();
         if($board_check) {
             $cell_phones = DB::table('cellphone_boards')
                             ->join('signature_uploads', 'cellphone_boards.stu_id', '=' ,'signature_uploads.id')
