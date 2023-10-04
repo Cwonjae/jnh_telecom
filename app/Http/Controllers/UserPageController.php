@@ -65,13 +65,13 @@ class UserPageController extends Controller
             'passport' => 'required',
             'dateofbirth' => 'required',
             'gender' => 'required|in:male,female',
-            'device' => 'required|in:apple,samsung,other',
-            'devicemodel' => 'required',
-            'osversion' => 'required',
+            // 'device' => 'required|in:apple,samsung,other',
+            // 'devicemodel' => 'required',
+            // 'osversion' => 'required',
             'imeinumber' => 'required',
             'plan' => 'required|in:ok',
             'signaturetxt' => 'required',
-            'callservice' => 'required|in:yes,no',
+            // 'callservice' => 'required|in:yes,no',
             'service' => 'required|in:annual_agreement,monthly_plan',
             'connectivity' => 'required|in:4g,5g',
         ]);
@@ -89,7 +89,7 @@ class UserPageController extends Controller
                 'u_id' => $user_id_check,
                 'ppu_filename' => $file_name,
                 'ppu_encode_filename' => $random_file_name,
-                'create_at' => $now_date_time
+                'created_at' => $now_date_time
             ]);
         } else {
             return back()->with('error', 'The passport was not uploaded successfully.');
@@ -107,7 +107,7 @@ class UserPageController extends Controller
                 'u_id' => $user_id_check,
                 'stu_filename' => $file_name,
                 'stu_base64' => $base64_img,
-                'create_at' => $now_date_time
+                'created_at' => $now_date_time
             ]);
         } else {
             return back()->with('error', 'The signature was not uploaded successfully.');
@@ -117,12 +117,12 @@ class UserPageController extends Controller
         $nationality = $request->post('nationality');
         $dateofbirth = $request->post('dateofbirth');
         $gender = $request->post('gender');
-        $device = $request->post('device');
-        $devicemodel = $request->post('devicemodel');
-        $osversion = $request->post('osversion');
+        // $device = $request->post('device');
+        // $devicemodel = $request->post('devicemodel');
+        // $osversion = $request->post('osversion');
         $imeinumber = $request->post('imeinumber');
         $plan = $request->post('plan');
-        $callservice = $request->post('callservice');
+        // $callservice = $request->post('callservice');
         $service = $request->post('service');
         $connectivity = $request->post('connectivity');
 
@@ -147,19 +147,19 @@ class UserPageController extends Controller
             'ppu_id' => $passport_insert_id,
             'cpb_dateofbirth' => $dateofbirth,
             'cpb_gender' => $gender,
-            'cpb_device' => $device,
-            'cpb_devicemodel' => $devicemodel,
-            'cpb_osversion' => $osversion,
+            // 'cpb_device' => $device,
+            // 'cpb_devicemodel' => $devicemodel,
+            // 'cpb_osversion' => $osversion,
             'cpb_imeinumber' => $imeinumber,
             'cpb_plan' => $plan,
             'cpb_chooselastnumber' => $chooselastnumber,
             'stu_id' => $signature_insert_id,
             'cpb_referral' => $referral,
-            'cpb_callservice' => $callservice,
+            // 'cpb_callservice' => $callservice,
             'cpb_service' => $service,
             'cpb_connectivity' => $connectivity,
             'cpb_telecoms' => 'kt',
-            'create_at' => $now_date_time
+            'created_at' => $now_date_time
         ]);
 
         if($cellphone_insert_id) {
@@ -204,13 +204,13 @@ class UserPageController extends Controller
                 'nationality' => 'required',
                 'dateofbirth' => 'required',
                 'gender' => 'required|in:male,female',
-                'device' => 'required|in:apple,samsung,other',
-                'devicemodel' => 'required',
-                'osversion' => 'required',
+                // 'device' => 'required|in:apple,samsung,other',
+                // 'devicemodel' => 'required',
+                // 'osversion' => 'required',
                 'imeinumber' => 'required',
                 'plan' => 'required|in:ok',
                 'signaturetxt' => 'required',
-                'callservice' => 'required|in:yes,no',
+                // 'callservice' => 'required|in:yes,no',
                 'service' => 'required|in:annual_agreement,monthly_plan',
                 'connectivity' => 'required|in:4g,5g',
             ]);
@@ -230,7 +230,7 @@ class UserPageController extends Controller
                         'u_id' => $user_id_check,
                         'ppu_filename' => $file_name,
                         'ppu_encode_filename' => $random_file_name,
-                        'create_at' => $now_date_time
+                        'created_at' => $now_date_time
                     ]);
 
                     $cellphone_update = DB::table('cellphone_boards')
@@ -238,7 +238,7 @@ class UserPageController extends Controller
                                         ->where('id', $num)
                                         ->update([
                                             'ppu_id' => $passport_insert_id,
-                                            'update_at' => $now_date_time
+                                            'updated_at' => $now_date_time
                                         ]);
                     if(!$cellphone_update) {
                         return back()->with('error', 'The passport was not DB Insert successfully.');
@@ -263,7 +263,7 @@ class UserPageController extends Controller
                         'u_id' => $user_id_check,
                         'stu_filename' => $file_name,
                         'stu_base64' => $base64_img,
-                        'create_at' => $now_date_time
+                        'created_at' => $now_date_time
                     ]);
 
                     $cellphone_update = DB::table('cellphone_boards')
@@ -271,7 +271,7 @@ class UserPageController extends Controller
                                         ->where('id', $num)
                                         ->update([
                                             'stu_id' => $signature_insert_id,
-                                            'update_at' => $now_date_time
+                                            'updated_at' => $now_date_time
                                         ]);
                     if(!$cellphone_update) {
                         return back()->with('error', 'The signature was not DB Insert successfully.');
@@ -285,12 +285,12 @@ class UserPageController extends Controller
             $nationality = $request->post('nationality');
             $dateofbirth = $request->post('dateofbirth');
             $gender = $request->post('gender');
-            $device = $request->post('device');
-            $devicemodel = $request->post('devicemodel');
-            $osversion = $request->post('osversion');
+            // $device = $request->post('device');
+            // $devicemodel = $request->post('devicemodel');
+            // $osversion = $request->post('osversion');
             $imeinumber = $request->post('imeinumber');
             $plan = $request->post('plan');
-            $callservice = $request->post('callservice');
+            // $callservice = $request->post('callservice');
             $service = $request->post('service');
             $connectivity = $request->post('connectivity');
 
@@ -315,18 +315,18 @@ class UserPageController extends Controller
                                     'cpb_nationality' => $nationality,
                                     'cpb_dateofbirth' => $dateofbirth,
                                     'cpb_gender' => $gender,
-                                    'cpb_device' => $device,
-                                    'cpb_devicemodel' => $devicemodel,
-                                    'cpb_osversion' => $osversion,
+                                    // 'cpb_device' => $device,
+                                    // 'cpb_devicemodel' => $devicemodel,
+                                    // 'cpb_osversion' => $osversion,
                                     'cpb_imeinumber' => $imeinumber,
                                     'cpb_plan' => $plan,
                                     'cpb_chooselastnumber' => $chooselastnumber,
                                     'cpb_referral' => $referral,
-                                    'cpb_callservice' => $callservice,
+                                    // 'cpb_callservice' => $callservice,
                                     'cpb_service' => $service,
                                     'cpb_connectivity' => $connectivity,
                                     'cpb_telecoms' => 'kt',
-                                    'update_at' => $now_date_time
+                                    'updated_at' => $now_date_time
                                 ]);
 
             if($cellphone_update) {

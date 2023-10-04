@@ -86,7 +86,7 @@
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0" style="width:92%; margin:auto; margin-top:30px;">
 
-                            <div class="flex flex-col mb-3">
+                            <!-- <div class="flex flex-col mb-3">
                                 <h4>Welcome to Korea!</h4>
                                 <div>
                                     <img src="/img/tables/tables1.jpeg" alt="Korea City IMG" style="max-width: 100%; height: auto;">
@@ -107,7 +107,7 @@
                                     <hr style="width:100%;">
                                     <span>The exchange rate applied is 1,300 KRW.</span>
                                 </div>
-                            </div>
+                            </div> -->
                             
                             <form method="POST" action="{{ route('userpage.update', ['page' => 'tables', 'num' => $cell_phones[0]->id]) }}" id="cellPhone_register" enctype="multipart/form-data">
                             @csrf
@@ -147,7 +147,7 @@
                                     <label class="form-radio-label" for="flexRadioDefault_f">FeMale</label>
                                     @error('gender') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
                                 </div>
-                                <div class="form-radio form-check-info text-start">
+                                <!-- <div class="form-radio form-check-info text-start">
                                     <h6>Device <span style="color:red">*</span></h6>
                                     <input class="form-radio-input" type="radio" name="device" id="flexRadioDefault_ap" value="apple" @if($cell_phones[0]->cpb_device == "apple") checked @else @endif>
                                     <label class="form-radio-label" for="flexRadioDefault_ap">Apple</label>
@@ -159,14 +159,14 @@
                                 </div>
                                 <div class="flex flex-col mb-3">
                                     <h6>Device Model <span style="color:red">*</span></h6>
-                                    <input type="text" name="devicemodel" class="form-control" placeholder="Ex) Iphone 13, Iphone 13 mini, Galaxy S22, ETC" aria-label="Device Model" value="{{ $cell_phones[0]->cpb_devicemodel }}" id="devicemodel">
+                                    <input type="text" name="devicemodel" class="form-control" placeholder="Ex) Iphone 13, Iphone 13 mini, Galaxy S22, etc" aria-label="Device Model" value="{{ $cell_phones[0]->cpb_devicemodel }}" id="devicemodel">
                                     @error('devicemodel') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
                                     <h6>OS Version <span style="color:red">*</span></h6>
-                                    <input type="text" name="osversion" class="form-control" placeholder="Ex) Android Version 13, IOS version 16.5" aria-label="Os Version" value="{{ $cell_phones[0]->cpb_osversion }}" id="osversion">
+                                    <input type="text" name="osversion" class="form-control" placeholder="Ex) Android Version 13, IOS version 16.5, etc" aria-label="Os Version" value="{{ $cell_phones[0]->cpb_osversion }}" id="osversion">
                                     @error('osversion') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
-                                </div>
+                                </div> -->
                                 <div class="flex flex-col mb-3">
                                     <img src="/img/tables/tables4.png" alt="IMEI and S/N" style="max-width: 100%; height: auto;">
                                     <p>Dial *#06# or go to setting - about to find IMEI number.</p>
@@ -223,7 +223,7 @@
                                     <input type="text" name="referral" class="form-control" placeholder="Please enter the referral's email address, phone number and name" aria-label="Referral" value="{{ $cell_phones[0]->cpb_referral }}" id="referral">
                                     @error('referral') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
-                                <div class="form-radio form-check-info text-start">
+                                <!-- <div class="form-radio form-check-info text-start">
                                     <h6>Add International Calling Service <span style="color:red">*</span></h6>
                                     <input class="form-radio-input" type="radio" name="callservice" id="flexRadioDefault_y" value="yes" @if($cell_phones[0]->cpb_callservice == "yes") checked @else @endif>
                                     <label class="form-radio-label" for="flexRadioDefault_y">Yes</label>
@@ -231,7 +231,7 @@
                                     <label class="form-radio-label" for="flexRadioDefault_n">No</label>
                                     @error('callservice') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
                                     <p>Extra $5/ month per line</p>
-                                </div>
+                                </div> -->
                                 <div class="flex flex-col mb-3">
                                     <img src="/img/tables/tables6.png" alt="5G" style="max-width: 100%; height: auto;">
                                     <img src="/img/tables/tables7.png" alt="4G" style="max-width: 100%; height: auto;">
