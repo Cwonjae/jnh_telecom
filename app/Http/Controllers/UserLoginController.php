@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Password;
+use App\Models\User;
 
 class UserLoginController extends Controller
 {
@@ -27,6 +28,12 @@ class UserLoginController extends Controller
         ]);
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            $user = User::where('email', $request->email)->first();
+            if(!$user->email_verified_at) {
+                return back()->withErrors([
+                    'verify' => 'You can log in after checking your email.',
+                ]);
+            }
             $request->session()->regenerate();
 
             // return redirect()->intended('/user/dashboard');

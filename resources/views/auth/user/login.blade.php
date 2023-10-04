@@ -11,6 +11,7 @@
                                 <div class="card-header pb-0 text-start">
                                     <h4 class="font-weight-bolder">User Sign In</h4>
                                     <p class="mb-0">Enter your email and password to sign in</p>
+                                    @error('verify') <p class="text-danger text-xs pt-1"> {{$message}} </p>@enderror
                                 </div>
                                 <div class="card-body">
                                     <form role="form" method="POST" action="{{ route('userlogin.perform') }}">

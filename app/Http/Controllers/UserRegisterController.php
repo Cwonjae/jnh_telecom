@@ -55,7 +55,9 @@ class UserRegisterController extends Controller
               $message->subject('Email Verification Mail');
           });
          
-        return redirect("/user/dashboard")->withSuccess('Great! You have Successfully loggedin');
+        return redirect("/user/login")->withErrors([
+            'verify' => 'You can log in after checking your email.',
+        ]);
     }
 
     public function verifyAccount($token) {
