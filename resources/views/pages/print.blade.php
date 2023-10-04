@@ -3,6 +3,7 @@
     position:relative;
 }
 .main_box1 img {
+    position:absolute;
     width:100%;
     margin:0 auto;
 }
