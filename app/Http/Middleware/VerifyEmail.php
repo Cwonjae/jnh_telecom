@@ -19,8 +19,9 @@ class VerifyEmail
     {
         if (!Auth::user()->email_verified_at) {
             auth()->logout();
-            return redirect()->route('userlogin')
-                    ->with('message', 'You need to confirm your account. We have sent you an activation code, please check your email.');
+            return redirect()->route('userlogin')->withErrors([
+                'verify' => 'You need to confirm your account. We have sent you an activation code, please check your email.',
+            ]);
           }
    
         return $next($request);

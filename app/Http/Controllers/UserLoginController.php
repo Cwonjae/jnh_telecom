@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Password;
-use App\Models\User;
 
 class UserLoginController extends Controller
 {
@@ -28,10 +27,9 @@ class UserLoginController extends Controller
         ]);
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            $user = User::where('email', $request->email)->first();
-            if(!$user->email_verified_at) {
+            if(!Auth::user()->email_verified_at) {
                 return back()->withErrors([
-                    'verify' => 'You can log in after checking your email.',
+                    'verify' => 'You need to confirm your account. We have sent you an activation code, please check your email.',
                 ]);
             }
             $request->session()->regenerate();
