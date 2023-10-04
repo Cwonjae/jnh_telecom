@@ -34,19 +34,18 @@ class UserRegisterController extends Controller
     }
 
     public function registration(Request $request) {
-        $request->validate([
+        $attributes = request()->validate([
             'username' => 'required|max:255|min:2',
-            'email' => 'required|email|max:255|unique:users',
+            'email' => 'required|email|max:255|unique:users,email',
             'password' => 'required|min:5|max:255',
+            'terms' => 'required'
         ]);
-           
-        $data = $request->post();
-        $createUser = $this->create($data);
+        $user = User::create($attributes);
   
         $token = Str::random(64);
   
         UserVerify::create([
-              'user_id' => $createUser->id, 
+              'user_id' => $user->id, 
               'token' => $token
             ]);
   
