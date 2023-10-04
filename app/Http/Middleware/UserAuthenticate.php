@@ -15,7 +15,22 @@ class UserAuthenticate extends Middleware
     protected function redirectTo($request)
     {
         if (! $request->expectsJson()) {
-            return route('/user/login');
+            $urlArr = explode('/', $request->url());
+            $res = end($urlArr);
+            // $urlArr_cnt = count($urlArr);
+            // $res_cnt_val = $urlArr[$urlArr_cnt-2];
+            
+            // if($res == "user" || $res_cnt_val == "user") {
+            //     return route('userlogin');
+            // } else {
+            //     return route('login');
+            // }
+
+            if($request->is('user/*') || $res == "user") {
+                return route('userlogin');
+            } else {
+                return route('login');
+            }
         }
     }
 }
