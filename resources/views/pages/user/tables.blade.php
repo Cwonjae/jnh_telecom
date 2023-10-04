@@ -70,7 +70,7 @@
                                     </tr>
                                     @empty
                                     <tr>
-                                        <td class="align-middle text-center" colspan="5">don't have a history of applying for cell phone opening</td>
+                                        <td class="align-middle text-center" colspan="5">don't have a history of applying for Olleh Mobile Application Form</td>
                                     </tr>
                                     @endforelse
                                 </tbody>
