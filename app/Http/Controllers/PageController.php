@@ -47,8 +47,9 @@ class PageController extends Controller
             $cell_phones = DB::table('cellphone_boards')
                             ->join('signature_uploads', 'cellphone_boards.stu_id', '=' ,'signature_uploads.id')
                             ->join('passport_uploads', 'cellphone_boards.ppu_id', '=' ,'passport_uploads.id')
+                            ->join('users', 'cellphone_boards.u_id', '=' ,'users.id')
                             ->where('cellphone_boards.id', $num)
-                            ->select('cellphone_boards.*', 'signature_uploads.stu_filename', 'signature_uploads.stu_base64', 'passport_uploads.ppu_filename', 'passport_uploads.ppu_encode_filename')
+                            ->select('cellphone_boards.*', 'signature_uploads.stu_filename', 'signature_uploads.stu_base64', 'passport_uploads.ppu_filename', 'passport_uploads.ppu_encode_filename', 'users.email')
                             ->get();
 
             if (view()->exists("pages.{$page}")) {
