@@ -71,7 +71,7 @@ Route::get('/user/register', [UserRegisterController::class, 'create'])->middlew
 Route::post('/user/register', [UserRegisterController::class, 'registration'])->middleware('guest')->name('userregister.perform');
 Route::get('/user/login', [UserLoginController::class, 'show'])->middleware('guest')->name('userlogin');
 Route::post('/user/login', [UserLoginController::class, 'login'])->middleware('guest')->name('userlogin.perform');
-Route::get('/user/dashboard', [UserHomeController::class, 'index'])->name('userhome')->middleware('userauth');
+Route::get('/user/dashboard', [UserHomeController::class, 'index'])->name('userhome')->middleware('verify_email');
 
 Route::group(['middleware' => 'userauth'], function () {
 	Route::get('/user/{page}', [UserPageController::class, 'index'])->name('userpage');
