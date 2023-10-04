@@ -11,6 +11,7 @@ use Session;
 use Hash;
 use Illuminate\Support\Str;
 use Mail; 
+use Carbon\Carbon;
 
 class UserRegisterController extends Controller
 {
@@ -58,6 +59,8 @@ class UserRegisterController extends Controller
     }
 
     public function verifyAccount($token) {
+        $currentDateTime = Carbon::now();
+        $now_date_time = $currentDateTime->toDateTimeString();
         $verifyUser = UserVerify::where('token', $token)->first();
   
         $message = 'Sorry your email cannot be identified.';
@@ -66,7 +69,7 @@ class UserRegisterController extends Controller
             $user = $verifyUser->user;
               
             if(!$user->email_verified_at) {
-                $verifyUser->user->email_verified_at = 1;
+                $verifyUser->user->email_verified_at = $now_date_time;
                 $verifyUser->user->save();
                 $message = "Your email is verified. You can now login.";
             } else {
@@ -74,6 +77,6 @@ class UserRegisterController extends Controller
             }
         }
   
-        return redirect()->route('login')->with('message', $message);
+        return redirect()->route('userlogin')->with('message', $message);
     }
 }
