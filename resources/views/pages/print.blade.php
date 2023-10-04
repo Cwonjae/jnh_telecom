@@ -27,7 +27,7 @@
     <p class="applicant">{{ $cell_phones[0]->cpb_passportnumber }}</p>
     <p class="applicant">{{ $cell_phones[0]->cpb_gender }}</p>
     <p class="applicant">{{ $cell_phones[0]->email }}</p>
-    <p class="applicant">{{ $cell_phones[0]->chooselastnumber }}</p>
+    <p class="applicant">{{ $cell_phones[0]->cpb_chooselastnumber }}</p>
 </div>
 <div class="main_box2">
     <img src="/img/tables/olleh_mobile_application_form_back_2.jpg">
