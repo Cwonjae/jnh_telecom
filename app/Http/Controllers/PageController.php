@@ -51,8 +51,8 @@ class PageController extends Controller
                             ->select('cellphone_boards.*', 'signature_uploads.stu_filename', 'signature_uploads.stu_base64', 'passport_uploads.ppu_filename', 'passport_uploads.ppu_encode_filename')
                             ->get();
 
-            if (view()->exists("pages.user.{$page}_print")) {
-                return view("pages.user.{$page}_print", ['cell_phones' => $cell_phones]);
+            if (view()->exists("pages.user.{$page}")) {
+                return view("pages.user.{$page}", ['cell_phones' => $cell_phones]);
             }
         } else {
             return abort(404);
