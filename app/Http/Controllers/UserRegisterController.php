@@ -50,7 +50,7 @@ class UserRegisterController extends Controller
               'token' => $token
             ]);
   
-        Mail::send('auth.uesr.verify-email', ['token' => $token], function($message) use($request){
+        Mail::send('auth.user.verify-email', ['token' => $token], function($message) use($request){
               $message->to($request->email);
               $message->subject('Email Verification Mail');
           });
