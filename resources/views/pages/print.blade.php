@@ -1,6 +1,6 @@
 <style>
 .main_box1 {
-    
+    position:relative;
 }
 .main_box1 img {
     width:100%;
@@ -10,6 +10,7 @@
 
 }
 .main_box2 img {
+    position:absolute;
     width:100%;
     margin:0 auto;
 }
@@ -23,11 +24,11 @@
 </style>
 <div class="main_box1">
     <img src="/img/tables/olleh_mobile_application_form_back_1.jpg">
-    <p class="applicant">{{ $cell_phones[0]->cpb_applicant }}</p>
-    <p class="applicant">{{ $cell_phones[0]->cpb_passportnumber }}</p>
-    <p class="applicant">{{ $cell_phones[0]->cpb_gender }}</p>
-    <p class="applicant">{{ $cell_phones[0]->email }}</p>
-    <p class="applicant">{{ $cell_phones[0]->cpb_chooselastnumber }}</p>
+    <span class="applicant">{{ $cell_phones[0]->cpb_applicant }}</span>
+    <span class="applicant">{{ $cell_phones[0]->cpb_passportnumber }}</span>
+    <span class="applicant">{{ $cell_phones[0]->cpb_gender }}</span>
+    <span class="applicant">{{ $cell_phones[0]->email }}</span>
+    <span class="applicant">{{ $cell_phones[0]->cpb_chooselastnumber }}</span>
 </div>
 <div class="main_box2">
     <img src="/img/tables/olleh_mobile_application_form_back_2.jpg">
