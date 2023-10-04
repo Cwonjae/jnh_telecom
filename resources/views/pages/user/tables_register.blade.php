@@ -72,6 +72,8 @@
             if ((event.keyCode < 48) || (event.keyCode > 57)){
                 event.returnValue = false;
             }
+            var value = this.value;
+            console.log(value);
         }
     </script>
 
@@ -192,7 +194,7 @@
                                 </div>
                                 <div class="flex flex-col mb-3">
                                     <h6>Please choose the last four digits of your phone number</h6>
-                                    <input type="text" name="chooselastnumber" class="form-control" placeholder="Please choose the last four digits of your phone number." aria-label="Please choose the last four digits of your phone number." value="{{ old('chooselastnumber') }}" onKeyPress="javascript:checkInputNum();" maxlength="4" id="chooselastnumber">
+                                    <input type="text" name="chooselastnumber" class="form-control" placeholder="Please choose the last four digits of your phone number." aria-label="Please choose the last four digits of your phone number." value="{{ old('chooselastnumber') }}" onKeyPress="javascript:checkInputNum();" maxlength="14" id="chooselastnumber">
                                     @error('chooselastnumber') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                     <p>If the phone number you have chosen is already taken, please note that it can be activated with different last four digits.</p>
                                 </div>
