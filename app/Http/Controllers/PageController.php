@@ -106,7 +106,7 @@ class PageController extends Controller
                                 ]);
 
             if($cellphone_update) {
-                return redirect('/admin/close/comparison');
+                return redirect()->route('page.close', ['contents' => 'comparison']);
             } else {
                 return back()->with('error', 'Mobile Application Form modify failed.');
             }
@@ -125,6 +125,7 @@ class PageController extends Controller
                 $msg = "close 오류입니다.";
                 break;
         }
+        echo print_r($msg);
 
         // if (view()->exists("pages.close")) {
         //     return view("pages.close", ['msg' => $msg]);
