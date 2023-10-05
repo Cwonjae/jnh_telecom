@@ -106,9 +106,8 @@ class PageController extends Controller
                                 ]);
 
             if($cellphone_update) {
-                // return redirect("/admin/{$page}-close");
-                echo "<script>function close() { window.open('','_self').close(); } alert('PassPort 검증이 완료되었습니다.'); close(); </script>";
-                exit;
+                echo "<script> alert('PassPort 검증이 완료되었습니다.'); </script>";
+                return redirect("/admin/tables");
             } else {
                 return back()->with('error', 'Mobile Application Form modify failed.');
             }
