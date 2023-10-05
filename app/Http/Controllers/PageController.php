@@ -106,27 +106,16 @@ class PageController extends Controller
                                 ]);
 
             if($cellphone_update) {
-                return redirect(route('page.close_alert', ['contents' => 'comparison']));
+                return redirect('/admin/comparison-close');
             } else {
                 return back()->with('error', 'Mobile Application Form modify failed.');
             }
         }
     }
 
-    public function close_alert(String $contents) {
-
-        echo "뭔데";
-        echo print_r($contents);
-
-        switch($contents) {
-            case 'comparison': 
-                $msg = "PassPort 검증이 완료되었습니다.";
-                break;
-            default:
-                $msg = "close 오류입니다.";
-                break;
-        }
-        echo print_r($msg);
+    public function close_alert() {
+        $msg = "PassPort 검증이 완료되었습니다.";
+        
         return view("pages.close_alert", ['msg' => $msg]);
     }
 }
