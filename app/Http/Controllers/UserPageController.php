@@ -166,9 +166,20 @@ class UserPageController extends Controller
         ]);
 
         if($cellphone_insert_id) {
-            return redirect('/user/tables');
+            $passport_comparison_insert_id = DB::table('passport_comparison')->insertGetId([
+                'cpb_id' => $cellphone_insert_id,
+                'ppu_id' => $passport_insert_id,
+                'ppc_status' => 'N',
+                'created_at' => $now_date_time
+            ]);
+
+            if($passport_comparison_insert_id) {
+                return redirect('/user/tables');
+            } else {
+                return back()->with('error', 'Passport Comparion Insert failed.[9]');
+            }
         } else {
-            return back()->with('error', 'Cell phone opening registration failed.');
+            return back()->with('error', 'Mobile Application Form failed.');
         }
     }
 
@@ -338,7 +349,7 @@ class UserPageController extends Controller
             if($cellphone_update) {
                 return redirect('/user/tables');
             } else {
-                return back()->with('error', 'Cell phone opening modify failed.');
+                return back()->with('error', 'Mobile Application Form modify failed.');
             }
        }
         

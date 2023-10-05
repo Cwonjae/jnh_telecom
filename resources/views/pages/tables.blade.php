@@ -15,15 +15,17 @@
                                 <thead>
                                     <tr>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Applicant</th>
+                                            신청자명</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            Nationality</th>
+                                            신청자 국적</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Opening Status</th>
+                                            가입신청 상태</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Registration date</th>
+                                            신청일</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            ETC</th>
+                                            검증</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            프린트</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -55,14 +57,24 @@
                                             <span class="text-secondary text-xs font-weight-bold">{{ date('Y-m-d H:i:s', strtotime($cell_phone->created_at)) }}</span>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <a href="{{ route('page.print', ['page' => 'print', 'num' => $cell_phone->id]) }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                            <span class="text-secondary text-xs font-weight-bold">
+                                                @if($cell_phone->ppc_status == "N")
+                                                    <a style="color=red;">PassPort</a>
+                                                @else
+                                                    <a style="color=green;">PassPort</a>
+                                                @endif
+                                                
+                                            </span>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <a href="{{ route('page.print', ['page' => 'print', 'num' => $cell_phone->id]) }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="print page" target="_blank">
                                                 Print
                                             </a>
                                         </td>
                                     </tr>
                                     @empty
                                     <tr>
-                                        <td class="align-middle text-center" colspan="5">don't have a history of applying for Olleh Mobile Application Form</td>
+                                        <td class="align-middle text-center" colspan="6">don't have a history of applying for Olleh Mobile Application Form</td>
                                     </tr>
                                     @endforelse
                                 </tbody>
