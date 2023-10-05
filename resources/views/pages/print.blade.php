@@ -66,8 +66,29 @@
                 }
                 .img_box_1 img#signature_img {
                     position: absolute;
-                    top: 866px;
-                    left: 428px;
+                    top: 1050px;
+                    left: 530px;
+                    font-size: 14px;
+                    width: 150px;
+                    height: 50px;
+                    z-index: 1;
+                }
+
+                .main_box2 { width: inherit; height: inherit; max-height: 100%; overflow: scroll; page-break-before:always; }
+                .img_box_2 {
+                    background-image: url("/img/tables/olleh_mobile_application_form_back_2.jpg");
+                    background-size: auto 100%;
+                    background-repeat: no-repeat;
+                    height: 100%;
+                    background-attachment: scroll;
+                    max-height: 100%;
+                    overflow: scroll;
+                    margin: 0 auto;
+                }
+                .img_box_2 img#signature_img {
+                    position: absolute;
+                    top: 1050px;
+                    left: 530px;
                     font-size: 14px;
                     width: 150px;
                     height: 50px;
@@ -143,6 +164,27 @@
                     height: 50px;
                     z-index: 1;
                 }
+                
+                .main_box2 { width: inherit; height: inherit; max-height: 100%; overflow: scroll; page-break-before:always; }
+                .img_box_2 {
+                    background-image: url("/img/tables/olleh_mobile_application_form_back_2.jpg");
+                    background-size: auto 100%;
+                    background-repeat: no-repeat;
+                    height: 100%;
+                    background-attachment: scroll;
+                    max-height: 100%;
+                    overflow: scroll;
+                    margin: 0 auto;
+                }
+                .img_box_2 img#signature_img {
+                    position: absolute;
+                    top: 866px;
+                    left: 428px;
+                    font-size: 14px;
+                    width: 150px;
+                    height: 50px;
+                    z-index: 1;
+                }
             }
         </style>
     </head>
@@ -159,6 +201,13 @@
                     @endif
                     <span class="email">{{ $cell_phones[0]->email }}</span>
                     <span class="chooselastnumber">{{ $cell_phones[0]->cpb_chooselastnumber }}</span>
+                    @if($cell_phones[0]->stu_filename)
+                        <img id="signature_img" src="data:image/png;base64,{{ $cell_phones[0]->stu_base64 }}"/>
+                    @endif
+                </div>
+            </div>
+            <div class="main_box2">
+                <div class="img_box_2">
                     @if($cell_phones[0]->stu_filename)
                         <img id="signature_img" src="data:image/png;base64,{{ $cell_phones[0]->stu_base64 }}"/>
                     @endif
