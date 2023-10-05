@@ -31,6 +31,7 @@ body {
     max-height: 100%;
     overflow: scroll;
     margin: 0 auto;
+    
 }
 </style>
 
