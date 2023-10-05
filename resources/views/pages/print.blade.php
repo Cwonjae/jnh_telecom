@@ -206,7 +206,7 @@
             }
         </style>
     </head>
-    <body>
+    <body onload="javascript:window.print();">
         <div class="print_main_box">
             <div class="main_box1">
                 <div class="img_box_1">
@@ -235,11 +235,3 @@
         </div>
     </body>
 </html>
-<!-- <div class="main_box2">
-    <img src="/img/tables/olleh_mobile_application_form_back_2.jpg">
-
-</div>
-<div class="main_box3">
-    <img src="/img/tables/olleh_mobile_application_form_back_3.jpg">
-
-</div> -->
