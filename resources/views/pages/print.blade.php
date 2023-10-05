@@ -120,9 +120,18 @@
                 }
                 .img_box_1 span.chooselastnumber {
                     position: absolute;
-                    top: 470px;
-                    left: 320px;
+                    top: 584px;
+                    left: 286px;
                     font-size: 14px;
+                    z-index: 1;
+                }
+                .img_box_1 img#signature_img {
+                    position: absolute;
+                    top: 584px;
+                    left: 286px;
+                    font-size: 14px;
+                    width:200px;
+                    height:100px;
                     z-index: 1;
                 }
             }
@@ -141,6 +150,9 @@
                     @endif
                     <span class="email">{{ $cell_phones[0]->email }}</span>
                     <span class="chooselastnumber">{{ $cell_phones[0]->cpb_chooselastnumber }}</span>
+                    @if($cell_phones[0]->stu_filename)
+                        <img id="signature_img" src="data:image/png;base64,{{ $cell_phones[0]->stu_base64 }}"/>
+                    @endif
                 </div>
             </div>
         </div>
