@@ -47,10 +47,6 @@ Route::get('/admin/register', [RegisterController::class, 'create'])->middleware
 Route::post('/admin/register', [RegisterController::class, 'store'])->middleware('guest')->name('register.perform');
 Route::get('/admin/login', [LoginController::class, 'show'])->middleware('guest')->name('login');
 Route::post('/admin/login', [LoginController::class, 'login'])->middleware('guest')->name('login.perform');
-// Route::get('/reset-password', [ResetPassword::class, 'show'])->middleware('guest')->name('reset-password');
-// Route::post('/reset-password', [ResetPassword::class, 'send'])->middleware('guest')->name('reset.perform');
-// Route::get('/change-password', [ChangePassword::class, 'show'])->middleware('guest')->name('change-password');
-// Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('guest')->name('change.perform');
 Route::get('/admin/dashboard', [HomeController::class, 'index'])->name('home')->middleware('auth');
 
 Route::group(['middleware' => 'auth'], function () {
@@ -73,6 +69,10 @@ Route::post('/user/register', [UserRegisterController::class, 'registration'])->
 Route::get('/user/login', [UserLoginController::class, 'show'])->middleware('guest')->name('userlogin');
 Route::post('/user/login', [UserLoginController::class, 'login'])->middleware('guest')->name('userlogin.perform');
 Route::get('/user/dashboard', [UserHomeController::class, 'index'])->name('userhome')->middleware('verify_email');
+Route::get('/user/reset-password', [ResetPassword::class, 'show'])->middleware('guest')->name('userreset-password');
+Route::post('/user/reset-password', [ResetPassword::class, 'send'])->middleware('guest')->name('userreset.perform');
+Route::get('/user/change-password', [ChangePassword::class, 'show'])->middleware('guest')->name('userchange-password');
+Route::post('/user/change-password', [ChangePassword::class, 'update'])->middleware('guest')->name('userchange.perform');
 
 Route::group(['middleware' => 'userauth'], function () {
 	Route::get('/user/{page}', [UserPageController::class, 'index'])->name('userpage');
