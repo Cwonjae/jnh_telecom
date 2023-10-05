@@ -113,9 +113,13 @@ class PageController extends Controller
         }
     }
 
-    public function close_alert() {
+    public function close_alert(Request $request) {
         $msg = "PassPort 검증이 완료되었습니다.";
 
-        return view("pages.close-alert", ['msg' => $msg]);
+        if (view()->exists("pages.close-alert")) {
+            return view("pages.close-alert", ['msg' => $msg]);
+        }
+
+        return abort(404);
     }
 }
