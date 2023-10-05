@@ -106,7 +106,7 @@ class PageController extends Controller
                                 ]);
 
             if($cellphone_update) {
-                return redirect('/admin/close/', ['contents'=>'comparison']);
+                return redirect('/admin/close/comparison');
             } else {
                 return back()->with('error', 'Mobile Application Form modify failed.');
             }
