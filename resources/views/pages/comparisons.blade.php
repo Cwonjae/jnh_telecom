@@ -1,6 +1,13 @@
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
+    <script>
+        $(function () {
+            $('#form_submit').click(function() {
+                $('#comparison_check').submit();
+            });
+        });
+    </script>
     @include('layouts.navbars.auth.topnav', ['title' => 'PassPort Comparison'])
     <div class="container-fluid py-4">
         <div class="row">
@@ -11,7 +18,7 @@
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0" style="width:92%; margin:auto; margin-top:30px;">
-                            <form method="POST" action="{{ route('page.comparisons', ['page' => 'comparisons', 'num' => $comparisons[0]->id]) }}" id="cellPhone_register" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('page.comparisons', ['page' => 'comparisons', 'num' => $comparisons[0]->id]) }}" id="comparison_check" enctype="multipart/form-data">
                                 @csrf
                                     <div class="flex flex-col mb-3">
                                         <h6>Passport Number <span style="color:red">*</span></h6>
@@ -24,7 +31,7 @@
                                         @php
                                             $check_extension = explode('.', $comparisons[0]->ppu_filename);
                                         @endphp
-                                            <img src="{{ url('storage/images/passport/'.$comparisons[0]->ppu_encode_filename.'.'.$check_extension[1]) }}" target="_blank">
+                                            <img src="{{ url('storage/images/passport/'.$comparisons[0]->ppu_encode_filename.'.'.$check_extension[1]) }}" width="100%">
                                         @endif
                                     </div>
                             </form>
