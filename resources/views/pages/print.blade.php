@@ -64,6 +64,15 @@
                     font-size: 14px;
                     z-index: 1;
                 }
+                .img_box_1 img#signature_img {
+                    position: absolute;
+                    top: 866px;
+                    left: 428px;
+                    font-size: 14px;
+                    width: 150px;
+                    height: 50px;
+                    z-index: 1;
+                }
             }
             
             @media screen {
@@ -127,11 +136,11 @@
                 }
                 .img_box_1 img#signature_img {
                     position: absolute;
-                    top: 584px;
-                    left: 286px;
+                    top: 866px;
+                    left: 428px;
                     font-size: 14px;
-                    width:200px;
-                    height:100px;
+                    width: 150px;
+                    height: 50px;
                     z-index: 1;
                 }
             }
