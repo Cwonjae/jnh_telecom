@@ -88,7 +88,7 @@ class PageController extends Controller
     public function comparison(Request $request, string $page, $num) {
         $currentDateTime = Carbon::now()->timezone('Asia/Seoul');
         $now_date_time = $currentDateTime->toDateTimeString();
-        
+
         if(DB::table('cellphone_boards')->where('id', $num)->exists()) {
 
             // Form validate 구성
@@ -106,7 +106,7 @@ class PageController extends Controller
                                 ]);
 
             if($cellphone_update) {
-                return route('page.close', ['contents'=>'comparison']);
+                return redirect('/admin/close/', ['contents'=>'comparison']);
             } else {
                 return back()->with('error', 'Mobile Application Form modify failed.');
             }
