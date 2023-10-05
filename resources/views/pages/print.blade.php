@@ -31,16 +31,15 @@ body {
     max-height: 100%;
     overflow: scroll;
     margin: 0 auto;
-    
 }
 </style>
 
 <div class="print_main_box">
     <div class="main_box1">
         <div class="img_box_1">
-
+            <span class="applicant">{{ $cell_phones[0]->cpb_applicant }}</span>
         </div>
-        <!-- <span class="applicant">{{ $cell_phones[0]->cpb_applicant }}</span>
+        <!-- 
         <span class="applicant">{{ $cell_phones[0]->cpb_passportnumber }}</span>
         <span class="applicant">{{ $cell_phones[0]->cpb_gender }}</span>
         <span class="applicant">{{ $cell_phones[0]->email }}</span>
