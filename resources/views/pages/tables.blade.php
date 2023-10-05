@@ -59,7 +59,7 @@
                                         <td class="align-middle text-center">
                                             <span class="text-secondary text-xs font-weight-bold">
                                                 @if($cell_phone->ppc_status == "N")
-                                                    <a style="color: red;" href="{{ route('page.comparison', ['num' => $cell_phone->ppc_id]) }}" target="_blank">PassPort</a>
+                                                    <a style="color: red;" href="{{ route('page.print', ['page' => 'comparison', 'num' => $cell_phone->ppc_id]) }}" target="_blank">PassPort</a>
                                                 @else
                                                     <a style="color: green;">PassPort</a>
                                                 @endif

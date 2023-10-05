@@ -42,48 +42,43 @@ class PageController extends Controller
         return abort(404);
     }
 
-    public function print(string $page, $num) {        
-        $board_check = DB::table('cellphone_boards')->where('id', $num)->exists();
-        if($board_check) {
-            $cell_phones = DB::table('cellphone_boards')
-                            ->join('signature_uploads', 'cellphone_boards.stu_id', '=' ,'signature_uploads.id')
-                            ->join('passport_uploads', 'cellphone_boards.ppu_id', '=' ,'passport_uploads.id')
-                            ->join('users', 'cellphone_boards.u_id', '=' ,'users.id')
-                            ->where('cellphone_boards.id', $num)
-                            ->select('cellphone_boards.*', 'signature_uploads.stu_filename', 'signature_uploads.stu_base64', 'passport_uploads.ppu_filename', 'passport_uploads.ppu_encode_filename', 'users.email')
-                            ->get();
-
-            if (view()->exists("pages.{$page}")) {
-                return view("pages.{$page}", ['cell_phones' => $cell_phones]);
+    public function print(string $page, $num) {
+        if($page == "print") {
+            $board_check = DB::table('cellphone_boards')->where('id', $num)->exists();
+            if($board_check) {
+                $cell_phones = DB::table('cellphone_boards')
+                                ->join('signature_uploads', 'cellphone_boards.stu_id', '=' ,'signature_uploads.id')
+                                ->join('passport_uploads', 'cellphone_boards.ppu_id', '=' ,'passport_uploads.id')
+                                ->join('users', 'cellphone_boards.u_id', '=' ,'users.id')
+                                ->where('cellphone_boards.id', $num)
+                                ->select('cellphone_boards.*', 'signature_uploads.stu_filename', 'signature_uploads.stu_base64', 'passport_uploads.ppu_filename', 'passport_uploads.ppu_encode_filename', 'users.email')
+                                ->get();
+    
+                if (view()->exists("pages.{$page}")) {
+                    return view("pages.{$page}", ['cell_phones' => $cell_phones]);
+                }
+            } else {
+                return abort(404);
+            }
+        } else if($page == "comparison") {
+            $comparison_check = DB::table('passport_comparison')->where('id', $num)->exists();
+            if($comparison_check) {
+                $comparisons = DB::table('passport_comparison')
+                                ->join('cellphone_boards', 'passport_comparison.cpb_id', '=', 'cellphone_boards.id')
+                                ->join('passport_uploads', 'passport_comparison.ppu_id', '=', 'passport_uploads.id')
+                                ->where('passport_comparison.id', $num)
+                                ->select('cellphone_boards.id', 'cellphone_boards.cpb_passportnumber', 'passport_uploads.ppu_filename', 'passport_uploads.ppu_encode_filename')
+                                ->get();
+    
+                if (view()->exists("pages.{$page}")) {
+                    return view("pages.{$page}", ['comparisons' => $comparisons]);
+                }
+            } else {
+                return abort(404);
             }
         } else {
             return abort(404);
         }
 
-    }
-
-    public function comparison($num) {
-        echo "????>ASDASDASDASD???";
-        // $comparison_check = DB::table('passport_comparison')->where('id', $num)->exists();
-
-        // dd($comparison_check);
-
-        return view("pages.comparisons");
-
-
-        // if($comparison_check) {
-        //     $comparisons = DB::table('passport_comparison')
-        //                     ->join('cellphone_boards', 'passport_comparison.cpb_id', '=', 'cellphone_boards.id')
-        //                     ->join('passport_uploads', 'passport_comparison.ppu_id', '=', 'passport_uploads.id')
-        //                     ->where('passport_comparison.id', $num)
-        //                     ->select('cellphone_boards.id', 'cellphone_boards.cpb_passportnumber', 'passport_uploads.ppu_filename', 'passport_uploads.ppu_encode_filename')
-        //                     ->get();
-
-        //     if (view()->exists("pages.comparisons")) {
-        //         return view("pages.comparisons", ['comparisons' => $comparisons]);
-        //     }
-        // } else {
-        //     return abort(404);
-        // }
     }
 }
