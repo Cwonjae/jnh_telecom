@@ -127,7 +127,7 @@ class PageController extends Controller
                 break;
         }
         echo print_r($msg);
-        exit;
+        return view("pages.close", ['msg' => $msg]);
 
         // if (view()->exists("pages.close")) {
         //     return view("pages.close", ['msg' => $msg]);
