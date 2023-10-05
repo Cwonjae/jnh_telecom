@@ -63,6 +63,7 @@ class PageController extends Controller
     }
 
     public function comparison($num) {
+        echo "????>ASDASDASDASD???";
         $comparison_check = DB::table('passport_comparison')->where('id', $num)->exists();
 
         dd($comparison_check);
