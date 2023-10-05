@@ -114,6 +114,9 @@ class PageController extends Controller
     }
 
     public function close(String $contents) {
+
+        echo print_r($contents);
+
         switch($contents) {
             case 'comparison': 
                 $msg = "PassPort 검증이 완료되었습니다.";
@@ -123,10 +126,10 @@ class PageController extends Controller
                 break;
         }
 
-        if (view()->exists("pages.close")) {
-            return view("pages.close", ['msg' => $msg]);
-        } else {
-            return abort(404);
-        }
+        // if (view()->exists("pages.close")) {
+        //     return view("pages.close", ['msg' => $msg]);
+        // } else {
+        //     return abort(404);
+        // }
     }
 }
