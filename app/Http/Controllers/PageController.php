@@ -106,14 +106,14 @@ class PageController extends Controller
                                 ]);
 
             if($cellphone_update) {
-                return redirect(route('page.close', ['contents' => 'comparison']));
+                return redirect(route('page.close_alert', ['contents' => 'comparison']));
             } else {
                 return back()->with('error', 'Mobile Application Form modify failed.');
             }
         }
     }
 
-    public function close(String $contents) {
+    public function close_alert(String $contents) {
 
         echo "뭔데";
         echo print_r($contents);
@@ -127,7 +127,7 @@ class PageController extends Controller
                 break;
         }
         echo print_r($msg);
-        return view("pages.close", ['msg' => $msg]);
+        return view("pages.close_alert", ['msg' => $msg]);
 
         // if (view()->exists("pages.close")) {
         //     return view("pages.close", ['msg' => $msg]);
