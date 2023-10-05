@@ -2,53 +2,34 @@
 <html>
     <head>
         <style type="text/css" media="print">
-        body { 
-            padding: 0;
-            margin: 0;
-            overflow: scroll;
-        }
-        .print_main_box {
-            margin: 0;
-            padding: 0;
-            left: 0;
-            width: 100%;
-            max-width: 100%;
-            height: 100%;
-            max-height: 100%;
-            background: gray;
-            margin: 0 auto;
-            text-align: center;
-        }
-        .main_box1 {
-            width: inherit;
-            height: inherit;
-            max-height: 100%;
-            overflow: scroll;
-        }
-        .img_box_1 {
-            background-image: url("/img/tables/olleh_mobile_application_form_back_1.jpg");
-            background-size: auto 100%;
-            background-repeat: no-repeat;
-            height: 100%;
-            background-attachment: scroll;
-            max-height: 100%;
-            overflow: scroll;
-            margin: 0 auto;
-        }
-        .img_box_1 span.applicant {
-            position: absolute;
-            top: 392px;
-            left: 200px;
-            font-size: 14px;
-            z-index: 1;
-        }
-        .img_box_1 span.passportnumber {
-            position: absolute;
-            top: 392px;
-            left: 500px;
-            font-size: 14px;
-            z-index: 1;
-        }
+            html { padding: 0; margin: 0; overflow: scroll; width: 100%; height: 100%; }
+            body { padding: 0; margin: 0; width: 100%; height: 100%;}
+            .print_main_box { padding: 0; width: 100%; max-width: 100%; height: 100%; max-height: 100%; margin: 0 auto; text-align: center; }
+            .main_box1 { width: inherit; height: inherit; max-height: 100%; overflow: scroll; }
+            .img_box_1 {
+                background-image: url("/img/tables/olleh_mobile_application_form_back_1.jpg");
+                background-size: auto 100%;
+                background-repeat: no-repeat;
+                height: 100%;
+                background-attachment: scroll;
+                max-height: 100%;
+                overflow: scroll;
+                margin: 0 auto;
+            }
+            .img_box_1 span.applicant {
+                position: absolute;
+                top: 392px;
+                left: 200px;
+                font-size: 14px;
+                z-index: 1;
+            }
+            .img_box_1 span.passportnumber {
+                position: absolute;
+                top: 392px;
+                left: 500px;
+                font-size: 14px;
+                z-index: 1;
+            }
         </style>
     </head>
     <body>
