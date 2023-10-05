@@ -59,8 +59,8 @@
                 }
                 .img_box_1 span.chooselastnumber {
                     position: absolute;
-                    top: 470px;
-                    left: 380px;
+                    top: 708px;
+                    left: 358px;
                     font-size: 14px;
                     z-index: 1;
                 }
