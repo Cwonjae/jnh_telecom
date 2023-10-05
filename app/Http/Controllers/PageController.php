@@ -106,7 +106,7 @@ class PageController extends Controller
                                 ]);
 
             if($cellphone_update) {
-                return redirect('/admin/comparison-close');
+                return redirect("/admin/{$page}-close");
             } else {
                 return back()->with('error', 'Mobile Application Form modify failed.');
             }
@@ -115,7 +115,7 @@ class PageController extends Controller
 
     public function close_alert() {
         $msg = "PassPort 검증이 완료되었습니다.";
-        
-        return view("pages.close_alert", ['msg' => $msg]);
+
+        return view("pages.close-alert", ['msg' => $msg]);
     }
 }
