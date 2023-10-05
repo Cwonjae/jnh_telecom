@@ -128,11 +128,5 @@ class PageController extends Controller
         }
         echo print_r($msg);
         return view("pages.close_alert", ['msg' => $msg]);
-
-        // if (view()->exists("pages.close")) {
-        //     return view("pages.close", ['msg' => $msg]);
-        // } else {
-        //     return abort(404);
-        // }
     }
 }
