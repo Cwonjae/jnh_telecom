@@ -56,6 +56,8 @@ class PageController extends Controller
     
                 if (view()->exists("pages.{$page}")) {
                     return view("pages.{$page}", ['cell_phones' => $cell_phones]);
+                } else {
+                    return abort(404);
                 }
             } else {
                 return abort(404);
@@ -70,8 +72,10 @@ class PageController extends Controller
                                 ->select('cellphone_boards.id', 'cellphone_boards.cpb_passportnumber', 'passport_uploads.ppu_filename', 'passport_uploads.ppu_encode_filename')
                                 ->get();
     
-                if (view()->exists("pages.{$page}")) {
-                    return view("pages.{$page}", ['comparisons' => $comparisons]);
+                if (view()->exists("pages.{$page}s")) {
+                    return view("pages.{$page}s", ['comparisons' => $comparisons]);
+                } else {
+                    return abort(404);
                 }
             } else {
                 return abort(404);
