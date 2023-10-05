@@ -32,12 +32,27 @@ body {
     overflow: scroll;
     margin: 0 auto;
 }
+.img_box_1 span.applicant {
+    position: absolute;
+    top: 392px;
+    left: 200px;
+    font-size: 14px;
+    z-index: 1;
+}
+.img_box_1 span.passportnumber {
+    position: absolute;
+    top: 392px;
+    left: 500px;
+    font-size: 14px;
+    z-index: 1;
+}
 </style>
 
 <div class="print_main_box">
     <div class="main_box1">
         <div class="img_box_1">
             <span class="applicant">{{ $cell_phones[0]->cpb_applicant }}</span>
+            <span class="passportnumber">{{ $cell_phones[0]->cpb_passportnumber }}</span>
         </div>
         <!-- 
         <span class="applicant">{{ $cell_phones[0]->cpb_passportnumber }}</span>
