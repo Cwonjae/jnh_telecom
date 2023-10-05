@@ -85,13 +85,22 @@
                     overflow: scroll;
                     margin: 0 auto;
                 }
-                .img_box_2 img#signature_img {
+                .img_box_2 img#signature_img2_1 {
                     position: absolute;
-                    top: 1050px;
-                    left: 530px;
+                    top: 1480px;
+                    left: 580px;
                     font-size: 14px;
                     width: 150px;
                     height: 50px;
+                    z-index: 1;
+                }
+                .img_box_2 img#signature_img2_2 {
+                    position: absolute;
+                    top: 1808px;
+                    left: 250px;
+                    font-size: 14px;
+                    width: 100px;
+                    height: 33px;
                     z-index: 1;
                 }
             }
@@ -176,13 +185,22 @@
                     overflow: scroll;
                     margin: 0 auto;
                 }
-                .img_box_2 img#signature_img {
+                .img_box_2 img#signature_img2_1 {
                     position: absolute;
-                    top: 866px;
-                    left: 428px;
+                    top: 1200px;
+                    left: 474px;
                     font-size: 14px;
                     width: 150px;
                     height: 50px;
+                    z-index: 1;
+                }
+                .img_box_2 img#signature_img2_2 {
+                    position: absolute;
+                    top: 1480px;
+                    left: 196px;
+                    font-size: 14px;
+                    width: 100px;
+                    height: 33px;
                     z-index: 1;
                 }
             }
@@ -209,7 +227,8 @@
             <div class="main_box2">
                 <div class="img_box_2">
                     @if($cell_phones[0]->stu_filename)
-                        <img id="signature_img" src="data:image/png;base64,{{ $cell_phones[0]->stu_base64 }}"/>
+                        <img id="signature_img2_1" src="data:image/png;base64,{{ $cell_phones[0]->stu_base64 }}"/>
+                        <img id="signature_img2_2" src="data:image/png;base64,{{ $cell_phones[0]->stu_base64 }}"/>
                     @endif
                 </div>
             </div>
