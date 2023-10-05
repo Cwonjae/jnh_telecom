@@ -36,18 +36,25 @@
                 } 
                 .img_box_1 span.gender_m {
                     position: absolute;
-                    top: 392px;
-                    left: 580px;
+                    top: 390px;
+                    left: 662px;
                     font-size: 14px;
                     font-style: oblique;
                     z-index: 1;
                 }
                 .img_box_1 span.gender_f {
                     position: absolute;
-                    top: 392px;
-                    left: 680px;
+                    top: 390px;
+                    left: 693px;
                     font-size: 14px;
                     font-style: oblique;
+                    z-index: 1;
+                }
+                .img_box_1 span.email {
+                    position: absolute;
+                    top: 412px;
+                    left: 400px;
+                    font-size: 14px;
                     z-index: 1;
                 }
             }
@@ -83,18 +90,25 @@
                 }
                 .img_box_1 span.gender_m {
                     position: absolute;
-                    top: 324px;
-                    left: 480px;
+                    top: 321px;
+                    left: 549px;
                     font-size: 14px;
                     font-style: oblique;
                     z-index: 1;
                 }
                 .img_box_1 span.gender_f {
                     position: absolute;
-                    top: 324px;
-                    left: 580px;
+                    top: 321px;
+                    left: 575px;
                     font-size: 14px;
                     font-style: oblique;
+                    z-index: 1;
+                }
+                .img_box_1 span.email {
+                    position: absolute;
+                    top: 344px;
+                    left: 400px;
+                    font-size: 14px;
                     z-index: 1;
                 }
             }
@@ -111,10 +125,9 @@
                     @else
                         <span class="gender_f">v</span>
                     @endif
-
+                    <span class="email">{{ $cell_phones[0]->email }}</span>
                 </div>
                 <!-- 
-                <span class="applicant">{{ $cell_phones[0]->email }}</span>
                 <span class="applicant">{{ $cell_phones[0]->cpb_chooselastnumber }}</span>
             </div> -->
         </div>
