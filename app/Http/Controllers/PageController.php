@@ -87,6 +87,7 @@ class PageController extends Controller
 
     public function comparison(Request $request, string $page, $num) {
         $currentDateTime = Carbon::now()->timezone('Asia/Seoul');
+        $now_date_time = $currentDateTime->toDateTimeString();
         
         if(DB::table('cellphone_boards')->where('id', $num)->exists()) {
 
