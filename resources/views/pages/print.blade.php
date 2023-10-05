@@ -1,19 +1,36 @@
 <style>
+body { 
+    padding: 0;
+    margin: 0;
+    overflow: scroll;
+}
 .print_main_box {
-    margin: 0 auto;
-    top: 0;
+    margin: 0;
+    padding: 0;
     left: 0;
     width: 100%;
     max-width: 100%;
-    height: auto;
+    height: 100%;
     max-height: 100%;
     background: gray;
+    margin: 0 auto;
+    text-align: center;
 }
 .main_box1 {
-    width:inherit;
+    width: inherit;
+    height: inherit;
+    max-height: 100%;
+    overflow: scroll;
 }
 .img_box_1 {
-    background:url("/img/tables/olleh_mobile_application_form_back_1.jpg") center no-repeat;
+    background-image: url("/img/tables/olleh_mobile_application_form_back_1.jpg");
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    height: 100%;
+    background-attachment: scroll;
+    max-height: 100%;
+    overflow: scroll;
+    margin: 0 auto;
 }
 </style>
 
