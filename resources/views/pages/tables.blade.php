@@ -15,7 +15,7 @@
                                 <thead>
                                     <tr>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            신청자명</th>
+                                            신청자명 / 이메일</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                             신청자 국적</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -59,9 +59,9 @@
                                         <td class="align-middle text-center">
                                             <span class="text-secondary text-xs font-weight-bold">
                                                 @if($cell_phone->ppc_status == "N")
-                                                    <a style="color=red;">PassPort</a>
+                                                    <a style="color: red;" href="{{ route('page.comparison', ['num' => $cell_phone->ppc_id]) }}" target="_blank">PassPort</a>
                                                 @else
-                                                    <a style="color=green;">PassPort</a>
+                                                    <a style="color: green;">PassPort</a>
                                                 @endif
                                                 
                                             </span>

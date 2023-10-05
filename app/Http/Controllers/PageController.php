@@ -29,7 +29,7 @@ class PageController extends Controller
                             ->join('users', 'cellphone_boards.u_id', '=' ,'users.id')
                             ->join('passport_comparison', 'cellphone_boards.id', '=' ,'passport_comparison.cpb_id')
                             ->where('cellphone_boards.cpb_telecoms', 'kt')
-                            ->select('users.username', 'users.email', 'cellphone_boards.id', 'cellphone_boards.cpb_applicant', 'cellphone_boards.cpb_nationality', 'cellphone_boards.cpb_status', 'cellphone_boards.cpb_telecoms', 'cellphone_boards.created_at', 'passport_comparison.ppc_status')
+                            ->select('users.username', 'users.email', 'cellphone_boards.id', 'cellphone_boards.cpb_applicant', 'cellphone_boards.cpb_nationality', 'cellphone_boards.cpb_status', 'cellphone_boards.cpb_telecoms', 'cellphone_boards.created_at', 'passport_comparison.ppc_status', 'passport_comparison.id AS ppc_id')
                             ->paginate(10);
         } else {
             return abort(404);
@@ -62,28 +62,22 @@ class PageController extends Controller
 
     }
 
-    public function vr()
-    {
-        return view("pages.virtual-reality");
-    }
+    public function comparison($num) {
+        $comparison_check = DB::table('passport_comparison')->where('id', $num)->exists();
 
-    public function rtl()
-    {
-        return view("pages.rtl");
-    }
+        if($comparison_check) {
+            $comparisons = DB::table('passport_comparison')
+                            ->join('cellphone_boards', 'passport_comparison.cpb_id', '=', 'cellphone_boards.id')
+                            ->join('passport_uploads', 'passport_comparison.ppu_id', '=', 'passport_uploads.id')
+                            ->where('passport_comparison.id', $num)
+                            ->select('cellphone_boards.id', 'cellphone_boards.cpb_passportnumber', 'passport_uploads.ppu_filename', 'passport_uploads.ppu_encode_filename')
+                            ->get();
 
-    public function profile()
-    {
-        return view("pages.profile-static");
-    }
-
-    public function signin()
-    {
-        return view("pages.sign-in-static");
-    }
-
-    public function signup()
-    {
-        return view("pages.sign-up-static");
+            if (view()->exists("pages.comparisons")) {
+                return view("pages.comparisons", ['comparisons' => $comparisons]);
+            }
+        } else {
+            return abort(404);
+        }
     }
 }
