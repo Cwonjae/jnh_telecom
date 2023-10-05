@@ -30,7 +30,7 @@
                 .img_box_1 span.passportnumber {
                     position: absolute;
                     top: 392px;
-                    left: 500px;
+                    left: 470px;
                     font-size: 14px;
                     z-index: 1;
                 } 
@@ -53,15 +53,15 @@
                 }
                 .img_box_1 span.applicant {
                     position: absolute;
-                    top: 392px;
-                    left: 200px;
+                    top: 324px;
+                    left: 170px;
                     font-size: 14px;
                     z-index: 1;
                 }
                 .img_box_1 span.passportnumber {
                     position: absolute;
-                    top: 392px;
-                    left: 500px;
+                    top: 324px;
+                    left: 380px;
                     font-size: 14px;
                     z-index: 1;
                 }
