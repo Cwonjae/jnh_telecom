@@ -65,19 +65,20 @@ class PageController extends Controller
     public function comparison($num) {
         $comparison_check = DB::table('passport_comparison')->where('id', $num)->exists();
 
-        if($comparison_check) {
-            $comparisons = DB::table('passport_comparison')
-                            ->join('cellphone_boards', 'passport_comparison.cpb_id', '=', 'cellphone_boards.id')
-                            ->join('passport_uploads', 'passport_comparison.ppu_id', '=', 'passport_uploads.id')
-                            ->where('passport_comparison.id', $num)
-                            ->select('cellphone_boards.id', 'cellphone_boards.cpb_passportnumber', 'passport_uploads.ppu_filename', 'passport_uploads.ppu_encode_filename')
-                            ->get();
+        dd($comparison_check);
+        // if($comparison_check) {
+        //     $comparisons = DB::table('passport_comparison')
+        //                     ->join('cellphone_boards', 'passport_comparison.cpb_id', '=', 'cellphone_boards.id')
+        //                     ->join('passport_uploads', 'passport_comparison.ppu_id', '=', 'passport_uploads.id')
+        //                     ->where('passport_comparison.id', $num)
+        //                     ->select('cellphone_boards.id', 'cellphone_boards.cpb_passportnumber', 'passport_uploads.ppu_filename', 'passport_uploads.ppu_encode_filename')
+        //                     ->get();
 
-            if (view()->exists("pages.comparisons")) {
-                return view("pages.comparisons", ['comparisons' => $comparisons]);
-            }
-        } else {
-            return abort(404);
-        }
+        //     if (view()->exists("pages.comparisons")) {
+        //         return view("pages.comparisons", ['comparisons' => $comparisons]);
+        //     }
+        // } else {
+        //     return abort(404);
+        // }
     }
 }
