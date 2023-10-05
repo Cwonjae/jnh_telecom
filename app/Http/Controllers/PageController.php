@@ -106,20 +106,22 @@ class PageController extends Controller
                                 ]);
 
             if($cellphone_update) {
-                return redirect("/admin/{$page}-close");
+                // return redirect("/admin/{$page}-close");
+                echo "<script>alert('PassPort 검증이 완료되었습니다.'); window.close();</script>";
+                exit;
             } else {
                 return back()->with('error', 'Mobile Application Form modify failed.');
             }
         }
     }
 
-    public function close_alert(Request $request) {
-        $msg = "PassPort 검증이 완료되었습니다.";
+    // public function close_alert(Request $request) {
+    //     $msg = "PassPort 검증이 완료되었습니다.";
 
-        if (view()->exists("pages.close-alert")) {
-            return view("pages.close-alert", ['msg' => $msg]);
-        }
+    //     if (view()->exists("pages.close-alert")) {
+    //         return view("pages.close-alert", ['msg' => $msg]);
+    //     }
 
-        return abort(404);
-    }
+    //     return abort(404);
+    // }
 }

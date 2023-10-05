@@ -60,7 +60,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/admin/{page}', [PageController::class, 'index'])->name('page');
 	Route::get('/admin/{page}/{num}', [PageController::class, 'print'])->name('page.print');
 	Route::post('/admin/{page}/checking/{num}', [PageController::class, 'comparison'])->name('page.comparisons');
-	Route::get('/admin/comparisons-close', [PageController::class, 'close_alert'])->name('page.close_alert');
+	// Route::get('/admin/comparisons-close', [PageController::class, 'close_alert'])->name('page.close_alert');
 	Route::post('/admin/logout', [LoginController::class, 'logout'])->name('logout');
 });
 
