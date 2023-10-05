@@ -85,19 +85,19 @@
                     overflow: scroll;
                     margin: 0 auto;
                 }
-                .img_box_2 img#signature_img2_1 {
-                    position: absolute;
-                    top: 1480px;
-                    left: 580px;
+                .img_box_2 img#signature_img2_1 { 
+                    position:relative;
+                    margin-top: 320px;
+                    margin-left: 540px;
                     font-size: 14px;
                     width: 150px;
                     height: 50px;
                     z-index: 1;
                 }
                 .img_box_2 img#signature_img2_2 {
-                    position: absolute;
-                    top: 1808px;
-                    left: 250px;
+                    position:relative;
+                    margin-top: 286px;
+                    margin-right: 190px;
                     font-size: 14px;
                     width: 100px;
                     height: 33px;
