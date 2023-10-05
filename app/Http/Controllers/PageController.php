@@ -115,6 +115,7 @@ class PageController extends Controller
 
     public function close(String $contents) {
 
+        echo "뭔데";
         echo print_r($contents);
 
         switch($contents) {
@@ -126,6 +127,7 @@ class PageController extends Controller
                 break;
         }
         echo print_r($msg);
+        exit;
 
         // if (view()->exists("pages.close")) {
         //     return view("pages.close", ['msg' => $msg]);
