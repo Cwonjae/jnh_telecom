@@ -30,10 +30,26 @@
                 .img_box_1 span.passportnumber {
                     position: absolute;
                     top: 392px;
-                    left: 470px;
+                    left: 460px;
                     font-size: 14px;
                     z-index: 1;
                 } 
+                .img_box_1 span.gender_m {
+                    position: absolute;
+                    top: 392px;
+                    left: 580px;
+                    font-size: 14px;
+                    font-style: oblique;
+                    z-index: 1;
+                }
+                .img_box_1 span.gender_f {
+                    position: absolute;
+                    top: 392px;
+                    left: 680px;
+                    font-size: 14px;
+                    font-style: oblique;
+                    z-index: 1;
+                }
             }
             
             @media screen {
@@ -65,6 +81,22 @@
                     font-size: 14px;
                     z-index: 1;
                 }
+                .img_box_1 span.gender_m {
+                    position: absolute;
+                    top: 324px;
+                    left: 480px;
+                    font-size: 14px;
+                    font-style: oblique;
+                    z-index: 1;
+                }
+                .img_box_1 span.gender_f {
+                    position: absolute;
+                    top: 324px;
+                    left: 580px;
+                    font-size: 14px;
+                    font-style: oblique;
+                    z-index: 1;
+                }
             }
         </style>
     </head>
@@ -74,10 +106,14 @@
                 <div class="img_box_1">
                     <span class="applicant">{{ $cell_phones[0]->cpb_applicant }}</span>
                     <span class="passportnumber">{{ $cell_phones[0]->cpb_passportnumber }}</span>
+                    @if($cell_phones[0]->cpb_gender == "male")
+                        <span class="gender_m">v</span>
+                    @else
+                        <span class="gender_f">v</span>
+                    @endif
+
                 </div>
                 <!-- 
-                <span class="applicant">{{ $cell_phones[0]->cpb_passportnumber }}</span>
-                <span class="applicant">{{ $cell_phones[0]->cpb_gender }}</span>
                 <span class="applicant">{{ $cell_phones[0]->email }}</span>
                 <span class="applicant">{{ $cell_phones[0]->cpb_chooselastnumber }}</span>
             </div> -->
