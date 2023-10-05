@@ -52,8 +52,15 @@
                 }
                 .img_box_1 span.email {
                     position: absolute;
-                    top: 412px;
-                    left: 400px;
+                    top: 418px;
+                    left: 540px;
+                    font-size: 14px;
+                    z-index: 1;
+                }
+                .img_box_1 span.chooselastnumber {
+                    position: absolute;
+                    top: 470px;
+                    left: 380px;
                     font-size: 14px;
                     z-index: 1;
                 }
@@ -107,7 +114,14 @@
                 .img_box_1 span.email {
                     position: absolute;
                     top: 344px;
-                    left: 400px;
+                    left: 450px;
+                    font-size: 14px;
+                    z-index: 1;
+                }
+                .img_box_1 span.chooselastnumber {
+                    position: absolute;
+                    top: 470px;
+                    left: 320px;
                     font-size: 14px;
                     z-index: 1;
                 }
@@ -126,10 +140,9 @@
                         <span class="gender_f">v</span>
                     @endif
                     <span class="email">{{ $cell_phones[0]->email }}</span>
+                    <span class="chooselastnumber">{{ $cell_phones[0]->cpb_chooselastnumber }}</span>
                 </div>
-                <!-- 
-                <span class="applicant">{{ $cell_phones[0]->cpb_chooselastnumber }}</span>
-            </div> -->
+            </div>
         </div>
     </body>
 </html>
