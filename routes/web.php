@@ -59,6 +59,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/sign-up-static', [PageController::class, 'signup'])->name('sign-up-static'); 
 	Route::get('/admin/{page}', [PageController::class, 'index'])->name('page');
 	Route::get('/admin/{page}/{num}', [PageController::class, 'print'])->name('page.print');
+	Route::get('/admin/{page}/checking/{num}', [PageController::class, 'comparison'])->name('page.comparisons');
+	Route::get('/admin/close/{contents}', [PageController::class, 'close'])->name('page.close');
 	Route::post('/admin/logout', [LoginController::class, 'logout'])->name('logout');
 });
 

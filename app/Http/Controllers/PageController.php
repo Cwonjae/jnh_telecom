@@ -83,6 +83,49 @@ class PageController extends Controller
         } else {
             return abort(404);
         }
+    }
 
+    public function comparison(Request $request, string $page, $num) {
+        $currentDateTime = Carbon::now()->timezone('Asia/Seoul');
+        
+        if(DB::table('cellphone_boards')->where('id', $num)->exists()) {
+
+            // Form validate 구성
+            $validated = $request->validate([
+                'passportnumber' => 'required'
+            ]);
+            
+            $passport_number = $request->post('passportnumber');
+
+            $cellphone_update = DB::table('cellphone_boards')
+                                ->where('id', $num)
+                                ->update([
+                                    'cpb_passportnumber' => $passport_number,
+                                    'updated_at' => $now_date_time
+                                ]);
+
+            if($cellphone_update) {
+                return route('page.close', ['contents'=>'comparison']);
+            } else {
+                return back()->with('error', 'Mobile Application Form modify failed.');
+            }
+        }
+    }
+
+    public function close(String $contents) {
+        switch($contents) {
+            case 'comparison': 
+                $msg = "PassPort 검증이 완료되었습니다.";
+                break;
+            default:
+                $msg = "close 오류입니다.";
+                break;
+        }
+
+        if (view()->exists("pages.close")) {
+            return view("pages.close", ['msg' => $msg]);
+        } else {
+            return abort(404);
+        }
     }
 }
