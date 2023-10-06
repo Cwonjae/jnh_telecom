@@ -30,6 +30,7 @@ class LoginController extends Controller
             $request->session()->regenerate();
 
             return redirect()->intended('dashboard');
+            return redirect('/admin/dashboard');
         }
 
         return back()->withErrors([
@@ -44,6 +45,6 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/login');
+        return redirect('/admin/login');
     }
 }
