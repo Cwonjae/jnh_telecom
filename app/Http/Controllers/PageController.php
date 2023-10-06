@@ -107,9 +107,17 @@ class PageController extends Controller
                                 ]);
 
             if($cellphone_update) {
-                Alert::success('Success Title', 'Success Message');
+                $comparison_update = DB::table('passport_comparison')
+                                    ->where('cpb_id', $num)
+                                    ->update([
+                                        'ppc_status' => 'Y',
+                                        'updated_at' => $now_date_time
+                                    ]);
+
+                Alert::success('PassPort 검증', 'PassPort 검증이 완료되었습니다.');
                 return redirect("/admin/tables");
             } else {
+                Alert::error('PassPort 검증', 'PassPort 검증이 실패하였습니다.');
                 return back()->with('error', 'Mobile Application Form modify failed.');
             }
         }

@@ -67,7 +67,13 @@
                                             </span>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <a href="{{ route('page.print', ['page' => 'print', 'num' => $cell_phone->id]) }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="print page" target="_blank">
+                                            <a href="
+                                            @if($cell_phone->ppc_status == 'N')
+                                                javascript:alert('Passport 검증 완료 후 Print 가능합니다.');
+                                            @else
+                                                {{ route('page.print', ['page' => 'print', 'num' => $cell_phone->id]) }}
+                                            @endif
+                                            " class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="print page" target="_blank">
                                                 Print
                                             </a>
                                         </td>
