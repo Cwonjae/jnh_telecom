@@ -30,9 +30,9 @@ class HomeController extends Controller
         echo $todayDate;
 
         $user_cnt = DB::table('users')
-                        ->where('created_at', 'like', "'".$todayDate."%'")
-                        // ->count();
-                        ->toSql();
+                        ->where('created_at', 'like', $todayDate.'%')
+                        ->count();
+                        // ->toSql();
 
         $cellphone_cnt = DB::table('cellphone_boards')
                         ->where('created_at', 'like', "'".$todayDate."%'")
