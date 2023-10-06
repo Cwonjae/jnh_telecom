@@ -12,7 +12,7 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's 가입자</p>
                                     <h5 class="font-weight-bolder">
-                                        $53,000
+                                        {{ $user_cnt }}
                                     </h5>
                                     <p class="mb-0">
                                         <span class="text-success text-sm font-weight-bolder">+55%</span>
@@ -37,7 +37,7 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's 신청 수</p>
                                     <h5 class="font-weight-bolder">
-                                        2,300
+                                        {{ $cellphone_cnt }}
                                     </h5>
                                     <p class="mb-0">
                                         <span class="text-success text-sm font-weight-bolder">+3%</span>
@@ -62,7 +62,7 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's 완료건</p>
                                     <h5 class="font-weight-bolder">
-                                        +3,462
+                                        {{ $cellphone_done_cnt }}
                                     </h5>
                                     <p class="mb-0">
                                         <span class="text-danger text-sm font-weight-bolder">-2%</span>
@@ -87,7 +87,7 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's 미완료건</p>
                                     <h5 class="font-weight-bolder">
-                                        $103,430
+                                        {{ $cellphone_not_cnt }}
                                     </h5>
                                     <p class="mb-0">
                                         <span class="text-success text-sm font-weight-bolder">+5%</span> than last month
