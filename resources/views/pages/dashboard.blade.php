@@ -12,6 +12,9 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's 가입자</p>
                                     <h5 class="font-weight-bolder">
+                                        @if($user_cnt > 0)
+                                        +
+                                        @endif
                                         {{ $user_cnt }}
                                     </h5>
                                     <p class="mb-0">
@@ -37,6 +40,9 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's 신청 수</p>
                                     <h5 class="font-weight-bolder">
+                                        @if($cellphone_cnt > 0)
+                                        +
+                                        @endif
                                         {{ $cellphone_cnt }}
                                     </h5>
                                     <p class="mb-0">
@@ -62,6 +68,9 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's 완료건</p>
                                     <h5 class="font-weight-bolder">
+                                        @if($cellphone_done_cnt > 0)
+                                        +
+                                        @endif
                                         {{ $cellphone_done_cnt }}
                                     </h5>
                                     <p class="mb-0">
@@ -87,6 +96,9 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's 미완료건</p>
                                     <h5 class="font-weight-bolder">
+                                        @if($cellphone_not_cnt > 0)
+                                        +
+                                        @endif
                                         {{ $cellphone_not_cnt }}
                                     </h5>
                                     <p class="mb-0">

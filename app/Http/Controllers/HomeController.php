@@ -27,6 +27,8 @@ class HomeController extends Controller
     {
         $todayDate = Carbon::now()->timezone('Asia/Seoul')->format('Y-m-d');
 
+        echo $todayDate;
+
         $user_cnt = DB::table('users')
                         ->where('created_at', 'like', "'".$todayDate."%'")
                         ->count();
