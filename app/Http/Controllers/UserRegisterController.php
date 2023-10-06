@@ -12,6 +12,7 @@ use Hash;
 use Illuminate\Support\Str;
 use Mail; 
 use Carbon\Carbon;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserRegisterController extends Controller
 {
@@ -52,11 +53,12 @@ class UserRegisterController extends Controller
   
         Mail::send('auth.user.verify-email', ['token' => $token], function($message) use($request){
               $message->to($request->email);
-              $message->subject('Email Verification Mail');
+              $message->subject('Verify Email Addresses');
           });
          
+        Alert::warning('Verify Email Addresses', 'You can login after checking your email');
         return redirect("/user/login")->withErrors([
-            'verify' => 'You can log in after checking your email.',
+            'verify' => 'You can login after checking your email',
         ]);
     }
 

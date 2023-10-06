@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
+use RealRashid\SweetAlert\Facades\Alert;
+use Mail;
 
 class UserPageController extends Controller
 {
@@ -164,6 +166,15 @@ class UserPageController extends Controller
             'cpb_telecoms' => 'kt',
             'created_at' => $now_date_time
         ]);
+        
+        /**
+         * 현재는 하드코딩으로 작성된 메일로 발송되게 함
+         * 추후 해당 업무 담당자들에게 발송되게 User Table에서 email 추출해서 전달해야됨
+         */
+        Mail::send('mobileForm.admin.form', function($message) use($request){
+              $message->to('choi.wonjae@jinnhyun.com');
+              $message->subject('신규 모바일 신청이 등록되었습니다. '.$now_date_time);
+          });
 
         if($cellphone_insert_id) {
             $passport_comparison_insert_id = DB::table('passport_comparison')->insertGetId([
@@ -174,11 +185,14 @@ class UserPageController extends Controller
             ]);
 
             if($passport_comparison_insert_id) {
+                Alert::success('Olleh Mobile Registered', 'Your Mobile Application has been Registered');
                 return redirect('/user/tables');
             } else {
-                return back()->with('error', 'Passport Comparion Insert failed.[9]');
+                Alert::error('Olleh Mobile Registered', 'Your Mobile Application Fails to Register [9]');
+                return back()->with('error', 'Your Mobile Application Fails to Register [9]');
             }
         } else {
+            Alert::error('Olleh Mobile Registered', 'Your Mobile Application Fails to Register [7]');
             return back()->with('error', 'Mobile Application Form failed.');
         }
     }
@@ -256,9 +270,11 @@ class UserPageController extends Controller
                                             'updated_at' => $now_date_time
                                         ]);
                     if(!$cellphone_update) {
+                        Alert::error('Olleh Mobile Modify', 'The passport was not DB Insert successfully. [7]');
                         return back()->with('error', 'The passport was not DB Insert successfully.');
                     }
                 } else {
+                    Alert::error('Olleh Mobile Modify', 'The passport was not uploaded successfully. [8]');
                     return back()->with('error', 'The passport was not uploaded successfully.');
                 }
             }
@@ -289,9 +305,11 @@ class UserPageController extends Controller
                                             'updated_at' => $now_date_time
                                         ]);
                     if(!$cellphone_update) {
+                        Alert::error('Olleh Mobile Modify', 'The signature was not DB Insert successfully. [7]');
                         return back()->with('error', 'The signature was not DB Insert successfully.');
                     }
                 } else {
+                    Alert::error('Olleh Mobile Modify', 'The signature was not uploaded successfully. [8]');
                     return back()->with('error', 'The signature was not uploaded successfully.');
                 }
             }
@@ -347,8 +365,10 @@ class UserPageController extends Controller
                                 ]);
 
             if($cellphone_update) {
+                Alert::success('Olleh Mobile Modify', 'Your Mobile Application has been Updated');
                 return redirect('/user/tables');
             } else {
+                Alert::success('Olleh Mobile Modify', 'Your Mobile Application Form modify failed.');
                 return back()->with('error', 'Mobile Application Form modify failed.');
             }
        }
