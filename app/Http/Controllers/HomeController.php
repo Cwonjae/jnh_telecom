@@ -31,21 +31,25 @@ class HomeController extends Controller
 
         $user_cnt = DB::table('users')
                         ->where('created_at', 'like', "'".$todayDate."%'")
-                        ->count();
+                        // ->count();
+                        ->toSql();
 
         $cellphone_cnt = DB::table('cellphone_boards')
                         ->where('created_at', 'like', "'".$todayDate."%'")
-                        ->count();
+                        // ->count();
+                        ->toSql();
 
         $cellphone_done_cnt = DB::table('cellphone_boards')
                         ->where('created_at', 'like', "'".$todayDate."%'")
                         ->where('cpb_status', 'closing')
-                        ->count();
+                        // ->count();
+                        ->toSql();
 
         $cellphone_not_cnt = DB::table('cellphone_boards')
                         ->where('created_at', 'like', "'".$todayDate."%'")
                         ->where('cpb_status', '<>', 'closing')
-                        ->count();
+                        // ->count();
+                        ->toSql();
 
         return view('pages.dashboard', compact('user_cnt', 'cellphone_cnt', 'cellphone_done_cnt', 'cellphone_not_cnt'));
     }
