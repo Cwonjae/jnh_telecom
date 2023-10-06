@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PageController extends Controller
 {
@@ -106,7 +107,7 @@ class PageController extends Controller
                                 ]);
 
             if($cellphone_update) {
-                // echo "<script> alert('PassPort 검증이 완료되었습니다.'); </script>";
+                Alert::success('Success Title', 'Success Message');
                 return redirect("/admin/tables");
             } else {
                 return back()->with('error', 'Mobile Application Form modify failed.');
