@@ -40,6 +40,8 @@ use App\Http\Controllers\UserRegisterController;
 // //email 검증 재발송
 // use Illuminate\Http\Request;
 
+//기본 root 설정
+Route::get('/', function () { return redirect('/user/tables'); })->middleware(['userauth', 'verify_email']);
 
 //admin 전용 Route
 Route::get('/admin', function () {return redirect('/admin/dashboard');})->middleware('auth');
