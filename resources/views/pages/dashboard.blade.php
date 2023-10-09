@@ -21,7 +21,7 @@
                                         @if($user_cnt >= $user_y_cnt)
                                             <span class="text-success text-sm font-weight-bolder">+{{ $yester_user_check }}%</span>
                                         @else
-                                            <span class="text-danger text-sm font-weight-bolder">-{{ $yester_user_check }}%</span>
+                                            <span class="text-danger text-sm font-weight-bolder">{{ $yester_user_check }}%</span>
                                         @endif
                                         since yesterday
                                     </p>
@@ -53,7 +53,7 @@
                                         @if($cellphone_cnt >= $cellphone_y_cnt)
                                             <span class="text-success text-sm font-weight-bolder">+{{ $yester_cellphone_check }}%</span>
                                         @else
-                                            <span class="text-danger text-sm font-weight-bolder">-{{ $yester_cellphone_check }}%</span>
+                                            <span class="text-danger text-sm font-weight-bolder">{{ $yester_cellphone_check }}%</span>
                                         @endif
                                         since yesterday
                                     </p>
@@ -85,7 +85,7 @@
                                         @if($cellphone_done_cnt >= $cellphone_y_done_cnt)
                                             <span class="text-success text-sm font-weight-bolder">+{{ $yester_cellphone_done_check }}%</span>
                                         @else
-                                            <span class="text-danger text-sm font-weight-bolder">-{{ $yester_cellphone_done_check }}%</span>
+                                            <span class="text-danger text-sm font-weight-bolder">{{ $yester_cellphone_done_check }}%</span>
                                         @endif
                                         since yesterday
                                     </p>
@@ -117,7 +117,7 @@
                                         @if($cellphone_not_cnt >= $cellphone_y_not_cnt)
                                             <span class="text-success text-sm font-weight-bolder">+{{ $yester_cellphone_not_check }}%</span>
                                         @else
-                                            <span class="text-danger text-sm font-weight-bolder">-{{ $yester_cellphone_not_check }}%</span>
+                                            <span class="text-danger text-sm font-weight-bolder">{{ $yester_cellphone_not_check }}%</span>
                                         @endif
                                         since yesterday
                                     </p>
