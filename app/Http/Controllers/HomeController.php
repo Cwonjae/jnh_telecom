@@ -26,10 +26,10 @@ class HomeController extends Controller
     public function index()
     {
         $todayDate = Carbon::now()->timezone('Asia/Seoul')->format('Y-m-d');
-        $subdays = Carbon::now()->timezone('Asia/Seoul')->format('Y-m-d')->subDays(1);
+        $subdays = Carbon::now()->subDays(1)->timezone('Asia/Seoul')->format('Y-m-d');
 
         echo $subdays;
-        
+
         $user_cnt = DB::table('users')
                         ->where('created_at', 'like', $todayDate.'%')
                         ->count();
