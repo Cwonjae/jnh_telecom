@@ -64,7 +64,7 @@ class HomeController extends Controller
                         ->where('cpb_status', '<>', 'closing')
                         ->count();
 
-        if($cellphone_cnt > 0 || $cellphone_y_cnt > 0) {
+        if($user_cnt > 0 || $user_y_cnt > 0) {
             $yester_user_check = (($user_cnt - $user_y_cnt) / $user_y_cnt) * 100;
             if($user_cnt >= $user_y_cnt) {
                 $yester_user_check = ($user_cnt / $user_y_cnt) * 100;
