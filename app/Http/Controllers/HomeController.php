@@ -28,18 +28,29 @@ class HomeController extends Controller
         $todayDate = Carbon::now()->timezone('Asia/Seoul')->format('Y-m-d');
         $subdays = Carbon::now()->subDays(1)->timezone('Asia/Seoul')->format('Y-m-d');
 
-        echo $subdays;
-
         $user_cnt = DB::table('users')
                         ->where('created_at', 'like', $todayDate.'%')
+                        ->count();
+
+        $user_y_cnt = DB::table('users')
+                        ->where('created_at', 'like', $subdays.'%')
                         ->count();
 
         $cellphone_cnt = DB::table('cellphone_boards')
                         ->where('created_at', 'like', $todayDate.'%')
                         ->count();
 
+        $cellphone_y_cnt = DB::table('cellphone_boards')
+                        ->where('created_at', 'like', $subdays.'%')
+                        ->count();
+
         $cellphone_done_cnt = DB::table('cellphone_boards')
                         ->where('created_at', 'like', $todayDate.'%')
+                        ->where('cpb_status', 'closing')
+                        ->count();
+
+        $cellphone_y_done_cnt = DB::table('cellphone_boards')
+                        ->where('created_at', 'like', $subdays.'%')
                         ->where('cpb_status', 'closing')
                         ->count();
 
@@ -48,6 +59,31 @@ class HomeController extends Controller
                         ->where('cpb_status', '<>', 'closing')
                         ->count();
 
-        return view('pages.dashboard', compact('user_cnt', 'cellphone_cnt', 'cellphone_done_cnt', 'cellphone_not_cnt'));
+        $cellphone_y_not_cnt = DB::table('cellphone_boards')
+                        ->where('created_at', 'like', $subdays.'%')
+                        ->where('cpb_status', '<>', 'closing')
+                        ->count();
+
+        $yester_user_check = (($user_cnt - $user_y_cnt) / $user_y_cnt) * 100;
+        if($user_cnt >= $user_y_cnt) {
+            $yester_user_check = ($user_cnt / $user_y_cnt) * 100;
+        }
+
+        $yester_cellphone_check = (($cellphone_cnt - $cellphone_y_cnt) / $cellphone_y_cnt) * 100;
+        if($cellphone_cnt >= $cellphone_y_cnt) {
+            $yester_cellphone_check = ($usecellphone_cntr_cnt / $cellphone_y_cnt) * 100;
+        }
+
+        $yester_cellphone_done_check = (($cellphone_done_cnt - $cellphone_y_done_cnt) / $cellphone_y_done_cnt) * 100;
+        if($cellphone_done_cnt >= $cellphone_y_done_cnt) {
+            $yester_cellphone_done_check = ($cellphone_done_cnt / $cellphone_y_done_cnt) * 100;
+        }
+
+        $yester_cellphone_not_check = (($cellphone_not_cnt - $cellphone_y_not_cnt) / $cellphone_y_not_cnt) * 100;
+        if($cellphone_not_cnt >= $cellphone_y_not_cnt) {
+            $yester_cellphone_not_check = ($cellphone_not_cnt / $cellphone_y_not_cnt) * 100;
+        }
+
+        return view('pages.dashboard', compact('user_cnt', 'user_y_cnt', 'cellphone_cnt', 'cellphone_y_cnt', 'cellphone_done_cnt', 'cellphone_y_done_cnt', 'cellphone_not_cnt', 'cellphone_y_not_cnt', 'yester_user_check', 'yester_cellphone_check', 'yester_cellphone_done_check', 'yester_cellphone_not_check'));
     }
 }

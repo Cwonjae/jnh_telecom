@@ -18,7 +18,11 @@
                                         {{ $user_cnt }}
                                     </h5>
                                     <p class="mb-0">
-                                        <span class="text-success text-sm font-weight-bolder">+55%</span>
+                                        @if($user_cnt >= $user_y_cnt)
+                                            <span class="text-success text-sm font-weight-bolder">+{{ $yester_user_check }}%</span>
+                                        @else
+                                            <span class="text-danger text-sm font-weight-bolder">-{{ $yester_user_check }}%</span>
+                                        @endif
                                         since yesterday
                                     </p>
                                 </div>
@@ -46,8 +50,12 @@
                                         {{ $cellphone_cnt }}
                                     </h5>
                                     <p class="mb-0">
-                                        <span class="text-success text-sm font-weight-bolder">+3%</span>
-                                        since last week
+                                        @if($cellphone_cnt >= $cellphone_y_cnt)
+                                            <span class="text-success text-sm font-weight-bolder">+{{ $yester_cellphone_check }}%</span>
+                                        @else
+                                            <span class="text-danger text-sm font-weight-bolder">-{{ $yester_cellphone_check }}%</span>
+                                        @endif
+                                        since yesterday
                                     </p>
                                 </div>
                             </div>
@@ -74,8 +82,12 @@
                                         {{ $cellphone_done_cnt }}
                                     </h5>
                                     <p class="mb-0">
-                                        <span class="text-danger text-sm font-weight-bolder">-2%</span>
-                                        since last quarter
+                                        @if($cellphone_done_cnt >= $cellphone_y_done_cnt)
+                                            <span class="text-success text-sm font-weight-bolder">+{{ $yester_cellphone_done_check }}%</span>
+                                        @else
+                                            <span class="text-danger text-sm font-weight-bolder">-{{ $yester_cellphone_done_check }}%</span>
+                                        @endif
+                                        since yesterday
                                     </p>
                                 </div>
                             </div>
@@ -102,7 +114,12 @@
                                         {{ $cellphone_not_cnt }}
                                     </h5>
                                     <p class="mb-0">
-                                        <span class="text-success text-sm font-weight-bolder">+5%</span> than last month
+                                        @if($cellphone_not_cnt >= $cellphone_y_not_cnt)
+                                            <span class="text-success text-sm font-weight-bolder">+{{ $yester_cellphone_not_check }}%</span>
+                                        @else
+                                            <span class="text-danger text-sm font-weight-bolder">-{{ $yester_cellphone_not_check }}%</span>
+                                        @endif
+                                        since yesterday
                                     </p>
                                 </div>
                             </div>
