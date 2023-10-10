@@ -136,16 +136,17 @@ class PageController extends Controller
                                     'updated_at' => $now_date_time
                                 ]);
             if($cellphone_update) {
-                $user_email_check = DB::table('cellphone_boards')
+                $user_check = DB::table('cellphone_boards')
                                         ->join('users', 'cellphone_boards.u_id', '=', 'users.id')
                                         ->where('cellphone_boards.id', $num)
-                                        ->value('users.email');
+                                        ->select('users.email')
+                                        ->first();
                 /**
                  * 현재는 하드코딩으로 작성된 메일로 발송되게 함
                  * 추후 해당 업무 담당자들에게 발송되게 User Table에서 email 추출해서 전달해야됨
                  */
                 Mail::send('mobileForm.user.status', function($message) use($request){
-                    $message->to($user_email_check);
+                    $message->to($user_check->email);
                     $message->subject('Olle mobile application is finally complete.'.$now_date_time);
                 });
 
