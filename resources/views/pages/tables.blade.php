@@ -3,16 +3,17 @@
 @section('content')
 <script>
     function confirm_status(value) {
+        console.log(value);
         $('#dialog-message').dialog({
             modal: true, 
             buttons: {
                 "최종완료": function() { 
                     $(this).dialog('close'); 
-                    location.replace("{{ route('page.statuschange', ['page' => 'tables', 'num' => "+value+", 'status' => 'closing']) }}");
+                    location.replace("{{ route('page.statuschange', ['page' => 'tables', 'num' => '"+value+"', 'status' => 'closing']) }}");
                 },
                 "보류": function() { 
                     $(this).dialog('close'); 
-                    location.replace("{{ route('page.statuschange', ['page' => 'tables', 'num' => "+value+", 'status' => 'pending']) }}");
+                    location.replace("{{ route('page.statuschange', ['page' => 'tables', 'num' => '"+value+"', 'status' => 'pending']) }}");
                 },
                 "취소": function() { 
                     $(this).dialog('close'); 
