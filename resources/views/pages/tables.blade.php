@@ -9,14 +9,12 @@
                 "최종완료": function() { 
                     $(this).dialog('close');
                     console.log(value);
-                    return false;
-                    // location.replace("{{ route('page.statuschange', ['page' => 'tables', 'num' => '"+value+"', 'status' => 'closing']) }}");
+                    location.href = "{{ route('page.statuschange', ['page' => 'tables', 'num' => "+value+", 'status' => 'closing']) }}";
                 },
                 "보류": function() { 
                     $(this).dialog('close'); 
                     console.log(value);
-                    return false;
-                    // location.replace("{{ route('page.statuschange', ['page' => 'tables', 'num' => '"+value+"', 'status' => 'pending']) }}");
+                    location.href = "{{ route('page.statuschange', ['page' => 'tables', 'num' => "+value+", 'status' => 'pending']) }}";
                 },
                 "취소": function() { 
                     $(this).dialog('close'); 
