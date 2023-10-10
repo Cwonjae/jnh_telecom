@@ -137,7 +137,7 @@
             <div class="mb-lg-0 mb-4">
                 <div class="card z-index-2 h-100">
                     <div class="card-header pb-0 pt-3 bg-transparent">
-                        <h6 class="text-capitalize">Statistics</h6>
+                        <h6 class="text-capitalize">Year's Statistics</h6>
                         <p class="text-sm mb-0">
                             <!-- <i class="fa fa-arrow-up text-success"></i> -->
                             <!-- <span class="font-weight-bold">4% more</span> in 2021 -->
@@ -438,7 +438,7 @@
             data: {
                 labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
                 datasets: [{
-                    label: "New Users",
+                    label: "홈페이지 가입",
                     tension: 0.4,
                     borderWidth: 0,
                     pointRadius: 0,
@@ -449,7 +449,7 @@
                     data: [{{ $nowYear_user_cnts->jan }}, {{ $nowYear_user_cnts->feb }}, {{ $nowYear_user_cnts->mar }}, {{ $nowYear_user_cnts->apr }}, {{ $nowYear_user_cnts->may }}, {{ $nowYear_user_cnts->jun }}, {{ $nowYear_user_cnts->jul }}, {{ $nowYear_user_cnts->aug }}, {{ $nowYear_user_cnts->sep }}, {{ $nowYear_user_cnts->oct }}, {{ $nowYear_user_cnts->nov }}, {{ $nowYear_user_cnts->decc }}],
                     maxBarThickness: 6
                 }, {
-                    label: "New Mobile Form",
+                    label: "모바일 신청",
                     tension: 0.4,
                     borderWidth: 0,
                     pointRadius: 0,
@@ -458,6 +458,17 @@
                     borderWidth: 3,
                     fill: true,
                     data: [{{ $nowYear_cellphone_cnts->jan }}, {{ $nowYear_cellphone_cnts->feb }}, {{ $nowYear_cellphone_cnts->mar }}, {{ $nowYear_cellphone_cnts->apr }}, {{ $nowYear_cellphone_cnts->may }}, {{ $nowYear_cellphone_cnts->jun }}, {{ $nowYear_cellphone_cnts->jul }}, {{ $nowYear_cellphone_cnts->aug }}, {{ $nowYear_cellphone_cnts->sep }}, {{ $nowYear_cellphone_cnts->oct }}, {{ $nowYear_cellphone_cnts->nov }}, {{ $nowYear_cellphone_cnts->decc }}],
+                    maxBarThickness: 6
+                }, {
+                    label: "모바일 신청 완료",
+                    tension: 0.4,
+                    borderWidth: 0,
+                    pointRadius: 0,
+                    borderColor: "#0dcaf0",
+                    backgroundColor: gradientStroke1,
+                    borderWidth: 3,
+                    fill: true,
+                    data: [{{ $nowYear_cellphone_done_cnts->jan }}, {{ $nowYear_cellphone_done_cnts->feb }}, {{ $nowYear_cellphone_done_cnts->mar }}, {{ $nowYear_cellphone_done_cnts->apr }}, {{ $nowYear_cellphone_done_cnts->may }}, {{ $nowYear_cellphone_done_cnts->jun }}, {{ $nowYear_cellphone_done_cnts->jul }}, {{ $nowYear_cellphone_done_cnts->aug }}, {{ $nowYear_cellphone_done_cnts->sep }}, {{ $nowYear_cellphone_done_cnts->oct }}, {{ $nowYear_cellphone_done_cnts->nov }}, {{ $nowYear_cellphone_done_cnts->decc }}],
                     maxBarThickness: 6
                 }],
             },
