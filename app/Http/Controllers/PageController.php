@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 use RealRashid\SweetAlert\Facades\Alert;
+use Mail;
 
 class PageController extends Controller
 {
@@ -126,7 +127,7 @@ class PageController extends Controller
     public function status_change(Request $request, string $page, $num, string $status) {
         $currentDateTime = Carbon::now()->timezone('Asia/Seoul');
         $now_date_time = $currentDateTime->toDateTimeString();
-        
+
         if(DB::table('cellphone_boards')->where('id', $num)->where('cpb_status', 'opening')->exists()) {
             $cellphone_update = DB::table('cellphone_boards')
                                 ->where('id', $num)
@@ -135,6 +136,20 @@ class PageController extends Controller
                                     'updated_at' => $now_date_time
                                 ]);
             if($cellphone_update) {
+                $user_email_check = DB::table('cellphone_boards')
+                                        ->join('cellphone_boards', 'passport_comparison.cpb_id', '=', 'cellphone_boards.id')
+                                        ->join('users', 'cellphone_boards.u_id', '=', 'users.id')
+                                        ->where('cellphone_boards.id', $num)
+                                        ->value('users.email');
+                /**
+                 * 현재는 하드코딩으로 작성된 메일로 발송되게 함
+                 * 추후 해당 업무 담당자들에게 발송되게 User Table에서 email 추출해서 전달해야됨
+                 */
+                Mail::send('mobileForm.user.status', function($message) use($request){
+                    $message->to($user_email_check);
+                    $message->subject('Olle mobile application is finally complete.'.$now_date_time);
+                });
+
                 Alert::success('가입신청 상태 변경', '가입신청 상태 변경이 완료되었습니다.');
                 return redirect("/admin/tables");
             } else {

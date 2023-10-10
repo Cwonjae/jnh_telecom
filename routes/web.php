@@ -73,7 +73,7 @@ Route::get('/user/register', [UserRegisterController::class, 'create'])->middlew
 Route::post('/user/register', [UserRegisterController::class, 'registration'])->middleware('guest')->name('userregister.perform');
 Route::get('/user/login', [UserLoginController::class, 'show'])->middleware('guest')->name('userlogin');
 Route::post('/user/login', [UserLoginController::class, 'login'])->middleware('guest')->name('userlogin.perform');
-Route::get('/user/dashboard', [UserHomeController::class, 'index'])->name('userhome')->middleware('verify_email');
+Route::get('/user/dashboard', [UserHomeController::class, 'index'])->name('userhome')->middleware(['userauth', 'verify_email']);
 Route::get('/user/reset-password', [ResetPassword::class, 'show'])->middleware('guest')->name('userreset-password');
 Route::post('/user/reset-password', [ResetPassword::class, 'send'])->middleware('guest')->name('userreset.perform');
 Route::get('/user/change-password', [ChangePassword::class, 'show'])->middleware('guest')->name('userchange-password');
