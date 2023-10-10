@@ -124,6 +124,9 @@ class PageController extends Controller
     }
 
     public function status_change(Request $request, string $page, $num, string $status) {
+        $currentDateTime = Carbon::now()->timezone('Asia/Seoul');
+        $now_date_time = $currentDateTime->toDateTimeString();
+        
         if(DB::table('cellphone_boards')->where('id', $num)->where('cpb_status', 'opening')->exists()) {
             $cellphone_update = DB::table('cellphone_boards')
                                 ->where('id', $num)
