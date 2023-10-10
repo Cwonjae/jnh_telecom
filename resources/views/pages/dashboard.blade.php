@@ -446,10 +446,8 @@
                     backgroundColor: gradientStroke1,
                     borderWidth: 3,
                     fill: true,
-                    data: {{ $nowYear_user_cnts }},
-                    // data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+                    data: [{{ $nowYear_user_cnts->jan }}, {{ $nowYear_user_cnts->feb }}, {{ $nowYear_user_cnts->mar }}, {{ $nowYear_user_cnts->apr }}, {{ $nowYear_user_cnts->may }}, {{ $nowYear_user_cnts->jun }}, {{ $nowYear_user_cnts->jul }}, {{ $nowYear_user_cnts->aug }}, {{ $nowYear_user_cnts->sep }}, {{ $nowYear_user_cnts->oct }}, {{ $nowYear_user_cnts->nov }}, {{ $nowYear_user_cnts->decc }}],
                     maxBarThickness: 6
-
                 }],
             },
             options: {
