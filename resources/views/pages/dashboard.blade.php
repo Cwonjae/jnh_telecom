@@ -433,6 +433,14 @@
         gradientStroke1.addColorStop(1, 'rgba(251, 99, 64, 0.2)');
         gradientStroke1.addColorStop(0.2, 'rgba(251, 99, 64, 0.0)');
         gradientStroke1.addColorStop(0, 'rgba(251, 99, 64, 0)');
+
+        gradientStroke2.addColorStop(1, 'rgba(162, 84, 79, 0.2)');
+        gradientStroke2.addColorStop(0.2, 'rgba(162, 84, 79, 0.0)');
+        gradientStroke2.addColorStop(0, 'rgba(162, 84, 79, 0)');
+
+        gradientStroke3.addColorStop(1, 'rgba(190, 95, 94, 0.2)');
+        gradientStroke3.addColorStop(0.2, 'rgba(190, 95, 94, 0.0)');
+        gradientStroke3.addColorStop(0, 'rgba(190, 95, 94, 0)');
         new Chart(ctx1, {
             type: "line",
             data: {
@@ -454,7 +462,7 @@
                     borderWidth: 0,
                     pointRadius: 0,
                     borderColor: "#20c997",
-                    backgroundColor: gradientStroke1,
+                    backgroundColor: gradientStroke2,
                     borderWidth: 3,
                     fill: true,
                     data: [{{ $nowYear_cellphone_cnts->jan }}, {{ $nowYear_cellphone_cnts->feb }}, {{ $nowYear_cellphone_cnts->mar }}, {{ $nowYear_cellphone_cnts->apr }}, {{ $nowYear_cellphone_cnts->may }}, {{ $nowYear_cellphone_cnts->jun }}, {{ $nowYear_cellphone_cnts->jul }}, {{ $nowYear_cellphone_cnts->aug }}, {{ $nowYear_cellphone_cnts->sep }}, {{ $nowYear_cellphone_cnts->oct }}, {{ $nowYear_cellphone_cnts->nov }}, {{ $nowYear_cellphone_cnts->decc }}],
@@ -465,7 +473,7 @@
                     borderWidth: 0,
                     pointRadius: 0,
                     borderColor: "#0dcaf0",
-                    backgroundColor: gradientStroke1,
+                    backgroundColor: gradientStroke3,
                     borderWidth: 3,
                     fill: true,
                     data: [{{ $nowYear_cellphone_done_cnts->jan }}, {{ $nowYear_cellphone_done_cnts->feb }}, {{ $nowYear_cellphone_done_cnts->mar }}, {{ $nowYear_cellphone_done_cnts->apr }}, {{ $nowYear_cellphone_done_cnts->may }}, {{ $nowYear_cellphone_done_cnts->jun }}, {{ $nowYear_cellphone_done_cnts->jul }}, {{ $nowYear_cellphone_done_cnts->aug }}, {{ $nowYear_cellphone_done_cnts->sep }}, {{ $nowYear_cellphone_done_cnts->oct }}, {{ $nowYear_cellphone_done_cnts->nov }}, {{ $nowYear_cellphone_done_cnts->decc }}],
