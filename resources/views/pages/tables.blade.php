@@ -1,6 +1,26 @@
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
+<script>
+    function confirm_status(value) {
+        $('#dialog-message').dialog({
+            modal: true, 
+            buttons: {
+                "최종완료": function() { 
+                    $(this).dialog('close'); 
+                    location.replace("{{ route('page.statuschange', ['page' => 'tables', 'num' => "+value+", 'status' => 'closing']) }}");
+                },
+                "보류": function() { 
+                    $(this).dialog('close'); 
+                    location.replace("{{ route('page.statuschange', ['page' => 'tables', 'num' => "+value+", 'status' => 'pending']) }}");
+                },
+                "취소": function() { 
+                    $(this).dialog('close'); 
+                }
+            }
+        });
+    }
+</script>
     @include('layouts.navbars.auth.topnav', ['title' => 'Olleh Mobile Application Form'])
     <div class="container-fluid py-4">
         <div class="row">
@@ -43,15 +63,15 @@
                                             <p class="text-xs font-weight-bold text-center mb-0">{{ $cell_phone->cpb_nationality }}</p>
                                         </td>
                                         <td class="align-middle text-center text-sm">
-                                            <span class="badge badge-sm
+                                            <span 
                                             @if ($cell_phone->cpb_status == 'opening') 
-                                                bg-gradient-success
+                                                class="badge badge-sm bg-gradient-success" onclick="confirm_status({{ $cell_phone->id }})"
                                             @elseif ($cell_phone->cpb_status == 'pending')
-                                                bg-gradient-danger
+                                                class="badge badge-sm bg-gradient-danger" onclick="confirm_status({{ $cell_phone->id }})"
                                             @else
-                                                bg-gradient-secondary
+                                                class="badge badge-sm bg-gradient-secondary"
                                             @endif
-                                            ">{{ $cell_phone->cpb_status }}</span>
+                                            >{{ $cell_phone->cpb_status }}</span>
                                         </td>
                                         <td class="align-middle text-center">
                                             <span class="text-secondary text-xs font-weight-bold">{{ date('Y-m-d H:i:s', strtotime($cell_phone->created_at)) }}</span>
@@ -89,10 +109,19 @@
                                 {{ $cell_phones->links() }}
                             </div>
                         </div>
+                        <div id="alert">
+                            @include('components.alert')
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         @include('layouts.footers.auth.footer')
+    </div>
+    <div id="dialog-message" title="가입신청 상태를 변경하시겠습니까?" style='display:none'>
+        최종완료 처리 하시겠습니까?<br/>
+        <span>최종완료</span>
+        <span>보류</span>
+        <span>취소</span>
     </div>
 @endsection

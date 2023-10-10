@@ -123,13 +123,21 @@ class PageController extends Controller
         }
     }
 
-    // public function close_alert(Request $request) {
-    //     $msg = "PassPort 검증이 완료되었습니다.";
-
-    //     if (view()->exists("pages.close-alert")) {
-    //         return view("pages.close-alert", ['msg' => $msg]);
-    //     }
-
-    //     return abort(404);
-    // }
+    public function status_change(Request $request, string $page, $num, string $status) {
+        if(DB::table('cellphone_boards')->where('id', $num)->where('cpb_status', 'opening')->exists()) {
+            $cellphone_update = DB::table('cellphone_boards')
+                                ->where('id', $num)
+                                ->update([
+                                    'cpb_status' => $status,
+                                    'updated_at' => $now_date_time
+                                ]);
+            if($cellphone_update) {
+                Alert::success('가입신청 상태 변경', '가입신청 상태 변경이 완료되었습니다.');
+                return redirect("/admin/tables");
+            } else {
+                Alert::error('가입신청 상태 변경', '가입신청 상태 변경이 실패하였습니다.');
+                return redirect("/admin/tables");
+            }
+        }
+    }
 }
