@@ -140,7 +140,7 @@
                         <h6 class="text-capitalize">Statistics</h6>
                         <p class="text-sm mb-0">
                             <i class="fa fa-arrow-up text-success"></i>
-                            <span class="font-weight-bold">4% more</span> in 2021
+                            <!-- <span class="font-weight-bold">4% more</span> in 2021 -->
                         </p>
                     </div>
                     <div class="card-body p-3">
@@ -438,7 +438,7 @@
             data: {
                 labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
                 datasets: [{
-                    label: "Mobile apps",
+                    label: "New Users",
                     tension: 0.4,
                     borderWidth: 0,
                     pointRadius: 0,
@@ -447,6 +447,17 @@
                     borderWidth: 3,
                     fill: true,
                     data: [{{ $nowYear_user_cnts->jan }}, {{ $nowYear_user_cnts->feb }}, {{ $nowYear_user_cnts->mar }}, {{ $nowYear_user_cnts->apr }}, {{ $nowYear_user_cnts->may }}, {{ $nowYear_user_cnts->jun }}, {{ $nowYear_user_cnts->jul }}, {{ $nowYear_user_cnts->aug }}, {{ $nowYear_user_cnts->sep }}, {{ $nowYear_user_cnts->oct }}, {{ $nowYear_user_cnts->nov }}, {{ $nowYear_user_cnts->decc }}],
+                    maxBarThickness: 6
+                }, {
+                    label: "New Mobile Form",
+                    tension: 0.4,
+                    borderWidth: 0,
+                    pointRadius: 0,
+                    borderColor: "#20c997",
+                    backgroundColor: gradientStroke1,
+                    borderWidth: 3,
+                    fill: true,
+                    data: [{{ $nowYear_cellphone_cnts->jan }}, {{ $nowYear_cellphone_cnts->feb }}, {{ $nowYear_cellphone_cnts->mar }}, {{ $nowYear_cellphone_cnts->apr }}, {{ $nowYear_cellphone_cnts->may }}, {{ $nowYear_cellphone_cnts->jun }}, {{ $nowYear_cellphone_cnts->jul }}, {{ $nowYear_cellphone_cnts->aug }}, {{ $nowYear_cellphone_cnts->sep }}, {{ $nowYear_cellphone_cnts->oct }}, {{ $nowYear_cellphone_cnts->nov }}, {{ $nowYear_cellphone_cnts->decc }}],
                     maxBarThickness: 6
                 }],
             },

@@ -102,18 +102,16 @@ class HomeController extends Controller
             $yester_cellphone_not_check = 0;
         }
 
-        // $nowYear;
-        // $nowMonth;
-        
         $nowYear_user_cnts = DB::table('users')
                                 ->select(DB::raw('(select count(*) as cnt1 from users where created_at like "'.$nowYear.'-01%") as jan, (select count(*) as cnt1 from users where created_at like "'.$nowYear.'-02%") as feb, (select count(*) as cnt1 from users where created_at like "'.$nowYear.'-03%") as mar, (select count(*) as cnt1 from users where created_at like "'.$nowYear.'-04%") as apr, (select count(*) as cnt1 from users where created_at like "'.$nowYear.'-05%") as may, (select count(*) as cnt1 from users where created_at like "'.$nowYear.'-06%") as jun, (select count(*) as cnt1 from users where created_at like "'.$nowYear.'-07%") as jul, (select count(*) as cnt1 from users where created_at like "'.$nowYear.'-08%") as aug, (select count(*) as cnt1 from users where created_at like "'.$nowYear.'-09%") as sep, (select count(*) as cnt1 from users where created_at like "'.$nowYear.'-10%") as oct, (select count(*) as cnt1 from users where created_at like "'.$nowYear.'-11%") as nov, (select count(*) as cnt1 from users where created_at like "'.$nowYear.'-12%") as decc'))
                                 ->where('created_at', 'like', $nowYear.'%')
                                 ->first();
 
-        // echo print_r($nowYear_user_cnts);
-        // echo print_r($nowYear_user_cnts->sep);
-        // exit;
+        $nowYear_cellphone_cnts = DB::table('cellphone_boards')
+                                    ->select(DB::raw('(select count(*) as cnt1 from users where created_at like "'.$nowYear.'-01%") as jan, (select count(*) as cnt1 from users where created_at like "'.$nowYear.'-02%") as feb, (select count(*) as cnt1 from users where created_at like "'.$nowYear.'-03%") as mar, (select count(*) as cnt1 from users where created_at like "'.$nowYear.'-04%") as apr, (select count(*) as cnt1 from users where created_at like "'.$nowYear.'-05%") as may, (select count(*) as cnt1 from users where created_at like "'.$nowYear.'-06%") as jun, (select count(*) as cnt1 from users where created_at like "'.$nowYear.'-07%") as jul, (select count(*) as cnt1 from users where created_at like "'.$nowYear.'-08%") as aug, (select count(*) as cnt1 from users where created_at like "'.$nowYear.'-09%") as sep, (select count(*) as cnt1 from users where created_at like "'.$nowYear.'-10%") as oct, (select count(*) as cnt1 from users where created_at like "'.$nowYear.'-11%") as nov, (select count(*) as cnt1 from users where created_at like "'.$nowYear.'-12%") as decc'))
+                                    ->where('created_at', 'like', $nowYear.'%')
+                                    ->first();
 
-        return view('pages.dashboard', compact('user_cnt', 'user_y_cnt', 'cellphone_cnt', 'cellphone_y_cnt', 'cellphone_done_cnt', 'cellphone_y_done_cnt', 'cellphone_not_cnt', 'cellphone_y_not_cnt', 'yester_user_check', 'yester_cellphone_check', 'yester_cellphone_done_check', 'yester_cellphone_not_check', 'nowYear_user_cnts'));
+        return view('pages.dashboard', compact('user_cnt', 'user_y_cnt', 'cellphone_cnt', 'cellphone_y_cnt', 'cellphone_done_cnt', 'cellphone_y_done_cnt', 'cellphone_not_cnt', 'cellphone_y_not_cnt', 'yester_user_check', 'yester_cellphone_check', 'yester_cellphone_done_check', 'yester_cellphone_not_check', 'nowYear_user_cnts', 'nowYear_cellphone_cnts'));
     }
 }
