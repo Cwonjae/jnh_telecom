@@ -137,7 +137,6 @@ class PageController extends Controller
                                 ]);
             if($cellphone_update) {
                 $user_email_check = DB::table('cellphone_boards')
-                                        ->join('cellphone_boards', 'passport_comparison.cpb_id', '=', 'cellphone_boards.id')
                                         ->join('users', 'cellphone_boards.u_id', '=', 'users.id')
                                         ->where('cellphone_boards.id', $num)
                                         ->value('users.email');
