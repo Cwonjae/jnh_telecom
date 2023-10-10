@@ -146,7 +146,7 @@ class PageController extends Controller
                  * 추후 해당 업무 담당자들에게 발송되게 User Table에서 email 추출해서 전달해야됨
                  */
                 Mail::send('mobileForm.user.status', function($message) use($user_check) {
-                    $message->to('ucan@kakao.com');
+                    $message->to(array('ucan@kakao.com'));
                     $message->subject('Olle mobile application is finally complete.'.$now_date_time);
                 });
 
