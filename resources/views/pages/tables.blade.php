@@ -65,9 +65,9 @@
                                         <td class="align-middle text-center text-sm">
                                             <span 
                                             @if ($cell_phone->cpb_status == 'opening') 
-                                                class="badge badge-sm bg-gradient-success" onclick="confirm_status({{ $cell_phone->id }})"
+                                                class="badge badge-sm bg-gradient-success" onclick="confirm_status({{ $cell_phone->id }})" style="cursor:pointer"
                                             @elseif ($cell_phone->cpb_status == 'pending')
-                                                class="badge badge-sm bg-gradient-danger" onclick="confirm_status({{ $cell_phone->id }})"
+                                                class="badge badge-sm bg-gradient-danger" onclick="confirm_status({{ $cell_phone->id }})" style="cursor:pointer"
                                             @else
                                                 class="badge badge-sm bg-gradient-secondary"
                                             @endif
