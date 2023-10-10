@@ -68,15 +68,27 @@
                                             <p class="text-xs font-weight-bold text-center mb-0">{{ $cell_phone->cpb_nationality }}</p>
                                         </td>
                                         <td class="align-middle text-center text-sm">
-                                            <span 
-                                            @if ($cell_phone->cpb_status == 'opening') 
-                                                class="badge badge-sm bg-gradient-success" onclick="confirm_status({{ $cell_phone->id }})" style="cursor:pointer"
-                                            @elseif ($cell_phone->cpb_status == 'pending')
-                                                class="badge badge-sm bg-gradient-danger" onclick="confirm_status({{ $cell_phone->id }})" style="cursor:pointer"
+                                            @if($cell_phone->ppc_status == "N")
+                                                <span 
+                                                    @if ($cell_phone->cpb_status == 'opening') 
+                                                        class="badge badge-sm bg-gradient-success" onclick="alert('PassPort 검증과 프린트 완료 후 상태변경할 수 있습니다.')" style="cursor:pointer"
+                                                    @elseif ($cell_phone->cpb_status == 'pending')
+                                                        class="badge badge-sm bg-gradient-danger" onclick="alert('PassPort 검증과 프린트 완료 후 상태변경할 수 있습니다.')" style="cursor:pointer"
+                                                    @else
+                                                        class="badge badge-sm bg-gradient-secondary"
+                                                    @endif
+                                                    >{{ $cell_phone->cpb_status }}</span>
                                             @else
-                                                class="badge badge-sm bg-gradient-secondary"
+                                                <span 
+                                                @if ($cell_phone->cpb_status == 'opening') 
+                                                    class="badge badge-sm bg-gradient-success" onclick="confirm_status({{ $cell_phone->id }})" style="cursor:pointer"
+                                                @elseif ($cell_phone->cpb_status == 'pending')
+                                                    class="badge badge-sm bg-gradient-danger" onclick="confirm_status({{ $cell_phone->id }})" style="cursor:pointer"
+                                                @else
+                                                    class="badge badge-sm bg-gradient-secondary"
+                                                @endif
+                                                >{{ $cell_phone->cpb_status }}</span>
                                             @endif
-                                            >{{ $cell_phone->cpb_status }}</span>
                                         </td>
                                         <td class="align-middle text-center">
                                             <span class="text-secondary text-xs font-weight-bold">{{ date('Y-m-d H:i:s', strtotime($cell_phone->created_at)) }}</span>
