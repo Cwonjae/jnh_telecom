@@ -436,13 +436,14 @@
         gradientStroke1.addColorStop(0.2, 'rgba(251, 99, 64, 0.0)');
         gradientStroke1.addColorStop(0, 'rgba(251, 99, 64, 0)');
 
-        gradientStroke2.addColorStop(1, 'rgba(162, 84, 79, 0.2)');
-        gradientStroke2.addColorStop(0.2, 'rgba(162, 84, 79, 0.0)');
-        gradientStroke2.addColorStop(0, 'rgba(162, 84, 79, 0)');
+        gradientStroke2.addColorStop(1, 'rgba(32, 201, 151, 0.2)');
+        gradientStroke2.addColorStop(0.2, 'rgba(32, 201, 151, 0.0)');
+        gradientStroke2.addColorStop(0, 'rgba(32, 201, 151, 0)');
 
-        gradientStroke3.addColorStop(1, 'rgba(190, 95, 94, 0.2)');
-        gradientStroke3.addColorStop(0.2, 'rgba(190, 95, 94, 0.0)');
-        gradientStroke3.addColorStop(0, 'rgba(190, 95, 94, 0)');
+        gradientStroke3.addColorStop(1, 'rgba(13, 202, 240, 0.2)');
+        gradientStroke3.addColorStop(0.2, 'rgba(13, 202, 240, 0.0)');
+        gradientStroke3.addColorStop(0, 'rgba(13, 202, 240, 0)');
+        
         new Chart(ctx1, {
             type: "line",
             data: {
