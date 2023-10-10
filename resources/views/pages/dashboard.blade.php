@@ -137,7 +137,7 @@
             <div class="mb-lg-0 mb-4">
                 <div class="card z-index-2 h-100">
                     <div class="card-header pb-0 pt-3 bg-transparent">
-                        <h6 class="text-capitalize">Year's Statistics</h6>
+                        <h6 class="text-capitalize">{{ $nowYear }}년도 통계</h6>
                         <p class="text-sm mb-0">
                             <!-- <i class="fa fa-arrow-up text-success"></i> -->
                             <!-- <span class="font-weight-bold">4% more</span> in 2021 -->
@@ -443,7 +443,7 @@
         gradientStroke3.addColorStop(1, 'rgba(13, 202, 240, 0.2)');
         gradientStroke3.addColorStop(0.2, 'rgba(13, 202, 240, 0.0)');
         gradientStroke3.addColorStop(0, 'rgba(13, 202, 240, 0)');
-        
+
         new Chart(ctx1, {
             type: "line",
             data: {
