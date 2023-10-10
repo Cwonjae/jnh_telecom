@@ -78,7 +78,7 @@ class HomeController extends Controller
         if($cellphone_cnt > 0 || $cellphone_y_cnt > 0) {
             $yester_cellphone_check = (($cellphone_cnt - $cellphone_y_cnt) / $cellphone_y_cnt) * 100;
             if($cellphone_cnt >= $cellphone_y_cnt) {
-                $yester_cellphone_check = ($usecellphone_cntr_cnt / $cellphone_y_cnt) * 100;
+                $yester_cellphone_check = ($cellphone_cnt / $cellphone_y_cnt) * 100;
             }
         } else {
             $yester_cellphone_check = 0;
