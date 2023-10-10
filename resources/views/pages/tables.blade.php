@@ -7,11 +7,11 @@
         $('#dialog-message').dialog({
             modal: true, 
             buttons: {
-                "최종완료": function() { 
+                "최종완료": function(value) { 
                     $(this).dialog('close'); 
                     location.replace("{{ route('page.statuschange', ['page' => 'tables', 'num' => '"+value+"', 'status' => 'closing']) }}");
                 },
-                "보류": function() { 
+                "보류": function(value) { 
                     $(this).dialog('close'); 
                     location.replace("{{ route('page.statuschange', ['page' => 'tables', 'num' => '"+value+"', 'status' => 'pending']) }}");
                 },
