@@ -137,7 +137,7 @@
             <div class="col-lg-7 mb-lg-0 mb-4">
                 <div class="card z-index-2 h-100">
                     <div class="card-header pb-0 pt-3 bg-transparent">
-                        <h6 class="text-capitalize">Sales overview</h6>
+                        <h6 class="text-capitalize">Statistics</h6>
                         <p class="text-sm mb-0">
                             <i class="fa fa-arrow-up text-success"></i>
                             <span class="font-weight-bold">4% more</span> in 2021
@@ -150,7 +150,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-5">
+            <!-- <div class="col-lg-5">
                 <div class="card card-carousel overflow-hidden h-100 p-0">
                     <div id="carouselExampleCaptions" class="carousel slide h-100" data-bs-ride="carousel">
                         <div class="carousel-inner border-radius-lg h-100">
@@ -198,7 +198,7 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="row mt-4">
             <div class="col-lg-7 mb-lg-0 mb-4">
@@ -340,7 +340,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-5">
+            <!-- <div class="col-lg-5">
                 <div class="card">
                     <div class="card-header pb-0 p-3">
                         <h6 class="mb-0">Categories</h6>
@@ -417,7 +417,7 @@
                         </ul>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
         @include('layouts.footers.auth.footer')
     </div>
@@ -436,7 +436,7 @@
         new Chart(ctx1, {
             type: "line",
             data: {
-                labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
                 datasets: [{
                     label: "Mobile apps",
                     tension: 0.4,
@@ -446,7 +446,8 @@
                     backgroundColor: gradientStroke1,
                     borderWidth: 3,
                     fill: true,
-                    data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+                    data: {{ $nowYear_user_cnts }},
+                    // data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
                     maxBarThickness: 6
 
                 }],
