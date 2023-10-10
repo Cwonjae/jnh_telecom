@@ -110,6 +110,9 @@ class HomeController extends Controller
                                 ->where('created_at', 'like', $nowYear.'%')
                                 ->first();
 
+        echo $nowYear_user_cnts;
+        exit;
+
         return view('pages.dashboard', compact('user_cnt', 'user_y_cnt', 'cellphone_cnt', 'cellphone_y_cnt', 'cellphone_done_cnt', 'cellphone_y_done_cnt', 'cellphone_not_cnt', 'cellphone_y_not_cnt', 'yester_user_check', 'yester_cellphone_check', 'yester_cellphone_done_check', 'yester_cellphone_not_check', 'nowYear_user_cnts'));
     }
 }
