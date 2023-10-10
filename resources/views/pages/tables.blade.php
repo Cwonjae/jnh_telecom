@@ -120,8 +120,5 @@
     </div>
     <div id="dialog-message" title="가입신청 상태를 변경하시겠습니까?" style='display:none'>
         최종완료 처리 하시겠습니까?<br/>
-        <span>최종완료</span>
-        <span>보류</span>
-        <span>취소</span>
     </div>
 @endsection
