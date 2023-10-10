@@ -429,6 +429,8 @@
         var ctx1 = document.getElementById("chart-line").getContext("2d");
 
         var gradientStroke1 = ctx1.createLinearGradient(0, 230, 0, 50);
+        var gradientStroke2 = ctx1.createLinearGradient(0, 230, 0, 50);
+        var gradientStroke3 = ctx1.createLinearGradient(0, 230, 0, 50);
 
         gradientStroke1.addColorStop(1, 'rgba(251, 99, 64, 0.2)');
         gradientStroke1.addColorStop(0.2, 'rgba(251, 99, 64, 0.0)');
