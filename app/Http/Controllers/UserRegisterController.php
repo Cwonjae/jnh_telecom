@@ -67,20 +67,26 @@ class UserRegisterController extends Controller
         $now_date_time = $currentDateTime->toDateTimeString();
         $verifyUser = UserVerify::where('token', $token)->first();
   
-        $message = 'Sorry your email cannot be identified.';
-  
         if(!is_null($verifyUser) ){
             $user = $verifyUser->user;
               
             if(!$user->email_verified_at) {
                 $verifyUser->user->email_verified_at = $now_date_time;
                 $verifyUser->user->save();
+                
                 $message = "Your email is verified. You can now login.";
+                Alert::success('Verify Email Addresses', $message);
+                return redirect()->route('userlogin')->with('message', $message);
             } else {
                 $message = "Your email is already verified. You can now login.";
+                Alert::error('Verify Email Addresses', $message);
+                return redirect()->route('userlogin')->with('message', $message);
             }
+        } else {
+            $message = 'Sorry your email cannot be identified.';
+            Alert::warning('Verify Email Addresses', $message);
+            return redirect()->route('userlogin')->with('message', $message);
+
         }
-  
-        return redirect()->route('userlogin')->with('message', $message);
     }
 }

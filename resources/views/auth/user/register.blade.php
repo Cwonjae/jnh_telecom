@@ -53,6 +53,9 @@
                                         class="text-dark font-weight-bolder">Sign in</a></p>
                             </form>
                         </div>
+                        <div id="alert">
+                            @include('components.alert')
+                        </div>
                     </div>
                 </div>
             </div>

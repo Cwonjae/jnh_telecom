@@ -119,7 +119,7 @@ class PageController extends Controller
                 return redirect("/admin/tables");
             } else {
                 Alert::error('PassPort 검증', 'PassPort 검증이 실패하였습니다.');
-                return back()->with('error', 'Mobile Application Form modify failed.');
+                return redirect("/admin/tables");
             }
         }
     }

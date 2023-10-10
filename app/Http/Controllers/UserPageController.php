@@ -95,6 +95,7 @@ class UserPageController extends Controller
                 'created_at' => $now_date_time
             ]);
         } else {
+            Alert::error('Passport Was Not Uploaded', 'The passport was not uploaded successfully [6]');
             return back()->with('error', 'The passport was not uploaded successfully.');
         }
 
@@ -113,6 +114,7 @@ class UserPageController extends Controller
                 'created_at' => $now_date_time
             ]);
         } else {
+            Alert::error('Signature Was Not Uploaded', 'The signature was not uploaded successfully [5]');
             return back()->with('error', 'The signature was not uploaded successfully.');
         }
         
@@ -169,11 +171,12 @@ class UserPageController extends Controller
         
         /**
          * 현재는 하드코딩으로 작성된 메일로 발송되게 함
-         * 추후 해당 업무 담당자들에게 발송되게 User Table에서 email 추출해서 전달해야됨
+         * 발송될 계정은 진앤현에서 갖고있는 계정으로
+         * 해당 계정에 메일이 수신되면, 자동으로 관계자들의 계정으로 전달 예정
          */
-        Mail::send('mobileForm.admin.form', function($message) use($request){
+        Mail::send('mobileForm.admin.form', ['tables' => 'tables'], function($message) use($request){
               $message->to('choi.wonjae@jinnhyun.com');
-              $message->subject('신규 모바일 신청이 등록되었습니다. '.$now_date_time);
+              $message->subject('신규 모바일 신청이 등록되었습니다._'.$applicant);
           });
 
         if($cellphone_insert_id) {
@@ -368,7 +371,7 @@ class UserPageController extends Controller
                 Alert::success('Olleh Mobile Modify', 'Your Mobile Application has been Updated');
                 return redirect('/user/tables');
             } else {
-                Alert::success('Olleh Mobile Modify', 'Your Mobile Application Form modify failed.');
+                Alert::error('Olleh Mobile Modify', 'Your Mobile Application Form modify failed.');
                 return back()->with('error', 'Mobile Application Form modify failed.');
             }
        }
