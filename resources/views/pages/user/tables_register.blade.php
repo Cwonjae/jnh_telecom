@@ -38,6 +38,28 @@
             $('#form_submit').click(function() {
                 formCheck();
             });
+
+            $('#lang_check').change(function() {
+                var value = $(this).val();
+                switch(value) {
+                    case 'english' :
+                        break;
+                    case 'russian' :
+                        $('#name_lang').text("(Полное имя)");
+                        break;
+                    case 'uzbek' :
+                        $('#name_lang').text("(To'liq ism)");
+                        break;
+                    case 'tagalog' :
+                        $('#name_lang').text("(Buong pangalan)");
+                        break;
+                    case 'vietnamese' :
+                        $('#name_lang').text("(Họ và tên)");
+                        break;
+                    default :
+                        break;
+                }
+            });
         });
 
         function formCheck() {
@@ -101,7 +123,15 @@
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0" style="width:92%; margin:auto; margin-top:30px;">
-
+                            <div class="flex flex-col mb-3">
+                                <select class="lang_check" id="lang_check">
+                                    <option value="english" selected>English</option>
+                                    <option value="russian">Russian</option>
+                                    <option value="uzbek">Uzbek</option>
+                                    <option value="tagalog">Tagalog</option>
+                                    <option value="vietnamese">Vietnamese</option>
+                                </select>
+                            </div>
                             <!-- <div class="flex flex-col mb-3">
                                 <h4>Welcome to Korea!</h4>
                                 <div>
@@ -128,7 +158,7 @@
                             <form method="POST" action="{{ route('userpage.insert', ['page' => 'tables']) }}" id="cellPhone_register" enctype="multipart/form-data">
                             @csrf
                                 <div class="flex flex-col mb-3">
-                                    <h6>Name <span style="color:red">*</span></h6>
+                                    <h6>Name <span style="color:red">*</span></h6><h4 id="name_lang"></h4>
                                     <input type="text" name="applicant" class="form-control" placeholder="Your Full Name" aria-label="Name" value="{{ old('applicant') }}" id="applicant">
                                     @error('applicant') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
