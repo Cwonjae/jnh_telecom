@@ -309,7 +309,7 @@
                                     @error('plan') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <h6 style="float:left;">Please choose the last four digits of your phone number (Up to 3 items can be entered)</h6><h4 id="choose_lang"></h4>
+                                    <h6 style="float:left;">Please choose the last four digits of your phone number (Up to 3 items can be entered)</h6><br><h4 id="choose_lang"></h4>
                                     <input type="text" name="chooselastnumber" class="form-control" placeholder="Please choose the last four digits of your phone number." aria-label="Please choose the last four digits of your phone number." value="{{ $cell_phones[0]->cpb_chooselastnumber }}" onKeyPress="javascript:checkInputNum();" onKeyUp="javascript:checkInputValue(this);" maxlength="14" id="chooselastnumber">
                                     @error('chooselastnumber') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                     <p>If the phone number you have chosen is already taken, please note that it can be activated with different last four digits.</p>
@@ -320,6 +320,7 @@
                                     <a id="clearBtn" class="btn btn-default" onclick="clearCanvas();">Clear Canvas</a>
                                     <a id="saveBtn" class="btn btn-default" onclick="saveSignature();" style="display:none;">Save Signature</a>
                                     <p>Use your mouse or finger to draw your signature above</p>
+                                    <p id="signature_note" style="color:red">The signature you registered will be used on the Korean mobile communication subscription form.</p>
                                     @error('signaturetxt') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
                                     <input type="hidden" id="signature_txt" name="signaturetxt" value="data:image/png;base64,{{ $cell_phones[0]->stu_base64 }}"/>
                                     <div id="signature">
