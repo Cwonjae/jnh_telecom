@@ -66,15 +66,6 @@ class HomeController extends Controller
                         ->where('cpb_status', '<>', 'closing')
                         ->count();
 
-        if($user_cnt > 0 || $user_y_cnt > 0) {
-            $yester_user_check = (($user_cnt - $user_y_cnt) / $user_y_cnt) * 100;
-            if($user_cnt >= $user_y_cnt) {
-                $yester_user_check = ($user_cnt / $user_y_cnt) * 100;
-            }
-        } else {
-            $yester_user_check = 0;
-        }
-
         //두개의 값이 0일경우
         if($user_y_cnt != 0) {
             $yester_user_check = (($user_cnt - $user_y_cnt) / $user_y_cnt) * 100;
