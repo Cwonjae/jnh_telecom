@@ -233,7 +233,7 @@
                                 </div>
                                 <div class="flex flex-col mb-3">
                                     <h6 style="float:left;">Passport <span style="color:red">*</span></h6><h4 id="passport_lang"></h4>
-                                    <input type="file" name="passport" class="form-control" aria-label="Passport" id="passport">
+                                    <input type="file" name="passport" accept="file_extension,image/*" capture="camera" class="form-control" aria-label="Passport" id="passport">
                                     @error('passport') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                     @if($cell_phones[0]->ppu_filename)
                                     @php
