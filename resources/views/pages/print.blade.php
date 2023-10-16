@@ -214,7 +214,8 @@
             // 버튼 선택 이후 실행
             var afterPrint = function(){
                 // window.close();
-                window.open("about:blank", "_self").close();
+                // window.open("about:blank", "_self").close();
+                self.close();
             }
 
             // 이벤트 핸들러 작성
@@ -230,7 +231,7 @@
             }
 
             // 팝업을 띄울때 window.print(); 실행
-            // window.onbeforeprint = beforePrint();
+            window.onbeforeprint = beforePrint();
         </script>
     </head>
     <body onload="javascript:window.print();">
