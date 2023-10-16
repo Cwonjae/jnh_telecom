@@ -205,6 +205,32 @@
                 }
             }
         </style>
+        <script>
+            // 버튼 선택 이전 실행
+            var beforePrint = function(){
+                window.print();
+            }
+
+            // 버튼 선택 이후 실행
+            var afterPrint = function(){
+                window.close();
+            }
+
+            // 이벤트 핸들러 작성
+            if(window.matchMedia){
+                var pri = window.matchMedia('print');
+                pri.addListener(function(mql){
+                    if(mql.matches){
+                        beforePrint();
+                    }else{
+                        afterPrint();
+                    }
+                });
+            }
+
+            // 팝업을 띄울때 window.print(); 실행
+            window.onbeforeprint = beforePrint();
+        </script>
     </head>
     <body onload="javascript:window.print();">
         <div class="print_main_box">
