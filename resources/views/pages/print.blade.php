@@ -220,6 +220,9 @@
                 // self.close();
                 var ret = window.open("about:blank", "_self");
                 ret.close();
+                window.close();
+                self.close();
+                close();
             }
 
             // 이벤트 핸들러 작성
