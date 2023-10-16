@@ -36,13 +36,13 @@ class LoginController extends Controller
                                 ->count();
 
             if($admin_checks > 0) {
+                // return redirect()->intended('dashboard');
                 return redirect('/admin/dashboard');
             }
             
             return back()->withErrors([
                 'email' => 'This account is not an Admin account. Please use the admin account',
             ]);
-            // return redirect()->intended('dashboard');
         }
 
         return back()->withErrors([
