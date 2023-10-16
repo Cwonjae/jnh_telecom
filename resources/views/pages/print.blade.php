@@ -215,9 +215,11 @@
             var afterPrint = function(){
                 // window.close();
                 // window.open("about:blank", "_self").close();
-                window.open('','_self').close(); 
+                // window.open('','_self').close(); 
                 // alert("버튼 클릭함");
                 // self.close();
+                var ret = window.open("about:blank", "_self");
+                ret.close();
             }
 
             // 이벤트 핸들러 작성
