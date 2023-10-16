@@ -34,8 +34,6 @@ class UserLoginController extends Controller
             }
             $request->session()->regenerate();
 
-            // return redirect()->intended('/user/dashboard');
-            // return redirect('/user/dashboard');
             return redirect('/user/tables');
         }
 

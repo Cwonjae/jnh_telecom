@@ -36,7 +36,6 @@ class LoginController extends Controller
                                 ->count();
 
             if($admin_checks > 0) {
-                // return redirect()->intended('dashboard');
                 return redirect('/admin/dashboard');
             }
             
