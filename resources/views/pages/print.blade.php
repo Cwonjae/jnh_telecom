@@ -234,7 +234,7 @@
             window.onbeforeprint = beforePrint();
         </script>
     </head>
-    <body onload="javascript:window.print();">
+    <body>
         <div class="print_main_box">
             <div class="main_box1">
                 <div class="img_box_1">
