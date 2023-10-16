@@ -39,7 +39,7 @@ class RedirectIfAuthenticated
                 if($request->is('user/*') || $res == "user") {
                     return redirect('/user/dashboard');
                 } else {
-                    return redirect('/dashboard');
+                    return redirect('/admin/dashboard');
                 }
             }
         }
