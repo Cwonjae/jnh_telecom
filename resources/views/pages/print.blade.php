@@ -205,7 +205,7 @@
                 }
             }
         </style>
-        <script type="text/javascript">
+        <script>
             // 버튼 선택 이전 실행
             var beforePrint = function(){
                 window.print();
@@ -213,30 +213,27 @@
 
             // 버튼 선택 이후 실행
             var afterPrint = function(){
-
-                console.log('버튼 클릭함');
                 // window.close();
+                window.open("about:blank", "_self").close();
             }
 
-            console.log(window.matchMedia);
-            console.log(window.matchMedia('print'));
             // 이벤트 핸들러 작성
             if(window.matchMedia){
                 var pri = window.matchMedia('print');
                 pri.addListener(function(mql){
                     if(mql.matches){
                         beforePrint();
-                    } else {
+                    }else{
                         afterPrint();
                     }
                 });
             }
 
             // 팝업을 띄울때 window.print(); 실행
-            window.onbeforeprint = beforePrint();
+            // window.onbeforeprint = beforePrint();
         </script>
     </head>
-    <body>
+    <body onload="javascript:window.print();">
         <div class="print_main_box">
             <div class="main_box1">
                 <div class="img_box_1">
