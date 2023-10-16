@@ -45,15 +45,17 @@ class LoginController extends Controller
                 echo "0 보다 클경우 실행되는 if";
                 echo "<br>";
                 // return redirect('/admin/dashboard');
+            } else {
+                echo "0 보다 작을 경우 실행되는 if";
+                echo "<br>";
+                
+                // return back()->withErrors([
+                //     'email' => 'This account is not an Admin account. Please use the admin account',
+                // ]);
             }
-            echo "0 보다 작을 경우 실행되는 if";
-            echo "<br>";
-            
+
             exit;
             
-            // return back()->withErrors([
-            //     'email' => 'This account is not an Admin account. Please use the admin account',
-            // ]);
         }
 
         return back()->withErrors([
