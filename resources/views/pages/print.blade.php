@@ -207,7 +207,11 @@
             }
         </style>
         <script>
-            window.onfocus=function(){ window.close();}
+            window.onfocus = function(){ 
+                setTimeout(function() {
+                    window.close();
+                }, 1000);
+            }
         </script>
     </head>
     <body onload="javascript:window.print();">
