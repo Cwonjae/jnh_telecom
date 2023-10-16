@@ -38,16 +38,22 @@ class LoginController extends Controller
             echo "admin check : ".$admin_checks;
             echo "<br>";
             echo "login_email : ".$request->email;
+            echo "<br>";
 
+
+            if($admin_checks > 0) {
+                echo "0 보다 클경우 실행되는 if";
+                echo "<br>";
+                // return redirect('/admin/dashboard');
+            }
+            echo "0 보다 작을 경우 실행되는 if";
+            echo "<br>";
+            
             exit;
             
-            if($admin_checks > 0) {
-                return redirect('/admin/dashboard');
-            }
-            
-            return back()->withErrors([
-                'email' => 'This account is not an Admin account. Please use the admin account',
-            ]);
+            // return back()->withErrors([
+            //     'email' => 'This account is not an Admin account. Please use the admin account',
+            // ]);
         }
 
         return back()->withErrors([
