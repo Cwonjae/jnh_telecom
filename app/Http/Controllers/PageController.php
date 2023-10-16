@@ -23,7 +23,7 @@ class PageController extends Controller
         $admin_checks = DB::table('users')
                             ->where('id', Auth::id())
                             ->where('grade', 'admin')
-                            ->exists();
+                            ->count();
 
         /**
          * admin 일 경우 등록된 모든 정보 리스트업

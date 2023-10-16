@@ -35,12 +35,6 @@ class LoginController extends Controller
                                 ->where('grade', 'admin')
                                 ->count();
 
-            echo "시쟉";
-            echo print_r(Auth::id());
-            echo "<br>";
-            echo print_r($admin_checks);
-            exit;
-
             if($admin_checks > 0) {
                 return redirect('/admin/dashboard');
             }
