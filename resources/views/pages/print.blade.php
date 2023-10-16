@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+    <script src="/assets/js/core/jquery-3.7.1.min.js"></script>
         <style type="text/css">
             @media print {
                 #header{display: none;}
@@ -206,39 +207,28 @@
             }
         </style>
         <script>
-            // 버튼 선택 이전 실행
-            var beforePrint = function(){
-                // window.print();
-            }
+            (function() {
+                var beforePrint = function() {
+                    console.log('Functionality to run before printing.');
+                };
 
-            // 버튼 선택 이후 실행
-            var afterPrint = function(){
-                // window.close();
-                // window.open("about:blank", "_self").close();
-                // window.open('','_self').close(); 
-                // alert("버튼 클릭함");
-                // self.close();
-                var ret = window.open("about:blank", "_self");
-                ret.close();
-                window.close();
-                self.close();
-                close();
-            }
+                var afterPrint = function() {
+                    console.log('Functionality to run after printing');
+                };
 
-            // 이벤트 핸들러 작성
-            if(window.matchMedia){
-                var pri = window.matchMedia('print');
-                pri.addListener(function(mql){
-                    if(mql.matches){
-                        // beforePrint();
-                    }else{
-                        afterPrint();
-                    }
-                });
-            }
-
-            // 팝업을 띄울때 window.print(); 실행
-            window.onbeforeprint = beforePrint();
+                if (window.matchMedia) {
+                    var mediaQueryList = window.matchMedia('print');
+                    mediaQueryList.addListener(function(mql) {
+                        if (mql.matches) {
+                            beforePrint();
+                        } else {
+                            afterPrint();
+                        }
+                    });
+                }
+                window.onbeforeprint = beforePrint;
+                window.onafterprint = afterPrint;
+            }());
         </script>
     </head>
     <body onload="javascript:window.print();">
