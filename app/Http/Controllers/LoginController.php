@@ -33,8 +33,7 @@ class LoginController extends Controller
             $admin_checks = DB::table('users')
                                 ->where('id', Auth::id())
                                 ->where('grade', 'admin')
-                                // ->exists();
-                                ->toSql();
+                                ->count();
 
             echo "시쟉";
             echo print_r(Auth::id());
