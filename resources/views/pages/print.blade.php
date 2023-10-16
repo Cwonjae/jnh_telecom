@@ -205,7 +205,7 @@
                 }
             }
         </style>
-        <script>
+        <script type="text/javascript">
             // 버튼 선택 이전 실행
             var beforePrint = function(){
                 window.print();
@@ -216,13 +216,15 @@
                 window.close();
             }
 
+            console.log(window.matchMedia);
+            console.log(window.matchMedia('print'));
             // 이벤트 핸들러 작성
             if(window.matchMedia){
                 var pri = window.matchMedia('print');
                 pri.addListener(function(mql){
                     if(mql.matches){
                         beforePrint();
-                    }else{
+                    } else {
                         afterPrint();
                     }
                 });
