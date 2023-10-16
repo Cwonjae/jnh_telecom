@@ -34,6 +34,7 @@ use App\Http\Controllers\UserLoginController;
 use App\Http\Controllers\UserPageController;
 use App\Http\Controllers\UserRegisterController;
 use App\Http\Controllers\UserResetPassword;
+use App\Http\Controllers\UserChangePassword;
 
 // //email 검증 핸들러
 // use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -77,8 +78,8 @@ Route::post('/user/login', [UserLoginController::class, 'login'])->middleware('g
 Route::get('/user/dashboard', [UserHomeController::class, 'index'])->name('userhome')->middleware(['userauth', 'verify_email']);
 Route::get('/user/reset-password', [UserResetPassword::class, 'show'])->middleware('guest')->name('userreset-password');
 Route::post('/user/reset-password', [UserResetPassword::class, 'send'])->middleware('guest')->name('userreset.perform');
-Route::get('/user/change-password', [ChangePassword::class, 'show'])->middleware('guest')->name('userchange-password');
-Route::post('/user/change-password', [ChangePassword::class, 'update'])->middleware('guest')->name('userchange.perform');
+Route::get('/user/change-password', [UserChangePassword::class, 'show'])->middleware('guest')->name('userchange-password');
+Route::post('/user/change-password', [UserChangePassword::class, 'update'])->middleware('guest')->name('userchange.perform');
 
 Route::group(['middleware' => 'userauth'], function () {
 	Route::get('/user/{page}', [UserPageController::class, 'index'])->name('userpage');
