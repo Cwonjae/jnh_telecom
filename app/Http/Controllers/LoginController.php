@@ -35,7 +35,9 @@ class LoginController extends Controller
                                 ->where('grade', 'admin')
                                 ->exists();
 
+            echo "시쟉";
             echo print_r(Auth::id());
+            echo "<br>";
             echo print_r($admin_checks);
             exit;
 
