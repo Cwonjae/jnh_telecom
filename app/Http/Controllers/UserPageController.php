@@ -20,13 +20,16 @@ class UserPageController extends Controller
      */
     public function index(string $page)
     {
-        $admin_email_checks = DB::table('users')->where('id', Auth::id())->value('email');
+        $admin_checks = DB::table('users')
+                            ->where('id', Auth::id())
+                            ->where('grade', 'admin')
+                            ->exists();
 
         /**
          * admin 일 경우 등록된 모든 정보 리스트업
          * 등록한사람(일반 user)일 경우 본인이 작성한 정보 리스트업
          */
-        if($admin_email_checks == "admin@argon.com") {
+        if($admin_checks) {
             $cell_phones = DB::table('cellphone_boards')
                             ->join('users', 'cellphone_boards.u_id', '=' ,'users.id')
                             ->select('users.username', 'users.email', 'cellphone_boards.id', 'cellphone_boards.cpb_applicant', 'cellphone_boards.cpb_nationality', 'cellphone_boards.cpb_status', 'cellphone_boards.created_at')

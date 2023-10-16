@@ -29,8 +29,19 @@ class LoginController extends Controller
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $request->session()->regenerate();
 
+            $admin_checks = DB::table('users')
+                                ->where('id', Auth::id())
+                                ->where('grade', 'admin')
+                                ->exists();
+
+            if($admin_checks) {
+                return redirect('/admin/dashboard');
+            } else {
+                return back()->withErrors([
+                    'email' => 'This account is not an Admin account. Please use the admin account',
+                ]);
+            }
             // return redirect()->intended('dashboard');
-            return redirect('/admin/dashboard');
         }
 
         return back()->withErrors([
