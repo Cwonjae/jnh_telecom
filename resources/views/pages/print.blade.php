@@ -213,7 +213,9 @@
 
             // 버튼 선택 이후 실행
             var afterPrint = function(){
-                window.close();
+
+                console.log('버튼 클릭함');
+                // window.close();
             }
 
             console.log(window.matchMedia);
