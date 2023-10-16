@@ -109,7 +109,7 @@
                                                 <span onclick="alert('Passport 검증 완료 후 Print 가능합니다.');">Print</span>
                                             </a>
                                             @else
-                                            <a href="javascript:void(window.open('{{ route('page.print', ['page' => 'print', 'num' => $cell_phone->id]) }}','_blank'))" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="print page" target="_blank">
+                                            <a href="javascript:void(window.open('{{ route('page.print', ['page' => 'print', 'num' => $cell_phone->id]) }}','_blank','fullscreen=yes'))" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="print page">
                                                 Print
                                             </a>
                                             @endif
