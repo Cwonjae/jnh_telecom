@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.user.app')
 
 @section('content')
     <div class="container position-sticky z-index-sticky top-0">
         <div class="row">
             <div class="col-12">
-                @include('layouts.navbars.guest.navbar')
+                @include('layouts.navbars.guest.user.navbar')
             </div>
         </div>
     </div>
