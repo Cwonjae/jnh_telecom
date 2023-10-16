@@ -35,7 +35,7 @@ class LoginController extends Controller
                                 ->where('grade', 'admin')
                                 ->exists();
 
-            if($admin_checks) {
+            if($admin_checks > 0) {
                 return redirect('/admin/dashboard');
             } else {
                 return back()->withErrors([

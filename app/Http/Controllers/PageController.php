@@ -29,7 +29,7 @@ class PageController extends Controller
          * admin 일 경우 등록된 모든 정보 리스트업
          * kt값만 추출
          */
-        if($admin_checks) {
+        if($admin_checks > 0) {
             $cell_phones = DB::table('cellphone_boards')
                             ->join('users', 'cellphone_boards.u_id', '=' ,'users.id')
                             ->join('passport_comparison', 'cellphone_boards.id', '=' ,'passport_comparison.cpb_id')
