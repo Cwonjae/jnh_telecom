@@ -208,7 +208,7 @@
         <script>
             // 버튼 선택 이전 실행
             var beforePrint = function(){
-                window.print();
+                // window.print();
             }
 
             // 버튼 선택 이후 실행
@@ -223,7 +223,7 @@
                 var pri = window.matchMedia('print');
                 pri.addListener(function(mql){
                     if(mql.matches){
-                        beforePrint();
+                        // beforePrint();
                     }else{
                         afterPrint();
                     }
