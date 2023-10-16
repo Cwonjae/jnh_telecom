@@ -69,6 +69,9 @@
                     </div>
                 </div>
             </div>
+            <div id="alert">
+                @include('components.alert')
+            </div>
         </section>
     </main>
 @endsection

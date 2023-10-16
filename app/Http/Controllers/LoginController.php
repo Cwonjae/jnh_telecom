@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class LoginController extends Controller
 {
@@ -27,35 +28,24 @@ class LoginController extends Controller
             'password' => ['required'],
         ]);
 
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            $request->session()->regenerate();
+        $admin_checks = DB::table('users')
+                            ->where('email', $request->email)
+                            ->where('grade', 'admin')
+                            ->count();
 
-            $admin_checks = DB::table('users')
-                                ->where('id', Auth::id())
-                                ->where('grade', 'admin')
-                                ->count();
-
-            echo "admin check : ".$admin_checks;
-            echo "<br>";
-            echo "login_email : ".$request->email;
-            echo "<br>";
-
-
-            if($admin_checks > 0) {
-                echo "0 보다 클경우 실행되는 if";
-                echo "<br>";
-                // return redirect('/admin/dashboard');
-            } else {
-                echo "0 보다 작을 경우 실행되는 if";
-                echo "<br>";
-                
-                return back()->withErrors([
-                    'email' => 'This account is not an Admin account. Please use the admin account',
-                ]);
+        if($admin_checks > 0) {
+            if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+                $request->session()->regenerate();
+    
+                // return redirect()->intended('dashboard');
+                return redirect('/admin/dashboard');
             }
+        } else {
+            Alert::error('Login Fail', 'This account is not an Admin account. Please use the admin account');
+            return back()->withErrors([
+                'email' => 'This account is not an Admin account. Please use the admin account',
+            ]);
 
-            exit;
-            
         }
 
         return back()->withErrors([
