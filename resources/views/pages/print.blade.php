@@ -215,7 +215,8 @@
             var afterPrint = function(){
                 // window.close();
                 // window.open("about:blank", "_self").close();
-                self.close();
+                alert("버튼 클릭함");
+                // self.close();
             }
 
             // 이벤트 핸들러 작성
