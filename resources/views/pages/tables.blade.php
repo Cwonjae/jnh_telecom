@@ -51,6 +51,8 @@
                                             검증</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             프린트</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            상세보기</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -114,10 +116,15 @@
                                             </a>
                                             @endif
                                         </td>
+                                        <td class="align-middle text-center">
+                                            <a href="'{{ route('page.views', ['page' => 'tables', 'num' => $cell_phone->id]) }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="print page">
+                                                <span>Views</span>
+                                            </a>
+                                        </td>
                                     </tr>
                                     @empty
                                     <tr>
-                                        <td class="align-middle text-center" colspan="6">don't have a history of applying for Olleh Mobile Application Form</td>
+                                        <td class="align-middle text-center" colspan="7">don't have a history of applying for Olleh Mobile Application Form</td>
                                     </tr>
                                     @endforelse
                                 </tbody>

@@ -162,4 +162,23 @@ class PageController extends Controller
             }
         }
     }
+
+    public function views(string $page, $num) {
+        $board_check = DB::table('cellphone_boards')->where('id', $num)->exists();
+        if($board_check) {
+            $cell_phones = DB::table('cellphone_boards')
+                            ->join('signature_uploads', 'cellphone_boards.stu_id', '=' ,'signature_uploads.id')
+                            ->join('passport_uploads', 'cellphone_boards.ppu_id', '=' ,'passport_uploads.id')
+                            ->where('cellphone_boards.id', $num)
+                            ->select('cellphone_boards.*', 'signature_uploads.stu_filename', 'signature_uploads.stu_base64', 'passport_uploads.ppu_filename', 'passport_uploads.ppu_encode_filename')
+                            ->get();
+
+            if (view()->exists("pages.{$page}_views")) {
+                return view("pages.{$page}_views", ['cell_phones' => $cell_phones]);
+            }
+        } else {
+            return abort(404);
+        }
+    }
+
 }

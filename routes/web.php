@@ -62,6 +62,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/sign-in-static', [PageController::class, 'signin'])->name('sign-in-static');
 	Route::get('/sign-up-static', [PageController::class, 'signup'])->name('sign-up-static'); 
 	Route::get('/admin/{page}', [PageController::class, 'index'])->name('page');
+	Route::get('/admin/{page}/views/{num}', [PageController::class, 'views'])->name('page.views');
 	Route::get('/admin/{page}/{num}', [PageController::class, 'print'])->name('page.print');
 	Route::post('/admin/{page}/checking/{num}', [PageController::class, 'comparison'])->name('page.comparisons');
 	Route::get('/admin/{page}/change/{num}/{status}', [PageController::class, 'status_change'])->name('page.statuschange');
