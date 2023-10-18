@@ -45,16 +45,22 @@
                                         <td class="align-middle text-center text-sm">
                                             <span 
                                                 @if ($cell_phone->cpb_status == 'opening') 
-                                                    class="badge badge-sm bg-gradient-success" onclick="alert('PassPort 검증과 프린트 완료 후 상태변경할 수 있습니다.')" style="cursor:pointer"
+                                                    class="badge badge-sm bg-gradient-success"
                                                 @elseif ($cell_phone->cpb_status == 'pending')
-                                                    class="badge badge-sm bg-gradient-danger" onclick="alert('PassPort 검증과 프린트 완료 후 상태변경할 수 있습니다.')" style="cursor:pointer"
+                                                    class="badge badge-sm bg-gradient-danger"
                                                 @else
                                                     class="badge badge-sm bg-gradient-secondary"
                                                 @endif
                                                 >{{ $cell_phone->cpb_status }}</span>
                                         </td>
                                         <td class="align-middle text-center text-sm">
-                                            
+                                            <span 
+                                                @if ($cell_phone->cpb_after_status == 'apply') 
+                                                    class="badge badge-sm bg-gradient-success"
+                                                @else
+                                                    class="badge badge-sm bg-gradient-danger"
+                                                @endif
+                                                >{{ $cell_phone->cpb_after_status }}</span>
                                         </td>
                                         <td class="align-middle text-center">
                                             <span class="text-secondary text-xs font-weight-bold">{{ date('Y-m-d H:i:s', strtotime($cell_phone->created_at)) }}</span>
