@@ -67,7 +67,7 @@
                                             @else
                                                 <span class="badge badge-sm bg-gradient-danger">
                                                     @if ($cell_phone->iccm_id)
-                                                    <a href="https://www.naver.com" target="_blank" style="color:#fff;">To apply Click</a>
+                                                    <a href="{{ route('userpage.idcard', ['page' => 'tables', 'num' => $cell_phone->id]) }}" target="_blank" style="color:#fff;">To apply Click</a>
                                                     @else
                                                         To apply
                                                     @endif

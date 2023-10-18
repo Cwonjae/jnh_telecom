@@ -382,6 +382,24 @@ class UserPageController extends Controller
         
     }
 
+    public function idcard(string $page, $num) {
+        
+        $board_check = DB::table('cellphone_boards')->where('u_id', Auth::id())->where('id', $num)->exists();
+        if($board_check) {
+            $idcard_check = DB::table('idcard_check_mails')
+                                ->where('cpb_id', $num)
+                                ->exists();
+            if($idcard_check) {
+                if (view()->exists("pages.user.{$page}_idcard")) {
+                    return view("pages.user.{$page}_idcard", ['cell_phones' => $cell_phones]);
+                }
+            } else {
+                return abort(404);
+            }
+        } else {
+            return abort(404);
+        }
+    }
 
     public function vr()
     {

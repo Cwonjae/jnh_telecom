@@ -89,6 +89,7 @@ Route::group(['middleware' => 'userauth'], function () {
 	Route::post('/user/{page}/register', [UserPageController::class, 'register_insert'])->name('userpage.insert');
 	Route::get('/user/{page}/modify/{num}', [UserPageController::class, 'modify'])->name('userpage.modify');
 	Route::post('/user/{page}/modify/{num}', [UserPageController::class, 'modify_update'])->name('userpage.update');
+	Route::get('/user/{page}/idcard/{num}', [UserPageController::class, 'idcard'])->name('userpage.idcard');
 	Route::post('/user/logout', [UserLoginController::class, 'logout'])->name('userlogout');
 });
 
