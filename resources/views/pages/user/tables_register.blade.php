@@ -36,6 +36,8 @@
                         $(this).val(val.substring(0,2) + "-");
                     } else if(val.length >= 3 && val.length < 6) {
                         $(this).val(val.substring(0,2) + "-" + val.substring(2,4) + "-");
+                    } else if(val.length > 5) {
+                        $(this).val(val.substring(0,2) + "-" + val.substring(2,4) + "-" + val.substring(4,8));
                     } else {
                         $(this).val(val.substring(0,2) + "-" + val.substring(2,4) + "-" + val.substring(4,8));
                     }
@@ -180,10 +182,10 @@
             var val_add;
 
             if(split_value.length > 0 && split_value.length < 4) {
-                if(val.length == 4) {
+                if(value.length == 4) {
                     val_add = val + ",";
                     $("#"+_this.id).val(val_add);
-                } else if(val.length == 9) {
+                } else if(value.length == 9) {
                     val_add = val + ",";
                     $("#"+_this.id).val(val_add);
                 }
