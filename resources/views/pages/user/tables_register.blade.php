@@ -140,10 +140,14 @@
 
         function formCheck() {
             var signature_img_length = $('#signature').find('#signature_img').length;
+            var checked = $('#consent').is(':checked');
+
             if(signature_img_length == 0 || !signature_img_length) {
                 alert('Please Use your mouse or finger to draw your signature above');
                 return false;
-            } else {
+            } else if(!checked) { 
+                alert('Please check your consent to use the sign');
+             } else {
                 $('#cellPhone_register').submit();
             }
 
@@ -329,6 +333,7 @@
                                     <a id="clearBtn" class="btn btn-default" onclick="clearCanvas();">Clear Canvas</a>
                                     <a id="saveBtn" class="btn btn-default" onclick="saveSignature();" style="display:none;">Save Signature</a>
                                     <p>Use your mouse or finger to draw your signature above</p>
+                                    <input type="checkbox" id="consent" name="consent" />
                                     <p id="signature_note" style="color:red">The signature you registered will be used on the Korean mobile communication subscription form.</p>
                                     @error('signaturetxt') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
                                     <input type="hidden" id="signature_txt" name="signaturetxt" value="{{ old('signaturetxt') }}"/>

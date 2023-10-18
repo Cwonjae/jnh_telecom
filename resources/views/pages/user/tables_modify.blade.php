@@ -23,10 +23,20 @@
             });
 
             $('#dateofbirth').keyup(function() {
-                var val = $(this).val().replace(/[^0-9]/g, '');
+                if(event.keyCode == 8) {
+                    $(this).val();
+                } else {
+                    var val = $(this).val().replace(/[^0-9]/g, '');
 
-                if(val.length < 11){
-                    $(this).val(val.substring(0,2) + "-" + val.substring(2,4) + "-" + val.substring(4,8));
+                    if(val.length < 3) {
+                        $(this).val(val.substring(0,2) + "-");
+                    } else if(val.length >= 3 && val.length < 5) {
+                        $(this).val(val.substring(0,2) + "-" + val.substring(2,4) + "-");
+                    } else if(val.length > 5) {
+                        $(this).val(val.substring(0,2) + "-" + val.substring(2,4) + "-" + val.substring(4,8));
+                    } else {
+                        $(this).val(val.substring(0,2) + "-" + val.substring(2,4) + "-" + val.substring(4,8));
+                    }
                 }
             });
             
@@ -168,12 +178,12 @@
             var split_value = value.split(",");
             var val_add;
 
-            if(val_split.length > 0 && val_split.length < 4) {
-                if(val.length == 4) {
-                    val_add = val + ",";
+            if(split_value.length > 0 && split_value.length < 4) {
+                if(value.length == 4) {
+                    val_add = value + ",";
                     $("#"+_this.id).val(val_add);
-                } else if(val.length == 9) {
-                    val_add = val + ",";
+                } else if(value.length == 9) {
+                    val_add = value + ",";
                     $("#"+_this.id).val(val_add);
                 }
             }
@@ -320,6 +330,7 @@
                                     <a id="clearBtn" class="btn btn-default" onclick="clearCanvas();">Clear Canvas</a>
                                     <a id="saveBtn" class="btn btn-default" onclick="saveSignature();" style="display:none;">Save Signature</a>
                                     <p>Use your mouse or finger to draw your signature above</p>
+                                    <input type="checkbox" id="consent" name="consent" />
                                     <p id="signature_note" style="color:red">The signature you registered will be used on the Korean mobile communication subscription form.</p>
                                     @error('signaturetxt') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
                                     <input type="hidden" id="signature_txt" name="signaturetxt" value="data:image/png;base64,{{ $cell_phones[0]->stu_base64 }}"/>
