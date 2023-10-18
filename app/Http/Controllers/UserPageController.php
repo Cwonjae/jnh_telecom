@@ -67,7 +67,7 @@ class UserPageController extends Controller
         $validated = $request->validate([
             'applicant' => 'required',
             'nationality' => 'required',
-            'passport' => 'required|mimes;jpg,bmp,png',
+            'passport' => 'required',
             'passportnumber' => 'required',
             'dateofbirth' => 'required',
             'gender' => 'required|in:male,female',
