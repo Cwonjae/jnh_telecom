@@ -264,6 +264,9 @@ class PageController extends Controller
                 return redirect("/admin/users");
             }
 
+        } else {
+            Alert::error('이메일 발송', '해당 가입자는 선불 가입절차가 종료되지 않았습니다.');
+            return redirect("/admin/users");
         }
     }
 
