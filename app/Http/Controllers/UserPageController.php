@@ -32,13 +32,13 @@ class UserPageController extends Controller
         if($admin_checks > 0) {
             $cell_phones = DB::table('cellphone_boards')
                             ->join('users', 'cellphone_boards.u_id', '=' ,'users.id')
-                            ->select('users.username', 'users.email', 'cellphone_boards.id', 'cellphone_boards.cpb_applicant', 'cellphone_boards.cpb_nationality', 'cellphone_boards.cpb_status', 'cellphone_boards.created_at')
+                            ->select('users.username', 'users.email', 'cellphone_boards.id', 'cellphone_boards.cpb_applicant', 'cellphone_boards.cpb_nationality', 'cellphone_boards.cpb_status', 'cellphone_boards.cpb_after_status', 'cellphone_boards.created_at')
                             ->paginate(10);
         } else {
             $cell_phones = DB::table('cellphone_boards')
                             ->join('users', 'cellphone_boards.u_id', '=' ,'users.id')
                             ->where('cellphone_boards.u_id', Auth::id())
-                            ->select('users.username', 'users.email', 'cellphone_boards.id', 'cellphone_boards.cpb_applicant', 'cellphone_boards.cpb_nationality', 'cellphone_boards.cpb_status', 'cellphone_boards.created_at')
+                            ->select('users.username', 'users.email', 'cellphone_boards.id', 'cellphone_boards.cpb_applicant', 'cellphone_boards.cpb_nationality', 'cellphone_boards.cpb_status', 'cellphone_boards.cpb_after_status', 'cellphone_boards.created_at')
                             ->paginate(10);
         }
 

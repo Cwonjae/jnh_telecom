@@ -29,6 +29,8 @@
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Opening Status</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Deferred Payment Status</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Registration date</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             ETC</th>
@@ -59,6 +61,13 @@
                                             @endif
                                             ">{{ $cell_phone->cpb_status }}</span>
                                         </td>
+                                        <td class="align-middle text-center text-sm">
+                                            @if ($cell_phone->cpb_after_status == 'apply')
+                                                <span class="badge badge-sm bg-gradient-success">Complete</span>
+                                            @else
+                                                <span class="badge badge-sm bg-gradient-danger"><a>To apply</a></span>
+                                            @endif
+                                        </td>
                                         <td class="align-middle text-center">
                                             <span class="text-secondary text-xs font-weight-bold">{{ date('Y-m-d H:i:s', strtotime($cell_phone->created_at)) }}</span>
                                         </td>
@@ -70,7 +79,7 @@
                                     </tr>
                                     @empty
                                     <tr>
-                                        <td class="align-middle text-center" colspan="5">don't have a history of applying for Olleh Mobile Application Form</td>
+                                        <td class="align-middle text-center" colspan="6">don't have a history of applying for Olleh Mobile Application Form</td>
                                     </tr>
                                     @endforelse
                                 </tbody>
