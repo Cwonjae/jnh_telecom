@@ -32,6 +32,8 @@
                     //     $(this).val(val.substring(0,2) + "-" + val.substring(2,4) + "-" + val.substring(4,8));
                     // }
 
+                    console.log(val.length);
+
                     if(val.length < 3) {
                         $(this).val(val.substring(0,2) + "-");
                     } else if(val.length >= 3 && val.length < 6) {
@@ -183,10 +185,10 @@
 
             if(split_value.length > 0 && split_value.length < 4) {
                 if(value.length == 4) {
-                    val_add = val + ",";
+                    val_add = value + ",";
                     $("#"+_this.id).val(val_add);
                 } else if(value.length == 9) {
-                    val_add = val + ",";
+                    val_add = value + ",";
                     $("#"+_this.id).val(val_add);
                 }
             }
