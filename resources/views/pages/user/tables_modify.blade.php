@@ -331,6 +331,7 @@
                                     <a id="saveBtn" class="btn btn-default" onclick="saveSignature();" style="display:none;">Save Signature</a>
                                     <p>Use your mouse or finger to draw your signature above</p>
                                     <input type="checkbox" id="consent" name="consent" />
+                                    <label for="consent">Consent</label>
                                     <p id="signature_note" style="color:red">The signature you registered will be used on the Korean mobile communication subscription form.</p>
                                     @error('signaturetxt') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
                                     <input type="hidden" id="signature_txt" name="signaturetxt" value="data:image/png;base64,{{ $cell_phones[0]->stu_base64 }}"/>
