@@ -23,10 +23,22 @@
             });
 
             $('#dateofbirth').keyup(function() {
-                var val = $(this).val().replace(/[^0-9]/g, '');
+                if(event.keyCode == 8) {
+                    $(this).val();
+                } else {
+                    var val = $(this).val().replace(/[^0-9]/g, '');
 
-                if(val.length < 11){
-                    $(this).val(val.substring(0,2) + "-" + val.substring(2,4) + "-" + val.substring(4,8));
+                    // if(val.length < 11){
+                    //     $(this).val(val.substring(0,2) + "-" + val.substring(2,4) + "-" + val.substring(4,8));
+                    // }
+
+                    if(val.length < 3) {
+                        $(this).val(val.substring(0,2) + "-");
+                    } else if(val.length >= 3 && val.length < 6) {
+                        $(this).val(val.substring(0,2) + "-" + val.substring(2,4) + "-");
+                    } else {
+                        $(this).val(val.substring(0,2) + "-" + val.substring(2,4) + "-" + val.substring(4,8));
+                    }
                 }
             });
             
@@ -167,7 +179,7 @@
             var split_value = value.split(",");
             var val_add;
 
-            if(val_split.length > 0 && val_split.length < 4) {
+            if(split_value.length > 0 && split_value.length < 4) {
                 if(val.length == 4) {
                     val_add = val + ",";
                     $("#"+_this.id).val(val_add);
