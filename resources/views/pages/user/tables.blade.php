@@ -67,7 +67,7 @@
                                             @else
                                                 <span class="badge badge-sm bg-gradient-danger">
                                                     @if ($cell_phone->iccm_id)
-                                                    <a href="https://www.naver.com" target="_blank">To apply</a>
+                                                    <a href="https://www.naver.com" target="_blank">To apply Click</a>
                                                     @else
                                                         To apply
                                                     @endif
