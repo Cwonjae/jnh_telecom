@@ -3,48 +3,6 @@
 @section('content')
     <script>
         $(function () {
-            $('.js-signature').jqSignature();
-
-            /**
-             *  국가 입력시 자동완성 기능 추가
-             * */
-            const locList = ["Albania","Algeria","Afghanistan","Kabol","America","Angola","Antigua and Barbuda Armenia","Republic of Armenia","Australia","Azerbaijan","Bahrain","Barbados","Belarus","Belgium","Bolivia","Bosnia","Brazil","Bulgaria","Burundi","Cambodia","Cameroon","Canada","Central African Republic","Chad","Chile ", "China","Colombia","Croatia","Cuba","Cyprus","Czech","Denmark","Egypt","El Salvador","Eritrea","Estonia","Finland","France","Georgia","Germany","Greece","Hong Kong","China","Hungary","India","Indonesia","Iran","Iraq","ireland","Israel","Italy","Japan","Jordan","Kazakhstan","Kenya","Korea","Kuwait","Kyrgyzstan","Latvia","Republic of Latvia","Lebanon","Liberia","Libya","Lithuania","Macedonia","Madagascar","Malaysia","Malta","Mexico","Monaco","Mongolia ","Morocco","Karabakh","Nagorno","Karabakh","Namibia","Netherlands","arab","Nicaragua","Nigeria","Oman","Pakistan","Islamic Republic of Pakistan","Palestine","Panama","Peru","Philippines","Portugal","Qatar","Romania","Russia","Saudi Arabia","Serbia","Singapore","Slovakia","Slovenia","Somalia","South Africa","spain","Sri Lanka","Sudan","Sweden","Switzerland","Syria","Tajikistan","Tanzania","Thailand","See East Timor","Türkiye","Turkmenistan","Turks","Ukraine","United Arab Emirates","United Kingdom","Great Britain and Northern Ireland","United States America","Uzbekistan","Vatican City"];
-
-            // input필드에 자동완성 기능을 걸어준다
-            $('#inputSearch').autocomplete({
-                source: locList,
-                focus: function (event, ui) {
-                    return false;
-                },
-                select: function (event, ui) {},
-                minLength: 1,
-                delay: 100,
-                autoFocus: true,
-            });
-
-            $('#dateofbirth').keyup(function() {
-                if(event.keyCode == 8) {
-                    $(this).val();
-                } else {
-                    var val = $(this).val().replace(/[^0-9]/g, '');
-
-                    if(val.length < 3) {
-                        $(this).val(val.substring(0,2) + "-");
-                    } else if(val.length >= 3 && val.length < 5) {
-                        $(this).val(val.substring(0,2) + "-" + val.substring(2,4) + "-");
-                    } else if(val.length > 5) {
-                        $(this).val(val.substring(0,2) + "-" + val.substring(2,4) + "-" + val.substring(4,8));
-                    } else {
-                        $(this).val(val.substring(0,2) + "-" + val.substring(2,4) + "-" + val.substring(4,8));
-                    }
-                }
-            });
-            
-
-            $('.js-signature').on('jq.signature.changed', function() {
-                $('#saveBtn').css('display', 'inline-block');
-            });
-
             $('#form_submit').click(function() {
                 formCheck();
             });
@@ -139,35 +97,7 @@
         });
 
         function formCheck() {
-            var signature_img_length = $('#signature').find('#signature_img').length;
-            var checked = $('#consent').is(':checked');
-
-            if(signature_img_length == 0 || !signature_img_length) {
-                alert('Please Use your mouse or finger to draw your signature above');
-                return false;
-            } else if(!checked) { 
-                alert('Please check your consent to use the sign');
-             } else {
-                $('#cellPhone_register').submit();
-            }
-
-        }
-
-        function clearCanvas() {
-            $('.js-signature').jqSignature('clearCanvas');
-		    $('#saveBtn').css('display', 'none');
-            $("#signature").empty();
-        }
-
-        function saveSignature() {
-		    $('#signature').empty();
-            var dataUrl = $('.js-signature').jqSignature('getDataURL');
-            var img = $('<img id="signature_img">').attr('src', dataUrl);
-
-            $('#signature').append(img);
-            $('#signature_txt').val(dataUrl);
-		    $('#signature_img').css('display', 'none');
-            alert('Sign Saved Successfully');
+            $('#cellPhone_register').submit();
         }
 
         function checkInputNum(){
@@ -212,30 +142,8 @@
                                     <option value="vietnamese">Vietnamese</option>
                                 </select>
                             </div>
-                            <!-- <div class="flex flex-col mb-3">
-                                <h4>Welcome to Korea!</h4>
-                                <div>
-                                    <img src="/img/tables/tables1.jpeg" alt="Korea City IMG" style="max-width: 100%; height: auto;">
-                                    <img src="/img/tables/tables2.jpeg" alt="K-Telecom Introduction" style="max-width: 100%; height: auto;">
-                                    <img src="/img/tables/tables3.png" alt="How to Save Big?" style="max-width: 100%; height: auto;">
-                                </div>
-                                <div>
-                                    <h6>Limited-time Prepaid Plan Promotion - Enjoy an Initial top-up on Us!</h6>
-                                    <span style="margin-left:30px;">᛫ Sign up for our Prepaid Plan and get the first top-up of 30,000 KRW ($23) from us!</span><br>
-                                    <span style="margin-left:30px;">᛫ Your first top-up is our treat to you as part of this special promotion.</span><br>
-                                    <span style="margin-left:30px;">᛫ After the initial top-up, you'll be responsible for future top-ups. Use the charged amount for services with a flexible validity period.</span><br>
-                                    <span style="margin-left:30px;">᛫ Switch to Postpaid later and receive a bonus equivalent to your charged amount.</span><br>
-                                    <span style="margin-left:30px;">᛫ We provide a cash deposit to your account for the exact amount you top-up.</span><br>
-                                    <span style="margin-left:30px;">᛫ Your deposited funds match the amount you top up. Don't miss out on this fantastic offer!</span><br>
-                                    <br>
-                                    <span>Join our Prepaid Plan today and enjoy the convenience and flexibility of our services. </span><br>
-                                    <span>After activating our prepaid service, if you switch to postpaid service using a foreigner registration card, we'll provide a 50,000 KRW ($38) subsidy towards your first bill. </span><br>
-                                    <hr style="width:100%;">
-                                    <span>The exchange rate applied is 1,300 KRW.</span>
-                                </div>
-                            </div> -->
                             
-                            <form method="POST" action="{{ route('userpage.insert', ['page' => 'tables']) }}" id="cellPhone_register" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('userpage.idcard-insert', ['page' => 'tables', 'num' => $cpb_num]) }}" id="cellPhone_register" enctype="multipart/form-data">
                             @csrf
                                 <div class="flex flex-col mb-3">
                                     <h6 style="float:left;">Full Name <span style="color:red">*</span></h6><h4 id="name_lang"></h4>
@@ -270,26 +178,6 @@
                                     <label class="form-radio-label" for="flexRadioDefault_f">FeMale</label>
                                     @error('gender') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
                                 </div>
-                                <!-- <div class="form-radio form-check-info text-start">
-                                    <h6>Device <span style="color:red">*</span></h6>
-                                    <input class="form-radio-input" type="radio" name="device" id="flexRadioDefault_ap" value="apple">
-                                    <label class="form-radio-label" for="flexRadioDefault_ap">Apple</label>
-                                    <input class="form-radio-input" type="radio" name="device" id="flexRadioDefault_s" value="samsung">
-                                    <label class="form-radio-label" for="flexRadioDefault_s">Samsung</label>
-                                    <input class="form-radio-input" type="radio" name="device" id="flexRadioDefault_o" value="other">
-                                    <label class="form-radio-label" for="flexRadioDefault_o">Other</label>
-                                    @error('device') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
-                                </div>
-                                <div class="flex flex-col mb-3">
-                                    <h6>Device Model <span style="color:red">*</span></h6>
-                                    <input type="text" name="devicemodel" class="form-control" placeholder="Ex) Iphone 13, Iphone 13 mini, Galaxy S22, etc" aria-label="Device Model" value="{{ old('devicemodel') }}" id="devicemodel">
-                                    @error('devicemodel') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
-                                </div>
-                                <div class="flex flex-col mb-3">
-                                    <h6>OS Version <span style="color:red">*</span></h6>
-                                    <input type="text" name="osversion" class="form-control" placeholder="Ex) Android Version 13, IOS version 16.5, etc" aria-label="Os Version" value="{{ old('osversion') }}" id="osversion">
-                                    @error('osversion') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
-                                </div> -->
                                 <div class="flex flex-col mb-3">
                                     <img src="/img/tables/tables4.png" alt="IMEI and S/N" style="max-width: 100%; height: auto;">
                                     <p>Dial *#06# or go to setting - about to find IMEI number.</p>
@@ -345,15 +233,6 @@
                                     <input type="text" name="referral" class="form-control" placeholder="Please enter the referral's email address, phone number and name" aria-label="Referral" value="{{ old('referral') }}" id="referral">
                                     @error('referral') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
-                                <!-- <div class="form-radio form-check-info text-start">
-                                    <h6>Add International Calling Service <span style="color:red">*</span></h6>
-                                    <input class="form-radio-input" type="radio" name="callservice" id="flexRadioDefault_y" value="yes">
-                                    <label class="form-radio-label" for="flexRadioDefault_y">Yes</label>
-                                    <input class="form-radio-input" type="radio" name="callservice" id="flexRadioDefault_n" value="no">
-                                    <label class="form-radio-label" for="flexRadioDefault_n">No</label>
-                                    @error('callservice') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
-                                    <p>Extra $5/ month per line</p>
-                                </div> -->
                                 <div class="flex flex-col mb-3">
                                     <img src="/img/tables/tables6.png" alt="5G" style="max-width: 100%; height: auto;">
                                     <img src="/img/tables/tables7.png" alt="4G" style="max-width: 100%; height: auto;">

@@ -391,7 +391,7 @@ class UserPageController extends Controller
                                 ->exists();
             if($idcard_check) {
                 if (view()->exists("pages.user.{$page}_idcard")) {
-                    return view("pages.user.{$page}_idcard", ['cell_phones' => $cell_phones]);
+                    return view("pages.user.{$page}_idcard", ['cpb_num' => $num]);
                 }
             } else {
                 return abort(404);

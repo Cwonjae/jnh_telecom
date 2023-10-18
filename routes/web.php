@@ -90,6 +90,7 @@ Route::group(['middleware' => 'userauth'], function () {
 	Route::get('/user/{page}/modify/{num}', [UserPageController::class, 'modify'])->name('userpage.modify');
 	Route::post('/user/{page}/modify/{num}', [UserPageController::class, 'modify_update'])->name('userpage.update');
 	Route::get('/user/{page}/idcard/{num}', [UserPageController::class, 'idcard'])->name('userpage.idcard');
+	Route::post('/user/{page}/idcard/{num}', [UserPageController::class, 'idcard_insert'])->name('userpage.idcard-insert');
 	Route::post('/user/logout', [UserLoginController::class, 'logout'])->name('userlogout');
 });
 
