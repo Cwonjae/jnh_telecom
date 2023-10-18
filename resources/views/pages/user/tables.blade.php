@@ -65,7 +65,13 @@
                                             @if ($cell_phone->cpb_after_status == 'apply')
                                                 <span class="badge badge-sm bg-gradient-success">Complete</span>
                                             @else
-                                                <span class="badge badge-sm bg-gradient-danger">To apply</span>
+                                                <span class="badge badge-sm bg-gradient-danger">
+                                                    @if ($cell_phone->iccm_id)
+                                                    <a href="https://www.naver.com" target="_blank">To apply</a>
+                                                    @else
+                                                        To apply
+                                                    @endif
+                                                </span>
                                             @endif
                                         </td>
                                         <td class="align-middle text-center">
