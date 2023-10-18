@@ -24,11 +24,11 @@
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             후불 가입신청 상태</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            신청일</th>
+                                            가입신청일</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             검증</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            상세보기</th>
+                                            메일 전송(외국인등록증 등록 메일)</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -69,7 +69,7 @@
 
                                         </td>
                                         <td class="align-middle text-center">
-                                            
+                                            <a href="{{ route('page.mailsend', ['page' => 'tables', 'num' => $cell_phone->id]) }}">메일 발송</a>
                                         </td>
                                     </tr>
                                     @empty

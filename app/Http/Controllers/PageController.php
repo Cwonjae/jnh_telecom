@@ -168,14 +168,11 @@ class PageController extends Controller
                                         ->where('cellphone_boards.id', $num)
                                         ->select('users.email')
                                         ->first();
-                /**
-                 * 현재는 하드코딩으로 작성된 메일로 발송되게 함
-                 * 추후 해당 업무 담당자들에게 발송되게 User Table에서 email 추출해서 전달해야됨
-                 */
+                                        
                 $datae = [];
                 Mail::send('mobileForm.user.status', $datae, function($message) use($user_check, $now_date_time) {
                     $message->to($user_check->email);
-                    $message->subject('Olle mobile application is finally complete.'.$now_date_time);
+                    $message->subject('Olleh mobile application is finally complete.'.$now_date_time);
                 });
 
                 Alert::success('가입신청 상태 변경', '가입신청 상태 변경이 완료되었습니다.');
@@ -202,6 +199,71 @@ class PageController extends Controller
             }
         } else {
             return abort(404);
+        }
+    }
+
+    /**
+     * 선불제 가입신청의 상태값이 closing 인 사람한테 메일 발송하여 후불제 가입신청하게 유도
+     * 
+     */
+    public function mail_sender(string $page, $num) {
+        $board_check = DB::table('cellphone_boards')->where('id', $num)->where('cpb_status','closing')->exists();
+        $currentDateTime = Carbon::now()->timezone('Asia/Seoul');
+        $now_date_time = $currentDateTime->toDateTimeString();
+
+        if($board_check) {
+            $cell_phones = DB::table('cellphone_boards')
+                            ->join('users', 'cellphone_boards.u_id', '=' ,'users.id')
+                            ->where('cellphone_boards.id', $num)
+                            ->where('cellphone_boards.cpb_status', 'closing')
+                            ->select('cellphone_boards.cpb_status', 'cellphone_boards.cpb_after_status', 'users.id', 'users.email')
+                            ->first();
+
+            if($cell_phones->cpb_after_status == "not_apply") {
+                /**
+                 * 후불제 신청안했을 경우 메일 발송한다 (메일 발송했냐 안했냐를 DB에 저장하여 값 관리를 해야될까?)
+                 * 
+                 */
+
+                $iccm_check = DB::table('idcard_check_mails')
+                                ->where('cpb_id', $num)
+                                ->where('u_id', $cell_phones->id)
+                                ->exists();
+
+                if($iccm_check < 1) {
+                    $idcard_check_mail_sql = DB::table('idcard_check_mails')->insertGetId([
+                                                    'cpb_id' => $num,
+                                                    'u_id' => $cell_phones->id,
+                                                    'iccm_cnt' => 1,
+                                                    'created_at' => $now_date_time
+                                                ]);
+                } else {
+                    $idcard_check_mail_sql = DB::table('idcard_check_mails')
+                                                    ->where('cpb_id', $num)
+                                                    ->where('u_id', $cell_phones->id)
+                                                    ->increment('iccm_cnt', 1, [
+                                                        'updated_at' => $now_date_time
+                                                    ]);
+                }
+
+                if($idcard_check_mail_sql) {
+                    $datae = [];
+                    Mail::send('mobileForm.admin.after_status', $datae, function($message) use($cell_phones, $now_date_time) {
+                        $message->to($cell_phones->email);
+                        $message->subject('Olleh mobile Please apply for a postpaid payment.');
+                    });
+                    Alert::success('이메일 발송', '해당 가입자에게 후불제 가입 요청 메일 발송 완료');
+                    return redirect("/admin/users");
+                } else {
+                    Alert::error('이메일 발송', '메일 발송 실패 [11]');
+                    return redirect("/admin/users");
+                }
+
+            } else {
+                Alert::error('이메일 발송', '해당 가입자는 이미 후불제를 사용하고 있습니다.');
+                return redirect("/admin/users");
+            }
+
         }
     }
 

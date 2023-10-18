@@ -65,7 +65,7 @@
                                             @if ($cell_phone->cpb_after_status == 'apply')
                                                 <span class="badge badge-sm bg-gradient-success">Complete</span>
                                             @else
-                                                <span class="badge badge-sm bg-gradient-danger"><a>To apply</a></span>
+                                                <span class="badge badge-sm bg-gradient-danger">To apply</span>
                                             @endif
                                         </td>
                                         <td class="align-middle text-center">
