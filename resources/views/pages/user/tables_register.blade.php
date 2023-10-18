@@ -28,8 +28,6 @@
                 } else {
                     var val = $(this).val().replace(/[^0-9]/g, '');
 
-                    console.log(val.length);
-
                     if(val.length < 3) {
                         $(this).val(val.substring(0,2) + "-");
                     } else if(val.length >= 3 && val.length < 5) {
