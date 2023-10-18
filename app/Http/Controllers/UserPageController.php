@@ -178,7 +178,7 @@ class UserPageController extends Controller
          * 해당 계정에 메일이 수신되면, 자동으로 관계자들의 계정으로 전달 예정
          */
         Mail::send('mobileForm.admin.form', ['tables' => 'tables'], function($message) use($request, $applicant){
-              $message->to('choi.wonjae@jinnhyun.com');
+              $message->to('kt.foreigner@jinnhyun.com');
               $message->subject('신규 모바일 신청이 등록되었습니다._'.$applicant);
           });
 
