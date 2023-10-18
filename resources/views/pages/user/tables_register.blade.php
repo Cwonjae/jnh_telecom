@@ -28,15 +28,11 @@
                 } else {
                     var val = $(this).val().replace(/[^0-9]/g, '');
 
-                    // if(val.length < 11){
-                    //     $(this).val(val.substring(0,2) + "-" + val.substring(2,4) + "-" + val.substring(4,8));
-                    // }
-
                     console.log(val.length);
 
                     if(val.length < 3) {
                         $(this).val(val.substring(0,2) + "-");
-                    } else if(val.length >= 3 && val.length < 6) {
+                    } else if(val.length >= 3 && val.length < 5) {
                         $(this).val(val.substring(0,2) + "-" + val.substring(2,4) + "-");
                     } else if(val.length > 5) {
                         $(this).val(val.substring(0,2) + "-" + val.substring(2,4) + "-" + val.substring(4,8));
