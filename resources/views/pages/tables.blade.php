@@ -117,7 +117,7 @@
                                             @endif
                                         </td>
                                         <td class="align-middle text-center">
-                                            <a href="'{{ route('page.views', ['page' => 'tables', 'num' => $cell_phone->id]) }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="print page">
+                                            <a href="{{ route('page.views', ['page' => 'tables', 'num' => $cell_phone->id]) }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="print page">
                                                 <span>Views</span>
                                             </a>
                                         </td>
