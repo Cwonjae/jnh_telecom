@@ -25,23 +25,47 @@ class PageController extends Controller
                             ->where('grade', 'admin')
                             ->count();
 
-        /**
-         * admin 일 경우 등록된 모든 정보 리스트업
-         * kt값만 추출
-         */
-        if($admin_checks > 0) {
-            $cell_phones = DB::table('cellphone_boards')
-                            ->join('users', 'cellphone_boards.u_id', '=' ,'users.id')
-                            ->join('passport_comparison', 'cellphone_boards.id', '=' ,'passport_comparison.cpb_id')
-                            ->where('cellphone_boards.cpb_telecoms', 'kt')
-                            ->select('users.username', 'users.email', 'cellphone_boards.id', 'cellphone_boards.cpb_applicant', 'cellphone_boards.cpb_nationality', 'cellphone_boards.cpb_status', 'cellphone_boards.cpb_telecoms', 'cellphone_boards.created_at', 'passport_comparison.ppc_status', 'passport_comparison.id AS ppc_id')
-                            ->paginate(10);
+        if($page == "tables") {
+            /**
+             * admin 일 경우 등록된 이동통신 가입신청 모든 정보 리스트업
+             * kt값만 추출
+             */
+            if($admin_checks > 0) {
+                $cell_phones = DB::table('cellphone_boards')
+                                ->join('users', 'cellphone_boards.u_id', '=' ,'users.id')
+                                ->join('passport_comparison', 'cellphone_boards.id', '=' ,'passport_comparison.cpb_id')
+                                ->where('cellphone_boards.cpb_telecoms', 'kt')
+                                ->select('users.username', 'users.email', 'cellphone_boards.id', 'cellphone_boards.cpb_applicant', 'cellphone_boards.cpb_nationality', 'cellphone_boards.cpb_status', 'cellphone_boards.cpb_after_status', 'cellphone_boards.cpb_telecoms', 'cellphone_boards.created_at', 'passport_comparison.ppc_status', 'passport_comparison.id AS ppc_id')
+                                ->paginate(10);
+            } else {
+                return abort(404);
+            }
+
+            if (view()->exists("pages.{$page}")) {
+                return view("pages.{$page}", ['cell_phones' => $cell_phones]);
+            }
+        } else if($page == "users") {
+            /**
+             * admin 일 경우 user 리스트업
+             * 회원가입 한 사람들을 추출 하냐, 이동통신사업 가입신청을 완료한 사람들을 추출 하냐 고민
+             * 
+             */
+            if($admin_checks > 0) {
+                $cell_phones = DB::table('cellphone_boards')
+                                ->join('users', 'cellphone_boards.u_id', '=' ,'users.id')
+                                ->join('passport_comparison', 'cellphone_boards.id', '=' ,'passport_comparison.cpb_id')
+                                ->where('cellphone_boards.cpb_telecoms', 'kt')
+                                ->select('users.username', 'users.email', 'cellphone_boards.id', 'cellphone_boards.cpb_applicant', 'cellphone_boards.cpb_nationality', 'cellphone_boards.cpb_status', 'cellphone_boards.cpb_after_status', 'cellphone_boards.cpb_telecoms', 'cellphone_boards.created_at', 'passport_comparison.ppc_status', 'passport_comparison.id AS ppc_id')
+                                ->paginate(10);
+            } else {
+                return abort(404);
+            }
+
+            if (view()->exists("pages.{$page}")) {
+                return view("pages.{$page}", ['cell_phones' => $cell_phones]);
+            }
         } else {
             return abort(404);
-        }
-
-        if (view()->exists("pages.{$page}")) {
-            return view("pages.{$page}", ['cell_phones' => $cell_phones]);
         }
 
         return abort(404);
