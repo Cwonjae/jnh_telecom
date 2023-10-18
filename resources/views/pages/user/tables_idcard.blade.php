@@ -14,16 +14,16 @@
                         $('#idcard_lang').text("");
                         break;
                     case 'russian' :
-                        $('#idcard_lang').text(" (Полное имя)");
+                        $('#idcard_lang').text(" (регистрационная карта)");
                         break;
                     case 'uzbek' :
-                        $('#idcard_lang').text(" (to'liq ism)");
+                        $('#idcard_lang').text(" (ro'yxatga olish kartasi)");
                         break;
                     case 'tagalog' :
-                        $('#idcard_lang').text(" (buong pangalan)");
+                        $('#idcard_lang').text(" (kard ng pagpaparehistro)");
                         break;
                     case 'vietnamese' :
-                        $('#idcard_lang').text(" (Họ và tên)");
+                        $('#idcard_lang').text(" (Thẻ đăng ký)");
                         break;
                     default :
                         break;
@@ -81,9 +81,9 @@
                             <form method="POST" action="{{ route('userpage.idcard-insert', ['page' => 'tables', 'num' => $cpb_num]) }}" id="idcard_insert" enctype="multipart/form-data">
                             @csrf
                                 <div class="flex flex-col mb-3">
-                                    <h6 style="float:left;">Passport <span style="color:red">*</span></h6><h4 id="idcard_lang"></h4>
-                                    <input type="file" name="idcard" accept="file_extension,image/*" capture="camera" class="form-control" aria-label="ID Card" id="idcard">
-                                    @error('idcard') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
+                                    <h6 style="float:left;">Registration Card <span style="color:red">*</span></h6><h4 id="idcard_lang"></h4>
+                                    <input type="file" name="registrationcard" accept="file_extension,image/*" capture="camera" class="form-control" aria-label="Registration Card" id="registrationcard">
+                                    @error('registrationcard') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                             </form>
 

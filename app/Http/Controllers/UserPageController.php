@@ -401,6 +401,57 @@ class UserPageController extends Controller
         }
     }
 
+    public function idcard_insert(request $request, string $page, $num) {
+        $user_id_check = DB::table('users')->where('id', Auth::id())->value('id');
+        $user_name_check = DB::table('users')->where('id', Auth::id())->value('username');
+        $currentDateTime = Carbon::now()->timezone('Asia/Seoul');
+        $now_date_time = $currentDateTime->toDateTimeString();
+
+        if(DB::table('cellphone_boards')->where('u_id', Auth::id())->where('id', $num)->exists()) {
+            
+            // Form validate 구성
+            $validated = $request->validate([
+                'registrationcard' => 'required',
+            ]);
+
+            // idcard Upload 구성
+            $upload_file = Storage::putFile('/public/images/registrationcard',$request->file('registrationcard'));
+            if($upload_file) {
+                $file_name = $request->file('registrationcard')->getClientOriginalName();
+                $random_explode = explode('public/images/registrationcard/', $upload_file);
+                $extension_cut = explode('.', $random_explode[1]);
+                $random_file_name = $extension_cut[0];
+
+                $passport_insert_id = DB::table('idcard_uploads')->insertGetId([
+                    'u_id' => $user_id_check,
+                    'icu_filename' => $file_name,
+                    'icu_encode_filename' => $random_file_name,
+                    'created_at' => $now_date_time
+                ]);
+
+                if($passport_insert_id) {
+                    $cellphone_update = DB::table('cellphone_boards')
+                                        ->where('u_id', Auth::id())
+                                        ->where('id', $num)
+                                        ->update([
+                                            'cpb_after_status' => 'apply',
+                                            'updated_at' => $now_date_time
+                                        ]);
+
+                    if($cellphone_update) {
+                        Alert::success('Olleh Mobile Registered', 'The Registration Card was uploaded successfully');
+                        return redirect('/user/tables');
+                    }
+                }
+
+            } else {
+                Alert::error('Registration Card Was Not Uploaded', 'The Registration Card was not uploaded successfully [4]');
+                return back()->with('error', 'The Registration Card was not uploaded successfully.');
+            }
+        }
+
+    }
+
     public function vr()
     {
         return view("pages.virtual-reality");
