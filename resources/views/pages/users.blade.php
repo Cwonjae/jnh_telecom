@@ -69,7 +69,7 @@
                                         </td>
                                         <td class="align-middle text-center">
                                             @if (!$cell_phone->cpb_phonenumber)
-                                                <a>입력</a>
+                                                <a style="color: red;" href="{{ route('page.print', ['page' => 'phone_number', 'num' => $cell_phone->id]) }}">입력</a>
                                             @else
                                                 <span>입력 완료</span>
                                             @endif

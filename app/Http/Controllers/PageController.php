@@ -110,6 +110,23 @@ class PageController extends Controller
             } else {
                 return abort(404);
             }
+        } else if($page == "phone_number") {
+            $cellphone_check = DB::table('cellphone_boards')->where('id', $num)->exists();
+            if($cellphone_check) {
+                $cellphone = DB::table('cellphone_boards')
+                                ->where('cellphone_boards.id', $num)
+                                ->select('cellphone_boards.id', 'cellphone_boards.cpb_phonenumber')
+                                ->get();
+    
+                if (view()->exists("pages.{$page}")) {
+                    return view("pages.{$page}", ['cellphone' => $cellphone]);
+                } else {
+                    return abort(404);
+                }
+            } else {
+                return abort(404);
+            }
+
         } else {
             return abort(404);
         }
@@ -120,36 +137,64 @@ class PageController extends Controller
         $now_date_time = $currentDateTime->toDateTimeString();
 
         if(DB::table('cellphone_boards')->where('id', $num)->exists()) {
-
-            // Form validate 구성
-            $validated = $request->validate([
-                'passportnumber' => 'required'
-            ]);
             
-            $passport_number = $request->post('passportnumber');
-
-            $cellphone_update = DB::table('cellphone_boards')
-                                ->where('id', $num)
-                                ->update([
-                                    'cpb_passportnumber' => $passport_number,
-                                    'updated_at' => $now_date_time
-                                ]);
-
-            if($cellphone_update) {
-                $comparison_update = DB::table('passport_comparison')
-                                    ->where('cpb_id', $num)
+            if($page == "comparisons") {
+                // Form validate 구성
+                $validated = $request->validate([
+                    'passportnumber' => 'required'
+                ]);
+                
+                $passport_number = $request->post('passportnumber');
+    
+                $cellphone_update = DB::table('cellphone_boards')
+                                    ->where('id', $num)
                                     ->update([
-                                        'ppc_status' => 'Y',
+                                        'cpb_passportnumber' => $passport_number,
                                         'updated_at' => $now_date_time
                                     ]);
+    
+                if($cellphone_update) {
+                    $comparison_update = DB::table('passport_comparison')
+                                        ->where('cpb_id', $num)
+                                        ->update([
+                                            'ppc_status' => 'Y',
+                                            'updated_at' => $now_date_time
+                                        ]);
+    
+                    Alert::success('PassPort 검증', 'PassPort 검증이 완료되었습니다.');
+                    return redirect("/admin/tables");
+                } else {
+                    Alert::error('PassPort 검증', 'PassPort 검증이 실패하였습니다.');
+                    return redirect("/admin/tables");
+                }
 
-                Alert::success('PassPort 검증', 'PassPort 검증이 완료되었습니다.');
-                return redirect("/admin/tables");
+            } else if($page == "phone_number_insert") {
+                // Form validate 구성
+                $validated = $request->validate([
+                    'phone_number' => 'required'
+                ]);
+                
+                $phone_number = $request->post('phone_number');
+    
+                $cellphone_update = DB::table('cellphone_boards')
+                                    ->where('id', $num)
+                                    ->update([
+                                        'cpb_phonenumber' => $phone_number,
+                                        'updated_at' => $now_date_time
+                                    ]);
+    
+    
+                Alert::success('휴대폰번호', '휴대폰번호 입력이 완료되었습니다.');
+                return redirect("/admin/users");
             } else {
-                Alert::error('PassPort 검증', 'PassPort 검증이 실패하였습니다.');
-                return redirect("/admin/tables");
+                Alert::error('휴대폰번호', '휴대폰번호 입력이 완료하였습니다.');
+                return redirect("/admin/users");
             }
-        }
+
+        } else {
+            Alert::error('검증', '검증이 실패하였습니다.');
+            return redirect("/admin/tables");
+        }        
     }
 
     public function status_change(Request $request, string $page, $num, string $status) {
