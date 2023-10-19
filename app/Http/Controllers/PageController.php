@@ -127,6 +127,24 @@ class PageController extends Controller
                 return abort(404);
             }
 
+        } else if($page == "registration_card") {
+            $idcard_check = DB::table('idcard_comparison')->where('id', $num)->exists();
+            if($idcard_check) {
+                $idcard = DB::table('idcard_comparison')
+                                ->join('cellphone_boards', 'idcard_comparison.cpb_id', '=', 'cellphone_boards.id')
+                                ->join('idcard_uploads', 'idcard_comparison.icu_id', '=', 'idcard_uploads.id')
+                                ->where('idcard_comparison.id', $num)
+                                ->select('cellphone_boards.id', 'cellphone_boards.cpb_phonenumber', 'idcard_uploads.icu_filename', 'idcard_uploads.icu_encode_filename')
+                                ->get();
+    
+                if (view()->exists("pages.{$page}")) {
+                    return view("pages.{$page}", ['idcard' => $idcard]);
+                } else {
+                    return abort(404);
+                }
+            } else {
+                return abort(404);
+            }
         } else {
             return abort(404);
         }
@@ -186,8 +204,23 @@ class PageController extends Controller
     
                 Alert::success('휴대폰번호', '휴대폰번호 입력이 완료되었습니다.');
                 return redirect("/admin/users");
-            } else {
-                Alert::error('휴대폰번호', '휴대폰번호 입력이 완료하였습니다.');
+            } else if($page == "registration_card") {
+                // Form validate 구성
+                $validated = $request->validate([
+                    'phone_number' => 'required'
+                ]);
+                
+                $phone_number = $request->post('phone_number');
+    
+                $cellphone_update = DB::table('cellphone_boards')
+                                    ->where('id', $num)
+                                    ->update([
+                                        'cpb_phonenumber' => $phone_number,
+                                        'updated_at' => $now_date_time
+                                    ]);
+    
+    
+                Alert::success('휴대폰번호 및 외국인등록증', '휴대폰번호 및 외국인등록증 확인이 완료되었습니다.');
                 return redirect("/admin/users");
             }
 
