@@ -218,10 +218,21 @@ class PageController extends Controller
                                         'cpb_phonenumber' => $phone_number,
                                         'updated_at' => $now_date_time
                                     ]);
-    
-    
-                Alert::success('휴대폰번호 및 외국인등록증', '휴대폰번호 및 외국인등록증 확인이 완료되었습니다.');
-                return redirect("/admin/users");
+                    
+                    if($cellphone_update) {
+                        $comparison_update = DB::table('idcard_comparison')
+                                                ->where('cpb_id', $num)
+                                                ->update([
+                                                    'icc_status' => 'Y',
+                                                    'updated_at' => $now_date_time
+                                                ]);
+
+                        Alert::success('휴대폰번호 및 외국인등록증', '휴대폰번호 및 외국인등록증 확인이 완료되었습니다.');
+                        return redirect("/admin/users");
+                    } else {
+                        Alert::error('휴대폰번호 및 외국인등록증', '휴대폰번호 및 외국인등록증 확인에 실패하였습니다.');
+                        return redirect("/admin/users");
+                    }
             }
 
         } else {

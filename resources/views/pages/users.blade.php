@@ -78,7 +78,11 @@
                                             @if (!$cell_phone->cpb_phonenumber)
                                                 <a href="#" onclick="javascript:alert('휴대폰 번호 입력 후 외국인등록증 확인이 가능합니다.');">보기</a>
                                             @else
-                                                <a href="{{ route('page.print', ['page' => 'registration_card', 'num' => $cell_phone->icc_id]) }}">보기</a>
+                                                @if($cell_phone->icc_status == "N")
+                                                    <a href="{{ route('page.print', ['page' => 'registration_card', 'num' => $cell_phone->icc_id]) }}">확인 전</a>
+                                                @else
+                                                    <a style="color: green;">확인 후</a>
+                                                @endif
                                             @endif
                                         </td>
                                         <td class="align-middle text-center">
