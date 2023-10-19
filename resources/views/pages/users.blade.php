@@ -68,14 +68,14 @@
                                             <span class="text-secondary text-xs font-weight-bold">{{ date('Y-m-d H:i:s', strtotime($cell_phone->created_at)) }}</span>
                                         </td>
                                         <td class="align-middle text-center">
-                                            @if (!$cellphone_boards->cpb_phonenumber)
+                                            @if (!$cell_phone->cpb_phonenumber)
                                                 <a>입력</a>
                                             @else
                                                 <span>입력 완료</span>
                                             @endif
                                         </td>
                                         <td class="align-middle text-center">
-                                            @if (!$cellphone_boards->cpb_phonenumber)
+                                            @if (!$cell_phone->cpb_phonenumber)
                                                 <a href="#" onclick="javascript:alert('휴대폰 번호 입력 후 검증 가능합니다.');">보기</a>
                                             @else
                                                 <a href="{{ route('page.print', ['page' => 'users', 'num' => $cell_phone->icc_id]) }}">보기</a>
