@@ -26,7 +26,7 @@
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             가입신청일</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            번호 입력</th>
+                                            핸드폰번호</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             외국인등록증 확인</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -71,12 +71,12 @@
                                             @if (!$cell_phone->cpb_phonenumber)
                                                 <a style="color: red;" href="{{ route('page.print', ['page' => 'phone_number', 'num' => $cell_phone->id]) }}">입력</a>
                                             @else
-                                                <span>입력 완료</span>
+                                                <span style="color: green;">{{ $cell_phone->cpb_phonenumber }}</span>
                                             @endif
                                         </td>
                                         <td class="align-middle text-center">
                                             @if (!$cell_phone->cpb_phonenumber)
-                                                <a href="#" onclick="javascript:alert('휴대폰 번호 입력 후 검증 가능합니다.');">보기</a>
+                                                <a href="#" onclick="javascript:alert('휴대폰 번호 입력 후 외국인등록증 확인이 가능합니다.');">보기</a>
                                             @else
                                                 <a href="{{ route('page.print', ['page' => 'users', 'num' => $cell_phone->icc_id]) }}">보기</a>
                                             @endif
