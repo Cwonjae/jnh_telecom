@@ -180,7 +180,7 @@ class UserPageController extends Controller
          */
         Mail::send('mobileForm.admin.form', ['tables' => 'tables'], function($message) use($request, $applicant){
               $message->to('kt.foreigner@jinnhyun.com');
-              $message->subject('신규 모바일 신청이 등록되었습니다._'.$applicant);
+              $message->subject('신규 선불제 모바일 신청이 등록되었습니다._'.$applicant);
           });
 
         if($cellphone_insert_id) {
@@ -422,14 +422,14 @@ class UserPageController extends Controller
                 $extension_cut = explode('.', $random_explode[1]);
                 $random_file_name = $extension_cut[0];
 
-                $passport_insert_id = DB::table('idcard_uploads')->insertGetId([
+                $idcard_insert_id = DB::table('idcard_uploads')->insertGetId([
                     'u_id' => $user_id_check,
                     'icu_filename' => $file_name,
                     'icu_encode_filename' => $random_file_name,
                     'created_at' => $now_date_time
                 ]);
 
-                if($passport_insert_id) {
+                if($idcard_insert_id) {
                     $cellphone_update = DB::table('cellphone_boards')
                                         ->where('u_id', Auth::id())
                                         ->where('id', $num)
@@ -439,6 +439,22 @@ class UserPageController extends Controller
                                         ]);
 
                     if($cellphone_update) {
+                        $idcard_comparison_insert_id = DB::table('idcard_comparison')->insertGetId([
+                            'cpb_id' => $num,
+                            'icu_id' => $idcard_insert_id,
+                            'icc_status' => 'N',
+                            'created_at' => $now_date_time
+                        ]);
+                        /**
+                         * 현재는 하드코딩으로 작성된 메일로 발송되게 함
+                         * 발송될 계정은 진앤현에서 갖고있는 계정으로
+                         * 해당 계정에 메일이 수신되면, 자동으로 관계자들의 계정으로 전달 예정
+                         */
+                        Mail::send('mobileForm.admin.form', ['tables' => 'tables'], function($message) use($request, $user_name_check){
+                            $message->to('kt.foreigner@jinnhyun.com');
+                            $message->subject('후불제 가입 신청이 등록되었습니다._'.$user_name_check);
+                        });
+                          
                         Alert::success('Olleh Mobile Registered', 'The Registration Card was uploaded successfully');
                         return redirect('/user/tables');
                     }

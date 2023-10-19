@@ -26,7 +26,9 @@
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             가입신청일</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            검증</th>
+                                            번호 입력</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            외국인등록증 확인</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             메일 전송(외국인등록증 등록 메일)</th>
                                     </tr>
@@ -66,15 +68,30 @@
                                             <span class="text-secondary text-xs font-weight-bold">{{ date('Y-m-d H:i:s', strtotime($cell_phone->created_at)) }}</span>
                                         </td>
                                         <td class="align-middle text-center">
-
+                                            @if (!$cellphone_boards->cpb_phonenumber)
+                                                <a>입력</a>
+                                            @else
+                                                <span>입력 완료</span>
+                                            @endif
                                         </td>
                                         <td class="align-middle text-center">
-                                            <a href="{{ route('page.mailsend', ['page' => 'tables', 'num' => $cell_phone->id]) }}">메일 발송</a>
+                                            @if (!$cellphone_boards->cpb_phonenumber)
+                                                <a href="#" onclick="javascript:alert('휴대폰 번호 입력 후 검증 가능합니다.');">보기</a>
+                                            @else
+                                                <a href="{{ route('page.print', ['page' => 'users', 'num' => $cell_phone->icc_id]) }}">보기</a>
+                                            @endif
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            @if ($cell_phone->cpb_after_status == 'apply')
+                                                <span>메일 발송 완료</span>
+                                            @else
+                                                <a href="{{ route('page.mailsend', ['page' => 'tables', 'num' => $cell_phone->id]) }}">메일 발송</a>
+                                            @endif
                                         </td>
                                     </tr>
                                     @empty
                                     <tr>
-                                        <td class="align-middle text-center" colspan="6">don't have a history of applying for Olleh Mobile Application Form</td>
+                                        <td class="align-middle text-center" colspan="7">don't have a history of applying for Olleh Mobile Application Form</td>
                                     </tr>
                                     @endforelse
                                 </tbody>
