@@ -1,13 +1,13 @@
 @extends('layouts.user.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
-    @include('layouts.navbars.auth.user.topnav', ['title' => 'Olleh Prepaid Application Form'])
+    @include('layouts.navbars.auth.user.topnav', ['title' => 'Olleh Postpaid Application Form'])
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <h6>Olleh Prepaid Application Form</h6>
+                        <h6>Olleh Postpaid Application Form</h6>
                     </div>
                     <div class="pb-0">
                         <div style="float:right; width:120px; height:40px;">

@@ -26,6 +26,15 @@ class UserPageController extends Controller
                             ->count();
 
         /**
+         * page = tables(선불제가입), tables_post(후불제가입)
+         */
+        if($page == "tables") {
+            $where_add = "prepaid";
+        } else {
+            $where_add = "postpaid";
+        }
+        
+        /**
          * admin 일 경우 등록된 모든 정보 리스트업
          * 등록한사람(일반 user)일 경우 본인이 작성한 정보 리스트업
          */
@@ -39,6 +48,7 @@ class UserPageController extends Controller
                             ->join('users', 'cellphone_boards.u_id', '=' ,'users.id')
                             ->join('idcard_check_mails', 'cellphone_boards.id', '=', 'idcard_check_mails.cpb_id')
                             ->where('cellphone_boards.u_id', Auth::id())
+                            ->where('cellphone_boards.cpb_board_type', $where_add)
                             ->select('users.username', 'users.email', 'cellphone_boards.id', 'cellphone_boards.cpb_applicant', 'cellphone_boards.cpb_nationality', 'cellphone_boards.cpb_status', 'cellphone_boards.cpb_after_status', 'cellphone_boards.created_at', 'idcard_check_mails.id as iccm_id')
                             ->paginate(10);
         }
