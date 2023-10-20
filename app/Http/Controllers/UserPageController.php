@@ -220,10 +220,7 @@ class UserPageController extends Controller
                 'applicant' => 'required',
                 'nationality' => 'required',
                 'registration_card' => 'required',
-                'dateofbirth' => 'required',
                 'gender' => 'required|in:male,female',
-                'imeinumber' => 'required',
-                'plan' => 'required|in:ok',
                 'signaturetxt' => 'required',
             ]);
 
@@ -268,26 +265,13 @@ class UserPageController extends Controller
             
             $applicant = $request->post('applicant');
             $nationality = $request->post('nationality');
-            $dateofbirth = $request->post('dateofbirth');
             $gender = $request->post('gender');
-            $imeinumber = $request->post('imeinumber');
-            $plan = $request->post('plan');
-            // $callservice = $request->post('callservice');
-            $service = $request->post('service');
-            $connectivity = $request->post('connectivity');
 
             if($request->post('referral')) {
                 $referral = $request->post('referral');
             } else {
                 $referral = null;
             }
-
-            if($request->post('chooselastnumber')) {
-                $chooselastnumber = $request->post('chooselastnumber');
-            } else {
-                $chooselastnumber = null;
-            }
-
             
             $cellphone_insert_id = DB::table('cellphone_boards')->insertGetId([
                 'cpb_board_type' => 'postpaid',
@@ -295,21 +279,10 @@ class UserPageController extends Controller
                 'cpb_nationality' => $nationality,
                 'cpb_status' => 'opening',
                 'u_id' => $user_id_check,
-                'cpb_passportnumber' => $passport_number,
-                'ppu_id' => $passport_insert_id,
-                'cpb_dateofbirth' => $dateofbirth,
+                'icu_id' => $idcard_insert_id,
                 'cpb_gender' => $gender,
-                'cpb_device' => $device,
-                'cpb_devicemodel' => $devicemodel,
-                // 'cpb_osversion' => $osversion,
-                'cpb_imeinumber' => $imeinumber,
-                'cpb_plan' => $plan,
-                'cpb_chooselastnumber' => $chooselastnumber,
                 'stu_id' => $signature_insert_id,
                 'cpb_referral' => $referral,
-                // 'cpb_callservice' => $callservice,
-                'cpb_service' => $service,
-                'cpb_connectivity' => $connectivity,
                 'cpb_telecoms' => 'kt',
                 'created_at' => $now_date_time
             ]);
@@ -325,7 +298,7 @@ class UserPageController extends Controller
             });
 
             if($cellphone_insert_id) {
-                $idcard_comparison_insert_id = DB::table('passport_comparison')->insertGetId([
+                $idcard_comparison_insert_id = DB::table('idcard_comparison')->insertGetId([
                     'cpb_id' => $cellphone_insert_id,
                     'icu_id' => $idcard_insert_id,
                     'icc_status' => 'N',
