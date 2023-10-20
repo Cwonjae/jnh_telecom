@@ -186,22 +186,22 @@
                             <form method="POST" action="{{ route('userpage.insert', ['page' => 'posts']) }}" id="cellPhone_register" enctype="multipart/form-data">
                             @csrf
                                 <div class="flex flex-col mb-3">
-                                    <h6 id="name_lang">Full Name <span style="color:red">*</span></h6>
+                                    <h6 id="name_lang">Full Name </h6><span style="color:red">*</span>
                                     <input type="text" name="applicant" class="form-control" placeholder="Your Full Name" aria-label="Name" value="{{ old('applicant') }}" id="applicant">
                                     @error('applicant') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <h6 id="nationality_lang">Nationality <span style="color:red">*</span></h6>
+                                    <h6 id="nationality_lang">Nationality </h6><span style="color:red">*</span>
                                     <input type="text" name="nationality" class="form-control" placeholder="Nationality" aria-label="Nationality" value="{{ old('nationality') }}" autocomplete="off" id="inputSearch">
                                     @error('nationality') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <h6 id="registration_card_lang">Alien registration card (issued in Korea) <span style="color:red">*</span></h6>
+                                    <h6 id="registration_card_lang">Alien registration card (issued in Korea) </h6><span style="color:red">*</span>
                                     <input type="file" name="registration_card" accept="file_extension,image/*" capture="camera" class="form-control" aria-label="Registration Card" id="registration_card">
                                     @error('registration_card') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="form-radio form-check-info text-start">
-                                    <h6 id="gender_lang">Gender <span style="color:red">*</span></h6>
+                                    <h6 id="gender_lang">Gender </h6><span style="color:red">*</span>
                                     <input class="form-radio-input" type="radio" name="gender" id="flexRadioDefault_m" value="male">
                                     <label class="form-radio-label" for="flexRadioDefault_m">Male</label>
                                     <input class="form-radio-input" type="radio" name="gender" id="flexRadioDefault_f" value="female">
@@ -209,7 +209,7 @@
                                     @error('gender') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <h6 id="signature_lang">Signature <span style="color:red">*</span></h6>
+                                    <h6 id="signature_lang">Signature </h6><span style="color:red">*</span>
                                     <div class='js-signature'></div>
                                     <a id="clearBtn" class="btn btn-default" onclick="clearCanvas();">Clear Canvas</a>
                                     <a id="saveBtn" class="btn btn-default" onclick="saveSignature();" style="display:none;">Save Signature</a>
