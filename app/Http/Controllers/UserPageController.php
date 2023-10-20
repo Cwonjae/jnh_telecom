@@ -46,6 +46,7 @@ class UserPageController extends Controller
         } else {
             $cell_phones = DB::table('cellphone_boards')
                             ->join('users', 'cellphone_boards.u_id', '=' ,'users.id')
+                            ->leftjoin('idcard_check_mails', 'cellphone_boards.id', '=', 'idcard_check_mails.cpb_id')
                             ->where('cellphone_boards.u_id', Auth::id())
                             ->where('cellphone_boards.cpb_board_type', $where_add)
                             ->select('users.username', 'users.email', 'cellphone_boards.id', 'cellphone_boards.cpb_applicant', 'cellphone_boards.cpb_nationality', 'cellphone_boards.cpb_status', 'cellphone_boards.cpb_after_status', 'cellphone_boards.created_at', 'idcard_check_mails.id as iccm_id')
