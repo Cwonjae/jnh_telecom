@@ -53,26 +53,24 @@
                 var value = $(this).val();
                 switch(value) {
                     case 'english' :
-                        $('#name_lang').text("");
-                        $('#nationality_lang').text("");
-                        $('#passportnumber_lang').text("");
-                        $('#passport_lang').text("");
-                        $('#deteofbirth_lang').text("");
-                        $('#gender_lang').text("");
-                        $('#imei_lang').text("");
-                        $('#plan_lang').text("");
-                        $('#choose_lang').text("");
-                        $('#signature_lang').text("");
-                        $('#referral_lang').text("");
-                        $('#service_lang').text("");
-                        $('#connectivity_lang').text("");
+                        $('#name_lang').text(" ");
+                        $('#nationality_lang').text(" ");
+                        $('#registration_card_lang').text(" ");
+                        $('#deteofbirth_lang').text(" ");
+                        $('#gender_lang').text(" ");
+                        $('#imei_lang').text(" ");
+                        $('#plan_lang').text(" ");
+                        $('#choose_lang').text(" ");
+                        $('#signature_lang').text(" ");
+                        $('#referral_lang').text(" ");
+                        $('#service_lang').text(" ");
+                        $('#connectivity_lang').text(" ");
                         $('#signature_note').text("The signature you registered will be used on the Korean mobile communication subscription form.");
                         break;
                     case 'russian' :
                         $('#name_lang').text(" (Полное имя)");
                         $('#nationality_lang').text(" (Национальность)");
-                        $('#passportnumber_lang').text(" (номер паспорта)");
-                        $('#passport_lang').text(" (заграничный пасспорт)");
+                        $('#registration_card_lang').text(" Регистрационная карта иностранца (выдана в Корее)");
                         $('#deteofbirth_lang').text(" (Дата рождения)");
                         $('#gender_lang').text(" (пол)");
                         $('#imei_lang').text(" (номер imei)");
@@ -87,8 +85,7 @@
                     case 'uzbek' :
                         $('#name_lang').text(" (to'liq ism)");
                         $('#nationality_lang').text(" (millati)");
-                        $('#passportnumber_lang').text(" (pasport raqami)");
-                        $('#passport_lang').text(" (pasport)");
+                        $('#registration_card_lang').text(" Chet ellik ro'yxatga olish kartasi (Koreyada berilgan)");
                         $('#deteofbirth_lang').text(" (tug'ilgan kuni)");
                         $('#gender_lang').text(" (jins)");
                         $('#imei_lang').text(" (imei raqami)");
@@ -103,8 +100,7 @@
                     case 'tagalog' :
                         $('#name_lang').text(" (buong pangalan)");
                         $('#nationality_lang').text(" (nasyonalidad)");
-                        $('#passportnumber_lang').text(" (numero ng pasaporte)");
-                        $('#passport_lang').text(" (pasaporte)");
+                        $('#registration_card_lang').text(" Alien registration card (ibinigay sa Korea)");
                         $('#deteofbirth_lang').text(" (araw ng kapanganakan)");
                         $('#gender_lang').text(" (kasarian)");
                         $('#imei_lang').text(" (numero ng imei)");
@@ -119,8 +115,7 @@
                     case 'vietnamese' :
                         $('#name_lang').text(" (Họ và tên)");
                         $('#nationality_lang').text(" (quốc tịch)");
-                        $('#passportnumber_lang').text(" (số hộ chiếu)");
-                        $('#passport_lang').text(" (hộ chiếu)");
+                        $('#registration_card_lang').text(" Thẻ đăng ký người nước ngoài (được cấp tại Hàn Quốc)");
                         $('#deteofbirth_lang').text(" (ngày sinh)");
                         $('#gender_lang').text(" (giới tính)");
                         $('#imei_lang').text(" (số imei)");
@@ -216,27 +211,27 @@
                             <form method="POST" action="{{ route('userpage.insert', ['page' => 'posts']) }}" id="cellPhone_register" enctype="multipart/form-data">
                             @csrf
                                 <div class="flex flex-col mb-3">
-                                    <h6 style="float:left;">Full Name <span style="color:red">*</span></h6><h4 id="name_lang"></h4>
+                                    <h6 style="float:left;">Full Name <span style="color:red">*</span></h6><h4 id="name_lang"> </h4>
                                     <input type="text" name="applicant" class="form-control" placeholder="Your Full Name" aria-label="Name" value="{{ old('applicant') }}" id="applicant">
                                     @error('applicant') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <h6 style="float:left;">Nationality <span style="color:red">*</span></h6><h4 id="nationality_lang"></h4>
+                                    <h6 style="float:left;">Nationality <span style="color:red">*</span></h6><h4 id="nationality_lang"> </h4>
                                     <input type="text" name="nationality" class="form-control" placeholder="Nationality" aria-label="Nationality" value="{{ old('nationality') }}" autocomplete="off" id="inputSearch">
                                     @error('nationality') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <h6 style="float:left;">Registration Card <span style="color:red">*</span></h6><h4 id="registration_card_lang"></h4>
+                                    <h6 style="float:left;">Alien registration card (issued in Korea) <span style="color:red">*</span></h6><h4 id="registration_card_lang"> </h4>
                                     <input type="file" name="registration_card" accept="file_extension,image/*" capture="camera" class="form-control" aria-label="Registration Card" id="registration_card">
                                     @error('registration_card') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <h6 style="float:left;">Date Of Birth <span style="color:red">*</span></h6><h4 id="deteofbirth_lang"></h4>
+                                    <h6 style="float:left;">Date Of Birth <span style="color:red">*</span></h6><h4 id="deteofbirth_lang"> </h4>
                                     <input type="text" name="dateofbirth" class="form-control" placeholder="MM-DD-YYYY" aria-label="Date Of Birth" value="{{ old('dateofbirth') }}" id="dateofbirth" maxlength="11">
                                     @error('dateofbirth') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="form-radio form-check-info text-start">
-                                    <h6 style="float:left;">Gender <span style="color:red">*</span></h6><h4 id="gender_lang"></h4>
+                                    <h6 style="float:left;">Gender <span style="color:red">*</span></h6><h4 id="gender_lang"> </h4>
                                     <input class="form-radio-input" type="radio" name="gender" id="flexRadioDefault_m" value="male">
                                     <label class="form-radio-label" for="flexRadioDefault_m">Male</label>
                                     <input class="form-radio-input" type="radio" name="gender" id="flexRadioDefault_f" value="female">
@@ -248,7 +243,7 @@
                                     <p>Dial *#06# or go to setting - about to find IMEI number.</p>
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <h6 style="float:left;">Signature <span style="color:red">*</span></h6><h4 id="signature_lang"></h4>
+                                    <h6 style="float:left;">Signature <span style="color:red">*</span></h6><h4 id="signature_lang"> </h4>
                                     <div class='js-signature'></div>
                                     <a id="clearBtn" class="btn btn-default" onclick="clearCanvas();">Clear Canvas</a>
                                     <a id="saveBtn" class="btn btn-default" onclick="saveSignature();" style="display:none;">Save Signature</a>
