@@ -54,51 +54,46 @@
                 switch(value) {
                     case 'english' :
                         $('#name_lang').html("Full Name <span style='color:red'>*</span>");
-                        $('#nationality_lang').text("Nationality ");
-                        $('#registration_card_lang').text("Alien registration card (issued in Korea) ");
-                        $('#deteofbirth_lang').text(" ");
-                        $('#gender_lang').text("Gender ");
-                        $('#signature_lang').text("Signature ");
+                        $('#nationality_lang').html("Nationality <span style='color:red'>*</span>");
+                        $('#registration_card_lang').html("Alien registration card (issued in Korea) <span style='color:red'>*</span>");
+                        $('#gender_lang').html("Gender <span style='color:red'>*</span>");
+                        $('#signature_lang').html("Signature <span style='color:red'>*</span>");
                         $('#referral_lang').text("Referral ");
                         $('#signature_note').text("The signature you registered will be used on the Korean mobile communication subscription form.");
                         break;
                     case 'russian' :
-                        $('#name_lang').text("Полное имя ");
-                        $('#nationality_lang').text("Национальность ");
-                        $('#registration_card_lang').text("Регистрационная карта иностранца (выдана в Корее) ");
-                        $('#deteofbirth_lang').text("Дата рождения ");
-                        $('#gender_lang').text("пол ");
-                        $('#signature_lang').text("подпись ");
+                        $('#name_lang').html("Полное имя <span style='color:red'>*</span>");
+                        $('#nationality_lang').html("Национальность <span style='color:red'>*</span>");
+                        $('#registration_card_lang').html("Регистрационная карта иностранца (выдана в Корее) <span style='color:red'>*</span>");
+                        $('#gender_lang').html("пол <span style='color:red'>*</span>");
+                        $('#signature_lang').html("подпись <span style='color:red'>*</span>");
                         $('#referral_lang').text("направления ");
                         $('#signature_note').text("Зарегистрированная вами подпись будет использоваться в форме подписки на мобильную связь в Корее.");
                         break;
                     case 'uzbek' :
-                        $('#name_lang').text("to'liq ism ");
-                        $('#nationality_lang').text("millati ");
-                        $('#registration_card_lang').text("Chet ellik ro'yxatga olish kartasi (Koreyada berilgan) ");
-                        $('#deteofbirth_lang').text("tug'ilgan kuni ");
-                        $('#gender_lang').text("jins ");
-                        $('#signature_lang').text("imzo ");
+                        $('#name_lang').html("to'liq ism <span style='color:red'>*</span>");
+                        $('#nationality_lang').html("millati <span style='color:red'>*</span>");
+                        $('#registration_card_lang').html("Chet ellik ro'yxatga olish kartasi (Koreyada berilgan) <span style='color:red'>*</span>");
+                        $('#gender_lang').html("jins <span style='color:red'>*</span>");
+                        $('#signature_lang').html("imzo <span style='color:red'>*</span>");
                         $('#referral_lang').text("murojaat ");
                         $('#signature_note').text("Siz roʻyxatdan oʻtgan imzo Koreya mobil aloqasi obuna formasida qoʻllaniladi.");
                         break;
                     case 'tagalog' :
-                        $('#name_lang').text("buong pangalan ");
-                        $('#nationality_lang').text("nasyonalidad ");
-                        $('#registration_card_lang').text("Alien registration card (ibinigay sa Korea) ");
-                        $('#deteofbirth_lang').text("araw ng kapanganakan ");
-                        $('#gender_lang').text("kasarian ");
-                        $('#signature_lang').text("pirma ");
+                        $('#name_lang').html("buong pangalan <span style='color:red'>*</span>");
+                        $('#nationality_lang').html("nasyonalidad <span style='color:red'>*</span>");
+                        $('#registration_card_lang').html("Alien registration card (ibinigay sa Korea) <span style='color:red'>*</span>");
+                        $('#gender_lang').html("kasarian <span style='color:red'>*</span>");
+                        $('#signature_lang').html("pirma <span style='color:red'>*</span>");
                         $('#referral_lang').text("referral ");
                         $('#signature_note').text("Ang pirma na iyong inirehistro ay gagamitin sa Korean mobile communication na subscription form.");
                         break;
                     case 'vietnamese' :
-                        $('#name_lang').text("Họ và tên ");
-                        $('#nationality_lang').text("quốc tịch ");
-                        $('#registration_card_lang').text("Thẻ đăng ký người nước ngoài (được cấp tại Hàn Quốc) ");
-                        $('#deteofbirth_lang').text("ngày sinh ");
-                        $('#gender_lang').text("giới tính ");
-                        $('#signature_lang').text("chữ ký ");
+                        $('#name_lang').html("Họ và tên <span style='color:red'>*</span>");
+                        $('#nationality_lang').html("quốc tịch <span style='color:red'>*</span>");
+                        $('#registration_card_lang').html("Thẻ đăng ký người nước ngoài (được cấp tại Hàn Quốc) <span style='color:red'>*</span>");
+                        $('#gender_lang').html("giới tính <span style='color:red'>*</span>");
+                        $('#signature_lang').html("chữ ký <span style='color:red'>*</span>");
                         $('#referral_lang').text("giới thiệu ");
                         $('#signature_note').text("Chữ ký bạn đã đăng ký sẽ được sử dụng trên mẫu đăng ký liên lạc di động của Hàn Quốc.");
                         break;
@@ -191,17 +186,17 @@
                                     @error('applicant') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <h6 id="nationality_lang">Nationality </h6><span style="color:red">*</span>
+                                    <h6 id="nationality_lang">Nationality <span style="color:red">*</span></h6>
                                     <input type="text" name="nationality" class="form-control" placeholder="Nationality" aria-label="Nationality" value="{{ old('nationality') }}" autocomplete="off" id="inputSearch">
                                     @error('nationality') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <h6 id="registration_card_lang">Alien registration card (issued in Korea) </h6><span style="color:red">*</span>
+                                    <h6 id="registration_card_lang">Alien registration card (issued in Korea) <span style="color:red">*</span></h6>
                                     <input type="file" name="registration_card" accept="file_extension,image/*" capture="camera" class="form-control" aria-label="Registration Card" id="registration_card">
                                     @error('registration_card') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="form-radio form-check-info text-start">
-                                    <h6 id="gender_lang">Gender </h6><span style="color:red">*</span>
+                                    <h6 id="gender_lang">Gender <span style="color:red">*</span></h6>
                                     <input class="form-radio-input" type="radio" name="gender" id="flexRadioDefault_m" value="male">
                                     <label class="form-radio-label" for="flexRadioDefault_m">Male</label>
                                     <input class="form-radio-input" type="radio" name="gender" id="flexRadioDefault_f" value="female">
@@ -209,7 +204,7 @@
                                     @error('gender') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <h6 id="signature_lang">Signature </h6><span style="color:red">*</span>
+                                    <h6 id="signature_lang">Signature <span style="color:red">*</span></h6>
                                     <div class='js-signature'></div>
                                     <a id="clearBtn" class="btn btn-default" onclick="clearCanvas();">Clear Canvas</a>
                                     <a id="saveBtn" class="btn btn-default" onclick="saveSignature();" style="display:none;">Save Signature</a>
