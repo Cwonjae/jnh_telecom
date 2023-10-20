@@ -53,7 +53,7 @@
                 var value = $(this).val();
                 switch(value) {
                     case 'english' :
-                        $('#name_lang').text("Full Name <span style='color:red'>*</span>");
+                        $('#name_lang').html("Full Name <span style='color:red'>*</span>");
                         $('#nationality_lang').text("Nationality ");
                         $('#registration_card_lang').text("Alien registration card (issued in Korea) ");
                         $('#deteofbirth_lang').text(" ");
