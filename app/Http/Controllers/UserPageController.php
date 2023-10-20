@@ -26,7 +26,7 @@ class UserPageController extends Controller
                             ->count();
 
         /**
-         * page = tables(선불제가입), tables_post(후불제가입)
+         * page = tables(선불제가입), posts(후불제가입)
          */
         if($page == "tables") {
             $where_add = "prepaid";
