@@ -67,151 +67,284 @@ class UserPageController extends Controller
         }
     }
 
-    public function register_insert(Request $request) {
+    public function register_insert(Request $request, string $page) {
         
         $user_id_check = DB::table('users')->where('id', Auth::id())->value('id');
         $user_name_check = DB::table('users')->where('id', Auth::id())->value('username');
         $currentDateTime = Carbon::now()->timezone('Asia/Seoul');
         $now_date_time = $currentDateTime->toDateTimeString();
 
-        // Form validate 구성
-        $validated = $request->validate([
-            'applicant' => 'required',
-            'nationality' => 'required',
-            'passport' => 'required',
-            'passportnumber' => 'required',
-            'dateofbirth' => 'required',
-            'gender' => 'required|in:male,female',
-            // 'device' => 'required|in:apple,samsung,other',
-            // 'devicemodel' => 'required',
-            // 'osversion' => 'required',
-            'imeinumber' => 'required',
-            'plan' => 'required|in:ok',
-            'signaturetxt' => 'required',
-            // 'callservice' => 'required|in:yes,no',
-            'service' => 'required|in:annual_agreement,monthly_plan',
-            'connectivity' => 'required|in:4g,5g',
-        ]);
-
-        // PassPort Upload 구성
-        // $upload_file = $request->file('passport')->store('public/images/passport');
-        $upload_file = Storage::putFile('/public/images/passport',$request->file('passport'));
-        if($upload_file) {
-            $file_name = $request->file('passport')->getClientOriginalName();
-            $random_explode = explode('public/images/passport/', $upload_file);
-            $extension_cut = explode('.', $random_explode[1]);
-            $random_file_name = $extension_cut[0];
-
-            $passport_insert_id = DB::table('passport_uploads')->insertGetId([
-                'u_id' => $user_id_check,
-                'ppu_filename' => $file_name,
-                'ppu_encode_filename' => $random_file_name,
-                'created_at' => $now_date_time
-            ]);
-        } else {
-            Alert::error('Passport Was Not Uploaded', 'The passport was not uploaded successfully [6]');
-            return back()->with('error', 'The passport was not uploaded successfully.');
-        }
-
-        // Signature Upload 구성
-        $base64_img = $request->post('signaturetxt');
-        $base64_img = str_replace('data:image/png;base64,', '', $base64_img);
-        $base64_img = str_replace(' ', '+', $base64_img);
-        $base64_decoding_img = base64_decode($base64_img);
-        $file_name = $user_name_check.time().'.png';
-        $signatures = Storage::put('/public/images/signatures/'.$file_name, $base64_decoding_img);
-        if($signatures) {
-            $signature_insert_id = DB::table('signature_uploads')->insertGetId([
-                'u_id' => $user_id_check,
-                'stu_filename' => $file_name,
-                'stu_base64' => $base64_img,
-                'created_at' => $now_date_time
-            ]);
-        } else {
-            Alert::error('Signature Was Not Uploaded', 'The signature was not uploaded successfully [5]');
-            return back()->with('error', 'The signature was not uploaded successfully.');
-        }
-        
-        $applicant = $request->post('applicant');
-        $nationality = $request->post('nationality');
-        $dateofbirth = $request->post('dateofbirth');
-        $passport_number = $request->post('passportnumber');
-        $gender = $request->post('gender');
-        // $device = $request->post('device');
-        // $devicemodel = $request->post('devicemodel');
-        // $osversion = $request->post('osversion');
-        $imeinumber = $request->post('imeinumber');
-        $plan = $request->post('plan');
-        // $callservice = $request->post('callservice');
-        $service = $request->post('service');
-        $connectivity = $request->post('connectivity');
-
-        if($request->post('referral')) {
-            $referral = $request->post('referral');
-        } else {
-            $referral = null;
-        }
-
-        if($request->post('chooselastnumber')) {
-            $chooselastnumber = $request->post('chooselastnumber');
-        } else {
-            $chooselastnumber = null;
-        }
-
-        
-        $cellphone_insert_id = DB::table('cellphone_boards')->insertGetId([
-            'cpb_applicant' => $applicant,
-            'cpb_nationality' => $nationality,
-            'cpb_status' => 'opening',
-            'u_id' => $user_id_check,
-            'cpb_passportnumber' => $passport_number,
-            'ppu_id' => $passport_insert_id,
-            'cpb_dateofbirth' => $dateofbirth,
-            'cpb_gender' => $gender,
-            // 'cpb_device' => $device,
-            // 'cpb_devicemodel' => $devicemodel,
-            // 'cpb_osversion' => $osversion,
-            'cpb_imeinumber' => $imeinumber,
-            'cpb_plan' => $plan,
-            'cpb_chooselastnumber' => $chooselastnumber,
-            'stu_id' => $signature_insert_id,
-            'cpb_referral' => $referral,
-            // 'cpb_callservice' => $callservice,
-            'cpb_service' => $service,
-            'cpb_connectivity' => $connectivity,
-            'cpb_telecoms' => 'kt',
-            'created_at' => $now_date_time
-        ]);
-        
-        /**
-         * 현재는 하드코딩으로 작성된 메일로 발송되게 함
-         * 발송될 계정은 진앤현에서 갖고있는 계정으로
-         * 해당 계정에 메일이 수신되면, 자동으로 관계자들의 계정으로 전달 예정
-         */
-        Mail::send('mobileForm.admin.form', ['tables' => 'tables'], function($message) use($request, $applicant){
-              $message->to('kt.foreigner@jinnhyun.com');
-              $message->subject('신규 선불제 모바일 신청이 등록되었습니다._'.$applicant);
-          });
-
-        if($cellphone_insert_id) {
-            $passport_comparison_insert_id = DB::table('passport_comparison')->insertGetId([
-                'cpb_id' => $cellphone_insert_id,
-                'ppu_id' => $passport_insert_id,
-                'ppc_status' => 'N',
-                'created_at' => $now_date_time
+        if($page == "tables") {
+            // Form validate 구성
+            $validated = $request->validate([
+                'applicant' => 'required',
+                'nationality' => 'required',
+                'passport' => 'required',
+                'passportnumber' => 'required',
+                'dateofbirth' => 'required',
+                'gender' => 'required|in:male,female',
+                'device' => 'required|in:apple,samsung,other',
+                'devicemodel' => 'required',
+                // 'osversion' => 'required',
+                'imeinumber' => 'required',
+                'plan' => 'required|in:ok',
+                'signaturetxt' => 'required',
+                // 'callservice' => 'required|in:yes,no',
+                'service' => 'required|in:annual_agreement,monthly_plan',
+                'connectivity' => 'required|in:4g,5g',
             ]);
 
-            if($passport_comparison_insert_id) {
-                Alert::success('Olleh Mobile Registered', 'Your Mobile Application has been Registered');
-                return redirect('/user/tables');
+            // PassPort Upload 구성
+            // $upload_file = $request->file('passport')->store('public/images/passport');
+            $upload_file = Storage::putFile('/public/images/passport',$request->file('passport'));
+            if($upload_file) {
+                $file_name = $request->file('passport')->getClientOriginalName();
+                $random_explode = explode('public/images/passport/', $upload_file);
+                $extension_cut = explode('.', $random_explode[1]);
+                $random_file_name = $extension_cut[0];
+
+                $passport_insert_id = DB::table('passport_uploads')->insertGetId([
+                    'u_id' => $user_id_check,
+                    'ppu_filename' => $file_name,
+                    'ppu_encode_filename' => $random_file_name,
+                    'created_at' => $now_date_time
+                ]);
             } else {
-                Alert::error('Olleh Mobile Registered', 'Your Mobile Application Fails to Register [9]');
-                return back()->with('error', 'Your Mobile Application Fails to Register [9]');
+                Alert::error('Passport Was Not Uploaded', 'The passport was not uploaded successfully [6]');
+                return back()->with('error', 'The passport was not uploaded successfully.');
+            }
+
+            // Signature Upload 구성
+            $base64_img = $request->post('signaturetxt');
+            $base64_img = str_replace('data:image/png;base64,', '', $base64_img);
+            $base64_img = str_replace(' ', '+', $base64_img);
+            $base64_decoding_img = base64_decode($base64_img);
+            $file_name = $user_name_check.time().'.png';
+            $signatures = Storage::put('/public/images/signatures/'.$file_name, $base64_decoding_img);
+            if($signatures) {
+                $signature_insert_id = DB::table('signature_uploads')->insertGetId([
+                    'u_id' => $user_id_check,
+                    'stu_filename' => $file_name,
+                    'stu_base64' => $base64_img,
+                    'created_at' => $now_date_time
+                ]);
+            } else {
+                Alert::error('Signature Was Not Uploaded', 'The signature was not uploaded successfully [5]');
+                return back()->with('error', 'The signature was not uploaded successfully.');
+            }
+            
+            $applicant = $request->post('applicant');
+            $nationality = $request->post('nationality');
+            $dateofbirth = $request->post('dateofbirth');
+            $passport_number = $request->post('passportnumber');
+            $gender = $request->post('gender');
+            $device = $request->post('device');
+            $devicemodel = $request->post('devicemodel');
+            // $osversion = $request->post('osversion');
+            $imeinumber = $request->post('imeinumber');
+            $plan = $request->post('plan');
+            // $callservice = $request->post('callservice');
+            $service = $request->post('service');
+            $connectivity = $request->post('connectivity');
+
+            if($request->post('referral')) {
+                $referral = $request->post('referral');
+            } else {
+                $referral = null;
+            }
+
+            if($request->post('chooselastnumber')) {
+                $chooselastnumber = $request->post('chooselastnumber');
+            } else {
+                $chooselastnumber = null;
+            }
+
+            
+            $cellphone_insert_id = DB::table('cellphone_boards')->insertGetId([
+                'cpb_board_type' => 'prepaid',
+                'cpb_applicant' => $applicant,
+                'cpb_nationality' => $nationality,
+                'cpb_status' => 'opening',
+                'u_id' => $user_id_check,
+                'cpb_passportnumber' => $passport_number,
+                'ppu_id' => $passport_insert_id,
+                'cpb_dateofbirth' => $dateofbirth,
+                'cpb_gender' => $gender,
+                'cpb_device' => $device,
+                'cpb_devicemodel' => $devicemodel,
+                // 'cpb_osversion' => $osversion,
+                'cpb_imeinumber' => $imeinumber,
+                'cpb_plan' => $plan,
+                'cpb_chooselastnumber' => $chooselastnumber,
+                'stu_id' => $signature_insert_id,
+                'cpb_referral' => $referral,
+                // 'cpb_callservice' => $callservice,
+                'cpb_service' => $service,
+                'cpb_connectivity' => $connectivity,
+                'cpb_telecoms' => 'kt',
+                'created_at' => $now_date_time
+            ]);
+            
+            /**
+             * 현재는 하드코딩으로 작성된 메일로 발송되게 함
+             * 발송될 계정은 진앤현에서 갖고있는 계정으로
+             * 해당 계정에 메일이 수신되면, 자동으로 관계자들의 계정으로 전달 예정
+             */
+            Mail::send('mobileForm.admin.form', ['tables' => 'tables'], function($message) use($request, $applicant){
+                $message->to('kt.foreigner@jinnhyun.com');
+                $message->subject('신규 선불제 모바일 신청이 등록되었습니다._'.$applicant);
+            });
+
+            if($cellphone_insert_id) {
+                $passport_comparison_insert_id = DB::table('passport_comparison')->insertGetId([
+                    'cpb_id' => $cellphone_insert_id,
+                    'ppu_id' => $passport_insert_id,
+                    'ppc_status' => 'N',
+                    'created_at' => $now_date_time
+                ]);
+
+                if($passport_comparison_insert_id) {
+                    Alert::success('Olleh Mobile Registered', 'Your Prepaid Application has been Registered');
+                    return redirect('/user/tables');
+                } else {
+                    Alert::error('Olleh Mobile Registered', 'Your Prepaid Application Fails to Register [9]');
+                    return back()->with('error', 'Your Prepaid Application Fails to Register [9]');
+                }
+            } else {
+                Alert::error('Olleh Mobile Registered', 'Your Prepaid Application Fails to Register [7]');
+                return back()->with('error', 'Prepaid Application Form failed.');
             }
         } else {
-            Alert::error('Olleh Mobile Registered', 'Your Mobile Application Fails to Register [7]');
-            return back()->with('error', 'Mobile Application Form failed.');
+            // Form validate 구성
+            $validated = $request->validate([
+                'applicant' => 'required',
+                'nationality' => 'required',
+                'registration_card' => 'required',
+                'dateofbirth' => 'required',
+                'gender' => 'required|in:male,female',
+                'imeinumber' => 'required',
+                'plan' => 'required|in:ok',
+                'signaturetxt' => 'required',
+            ]);
+
+            // PassPort Upload 구성
+            // $upload_file = $request->file('passport')->store('public/images/passport');
+            $upload_file = Storage::putFile('/public/images/registrationcard',$request->file('passport'));
+            if($upload_file) {
+                $file_name = $request->file('registration_card')->getClientOriginalName();
+                $random_explode = explode('public/images/registrationcard/', $upload_file);
+                $extension_cut = explode('.', $random_explode[1]);
+                $random_file_name = $extension_cut[0];
+
+                $idcard_insert_id = DB::table('idcard_uploads')->insertGetId([
+                    'u_id' => $user_id_check,
+                    'icu_filename' => $file_name,
+                    'icu_encode_filename' => $random_file_name,
+                    'created_at' => $now_date_time
+                ]);
+            } else {
+                Alert::error('Registration Card Was Not Uploaded', 'The Registration Card was not uploaded successfully [6]');
+                return back()->with('error', 'The Registration Card was not uploaded successfully.');
+            }
+
+            // Signature Upload 구성
+            $base64_img = $request->post('signaturetxt');
+            $base64_img = str_replace('data:image/png;base64,', '', $base64_img);
+            $base64_img = str_replace(' ', '+', $base64_img);
+            $base64_decoding_img = base64_decode($base64_img);
+            $file_name = $user_name_check.time().'.png';
+            $signatures = Storage::put('/public/images/signatures/'.$file_name, $base64_decoding_img);
+            if($signatures) {
+                $signature_insert_id = DB::table('signature_uploads')->insertGetId([
+                    'u_id' => $user_id_check,
+                    'stu_filename' => $file_name,
+                    'stu_base64' => $base64_img,
+                    'created_at' => $now_date_time
+                ]);
+            } else {
+                Alert::error('Signature Was Not Uploaded', 'The signature was not uploaded successfully [5]');
+                return back()->with('error', 'The signature was not uploaded successfully.');
+            }
+            
+            $applicant = $request->post('applicant');
+            $nationality = $request->post('nationality');
+            $dateofbirth = $request->post('dateofbirth');
+            $gender = $request->post('gender');
+            $imeinumber = $request->post('imeinumber');
+            $plan = $request->post('plan');
+            // $callservice = $request->post('callservice');
+            $service = $request->post('service');
+            $connectivity = $request->post('connectivity');
+
+            if($request->post('referral')) {
+                $referral = $request->post('referral');
+            } else {
+                $referral = null;
+            }
+
+            if($request->post('chooselastnumber')) {
+                $chooselastnumber = $request->post('chooselastnumber');
+            } else {
+                $chooselastnumber = null;
+            }
+
+            
+            $cellphone_insert_id = DB::table('cellphone_boards')->insertGetId([
+                'cpb_board_type' => 'postpaid',
+                'cpb_applicant' => $applicant,
+                'cpb_nationality' => $nationality,
+                'cpb_status' => 'opening',
+                'u_id' => $user_id_check,
+                'cpb_passportnumber' => $passport_number,
+                'ppu_id' => $passport_insert_id,
+                'cpb_dateofbirth' => $dateofbirth,
+                'cpb_gender' => $gender,
+                'cpb_device' => $device,
+                'cpb_devicemodel' => $devicemodel,
+                // 'cpb_osversion' => $osversion,
+                'cpb_imeinumber' => $imeinumber,
+                'cpb_plan' => $plan,
+                'cpb_chooselastnumber' => $chooselastnumber,
+                'stu_id' => $signature_insert_id,
+                'cpb_referral' => $referral,
+                // 'cpb_callservice' => $callservice,
+                'cpb_service' => $service,
+                'cpb_connectivity' => $connectivity,
+                'cpb_telecoms' => 'kt',
+                'created_at' => $now_date_time
+            ]);
+            
+            /**
+             * 현재는 하드코딩으로 작성된 메일로 발송되게 함
+             * 발송될 계정은 진앤현에서 갖고있는 계정으로
+             * 해당 계정에 메일이 수신되면, 자동으로 관계자들의 계정으로 전달 예정
+             */
+            Mail::send('mobileForm.admin.form', ['page' => 'posts'], function($message) use($request, $applicant){
+                $message->to('kt.foreigner@jinnhyun.com');
+                $message->subject('신규 후불제 모바일 신청이 등록되었습니다._'.$applicant);
+            });
+
+            if($cellphone_insert_id) {
+                $idcard_comparison_insert_id = DB::table('passport_comparison')->insertGetId([
+                    'cpb_id' => $cellphone_insert_id,
+                    'icu_id' => $idcard_insert_id,
+                    'icc_status' => 'N',
+                    'created_at' => $now_date_time
+                ]);
+
+                if($idcard_comparison_insert_id) {
+                    Alert::success('Olleh Mobile Registered', 'Your Postpaid Application has been Registered');
+                    return redirect('/user/tables');
+                } else {
+                    Alert::error('Olleh Mobile Registered', 'Your Postpaid Application Fails to Register [9]');
+                    return back()->with('error', 'Your Postpaid Application Fails to Register [9]');
+                }
+            } else {
+                Alert::error('Olleh Mobile Registered', 'Your Postpaid Application Fails to Register [7]');
+                return back()->with('error', 'Postpaid Application Form failed.');
+            }
         }
+
     }
 
     public function modify(string $page, $num) {

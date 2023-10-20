@@ -12,7 +12,7 @@
                     <div class="pb-0">
                         <div style="float:right; width:120px; height:40px;">
                             <a class="bg-gradient-success" style="padding:10px; font-weight:bold; color:#fff; border-radius:10px 10px 10px 10px; cursor: pointer" 
-                            href="{{ route('userpage.register', ['page' => 'tables']) }}">
+                            href="{{ route('userpage.register', ['page' => 'posts']) }}">
                                 Register
                             </a>
                         </div>
