@@ -53,78 +53,53 @@
                 var value = $(this).val();
                 switch(value) {
                     case 'english' :
-                        $('#name_lang').text(" ");
-                        $('#nationality_lang').text(" ");
-                        $('#registration_card_lang').text(" ");
+                        $('#name_lang').text("Full Name ");
+                        $('#nationality_lang').text("Nationality ");
+                        $('#registration_card_lang').text("Alien registration card (issued in Korea) ");
                         $('#deteofbirth_lang').text(" ");
-                        $('#gender_lang').text(" ");
-                        $('#imei_lang').text(" ");
-                        $('#plan_lang').text(" ");
-                        $('#choose_lang').text(" ");
-                        $('#signature_lang').text(" ");
-                        $('#referral_lang').text(" ");
-                        $('#service_lang').text(" ");
-                        $('#connectivity_lang').text(" ");
+                        $('#gender_lang').text("Gender ");
+                        $('#signature_lang').text("Signature ");
+                        $('#referral_lang').text("Referral ");
                         $('#signature_note').text("The signature you registered will be used on the Korean mobile communication subscription form.");
                         break;
                     case 'russian' :
-                        $('#name_lang').text(" (Полное имя)");
-                        $('#nationality_lang').text(" (Национальность)");
-                        $('#registration_card_lang').text(" Регистрационная карта иностранца (выдана в Корее)");
-                        $('#deteofbirth_lang').text(" (Дата рождения)");
-                        $('#gender_lang').text(" (пол)");
-                        $('#imei_lang').text(" (номер imei)");
-                        $('#plan_lang').text(" (план)");
-                        $('#choose_lang').text(" (Пожалуйста, выберите последние четыре цифры вашего номера телефона (можно ввести до 3-х номеров))");
-                        $('#signature_lang').text(" (подпись)");
-                        $('#referral_lang').text(" (направления)");
-                        $('#service_lang').text(" (услуга)");
-                        $('#connectivity_lang').text(" (возможность подключения)");
+                        $('#name_lang').text("Полное имя ");
+                        $('#nationality_lang').text("Национальность ");
+                        $('#registration_card_lang').text("Регистрационная карта иностранца (выдана в Корее) ");
+                        $('#deteofbirth_lang').text("Дата рождения ");
+                        $('#gender_lang').text("пол ");
+                        $('#signature_lang').text("подпись ");
+                        $('#referral_lang').text("направления ");
                         $('#signature_note').text("Зарегистрированная вами подпись будет использоваться в форме подписки на мобильную связь в Корее.");
                         break;
                     case 'uzbek' :
-                        $('#name_lang').text(" (to'liq ism)");
-                        $('#nationality_lang').text(" (millati)");
-                        $('#registration_card_lang').text(" Chet ellik ro'yxatga olish kartasi (Koreyada berilgan)");
-                        $('#deteofbirth_lang').text(" (tug'ilgan kuni)");
-                        $('#gender_lang').text(" (jins)");
-                        $('#imei_lang').text(" (imei raqami)");
-                        $('#plan_lang').text(" (reja)");
-                        $('#choose_lang').text(" (Iltimos, telefon raqamingizning oxirgi to'rtta raqamini tanlang (3 tagacha element kiritilishi mumkin))");
-                        $('#signature_lang').text(" (imzo)");
-                        $('#referral_lang').text(" (murojaat)");
-                        $('#service_lang').text(" (xizmat)");
-                        $('#connectivity_lang').text(" (ulanish)");
+                        $('#name_lang').text("to'liq ism ");
+                        $('#nationality_lang').text("millati ");
+                        $('#registration_card_lang').text("Chet ellik ro'yxatga olish kartasi (Koreyada berilgan) ");
+                        $('#deteofbirth_lang').text("tug'ilgan kuni ");
+                        $('#gender_lang').text("jins ");
+                        $('#signature_lang').text("imzo ");
+                        $('#referral_lang').text("murojaat ");
                         $('#signature_note').text("Siz roʻyxatdan oʻtgan imzo Koreya mobil aloqasi obuna formasida qoʻllaniladi.");
                         break;
                     case 'tagalog' :
-                        $('#name_lang').text(" (buong pangalan)");
-                        $('#nationality_lang').text(" (nasyonalidad)");
-                        $('#registration_card_lang').text(" Alien registration card (ibinigay sa Korea)");
-                        $('#deteofbirth_lang').text(" (araw ng kapanganakan)");
-                        $('#gender_lang').text(" (kasarian)");
-                        $('#imei_lang').text(" (numero ng imei)");
-                        $('#plan_lang').text(" (plano)");
-                        $('#choose_lang').text(" (Pakipili ang huling apat na digit ng iyong numero ng telepono (Hanggang 3 item ang maaaring ilagay))");
-                        $('#signature_lang').text(" (pirma)");
-                        $('#referral_lang').text(" (referral)");
-                        $('#service_lang').text(" (serbisyo)");
-                        $('#connectivity_lang').text(" (pagkakakonekta)");
+                        $('#name_lang').text("buong pangalan ");
+                        $('#nationality_lang').text("nasyonalidad ");
+                        $('#registration_card_lang').text("Alien registration card (ibinigay sa Korea) ");
+                        $('#deteofbirth_lang').text("araw ng kapanganakan ");
+                        $('#gender_lang').text("kasarian ");
+                        $('#signature_lang').text("pirma ");
+                        $('#referral_lang').text("referral ");
                         $('#signature_note').text("Ang pirma na iyong inirehistro ay gagamitin sa Korean mobile communication na subscription form.");
                         break;
                     case 'vietnamese' :
-                        $('#name_lang').text(" (Họ và tên)");
-                        $('#nationality_lang').text(" (quốc tịch)");
-                        $('#registration_card_lang').text(" Thẻ đăng ký người nước ngoài (được cấp tại Hàn Quốc)");
-                        $('#deteofbirth_lang').text(" (ngày sinh)");
-                        $('#gender_lang').text(" (giới tính)");
-                        $('#imei_lang').text(" (số imei)");
-                        $('#plan_lang').text(" (kế hoạch)");
-                        $('#choose_lang').text(" (Vui lòng chọn bốn chữ số cuối của số điện thoại của bạn (Có thể nhập tối đa 3 mục))");
-                        $('#signature_lang').text(" (chữ ký)");
-                        $('#referral_lang').text(" (giới thiệu)");
-                        $('#service_lang').text(" (dịch vụ)");
-                        $('#connectivity_lang').text(" (kết nối)");
+                        $('#name_lang').text("Họ và tên ");
+                        $('#nationality_lang').text("quốc tịch ");
+                        $('#registration_card_lang').text("Thẻ đăng ký người nước ngoài (được cấp tại Hàn Quốc) ");
+                        $('#deteofbirth_lang').text("ngày sinh ");
+                        $('#gender_lang').text("giới tính ");
+                        $('#signature_lang').text("chữ ký ");
+                        $('#referral_lang').text("giới thiệu ");
                         $('#signature_note').text("Chữ ký bạn đã đăng ký sẽ được sử dụng trên mẫu đăng ký liên lạc di động của Hàn Quốc.");
                         break;
                     default :
@@ -211,27 +186,22 @@
                             <form method="POST" action="{{ route('userpage.insert', ['page' => 'posts']) }}" id="cellPhone_register" enctype="multipart/form-data">
                             @csrf
                                 <div class="flex flex-col mb-3">
-                                    <h6 style="float:left;">Full Name <span style="color:red">*</span></h6><h4 id="name_lang"> </h4>
+                                    <h6 id="name_lang">Full Name <span style="color:red">*</span></h6>
                                     <input type="text" name="applicant" class="form-control" placeholder="Your Full Name" aria-label="Name" value="{{ old('applicant') }}" id="applicant">
                                     @error('applicant') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <h6 style="float:left;">Nationality <span style="color:red">*</span></h6><h4 id="nationality_lang"> </h4>
+                                    <h6 id="nationality_lang">Nationality <span style="color:red">*</span></h6>
                                     <input type="text" name="nationality" class="form-control" placeholder="Nationality" aria-label="Nationality" value="{{ old('nationality') }}" autocomplete="off" id="inputSearch">
                                     @error('nationality') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <h6 style="float:left;">Alien registration card (issued in Korea) <span style="color:red">*</span></h6><h4 id="registration_card_lang"> </h4>
+                                    <h6 id="registration_card_lang">Alien registration card (issued in Korea) <span style="color:red">*</span></h6>
                                     <input type="file" name="registration_card" accept="file_extension,image/*" capture="camera" class="form-control" aria-label="Registration Card" id="registration_card">
                                     @error('registration_card') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
-                                <div class="flex flex-col mb-3">
-                                    <h6 style="float:left;">Date Of Birth <span style="color:red">*</span></h6><h4 id="deteofbirth_lang"> </h4>
-                                    <input type="text" name="dateofbirth" class="form-control" placeholder="MM-DD-YYYY" aria-label="Date Of Birth" value="{{ old('dateofbirth') }}" id="dateofbirth" maxlength="11">
-                                    @error('dateofbirth') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
-                                </div>
                                 <div class="form-radio form-check-info text-start">
-                                    <h6 style="float:left;">Gender <span style="color:red">*</span></h6><h4 id="gender_lang"> </h4>
+                                    <h6 id="gender_lang">Gender <span style="color:red">*</span></h6>
                                     <input class="form-radio-input" type="radio" name="gender" id="flexRadioDefault_m" value="male">
                                     <label class="form-radio-label" for="flexRadioDefault_m">Male</label>
                                     <input class="form-radio-input" type="radio" name="gender" id="flexRadioDefault_f" value="female">
@@ -239,11 +209,7 @@
                                     @error('gender') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <img src="/img/tables/tables4.png" alt="IMEI and S/N" style="max-width: 100%; height: auto;">
-                                    <p>Dial *#06# or go to setting - about to find IMEI number.</p>
-                                </div>
-                                <div class="flex flex-col mb-3">
-                                    <h6 style="float:left;">Signature <span style="color:red">*</span></h6><h4 id="signature_lang"> </h4>
+                                    <h6 id="signature_lang">Signature <span style="color:red">*</span></h6>
                                     <div class='js-signature'></div>
                                     <a id="clearBtn" class="btn btn-default" onclick="clearCanvas();">Clear Canvas</a>
                                     <a id="saveBtn" class="btn btn-default" onclick="saveSignature();" style="display:none;">Save Signature</a>
@@ -256,7 +222,7 @@
                                     <div id="signature"></div>
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <h6 style="float:left;">Referral </h6><h4 id="referral_lang"></h4>
+                                    <h6 id="referral_lang">Referral </h6>
                                     <input type="text" name="referral" class="form-control" placeholder="Please enter the referral's email address, phone number and name" aria-label="Referral" value="{{ old('referral') }}" id="referral">
                                     @error('referral') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
