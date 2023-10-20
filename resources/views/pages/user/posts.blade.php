@@ -27,9 +27,9 @@
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                             Nationality</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Opening Status</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Deferred Payment Status</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Opening Status</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Registration date</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -51,17 +51,6 @@
                                             <p class="text-xs font-weight-bold text-center mb-0">{{ $cell_phone->cpb_nationality }}</p>
                                         </td>
                                         <td class="align-middle text-center text-sm">
-                                            <span class="badge badge-sm
-                                            @if ($cell_phone->cpb_status == 'opening') 
-                                                bg-gradient-success
-                                            @elseif ($cell_phone->cpb_status == 'pending')
-                                                bg-gradient-danger
-                                            @else
-                                                bg-gradient-secondary
-                                            @endif
-                                            ">{{ $cell_phone->cpb_status }}</span>
-                                        </td>
-                                        <td class="align-middle text-center text-sm">
                                             @if ($cell_phone->cpb_after_status == 'apply')
                                                 <span class="badge badge-sm bg-gradient-success">Complete</span>
                                             @else
@@ -73,6 +62,17 @@
                                                     @endif
                                                 </span>
                                             @endif
+                                        </td>
+                                        <td class="align-middle text-center text-sm">
+                                            <span class="badge badge-sm
+                                            @if ($cell_phone->cpb_status == 'opening') 
+                                                bg-gradient-success
+                                            @elseif ($cell_phone->cpb_status == 'pending')
+                                                bg-gradient-danger
+                                            @else
+                                                bg-gradient-secondary
+                                            @endif
+                                            ">{{ $cell_phone->cpb_status }}</span>
                                         </td>
                                         <td class="align-middle text-center">
                                             <span class="text-secondary text-xs font-weight-bold">{{ date('Y-m-d H:i:s', strtotime($cell_phone->created_at)) }}</span>
