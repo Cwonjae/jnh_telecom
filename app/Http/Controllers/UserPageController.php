@@ -240,8 +240,8 @@ class UserPageController extends Controller
                     'created_at' => $now_date_time
                 ]);
             } else {
-                Alert::error('Registration Card Was Not Uploaded', 'The Registration Card was not uploaded successfully [6]');
-                return back()->with('error', 'The Registration Card was not uploaded successfully.');
+                Alert::error('Alien registration card (issued in Korea) Was Not Uploaded', 'The Alien registration card (issued in Korea) was not uploaded successfully [6]');
+                return back()->with('error', 'The Alien registration card (issued in Korea) was not uploaded successfully.');
             }
 
             // Signature Upload 구성
