@@ -53,7 +53,7 @@
                 var value = $(this).val();
                 switch(value) {
                     case 'english' :
-                        $('#name_lang').text("Full Name ");
+                        $('#name_lang').text("Full Name <span style='color:red'>*</span>");
                         $('#nationality_lang').text("Nationality ");
                         $('#registration_card_lang').text("Alien registration card (issued in Korea) ");
                         $('#deteofbirth_lang').text(" ");
@@ -163,13 +163,13 @@
         }
     </script>
 
-    @include('layouts.navbars.auth.user.topnav', ['title' => 'Olleh Mobile Application Form'])
+    @include('layouts.navbars.auth.user.topnav', ['title' => 'Olleh Postpaid Application Form'])
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <h6>Olleh Mobile Application Form</h6>
+                        <h6>Olleh Postpaid Application Form</h6>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0" style="width:92%; margin:auto; margin-top:30px;">
@@ -186,7 +186,7 @@
                             <form method="POST" action="{{ route('userpage.insert', ['page' => 'posts']) }}" id="cellPhone_register" enctype="multipart/form-data">
                             @csrf
                                 <div class="flex flex-col mb-3">
-                                    <h6 id="name_lang">Full Name </h6><span style="color:red">*</span>
+                                    <h6 id="name_lang">Full Name <span style="color:red">*</span></h6>
                                     <input type="text" name="applicant" class="form-control" placeholder="Your Full Name" aria-label="Name" value="{{ old('applicant') }}" id="applicant">
                                     @error('applicant') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
