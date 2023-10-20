@@ -226,7 +226,7 @@ class UserPageController extends Controller
 
             // PassPort Upload 구성
             // $upload_file = $request->file('passport')->store('public/images/passport');
-            $upload_file = Storage::putFile('/public/images/registrationcard',$request->file('passport'));
+            $upload_file = Storage::putFile('/public/images/registrationcard',$request->file('registration_card'));
             if($upload_file) {
                 $file_name = $request->file('registration_card')->getClientOriginalName();
                 $random_explode = explode('public/images/registrationcard/', $upload_file);
