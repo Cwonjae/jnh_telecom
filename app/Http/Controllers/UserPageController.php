@@ -85,7 +85,7 @@ class UserPageController extends Controller
                 'gender' => 'required|in:male,female',
                 'device' => 'required|in:apple,samsung,other',
                 'devicemodel' => 'required',
-                // 'osversion' => 'required',
+                'osversion' => 'required',
                 'imeinumber' => 'required',
                 'plan' => 'required|in:ok',
                 'signaturetxt' => 'required',
@@ -140,7 +140,7 @@ class UserPageController extends Controller
             $gender = $request->post('gender');
             $device = $request->post('device');
             $devicemodel = $request->post('devicemodel');
-            // $osversion = $request->post('osversion');
+            $osversion = $request->post('osversion');
             $imeinumber = $request->post('imeinumber');
             $plan = $request->post('plan');
             // $callservice = $request->post('callservice');
@@ -172,7 +172,7 @@ class UserPageController extends Controller
                 'cpb_gender' => $gender,
                 'cpb_device' => $device,
                 'cpb_devicemodel' => $devicemodel,
-                // 'cpb_osversion' => $osversion,
+                'cpb_osversion' => $osversion,
                 'cpb_imeinumber' => $imeinumber,
                 'cpb_plan' => $plan,
                 'cpb_chooselastnumber' => $chooselastnumber,
