@@ -69,7 +69,7 @@
                                                     @if ($cell_phone->iccm_id)
                                                     <a href="{{ route('userpage.idcard', ['page' => 'tables', 'num' => $cell_phone->id]) }}" target="_blank" style="color:#fff;">To apply Click</a>
                                                     @else
-                                                        To apply
+                                                        Unapplied
                                                     @endif
                                                 </span>
                                             @endif
