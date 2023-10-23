@@ -11,19 +11,19 @@
                 var value = $(this).val();
                 switch(value) {
                     case 'english' :
-                        $('#idcard_lang').text("");
+                        $('#idcard_lang').html("Registration Card <span style='color:red'>*</span>");
                         break;
                     case 'russian' :
-                        $('#idcard_lang').text(" (регистрационная карта)");
+                        $('#idcard_lang').html("регистрационная карта <span style='color:red'>*</span>");
                         break;
                     case 'uzbek' :
-                        $('#idcard_lang').text(" (ro'yxatga olish kartasi)");
+                        $('#idcard_lang').html("ro'yxatga olish kartasi <span style='color:red'>*</span>");
                         break;
                     case 'tagalog' :
-                        $('#idcard_lang').text(" (kard ng pagpaparehistro)");
+                        $('#idcard_lang').html("kard ng pagpaparehistro <span style='color:red'>*</span>");
                         break;
                     case 'vietnamese' :
-                        $('#idcard_lang').text(" (Thẻ đăng ký)");
+                        $('#idcard_lang').html("Thẻ đăng ký <span style='color:red'>*</span>");
                         break;
                     default :
                         break;
@@ -81,7 +81,7 @@
                             <form method="POST" action="{{ route('userpage.idcard-insert', ['page' => 'tables', 'num' => $cpb_num]) }}" id="idcard_insert" enctype="multipart/form-data">
                             @csrf
                                 <div class="flex flex-col mb-3">
-                                    <h6 style="float:left;">Registration Card <span style="color:red">*</span></h6><h4 id="idcard_lang"></h4>
+                                    <h6 id="idcard_lang">Registration Card <span style="color:red">*</span></h6>
                                     <input type="file" name="registrationcard" accept="file_extension,image/*" capture="camera" class="form-control" aria-label="Registration Card" id="registrationcard">
                                     @error('registrationcard') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
