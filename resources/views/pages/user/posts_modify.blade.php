@@ -202,7 +202,8 @@
                                             <span style="font-weight:bold; font-size:14px;">View saved Alien registration card</span>
                                         </a>
                                     @endif
-                                </div>"form-radio form-check-info text-start">
+                                </div>
+                                <div class="form-radio form-check-info text-start">
                                     <h6 id="gender_lang">Gender <span style="color:red">*</span></h6>
                                     <input class="form-radio-input" type="radio" name="gender" id="flexRadioDefault_m" value="male" @if($cell_phones[0]->cpb_gender == "male") checked @else @endif>
                                     <label class="form-radio-label" for="flexRadioDefault_m">Male</label>
@@ -211,7 +212,7 @@
                                     @error('gender') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <h6 style="float:left;">Signature <span style="color:red">*</span></h6><h4 id="signature_lang"></h4>
+                                    <h6 id="signature_lang">Signature <span style="color:red">*</span></h6>
                                     <div class='js-signature'></div>
                                     <a id="clearBtn" class="btn btn-default" onclick="clearCanvas();">Clear Canvas</a>
                                     <a id="saveBtn" class="btn btn-default" onclick="saveSignature();" style="display:none;">Save Signature</a>
@@ -228,14 +229,14 @@
                                     </div>
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <h6 style="float:left;">Referral </h6><h4 id="referral_lang"></h4>
+                                    <h6 id="referral_lang">Referral </h6>
                                     <input type="text" name="referral" class="form-control" placeholder="Please enter the referral's email address, phone number and name" aria-label="Referral" value="{{ $cell_phones[0]->cpb_referral }}" id="referral">
                                     @error('referral') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                             </form>
 
                             <div class="text-center">
-                                    <a class="btn bg-gradient-dark w-100 my-4 mb-2" id="form_submit">Modify Form</a>
+                                <a class="btn bg-gradient-dark w-100 my-4 mb-2" id="form_submit">Modify Form</a>
                             </div>
                             <div id="alert">
                                 @include('components.alert')
