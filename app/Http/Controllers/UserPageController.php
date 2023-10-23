@@ -325,16 +325,32 @@ class UserPageController extends Controller
         
         $board_check = DB::table('cellphone_boards')->where('u_id', Auth::id())->where('id', $num)->exists();
         if($board_check) {
-            $cell_phones = DB::table('cellphone_boards')
-                            ->join('signature_uploads', 'cellphone_boards.stu_id', '=' ,'signature_uploads.id')
-                            ->join('passport_uploads', 'cellphone_boards.ppu_id', '=' ,'passport_uploads.id')
-                            ->where('cellphone_boards.u_id', Auth::id())
-                            ->where('cellphone_boards.id', $num)
-                            ->select('cellphone_boards.*', 'signature_uploads.stu_filename', 'signature_uploads.stu_base64', 'passport_uploads.ppu_filename', 'passport_uploads.ppu_encode_filename')
-                            ->get();
-
-            if (view()->exists("pages.user.{$page}_modify")) {
-                return view("pages.user.{$page}_modify", ['cell_phones' => $cell_phones]);
+            if($page == 'tables') {
+                $cell_phones = DB::table('cellphone_boards')
+                                ->join('signature_uploads', 'cellphone_boards.stu_id', '=' ,'signature_uploads.id')
+                                ->join('passport_uploads', 'cellphone_boards.ppu_id', '=' ,'passport_uploads.id')
+                                ->where('cellphone_boards.u_id', Auth::id())
+                                ->where('cellphone_boards.id', $num)
+                                ->select('cellphone_boards.*', 'signature_uploads.stu_filename', 'signature_uploads.stu_base64', 'passport_uploads.ppu_filename', 'passport_uploads.ppu_encode_filename')
+                                ->get();
+    
+                if (view()->exists("pages.user.{$page}_modify")) {
+                    return view("pages.user.{$page}_modify", ['cell_phones' => $cell_phones]);
+                }
+            } else if($page == 'posts') {
+                $cell_phones = DB::table('cellphone_boards')
+                                ->join('signature_uploads', 'cellphone_boards.stu_id', '=' ,'signature_uploads.id')
+                                ->join('idcard_uploads', 'cellphone_boards.icu_id', '=' ,'idcard_uploads.id')
+                                ->where('cellphone_boards.u_id', Auth::id())
+                                ->where('cellphone_boards.id', $num)
+                                ->select('cellphone_boards.*', 'signature_uploads.stu_filename', 'signature_uploads.stu_base64', 'idcard_uploads.icu_filename', 'idcard_uploads.icu_encode_filename')
+                                ->get();
+    
+                if (view()->exists("pages.user.{$page}_modify")) {
+                    return view("pages.user.{$page}_modify", ['cell_phones' => $cell_phones]);
+                }
+            } else {
+                return abort(404);
             }
         } else {
             return abort(404);

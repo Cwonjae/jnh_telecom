@@ -178,33 +178,40 @@
                                 </select>
                             </div>
                             
-                            <form method="POST" action="{{ route('userpage.insert', ['page' => 'posts']) }}" id="cellPhone_register" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('userpage.update', ['page' => 'posts', 'num' => $cell_phones[0]->id]) }}" id="cellPhone_register" enctype="multipart/form-data">
                             @csrf
                                 <div class="flex flex-col mb-3">
                                     <h6 id="name_lang">Full Name <span style="color:red">*</span></h6>
-                                    <input type="text" name="applicant" class="form-control" placeholder="Your Full Name" aria-label="Name" value="{{ old('applicant') }}" id="applicant">
+                                    <input type="text" name="applicant" class="form-control" placeholder="Your Full Name" aria-label="Name" value="{{ $cell_phones[0]->cpb_applicant }}" id="applicant">
                                     @error('applicant') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
                                     <h6 id="nationality_lang">Nationality <span style="color:red">*</span></h6>
-                                    <input type="text" name="nationality" class="form-control" placeholder="Nationality" aria-label="Nationality" value="{{ old('nationality') }}" autocomplete="off" id="inputSearch">
+                                    <input type="text" name="nationality" class="form-control" placeholder="Nationality" aria-label="Nationality" value="{{ $cell_phones[0]->cpb_nationality }}" autocomplete="off" id="inputSearch">
                                     @error('nationality') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
                                     <h6 id="registration_card_lang">Alien registration card (issued in Korea) <span style="color:red">*</span></h6>
                                     <input type="file" name="registration_card" accept="file_extension,image/*" capture="camera" class="form-control" aria-label="Registration Card" id="registration_card">
                                     @error('registration_card') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
-                                </div>
-                                <div class="form-radio form-check-info text-start">
+                                    @if($cell_phones[0]->icu_filename)
+                                    @php
+                                        $check_extension = explode('.', $cell_phones[0]->icu_filename);
+                                    @endphp
+                                        <a href="{{ url('storage/images/registrationcard/'.$cell_phones[0]->icu_encode_filename.'.'.$check_extension[1]) }}" target="_blank">
+                                            <span style="font-weight:bold; font-size:14px;">View saved Alien registration card</span>
+                                        </a>
+                                    @endif
+                                </div>"form-radio form-check-info text-start">
                                     <h6 id="gender_lang">Gender <span style="color:red">*</span></h6>
-                                    <input class="form-radio-input" type="radio" name="gender" id="flexRadioDefault_m" value="male">
+                                    <input class="form-radio-input" type="radio" name="gender" id="flexRadioDefault_m" value="male" @if($cell_phones[0]->cpb_gender == "male") checked @else @endif>
                                     <label class="form-radio-label" for="flexRadioDefault_m">Male</label>
-                                    <input class="form-radio-input" type="radio" name="gender" id="flexRadioDefault_f" value="female">
+                                    <input class="form-radio-input" type="radio" name="gender" id="flexRadioDefault_f" value="female" @if($cell_phones[0]->cpb_gender == "female") checked @else @endif>
                                     <label class="form-radio-label" for="flexRadioDefault_f">FeMale</label>
                                     @error('gender') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <h6 id="signature_lang">Signature <span style="color:red">*</span></h6>
+                                    <h6 style="float:left;">Signature <span style="color:red">*</span></h6><h4 id="signature_lang"></h4>
                                     <div class='js-signature'></div>
                                     <a id="clearBtn" class="btn btn-default" onclick="clearCanvas();">Clear Canvas</a>
                                     <a id="saveBtn" class="btn btn-default" onclick="saveSignature();" style="display:none;">Save Signature</a>
@@ -213,18 +220,22 @@
                                     <label for="consent">Consent</label>
                                     <p id="signature_note" style="color:red">The signature you registered will be used on the Korean mobile communication subscription form.</p>
                                     @error('signaturetxt') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
-                                    <input type="hidden" id="signature_txt" name="signaturetxt" value="{{ old('signaturetxt') }}"/>
-                                    <div id="signature"></div>
+                                    <input type="hidden" id="signature_txt" name="signaturetxt" value="data:image/png;base64,{{ $cell_phones[0]->stu_base64 }}"/>
+                                    <div id="signature">
+                                    @if($cell_phones[0]->stu_filename)
+                                        <img id="signature_img" src="data:image/png;base64,{{ $cell_phones[0]->stu_base64 }}"/>
+                                    @endif
+                                    </div>
                                 </div>
                                 <div class="flex flex-col mb-3">
-                                    <h6 id="referral_lang">Referral </h6>
-                                    <input type="text" name="referral" class="form-control" placeholder="Please enter the referral's email address, phone number and name" aria-label="Referral" value="{{ old('referral') }}" id="referral">
+                                    <h6 style="float:left;">Referral </h6><h4 id="referral_lang"></h4>
+                                    <input type="text" name="referral" class="form-control" placeholder="Please enter the referral's email address, phone number and name" aria-label="Referral" value="{{ $cell_phones[0]->cpb_referral }}" id="referral">
                                     @error('referral') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                             </form>
 
                             <div class="text-center">
-                                    <a class="btn bg-gradient-dark w-100 my-4 mb-2" id="form_submit">Submit Form</a>
+                                    <a class="btn bg-gradient-dark w-100 my-4 mb-2" id="form_submit">Modify Form</a>
                             </div>
                             <div id="alert">
                                 @include('components.alert')

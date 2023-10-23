@@ -81,7 +81,7 @@
                                             @if ($cell_phone->cpb_status == 'closing' || $cell_phone->cpb_status == 'pending')
 
                                             @else
-                                                <a href="{{ route('userpage.modify', ['page' => 'tables', 'num' => $cell_phone->id]) }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                                <a href="{{ route('userpage.modify', ['page' => 'posts', 'num' => $cell_phone->id]) }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                                                     Edit
                                                 </a>
                                             @endif
