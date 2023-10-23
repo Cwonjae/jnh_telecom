@@ -58,7 +58,7 @@
                         $('#registration_card_lang').html("Alien registration card (issued in Korea) <span style='color:red'>*</span>");
                         $('#gender_lang').html("Gender <span style='color:red'>*</span>");
                         $('#signature_lang').html("Signature <span style='color:red'>*</span>");
-                        $('#referral_lang').text("Referral ");
+                        $('#referral_lang').html("Referral ");
                         $('#signature_note').text("The signature you registered will be used on the Korean mobile communication subscription form.");
                         break;
                     case 'russian' :
@@ -67,7 +67,7 @@
                         $('#registration_card_lang').html("Регистрационная карта иностранца (выдана в Корее) <span style='color:red'>*</span>");
                         $('#gender_lang').html("пол <span style='color:red'>*</span>");
                         $('#signature_lang').html("подпись <span style='color:red'>*</span>");
-                        $('#referral_lang').text("направления ");
+                        $('#referral_lang').html("направления ");
                         $('#signature_note').text("Зарегистрированная вами подпись будет использоваться в форме подписки на мобильную связь в Корее.");
                         break;
                     case 'uzbek' :
@@ -76,7 +76,7 @@
                         $('#registration_card_lang').html("Chet ellik ro'yxatga olish kartasi (Koreyada berilgan) <span style='color:red'>*</span>");
                         $('#gender_lang').html("jins <span style='color:red'>*</span>");
                         $('#signature_lang').html("imzo <span style='color:red'>*</span>");
-                        $('#referral_lang').text("murojaat ");
+                        $('#referral_lang').html("murojaat ");
                         $('#signature_note').text("Siz roʻyxatdan oʻtgan imzo Koreya mobil aloqasi obuna formasida qoʻllaniladi.");
                         break;
                     case 'tagalog' :
@@ -85,7 +85,7 @@
                         $('#registration_card_lang').html("Alien registration card (ibinigay sa Korea) <span style='color:red'>*</span>");
                         $('#gender_lang').html("kasarian <span style='color:red'>*</span>");
                         $('#signature_lang').html("pirma <span style='color:red'>*</span>");
-                        $('#referral_lang').text("referral ");
+                        $('#referral_lang').html("referral ");
                         $('#signature_note').text("Ang pirma na iyong inirehistro ay gagamitin sa Korean mobile communication na subscription form.");
                         break;
                     case 'vietnamese' :
@@ -94,7 +94,7 @@
                         $('#registration_card_lang').html("Thẻ đăng ký người nước ngoài (được cấp tại Hàn Quốc) <span style='color:red'>*</span>");
                         $('#gender_lang').html("giới tính <span style='color:red'>*</span>");
                         $('#signature_lang').html("chữ ký <span style='color:red'>*</span>");
-                        $('#referral_lang').text("giới thiệu ");
+                        $('#referral_lang').html("giới thiệu ");
                         $('#signature_note').text("Chữ ký bạn đã đăng ký sẽ được sử dụng trên mẫu đăng ký liên lạc di động của Hàn Quốc.");
                         break;
                     default :
