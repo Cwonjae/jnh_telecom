@@ -13,7 +13,7 @@
                     
                     if(val.length < 4) {
                         $(this).val(val.substring(0,3) + "-");
-                    } else if(val.length >= 4 && val.length < 7) {
+                    } else if(val.length >= 4 && val.length < 8) {
                         $(this).val(val.substring(0,3) + "-" + val.substring(3,3) + "-");
                     } 
                     // else if(val.length > 6) {
