@@ -9,14 +9,14 @@
                 } else {
                     var val = $(this).val().replace(/[^0-9]/g, '');
 
-                    if(val.length < 3) {
+                    if(val.length < 4) {
                         $(this).val(val.substring(0,3) + "-");
-                    } else if(val.length >= 4 && val.length < 6) {
-                        $(this).val(val.substring(0,3) + "-" + val.substring(3,5) + "-");
+                    } else if(val.length >= 4 && val.length < 7) {
+                        $(this).val(val.substring(0,3) + "-" + val.substring(3,6) + "-");
                     } else if(val.length > 6) {
-                        $(this).val(val.substring(0,3) + "-" + val.substring(3,5) + "-" + val.substring(4,8));
+                        $(this).val(val.substring(0,3) + "-" + val.substring(3,6) + "-" + val.substring(5,9));
                     } else {
-                        $(this).val(val.substring(0,3) + "-" + val.substring(3,5) + "-" + val.substring(4,8));
+                        $(this).val(val.substring(0,3) + "-" + val.substring(3,5) + "-" + val.substring(5,9));
                     }
                 }
             });
