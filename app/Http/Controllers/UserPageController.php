@@ -278,7 +278,7 @@ class UserPageController extends Controller
                 'cpb_applicant' => $applicant,
                 'cpb_nationality' => $nationality,
                 'cpb_status' => 'opening',
-                'cpb_after_status' => 'apply',
+                'cpb_after_status' => 'processing',
                 'u_id' => $user_id_check,
                 'icu_id' => $idcard_insert_id,
                 'cpb_gender' => $gender,
@@ -677,7 +677,7 @@ class UserPageController extends Controller
                                         ->where('u_id', Auth::id())
                                         ->where('id', $num)
                                         ->update([
-                                            'cpb_after_status' => 'apply',
+                                            'cpb_after_status' => 'processing',
                                             'updated_at' => $now_date_time
                                         ]);
 

@@ -47,7 +47,8 @@ class PageController extends Controller
         } else if($page == "users") {
             /**
              * admin 일 경우 user 리스트업
-             * 회원가입 한 사람들을 추출 하냐, 이동통신사업 가입신청을 완료한 사람들을 추출 하냐 고민
+             * 선불제에서 후불제로 돌릴경우 cpb_status 값이 closing이 맞음
+             * 하지만 그냥 후불제로 신청할경우는 closing값으로 하면 안될듯함
              * 
              */
             if($admin_checks > 0) {
@@ -55,7 +56,10 @@ class PageController extends Controller
                                 ->join('users', 'cellphone_boards.u_id', '=' ,'users.id')
                                 ->leftjoin('idcard_comparison', 'cellphone_boards.id', '=' ,'idcard_comparison.cpb_id')
                                 ->where('cellphone_boards.cpb_telecoms', 'kt')
-                                ->where('cellphone_boards.cpb_status', 'closing')
+                                ->orWhere(function($query) {
+                                    $query->where('cellphone_boards.cpb_status', 'closing')
+                                          ->where('cellphone_boards.cpb_after_status', 'processing');
+                                })
                                 ->select('users.username', 'users.email', 'cellphone_boards.id', 'cellphone_boards.cpb_applicant', 'cellphone_boards.cpb_nationality', 'cellphone_boards.cpb_status', 'cellphone_boards.cpb_after_status', 'cellphone_boards.cpb_telecoms', 'cellphone_boards.created_at', 'idcard_comparison.icc_status', 'idcard_comparison.id AS icc_id', 'cellphone_boards.cpb_phonenumber')
                                 ->paginate(10);
             } else {
