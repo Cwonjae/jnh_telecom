@@ -56,9 +56,9 @@ class PageController extends Controller
                                 ->join('users', 'cellphone_boards.u_id', '=' ,'users.id')
                                 ->leftjoin('idcard_comparison', 'cellphone_boards.id', '=' ,'idcard_comparison.cpb_id')
                                 ->where('cellphone_boards.cpb_telecoms', 'kt')
-                                ->orWhere(function($query) {
-                                    $query->where('cellphone_boards.cpb_status', 'closing')
-                                          ->where('cellphone_boards.cpb_status', 'processing');
+                                ->whereNot(function($query) {
+                                    $query->where('cellphone_boards.cpb_status', 'opening')
+                                          ->orwhere('cellphone_boards.cpb_status', 'pending');
                                 })
                                 ->select('users.username', 'users.email', 'cellphone_boards.id', 'cellphone_boards.cpb_applicant', 'cellphone_boards.cpb_nationality', 'cellphone_boards.cpb_status', 'cellphone_boards.cpb_after_status', 'cellphone_boards.cpb_telecoms', 'cellphone_boards.created_at', 'idcard_comparison.icc_status', 'idcard_comparison.id AS icc_id', 'cellphone_boards.cpb_phonenumber')
                                 ->paginate(10);
