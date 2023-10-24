@@ -219,6 +219,7 @@ class UserPageController extends Controller
             $validated = $request->validate([
                 'applicant' => 'required',
                 'nationality' => 'required',
+                'phone_number' => 'required',
                 'registration_card' => 'required',
                 'gender' => 'required|in:male,female',
                 'signaturetxt' => 'required',
@@ -265,6 +266,7 @@ class UserPageController extends Controller
             
             $applicant = $request->post('applicant');
             $nationality = $request->post('nationality');
+            $phone_number = $request->post('phone_number');
             $gender = $request->post('gender');
 
             if($request->post('referral')) {
@@ -277,6 +279,7 @@ class UserPageController extends Controller
                 'cpb_board_type' => 'postpaid',
                 'cpb_applicant' => $applicant,
                 'cpb_nationality' => $nationality,
+                'cpb_phonenumber' => $phone_number,
                 'cpb_status' => 'opening',
                 'cpb_after_status' => 'processing',
                 'u_id' => $user_id_check,

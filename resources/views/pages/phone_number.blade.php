@@ -7,9 +7,7 @@
                 if(event.keyCode == 8) {
                     $(this).val();
                 } else {
-                    var val = $(this).val().replace(/[^0-9]/g, '');
-                    
-                    console.log(val.length);                    
+                    var val = $(this).val().replace(/[^0-9]/g, '');   
                     
                     if(val.length < 4) {
                         $(this).val(val.substring(0,3) + "-");

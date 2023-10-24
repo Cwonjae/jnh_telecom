@@ -40,6 +40,23 @@
                 }
             });
             
+            $('#phone_number').keyup(function() {
+                if(event.keyCode == 8) {
+                    $(this).val();
+                } else {
+                    var val = $(this).val().replace(/[^0-9]/g, '');
+                                  
+                    if(val.length < 4) {
+                        $(this).val(val.substring(0,3) + "-");
+                    } else if(val.length >= 4 && val.length < 8) {
+                        $(this).val(val.substring(0,3) + "-" + val.substring(3,7) + "-");
+                    } else if(val.length > 7) {
+                        $(this).val(val.substring(0,3) + "-" + val.substring(3,7) + "-" + val.substring(7,11));
+                    } else {
+                        $(this).val(val.substring(0,3) + "-" + val.substring(3,7) + "-" + val.substring(7,11));
+                    }
+                }
+            });
 
             $('.js-signature').on('jq.signature.changed', function() {
                 $('#saveBtn').css('display', 'inline-block');
@@ -56,6 +73,7 @@
                         $('#name_lang').html("Full Name <span style='color:red'>*</span>");
                         $('#nationality_lang').html("Nationality <span style='color:red'>*</span>");
                         $('#registration_card_lang').html("Alien registration card (issued in Korea) <span style='color:red'>*</span>");
+                        $('#phonenumber_lang').html("Korea Phone Number <span style='color:red'>*</span>");
                         $('#gender_lang').html("Gender <span style='color:red'>*</span>");
                         $('#signature_lang').html("Signature <span style='color:red'>*</span>");
                         $('#referral_lang').html("Referral ");
@@ -65,6 +83,7 @@
                         $('#name_lang').html("Полное имя <span style='color:red'>*</span>");
                         $('#nationality_lang').html("Национальность <span style='color:red'>*</span>");
                         $('#registration_card_lang').html("Регистрационная карта иностранца (выдана в Корее) <span style='color:red'>*</span>");
+                        $('#phonenumber_lang').html("Телефонный номер Кореи <span style='color:red'>*</span>");
                         $('#gender_lang').html("пол <span style='color:red'>*</span>");
                         $('#signature_lang').html("подпись <span style='color:red'>*</span>");
                         $('#referral_lang').html("направления ");
@@ -74,6 +93,7 @@
                         $('#name_lang').html("to'liq ism <span style='color:red'>*</span>");
                         $('#nationality_lang').html("millati <span style='color:red'>*</span>");
                         $('#registration_card_lang').html("Chet ellik ro'yxatga olish kartasi (Koreyada berilgan) <span style='color:red'>*</span>");
+                        $('#phonenumber_lang').html("Koreya telefon raqami <span style='color:red'>*</span>");
                         $('#gender_lang').html("jins <span style='color:red'>*</span>");
                         $('#signature_lang').html("imzo <span style='color:red'>*</span>");
                         $('#referral_lang').html("murojaat ");
@@ -83,6 +103,7 @@
                         $('#name_lang').html("buong pangalan <span style='color:red'>*</span>");
                         $('#nationality_lang').html("nasyonalidad <span style='color:red'>*</span>");
                         $('#registration_card_lang').html("Alien registration card (ibinigay sa Korea) <span style='color:red'>*</span>");
+                        $('#phonenumber_lang').html("Numero ng Telepono sa Korea <span style='color:red'>*</span>");
                         $('#gender_lang').html("kasarian <span style='color:red'>*</span>");
                         $('#signature_lang').html("pirma <span style='color:red'>*</span>");
                         $('#referral_lang').html("referral ");
@@ -92,6 +113,7 @@
                         $('#name_lang').html("Họ và tên <span style='color:red'>*</span>");
                         $('#nationality_lang').html("quốc tịch <span style='color:red'>*</span>");
                         $('#registration_card_lang').html("Thẻ đăng ký người nước ngoài (được cấp tại Hàn Quốc) <span style='color:red'>*</span>");
+                        $('#phonenumber_lang').html("Số điện thoại Hàn Quốc <span style='color:red'>*</span>");
                         $('#gender_lang').html("giới tính <span style='color:red'>*</span>");
                         $('#signature_lang').html("chữ ký <span style='color:red'>*</span>");
                         $('#referral_lang').html("giới thiệu ");
@@ -189,6 +211,11 @@
                                     <h6 id="nationality_lang">Nationality <span style="color:red">*</span></h6>
                                     <input type="text" name="nationality" class="form-control" placeholder="Nationality" aria-label="Nationality" value="{{ $cell_phones[0]->cpb_nationality }}" autocomplete="off" id="inputSearch">
                                     @error('nationality') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
+                                </div>
+                                <div class="flex flex-col mb-3">
+                                    <h6 id="phonenumber_lang">Korea Phone Number <span style="color:red">*</span></h6>
+                                    <input type="text" name="phone_number" class="form-control" placeholder="010-XXXX-XXXX" aria-label="Phone Number" value="{{ $cell_phones[0]->cpb_phonenumber }}" id="phone_number">
+                                    @error('phone_number') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
                                     <h6 id="registration_card_lang">Alien registration card (issued in Korea) <span style="color:red">*</span></h6>
