@@ -8,16 +8,19 @@
                     $(this).val();
                 } else {
                     var val = $(this).val().replace(/[^0-9]/g, '');
-
+                    
+                    console.log(val.length);                    
+                    
                     if(val.length < 4) {
                         $(this).val(val.substring(0,3) + "-");
                     } else if(val.length >= 4 && val.length < 7) {
                         $(this).val(val.substring(0,3) + "-" + val.substring(3,3) + "-");
-                    } else if(val.length > 6) {
-                        $(this).val(val.substring(0,3) + "-" + val.substring(3,3) + "-" + val.substring(5,4));
-                    } else {
-                        $(this).val(val.substring(0,3) + "-" + val.substring(3,3) + "-" + val.substring(5,4));
-                    }
+                    } 
+                    // else if(val.length > 6) {
+                    //     $(this).val(val.substring(0,3) + "-" + val.substring(3,3) + "-" + val.substring(6,4));
+                    // } else {
+                    //     $(this).val(val.substring(0,3) + "-" + val.substring(3,3) + "-" + val.substring(6,4));
+                    // }
                 }
             });
 
