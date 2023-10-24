@@ -58,7 +58,7 @@ class PageController extends Controller
                                 ->where('cellphone_boards.cpb_telecoms', 'kt')
                                 ->orWhere(function($query) {
                                     $query->where('cellphone_boards.cpb_status', 'closing')
-                                          ->where('cellphone_boards.cpb_after_status', 'processing');
+                                          ->where('cellphone_boards.cpb_status', 'processing');
                                 })
                                 ->select('users.username', 'users.email', 'cellphone_boards.id', 'cellphone_boards.cpb_applicant', 'cellphone_boards.cpb_nationality', 'cellphone_boards.cpb_status', 'cellphone_boards.cpb_after_status', 'cellphone_boards.cpb_telecoms', 'cellphone_boards.created_at', 'idcard_comparison.icc_status', 'idcard_comparison.id AS icc_id', 'cellphone_boards.cpb_phonenumber')
                                 ->paginate(10);
