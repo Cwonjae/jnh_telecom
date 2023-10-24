@@ -216,13 +216,17 @@ class PageController extends Controller
                 
                 $phone_number = $request->post('phone_number');
     
-                $cellphone_update = DB::table('cellphone_boards')
-                                    ->where('id', $num)
-                                    ->update([
-                                        'cpb_phonenumber' => $phone_number,
-                                        'updated_at' => $now_date_time
-                                    ]);
-                    
+                if(DB::table('cellphone_boards')->where('cpb_phonenumber', $phone_number)->exists()) { 
+                    Alert::error('휴대폰번호 및 외국인등록증', '해당 휴대폰번호는 이미 등록되어있습니다.');
+                    return redirect("/admin/users");
+                } else {
+                    $cellphone_update = DB::table('cellphone_boards')
+                                            ->where('id', $num)
+                                            ->update([
+                                                'cpb_phonenumber' => $phone_number,
+                                                'updated_at' => $now_date_time
+                                            ]);
+    
                     if($cellphone_update) {
                         $comparison_update = DB::table('idcard_comparison')
                                                 ->where('cpb_id', $num)
@@ -237,6 +241,7 @@ class PageController extends Controller
                         Alert::error('휴대폰번호 및 외국인등록증', '휴대폰번호 및 외국인등록증 확인에 실패하였습니다.');
                         return redirect("/admin/users");
                     }
+                }
             }
 
         } else {

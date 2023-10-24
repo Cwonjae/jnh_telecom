@@ -3,6 +3,24 @@
 @section('content')
     <script>
         $(function () {
+            $('#phone_number').keyup(function() {
+                if(event.keyCode == 8) {
+                    $(this).val();
+                } else {
+                    var val = $(this).val().replace(/[^0-9]/g, '');
+
+                    if(val.length < 3) {
+                        $(this).val(val.substring(0,3) + "-");
+                    } else if(val.length >= 4 && val.length < 6) {
+                        $(this).val(val.substring(0,3) + "-" + val.substring(3,5) + "-");
+                    } else if(val.length > 6) {
+                        $(this).val(val.substring(0,3) + "-" + val.substring(3,5) + "-" + val.substring(4,8));
+                    } else {
+                        $(this).val(val.substring(0,3) + "-" + val.substring(3,5) + "-" + val.substring(4,8));
+                    }
+                }
+            });
+
             $('#form_submit').click(function() {
                 $('#comparison_check').submit();
             });
