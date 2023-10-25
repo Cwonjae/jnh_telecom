@@ -329,10 +329,10 @@ class PageController extends Controller
                     });
     
                     Alert::success('가입신청 상태 변경', '가입신청 상태 변경이 완료되었습니다.');
-                    return redirect("/admin/tables");
+                    return redirect("/admin/users");
                 } else {
                     Alert::error('가입신청 상태 변경', '가입신청 상태 변경이 실패하였습니다.');
-                    return redirect("/admin/tables");
+                    return redirect("/admin/users");
                 }
             }
         }
