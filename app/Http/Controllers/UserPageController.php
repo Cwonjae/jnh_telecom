@@ -686,19 +686,28 @@ class UserPageController extends Controller
 
                     if($cellphone_update) {
                         $idcard_comparison_insert_id = DB::table('idcard_comparison')->insertGetId([
-                            'cpb_id' => $num,
-                            'icu_id' => $idcard_insert_id,
-                            'icc_status' => 'N',
-                            'created_at' => $now_date_time
-                        ]);
+                                                            'cpb_id' => $num,
+                                                            'icu_id' => $idcard_insert_id,
+                                                            'icc_status' => 'N',
+                                                            'created_at' => $now_date_time
+                                                        ]);
+
                         /**
                          * 현재는 하드코딩으로 작성된 메일로 발송되게 함
                          * 발송될 계정은 진앤현에서 갖고있는 계정으로
                          * 해당 계정에 메일이 수신되면, 자동으로 관계자들의 계정으로 전달 예정
                          */
-                        Mail::send('mobileForm.admin.form', ['data' => '외국인등록증이 등록되었습니다.'], function($message) use ($request, $user_name_check){
+                        
+                        $user_check = DB::table('cellphone_boards')
+                                        ->join('users', 'cellphone_boards.u_id', '=', 'users.id')
+                                        ->where('cellphone_boards.id', $num)
+                                        ->where('cellphone_boards.u_id', Auth::id())
+                                        ->select('users.email', 'cellphone_boards.cpb_applicant')
+                                        ->first();
+
+                        Mail::send('mobileForm.admin.form', ['data' => '외국인등록증이 등록되었습니다.'], function($message) use ($request, $user_check){
                             $message->to('kt.foreigner@jinnhyun.com');
-                            $message->subject('선불제에서 후불제로 가입 신청이 등록되었습니다._'.$user_name_check);
+                            $message->subject('선불제에서 후불제로 가입 신청이 등록되었습니다._'.$user_check->cpb_applicant);
                         });
                           
                         Alert::success('Olleh Mobile Registered', 'The Alien registration card was uploaded successfully');
