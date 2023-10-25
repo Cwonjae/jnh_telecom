@@ -259,41 +259,81 @@ class PageController extends Controller
         $currentDateTime = Carbon::now()->timezone('Asia/Seoul');
         $now_date_time = $currentDateTime->toDateTimeString();
 
-        if(DB::table('cellphone_boards')->where('id', $num)->where('cpb_status', 'opening')->exists()) {
-            $cellphone_update = DB::table('cellphone_boards')
-                                ->where('id', $num)
-                                ->update([
-                                    'cpb_status' => $status,
-                                    'updated_at' => $now_date_time
-                                ]);
-            if($cellphone_update) {
-                $user_check = DB::table('cellphone_boards')
-                                        ->join('users', 'cellphone_boards.u_id', '=', 'users.id')
-                                        ->where('cellphone_boards.id', $num)
-                                        ->select('users.email', 'cellphone_boards.cpb_applicant')
-                                        ->first();
-                                        
-                $datae = [];
-                Mail::send('mobileForm.user.status', $datae, function($message) use ($user_check, $now_date_time) {
-                    $message->to($user_check->email);
-                    $message->subject('Olleh Prepaid Application Form is finally complete.'.$now_date_time);
-                });
-
-                /**
-                 * 누가 처리했는지 확인용으로 메일 발송되게 작업
-                 */
-                $admin_email_checks = DB::table('users')->where('id', Auth::id())->where('grade', 'admin')->value("email");
-                $admin_name_checks = DB::table('users')->where('id', Auth::id())->where('grade', 'admin')->value("username");
-                Mail::send('mobileForm.admin.status_checking', ['admin_email_checks' => $admin_email_checks, 'admin_name_checks' => $admin_name_checks, 'user_name' => $user_check->cpb_applicant, 'now_date_time' => $now_date_time], function($message) use ($now_date_time) {
-                    $message->to('kt.foreigner@jinnhyun.com');
-                    $message->subject('올레 선불제 가입신청 승인완료 처리내역'.$now_date_time);
-                });
-
-                Alert::success('가입신청 상태 변경', '가입신청 상태 변경이 완료되었습니다.');
-                return redirect("/admin/tables");
-            } else {
-                Alert::error('가입신청 상태 변경', '가입신청 상태 변경이 실패하였습니다.');
-                return redirect("/admin/tables");
+        if($page == "tables") {
+            if(DB::table('cellphone_boards')->where('id', $num)->where('cpb_status', 'opening')->exists()) {
+                $cellphone_update = DB::table('cellphone_boards')
+                                    ->where('id', $num)
+                                    ->update([
+                                        'cpb_status' => $status,
+                                        'updated_at' => $now_date_time
+                                    ]);
+                if($cellphone_update) {
+                    $user_check = DB::table('cellphone_boards')
+                                            ->join('users', 'cellphone_boards.u_id', '=', 'users.id')
+                                            ->where('cellphone_boards.id', $num)
+                                            ->select('users.email', 'cellphone_boards.cpb_applicant')
+                                            ->first();
+                                            
+                    $datae = [];
+                    Mail::send('mobileForm.user.status', $datae, function($message) use ($user_check, $now_date_time) {
+                        $message->to($user_check->email);
+                        $message->subject('Olleh Prepaid Application Form is finally complete.'.$now_date_time);
+                    });
+    
+                    /**
+                     * 누가 처리했는지 확인용으로 메일 발송되게 작업
+                     */
+                    $admin_email_checks = DB::table('users')->where('id', Auth::id())->where('grade', 'admin')->value("email");
+                    $admin_name_checks = DB::table('users')->where('id', Auth::id())->where('grade', 'admin')->value("username");
+                    Mail::send('mobileForm.admin.status_checking', ['admin_email_checks' => $admin_email_checks, 'admin_name_checks' => $admin_name_checks, 'user_name' => $user_check->cpb_applicant, 'now_date_time' => $now_date_time], function($message) use ($now_date_time) {
+                        $message->to('kt.foreigner@jinnhyun.com');
+                        $message->subject('올레 선불제 가입신청 승인완료 처리내역'.$now_date_time);
+                    });
+    
+                    Alert::success('가입신청 상태 변경', '가입신청 상태 변경이 완료되었습니다.');
+                    return redirect("/admin/tables");
+                } else {
+                    Alert::error('가입신청 상태 변경', '가입신청 상태 변경이 실패하였습니다.');
+                    return redirect("/admin/tables");
+                }
+            }
+        } else {
+            if(DB::table('cellphone_boards')->where('id', $num)->where('cpb_after_status', 'processing')->exists()) {
+                $cellphone_update = DB::table('cellphone_boards')
+                                    ->where('id', $num)
+                                    ->update([
+                                        'cpb_after_status' => $status,
+                                        'updated_at' => $now_date_time
+                                    ]);
+                if($cellphone_update) {
+                    $user_check = DB::table('cellphone_boards')
+                                            ->join('users', 'cellphone_boards.u_id', '=', 'users.id')
+                                            ->where('cellphone_boards.id', $num)
+                                            ->select('users.email', 'cellphone_boards.cpb_applicant')
+                                            ->first();
+                                            
+                    $datae = [];
+                    Mail::send('mobileForm.user.status', $datae, function($message) use ($user_check, $now_date_time) {
+                        $message->to($user_check->email);
+                        $message->subject('Olleh Postpaid Application Form is finally complete.'.$now_date_time);
+                    });
+    
+                    /**
+                     * 누가 처리했는지 확인용으로 메일 발송되게 작업
+                     */
+                    $admin_email_checks = DB::table('users')->where('id', Auth::id())->where('grade', 'admin')->value("email");
+                    $admin_name_checks = DB::table('users')->where('id', Auth::id())->where('grade', 'admin')->value("username");
+                    Mail::send('mobileForm.admin.status_checking', ['admin_email_checks' => $admin_email_checks, 'admin_name_checks' => $admin_name_checks, 'user_name' => $user_check->cpb_applicant, 'now_date_time' => $now_date_time], function($message) use ($now_date_time) {
+                        $message->to('kt.foreigner@jinnhyun.com');
+                        $message->subject('올레 후불제 가입신청 승인완료 처리내역'.$now_date_time);
+                    });
+    
+                    Alert::success('가입신청 상태 변경', '가입신청 상태 변경이 완료되었습니다.');
+                    return redirect("/admin/tables");
+                } else {
+                    Alert::error('가입신청 상태 변경', '가입신청 상태 변경이 실패하였습니다.');
+                    return redirect("/admin/tables");
+                }
             }
         }
     }

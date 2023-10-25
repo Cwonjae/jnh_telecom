@@ -120,7 +120,7 @@
                                     </tr>
                                     @empty
                                     <tr>
-                                        <td class="align-middle text-center" colspan="7">don't have a history of applying for Olleh Mobile Application Form</td>
+                                        <td class="align-middle text-center" colspan="7">선불제 가입신청한 내역이 없습니다.</td>
                                     </tr>
                                     @endforelse
                                 </tbody>
@@ -138,7 +138,7 @@
         </div>
         @include('layouts.footers.auth.footer')
     </div>
-    <div id="dialog-message" title="가입신청 상태를 변경하시겠습니까?" style='display:none'>
+    <div id="dialog-message" title="선불제 가입신청 상태를 변경하시겠습니까?" style='display:none'>
         최종완료 처리 하시겠습니까?<br/>
     </div>
 @endsection

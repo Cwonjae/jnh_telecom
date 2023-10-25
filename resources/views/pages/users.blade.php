@@ -2,7 +2,25 @@
 
 @section('content')
 <script>
-    
+    function confirm_status(value) {
+        $('#dialog-message').dialog({
+            modal: true, 
+            buttons: {
+                "최종완료": function() { 
+                    $(this).dialog('close');
+                    location.href = "/admin/posts/change/"+value+"/apply";
+                    
+                },
+                "보류": function() { 
+                    $(this).dialog('close');
+                    location.href = "/admin/posts/change/"+value+"/pending";
+                },
+                "취소": function() { 
+                    $(this).dialog('close'); 
+                }
+            }
+        });
+    }
 </script>
     @include('layouts.navbars.auth.topnav', ['title' => '가입신청 (후불)'])
     <div class="container-fluid py-4">
@@ -123,7 +141,7 @@
         </div>
         @include('layouts.footers.auth.footer')
     </div>
-    <div id="dialog-message" title="가입신청 상태를 변경하시겠습니까?" style='display:none'>
+    <div id="dialog-message" title="후불제 가입신청 상태를 변경하시겠습니까?" style='display:none'>
         최종완료 처리 하시겠습니까?<br/>
     </div>
 @endsection
