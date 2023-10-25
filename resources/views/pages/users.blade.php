@@ -80,22 +80,28 @@
                                             @else
                                                 @if($cell_phone->icc_status == "N")
                                                     <a href="{{ route('page.print', ['page' => 'registration_card', 'num' => $cell_phone->icc_id]) }}">확인 전</a>
+                                                @elseif($cell_phone->icc_status == NULL)
+                                                    <a style="color: green;">이미지 등록 전</a>
                                                 @else
                                                     <a style="color: green;">확인 후</a>
                                                 @endif
                                             @endif
                                         </td>
                                         <td class="align-middle text-center">
-                                            @if ($cell_phone->cpb_after_status == 'apply')
-                                                <span>메일 발송 완료</span>
+                                            @if (!$cell_phone->cpb_phonenumber)
+                                                <a href="#" onclick="javascript:alert('휴대폰 번호 입력 후 메일 발송이 가능합니다.');">메일 발송</a>
                                             @else
-                                                <a href="{{ route('page.mailsend', ['page' => 'tables', 'num' => $cell_phone->id]) }}">메일 발송</a>
+                                                @if ($cell_phone->cpb_after_status == 'apply' || $cell_phone->cpb_after_status == 'applying')
+                                                    <span>메일 발송 완료</span>
+                                                @else
+                                                    <a href="{{ route('page.mailsend', ['page' => 'tables', 'num' => $cell_phone->id]) }}">메일 발송</a>
+                                                @endif
                                             @endif
                                         </td>
                                     </tr>
                                     @empty
                                     <tr>
-                                        <td class="align-middle text-center" colspan="7">don't have a history of applying for Olleh Mobile Application Form</td>
+                                        <td class="align-middle text-center" colspan="7">선불제 가입신청이 완료된 내역 또는 후불제 가입신청한 내역이 없습니다.</td>
                                     </tr>
                                     @endforelse
                                 </tbody>

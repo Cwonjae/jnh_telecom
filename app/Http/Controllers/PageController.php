@@ -329,12 +329,13 @@ class PageController extends Controller
                             ->join('users', 'cellphone_boards.u_id', '=' ,'users.id')
                             ->where('cellphone_boards.id', $num)
                             ->where('cellphone_boards.cpb_status', 'closing')
+                            ->where('cellphone_boards.cpb_after_status', 'not_apply')
                             ->select('cellphone_boards.cpb_status', 'cellphone_boards.cpb_after_status', 'users.id', 'users.email')
                             ->first();
 
             if($cell_phones->cpb_after_status == "not_apply") {
                 /**
-                 * 후불제 신청안했을 경우 메일 발송한다 (메일 발송했냐 안했냐를 DB에 저장하여 값 관리를 해야될까?)
+                 * 후불제 신청안했을 경우 메일 발송한다
                  * 
                  */
 
@@ -361,7 +362,7 @@ class PageController extends Controller
 
                 if($idcard_check_mail_sql) {
                     $datae = [];
-                    Mail::send('mobileForm.admin.after_status', $datae, function($message) use($cell_phones, $now_date_time) {
+                    Mail::send('mobileForm.admin.after_status', $datae, function($message) use ($cell_phones, $now_date_time) {
                         $message->to($cell_phones->email);
                         $message->subject('Olleh mobile Please apply for a postpaid payment.');
                     });
@@ -372,8 +373,8 @@ class PageController extends Controller
                     return redirect("/admin/users");
                 }
 
-            } else {
-                Alert::error('이메일 발송', '해당 가입자는 이미 후불제를 사용하고 있습니다.');
+            } else if($cell_phones->cpb_after_status == "apply" || $cell_phones->cpb_after_status == "applying") {
+                Alert::error('이메일 발송', '해당 가입자는 이미 후불제를 사용 또는 후불제 가입신청 중입니다.');
                 return redirect("/admin/users");
             }
 
