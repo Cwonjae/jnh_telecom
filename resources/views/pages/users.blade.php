@@ -91,10 +91,14 @@
                                             @if (!$cell_phone->cpb_phonenumber)
                                                 <a href="#" onclick="javascript:alert('휴대폰 번호 입력 후 메일 발송이 가능합니다.');">메일 발송</a>
                                             @else
-                                                @if ($cell_phone->cpb_after_status == 'apply' || $cell_phone->cpb_after_status == 'applying')
-                                                    <span>메일 발송 완료</span>
+                                                @if($cell_phone->icc_status == NULL)
+                                                    @if ($cell_phone->cpb_after_status == 'apply' || $cell_phone->cpb_after_status == 'applying')
+                                                        <span>메일 발송 완료</span>
+                                                    @else
+                                                        <a href="{{ route('page.mailsend', ['page' => 'tables', 'num' => $cell_phone->id]) }}">메일 발송</a>
+                                                    @endif
                                                 @else
-                                                    <a href="{{ route('page.mailsend', ['page' => 'tables', 'num' => $cell_phone->id]) }}">메일 발송</a>
+                                                    <span>메일 발송 완료</span>
                                                 @endif
                                             @endif
                                         </td>
