@@ -81,7 +81,7 @@
                                                 @if($cell_phone->icc_status == "N")
                                                     <a href="{{ route('page.print', ['page' => 'registration_card', 'num' => $cell_phone->icc_id]) }}">확인 전</a>
                                                 @elseif($cell_phone->icc_status == NULL)
-                                                    <a style="color: green;">이미지 등록 전</a>
+                                                    <a style="color: red;">IMG 등록 X</a>
                                                 @else
                                                     <a style="color: green;">확인 후</a>
                                                 @endif
