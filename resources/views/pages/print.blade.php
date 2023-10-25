@@ -46,7 +46,7 @@
                 .img_box_1 span.gender_f {
                     position: absolute;
                     top: 382px;
-                    left: 690px;
+                    left: 688px;
                     font-size: 14px;
                     font-style: oblique;
                     z-index: 1;
