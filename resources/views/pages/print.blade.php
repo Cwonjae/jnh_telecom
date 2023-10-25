@@ -123,21 +123,21 @@
                 }
                 .img_box_1 span.applicant {
                     position: absolute;
-                    top: 314px;
-                    left: 170px;
+                    top: 312px;
+                    left: 168px;
                     font-size: 14px;
                     z-index: 1;
                 }
                 .img_box_1 span.passportnumber {
                     position: absolute;
-                    top: 314px;
-                    left: 380px;
+                    top: 312px;
+                    left: 378px;
                     font-size: 14px;
                     z-index: 1;
                 }
                 .img_box_1 span.gender_m {
                     position: absolute;
-                    top: 310px;
+                    top: 308px;
                     left: 549px;
                     font-size: 14px;
                     font-style: oblique;
@@ -145,30 +145,30 @@
                 }
                 .img_box_1 span.gender_f {
                     position: absolute;
-                    top: 310px;
-                    left: 575px;
+                    top: 308px;
+                    left: 564px;
                     font-size: 14px;
                     font-style: oblique;
                     z-index: 1;
                 }
                 .img_box_1 span.email {
                     position: absolute;
-                    top: 334px;
-                    left: 450px;
+                    top: 332px;
+                    left: 446px;
                     font-size: 14px;
                     z-index: 1;
                 }
                 .img_box_1 span.chooselastnumber {
                     position: absolute;
-                    top: 574px;
+                    top: 564px;
                     left: 286px;
-                    font-size: 14px;
+                    font-size: 13px;
                     z-index: 1;
                 }
                 .img_box_1 img#signature_img {
                     position: absolute;
-                    top: 846px;
-                    left: 428px;
+                    top: 840px;
+                    left: 426px;
                     font-size: 14px;
                     width: 150px;
                     height: 50px;
