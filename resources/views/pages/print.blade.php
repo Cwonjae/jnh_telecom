@@ -31,14 +31,14 @@
                 .img_box_1 span.passportnumber {
                     position: absolute;
                     top: 382px;
-                    left: 456px;
+                    left: 452px;
                     font-size: 14px;
                     z-index: 1;
                 } 
                 .img_box_1 span.gender_m {
                     position: absolute;
                     top: 380px;
-                    left: 654px;
+                    left: 650px;
                     font-size: 14px;
                     font-style: oblique;
                     z-index: 1;
@@ -61,7 +61,7 @@
                 .img_box_1 span.chooselastnumber {
                     position: absolute;
                     top: 688px;
-                    left: 358px;
+                    left: 354px;
                     font-size: 14px;
                     z-index: 1;
                 }
