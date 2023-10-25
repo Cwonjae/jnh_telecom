@@ -8,6 +8,7 @@
                 switch(value) {
                     case 'english' :
                         $('#title_lang').text("Prepaid Application Form");
+                        $('#register_lang').text("Register");
                         $('#applicant_lang').text("Applicant");
                         $('#openingstatus_lang').text("Opening Status");
                         $('#deferredpaymentstatus_lang').text("Deferred Payment Status");
@@ -17,6 +18,7 @@
                         break;
                     case 'russian' :
                         $('#title_lang').text("Форма заявки по предоплате");
+                        $('#register_lang').text("регистр");
                         $('#applicant_lang').text("Заявитель");
                         $('#openingstatus_lang').text("Статус открытия");
                         $('#deferredpaymentstatus_lang').text("Статус отсроченного платежа");
@@ -26,6 +28,7 @@
                         break;
                     case 'uzbek' :
                         $('#title_lang').text("Oldindan to'langan ariza shakli");
+                        $('#register_lang').text("ro'yxatdan o'tish");
                         $('#applicant_lang').text("Ariza beruvchi");
                         $('#openingstatus_lang').text("Ochilish holati");
                         $('#deferredpaymentstatus_lang').text("Kechiktirilgan to'lov holati");
@@ -35,6 +38,7 @@
                         break;
                     case 'tagalog' :
                         $('#title_lang').text("Prepaid Application Form");
+                        $('#register_lang').text("magparehistro");
                         $('#applicant_lang').text("Aplikante");
                         $('#openingstatus_lang').text("Katayuan ng Pagbubukas");
                         $('#deferredpaymentstatus_lang').text("Katayuan ng Deferred Payment");
@@ -44,6 +48,7 @@
                         break;
                     case 'vietnamese' :
                         $('#title_lang').text("Mẫu đơn đăng ký trả trước");
+                        $('#register_lang').text("đăng ký");
                         $('#applicant_lang').text("Người xin việc");
                         $('#openingstatus_lang').text("Trạng thái mở");
                         $('#deferredpaymentstatus_lang').text("Trạng thái thanh toán trả chậm");
@@ -68,7 +73,7 @@
                     <div class="pb-0">
                         <div style="float:right; width:120px; height:40px;">
                             <a class="bg-gradient-success" style="padding:10px; font-weight:bold; color:#fff; border-radius:10px 10px 10px 10px; cursor: pointer" 
-                            href="{{ route('userpage.register', ['page' => 'tables']) }}">
+                            href="{{ route('userpage.register', ['page' => 'tables']) }}" id="register_lang">
                                 Register
                             </a>
                         </div>
