@@ -34,7 +34,7 @@
                                 <input class="form-radio-input" type="radio" name="gender" id="flexRadioDefault_f" value="female" @if($cell_phones[0]->cpb_gender == "female") checked @else @endif>
                                 <label class="form-radio-label" for="flexRadioDefault_f">FeMale</label>
                             </div>
-                            <!-- <div class="form-radio form-check-info text-start">
+                            <div class="form-radio form-check-info text-start">
                                 <h6>Device <span style="color:red">*</span></h6>
                                 <input class="form-radio-input" type="radio" name="device" id="flexRadioDefault_ap" value="apple" @if($cell_phones[0]->cpb_device == "apple") checked @else @endif>
                                 <label class="form-radio-label" for="flexRadioDefault_ap">Apple</label>
@@ -53,7 +53,7 @@
                                 <h6>OS Version <span style="color:red">*</span></h6>
                                 <input type="text" name="osversion" class="form-control" placeholder="Ex) Android Version 13, IOS version 16.5, etc" aria-label="Os Version" value="{{ $cell_phones[0]->cpb_osversion }}" id="osversion">
                                 @error('osversion') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
-                            </div> -->
+                            </div>
                             <div class="flex flex-col mb-3">
                                 <h6 style="float:left;">IMEI Number <span style="color:red">*</span></h6><h4 id="imei_lang"></h4>
                                 <input type="text" name="imeinumber" class="form-control" placeholder="IMEI Number" aria-label="IMEI Number" value="{{ $cell_phones[0]->cpb_imeinumber }}" id="imeinumber" readonly>
