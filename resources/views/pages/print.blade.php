@@ -125,14 +125,14 @@
                     position: absolute;
                     top: 312px;
                     left: 168px;
-                    font-size: 14px;
+                    font-size: 12px;
                     z-index: 1;
                 }
                 .img_box_1 span.passportnumber {
                     position: absolute;
                     top: 312px;
                     left: 378px;
-                    font-size: 14px;
+                    font-size: 12px;
                     z-index: 1;
                 }
                 .img_box_1 span.gender_m {
@@ -146,7 +146,7 @@
                 .img_box_1 span.gender_f {
                     position: absolute;
                     top: 308px;
-                    left: 564px;
+                    left: 560px;
                     font-size: 14px;
                     font-style: oblique;
                     z-index: 1;
@@ -154,15 +154,15 @@
                 .img_box_1 span.email {
                     position: absolute;
                     top: 332px;
-                    left: 446px;
-                    font-size: 14px;
+                    left: 444px;
+                    font-size: 12px;
                     z-index: 1;
                 }
                 .img_box_1 span.chooselastnumber {
                     position: absolute;
                     top: 564px;
-                    left: 286px;
-                    font-size: 13px;
+                    left: 282px;
+                    font-size: 12px;
                     z-index: 1;
                 }
                 .img_box_1 img#signature_img {
