@@ -8,15 +8,11 @@
             buttons: {
                 "최종완료": function() { 
                     $(this).dialog('close');
-                    console.log(value);
-                    // location.href = "{{ route('page.statuschange', ['page' => 'tables', 'num' => "+value+", 'status' => 'closing']) }}";
                     location.href = "/admin/tables/change/"+value+"/closing";
                     
                 },
                 "보류": function() { 
-                    $(this).dialog('close'); 
-                    console.log(value);
-                    // location.href = "{{ route('page.statuschange', ['page' => 'tables', 'num' => "+value+", 'status' => 'pending']) }}";
+                    $(this).dialog('close');
                     location.href = "/admin/tables/change/"+value+"/pending";
                 },
                 "취소": function() { 

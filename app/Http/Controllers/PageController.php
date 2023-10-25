@@ -273,9 +273,19 @@ class PageController extends Controller
                                         ->first();
                                         
                 $datae = [];
-                Mail::send('mobileForm.user.status', $datae, function($message) use($user_check, $now_date_time) {
+                Mail::send('mobileForm.user.status', $datae, function($message) use ($user_check, $now_date_time) {
                     $message->to($user_check->email);
-                    $message->subject('Olleh mobile application is finally complete.'.$now_date_time);
+                    $message->subject('Olleh Prepaid Application Form is finally complete.'.$now_date_time);
+                });
+
+                /**
+                 * 누가 처리했는지 확인용으로 메일 발송되게 작업
+                 */
+                $admin_email_checks = DB::table('users')->where('id', Auth::id())->where('grade', 'admin')->value("email");
+                $admin_name_checks = DB::table('users')->where('id', Auth::id())->where('grade', 'admin')->value("username");
+                Mail::send('mobileForm.admin.status_checking', ['admin_email_checks' => $admin_email_checks, 'admin_name_checks' => $admin_name_checks, 'user_name' => $user_check->cpb_applicant, 'now_date_time' => $now_date_time], function($message) use ($now_date_time) {
+                    $message->to('kt.foreigner@jinnhyun.com');
+                    $message->subject('올레 선불제 가입신청 승인완료 처리내역'.$now_date_time);
                 });
 
                 Alert::success('가입신청 상태 변경', '가입신청 상태 변경이 완료되었습니다.');
