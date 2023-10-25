@@ -217,7 +217,7 @@ class UserPageController extends Controller
         } else {
             // Form validate 구성
             $validated = $request->validate([
-                'applicant' => 'required',
+                'applicant' => 'required|regex:/^[a-zA-Z\s]+$/u',
                 'nationality' => 'required',
                 'phone_number' => 'required',
                 'registration_card' => 'required',
@@ -371,7 +371,7 @@ class UserPageController extends Controller
             if($page == 'tables') {
                 // Form validate 구성
                 $validated = $request->validate([
-                    'applicant' => 'required',
+                    'applicant' => 'required|regex:/^[a-zA-Z\s]+$/u',
                     'nationality' => 'required',
                     'dateofbirth' => 'required',
                     'passportnumber' => 'required',
@@ -517,7 +517,7 @@ class UserPageController extends Controller
             } else {
                 // Form validate 구성
                 $validated = $request->validate([
-                    'applicant' => 'required',
+                    'applicant' => 'required|regex:/^[a-zA-Z\s]+$/u',
                     'nationality' => 'required',
                     'gender' => 'required|in:male,female',
                     'signaturetxt' => 'required',
