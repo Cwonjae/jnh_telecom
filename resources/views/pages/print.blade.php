@@ -23,21 +23,21 @@
                 }
                 .img_box_1 span.applicant {
                     position: absolute;
-                    top: 392px;
+                    top: 382px;
                     left: 200px;
                     font-size: 14px;
                     z-index: 1;
                 }
                 .img_box_1 span.passportnumber {
                     position: absolute;
-                    top: 392px;
+                    top: 382px;
                     left: 460px;
                     font-size: 14px;
                     z-index: 1;
                 } 
                 .img_box_1 span.gender_m {
                     position: absolute;
-                    top: 390px;
+                    top: 380px;
                     left: 662px;
                     font-size: 14px;
                     font-style: oblique;
@@ -45,7 +45,7 @@
                 }
                 .img_box_1 span.gender_f {
                     position: absolute;
-                    top: 390px;
+                    top: 380px;
                     left: 693px;
                     font-size: 14px;
                     font-style: oblique;
@@ -53,21 +53,21 @@
                 }
                 .img_box_1 span.email {
                     position: absolute;
-                    top: 418px;
+                    top: 408px;
                     left: 540px;
                     font-size: 14px;
                     z-index: 1;
                 }
                 .img_box_1 span.chooselastnumber {
                     position: absolute;
-                    top: 708px;
+                    top: 698px;
                     left: 358px;
                     font-size: 14px;
                     z-index: 1;
                 }
                 .img_box_1 img#signature_img {
                     position: absolute;
-                    top: 1050px;
+                    top: 1040px;
                     left: 530px;
                     font-size: 14px;
                     width: 150px;
@@ -88,7 +88,7 @@
                 }
                 .img_box_2 img#signature_img2_1 { 
                     position:relative;
-                    margin-top: 320px;
+                    margin-top: 310px;
                     margin-left: 540px;
                     font-size: 14px;
                     width: 150px;
@@ -97,7 +97,7 @@
                 }
                 .img_box_2 img#signature_img2_2 {
                     position:relative;
-                    margin-top: 286px;
+                    margin-top: 276px;
                     margin-right: 190px;
                     font-size: 14px;
                     width: 100px;
