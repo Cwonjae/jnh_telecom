@@ -37,7 +37,7 @@
                 } 
                 .img_box_1 span.gender_m {
                     position: absolute;
-                    top: 380px;
+                    top: 382px;
                     left: 648px;
                     font-size: 14px;
                     font-style: oblique;
@@ -60,7 +60,7 @@
                 }
                 .img_box_1 span.chooselastnumber {
                     position: absolute;
-                    top: 688px;
+                    top: 690px;
                     left: 350px;
                     font-size: 14px;
                     z-index: 1;
