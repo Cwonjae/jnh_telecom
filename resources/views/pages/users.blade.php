@@ -79,7 +79,7 @@
                                                 <a href="#" onclick="javascript:alert('휴대폰 번호 입력 후 외국인등록증 확인이 가능합니다.');">보기</a>
                                             @else
                                                 @if($cell_phone->icc_status == "N")
-                                                    <a href="{{ route('page.print', ['page' => 'registration_card', 'num' => $cell_phone->icc_id]) }}">확인 전</a>
+                                                    <a href="{{ route('page.print', ['page' => 'registration_card', 'num' => $cell_phone->icc_id]) }}" style="color: red;">확인 전</a>
                                                 @elseif($cell_phone->icc_status == NULL)
                                                     <a style="color: red;">IMG 등록 X</a>
                                                 @else
