@@ -11,19 +11,24 @@
                 var value = $(this).val();
                 switch(value) {
                     case 'english' :
-                        $('#idcard_lang').html("Registration Card <span style='color:red'>*</span>");
+                        $('#idcard_lang').html("Alien registration card <span style='color:red'>*</span>");
+                        $('#form_submit').text("Submit Form");
                         break;
                     case 'russian' :
-                        $('#idcard_lang').html("регистрационная карта <span style='color:red'>*</span>");
+                        $('#idcard_lang').html("Регистрационная карточка иностранца <span style='color:red'>*</span>");
+                        $('#form_submit').text("Представить форму");
                         break;
                     case 'uzbek' :
-                        $('#idcard_lang').html("ro'yxatga olish kartasi <span style='color:red'>*</span>");
+                        $('#idcard_lang').html("Chet ellik ro'yxatga olish kartasi <span style='color:red'>*</span>");
+                        $('#form_submit').text("Shaklni yuborish");
                         break;
                     case 'tagalog' :
-                        $('#idcard_lang').html("kard ng pagpaparehistro <span style='color:red'>*</span>");
+                        $('#idcard_lang').html("Alien registration card <span style='color:red'>*</span>");
+                        $('#form_submit').text("Isumite ang Form");
                         break;
                     case 'vietnamese' :
-                        $('#idcard_lang').html("Thẻ đăng ký <span style='color:red'>*</span>");
+                        $('#idcard_lang').html("Thẻ đăng ký người nước ngoài <span style='color:red'>*</span>");
+                        $('#form_submit').text("Gửi biểu mẫu");
                         break;
                     default :
                         break;
@@ -58,13 +63,13 @@
         }
     </script>
 
-    @include('layouts.navbars.auth.user.topnav', ['title' => 'Olleh Mobile Application Form'])
+    @include('layouts.navbars.auth.user.topnav', ['title' => 'Prepaid Application Form'])
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <h6>Olleh Mobile Application Form</h6>
+                        <h6>Prepaid Application Form</h6>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0" style="width:92%; margin:auto; margin-top:30px;">
@@ -81,14 +86,14 @@
                             <form method="POST" action="{{ route('userpage.idcard-insert', ['page' => 'tables', 'num' => $cpb_num]) }}" id="idcard_insert" enctype="multipart/form-data">
                             @csrf
                                 <div class="flex flex-col mb-3">
-                                    <h6 id="idcard_lang">Registration Card <span style="color:red">*</span></h6>
+                                    <h6 id="idcard_lang">Alien registration card <span style="color:red">*</span></h6>
                                     <input type="file" name="registrationcard" accept="file_extension,image/*" capture="camera" class="form-control" aria-label="Registration Card" id="registrationcard">
                                     @error('registrationcard') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                 </div>
                             </form>
 
                             <div class="text-center">
-                                    <a class="btn bg-gradient-dark w-100 my-4 mb-2" id="form_submit">Submit Form</a>
+                                <a class="btn bg-gradient-dark w-100 my-4 mb-2" id="form_submit">Submit Form</a>
                             </div>
                             <div id="alert">
                                 @include('components.alert')
