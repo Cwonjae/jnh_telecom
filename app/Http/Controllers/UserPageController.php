@@ -190,7 +190,7 @@ class UserPageController extends Controller
              * 발송될 계정은 진앤현에서 갖고있는 계정으로
              * 해당 계정에 메일이 수신되면, 자동으로 관계자들의 계정으로 전달 예정
              */
-            Mail::send('mobileForm.admin.form', ['tables' => 'tables'], function($message) use($request, $applicant){
+            Mail::send('mobileForm.admin.form', ['data' => '신규 선불제 모바일 신청이 등록되었습니다.'], function($message) use ($request, $applicant){
                 $message->to('kt.foreigner@jinnhyun.com');
                 $message->subject('신규 선불제 모바일 신청이 등록되었습니다._'.$applicant);
             });
@@ -296,7 +296,7 @@ class UserPageController extends Controller
              * 발송될 계정은 진앤현에서 갖고있는 계정으로
              * 해당 계정에 메일이 수신되면, 자동으로 관계자들의 계정으로 전달 예정
              */
-            Mail::send('mobileForm.admin.form', ['page' => 'posts'], function($message) use($request, $applicant){
+            Mail::send('mobileForm.admin.form', ['data' => '신규 후불제 모바일 신청이 등록되었습니다.'], function($message) use ($request, $applicant){
                 $message->to('kt.foreigner@jinnhyun.com');
                 $message->subject('신규 후불제 모바일 신청이 등록되었습니다._'.$applicant);
             });
@@ -696,7 +696,7 @@ class UserPageController extends Controller
                          * 발송될 계정은 진앤현에서 갖고있는 계정으로
                          * 해당 계정에 메일이 수신되면, 자동으로 관계자들의 계정으로 전달 예정
                          */
-                        Mail::send('mobileForm.admin.form', ['tables' => 'tables'], function($message) use($request, $user_name_check){
+                        Mail::send('mobileForm.admin.form', ['data' => '외국인등록증이 등록되었습니다.'], function($message) use ($request, $user_name_check){
                             $message->to('kt.foreigner@jinnhyun.com');
                             $message->subject('선불제에서 후불제로 가입 신청이 등록되었습니다._'.$user_name_check);
                         });
