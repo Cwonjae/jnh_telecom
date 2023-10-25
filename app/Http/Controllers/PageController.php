@@ -220,7 +220,7 @@ class PageController extends Controller
                 
                 $phone_number = $request->post('phone_number');
     
-                if(DB::table('cellphone_boards')->where('cpb_phonenumber', $phone_number)->exists()) { 
+                if(DB::table('cellphone_boards')->where('cpb_phonenumber', $phone_number)->whereNotIn('id',[$num])->exists()) { 
                     Alert::error('휴대폰번호 및 외국인등록증', '해당 휴대폰번호는 이미 등록되어있습니다.');
                     return redirect("/admin/users");
                 } else {
