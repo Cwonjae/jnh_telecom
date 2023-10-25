@@ -138,7 +138,7 @@
                 .img_box_1 span.gender_m {
                     position: absolute;
                     top: 308px;
-                    left: 549px;
+                    left: 528px;
                     font-size: 14px;
                     font-style: oblique;
                     z-index: 1;
@@ -146,7 +146,7 @@
                 .img_box_1 span.gender_f {
                     position: absolute;
                     top: 308px;
-                    left: 560px;
+                    left: 554px;
                     font-size: 14px;
                     font-style: oblique;
                     z-index: 1;
@@ -189,7 +189,7 @@
                 .img_box_2 img#signature_img2_1 {
                     position: absolute;
                     top: 1180px;
-                    left: 474px;
+                    left: 450px;
                     font-size: 14px;
                     width: 150px;
                     height: 50px;
@@ -197,7 +197,7 @@
                 }
                 .img_box_2 img#signature_img2_2 {
                     position: absolute;
-                    top: 1460px;
+                    top: 1434px;
                     left: 196px;
                     font-size: 14px;
                     width: 100px;
