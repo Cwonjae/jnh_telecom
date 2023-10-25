@@ -7,21 +7,49 @@
                 var value = $(this).val();
                 switch(value) {
                     case 'english' :
-                        $('#name_lang').html("Full Name <span style='color:red'>*</span>");
-                        $('#nationality_lang').html("Nationality <span style='color:red'>*</span>");
-                        $('#passportnumber_lang').html("Passport Number <span style='color:red'>*</span>");
-                        $('#passport_lang').html("Passport <span style='color:red'>*</span>");
-                        $('#deteofbirth_lang').html("Dete of Birth <span style='color:red'>*</span>");
-                        $('#gender_lang').html("Gender <span style='color:red'>*</span>");
-                        $('#device_lang').html("Device <span style='color:red'>*</span>");
+                        $('#title_lang').text("Prepaid Application Form");
+                        $('#applicant_lang').text("Applicant");
+                        $('#openingstatus_lang').text("Opening Status");
+                        $('#deferredpaymentstatus_lang').text("Deferred Payment Status");
+                        $('#registrationdate_lang').text("Registration date");
+                        $('#etc_lang').text("ETC");
+                        $('#dontcheck_lang').text("Don't have a history of applying for Prepaid Application Form");
                         break;
                     case 'russian' :
+                        $('#title_lang').text("Форма заявки по предоплате");
+                        $('#applicant_lang').text("Заявитель");
+                        $('#openingstatus_lang').text("Статус открытия");
+                        $('#deferredpaymentstatus_lang').text("Статус отсроченного платежа");
+                        $('#registrationdate_lang').text("Дата регистрации");
+                        $('#etc_lang').text("И Т. Д");
+                        $('#dontcheck_lang').text("У вас нет истории подачи заявки на предоплаченную форму заявки.");
                         break;
                     case 'uzbek' :
+                        $('#title_lang').text("Oldindan to'langan ariza shakli");
+                        $('#applicant_lang').text("Ariza beruvchi");
+                        $('#openingstatus_lang').text("Ochilish holati");
+                        $('#deferredpaymentstatus_lang').text("Kechiktirilgan to'lov holati");
+                        $('#registrationdate_lang').text("Ro'yxatdan o'tish sanasi");
+                        $('#etc_lang').text("VA BOSHQALAR");
+                        $('#dontcheck_lang').text("Oldindan to'langan ariza shakliga ariza topshirish tarixi yo'q");
                         break;
                     case 'tagalog' :
+                        $('#title_lang').text("Prepaid Application Form");
+                        $('#applicant_lang').text("Aplikante");
+                        $('#openingstatus_lang').text("Katayuan ng Pagbubukas");
+                        $('#deferredpaymentstatus_lang').text("Katayuan ng Deferred Payment");
+                        $('#registrationdate_lang').text("Petsa ng pagpaparehistro");
+                        $('#etc_lang').text("ETC");
+                        $('#dontcheck_lang').text("Walang kasaysayan ng pag-apply para sa Prepaid Application Form");
                         break;
                     case 'vietnamese' :
+                        $('#title_lang').text("Mẫu đơn đăng ký trả trước");
+                        $('#applicant_lang').text("Người xin việc");
+                        $('#openingstatus_lang').text("Trạng thái mở");
+                        $('#deferredpaymentstatus_lang').text("Trạng thái thanh toán trả chậm");
+                        $('#registrationdate_lang').text("Ngày đăng kí");
+                        $('#etc_lang').text("VÂN VÂN");
+                        $('#dontcheck_lang').text("Không có lịch sử đăng ký Mẫu đơn đăng ký trả trước");
                         break;
                     default :
                         break;
@@ -35,16 +63,7 @@
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <h6>Prepaid Application Form</h6>
-                    </div>
-                    <div class="flex flex-col mb-3">
-                        <select class="lang_check" id="lang_check">
-                            <option value="english" selected>English</option>
-                            <option value="russian">Russian</option>
-                            <option value="uzbek">Uzbek</option>
-                            <option value="tagalog">Tagalog</option>
-                            <option value="vietnamese">Vietnamese</option>
-                        </select>
+                        <h6 id="title_lang">Prepaid Application Form</h6>
                     </div>
                     <div class="pb-0">
                         <div style="float:right; width:120px; height:40px;">
@@ -53,23 +72,30 @@
                                 Register
                             </a>
                         </div>
+                        <div style="float:right; width:130px; height:40px;">
+                            <select class="lang_check" id="lang_check">
+                                <option value="english" selected="">English</option>
+                                <option value="russian">Russian</option>
+                                <option value="uzbek">Uzbek</option>
+                                <option value="tagalog">Tagalog</option>
+                                <option value="vietnamese">Vietnamese</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" id="applicant_lang">
                                             Applicant</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            Nationality</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" id="openingstatus_lang">
                                             Opening Status</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" id="deferredpaymentstatus_lang">
                                             Deferred Payment Status</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" id="registrationdate_lang">
                                             Registration date</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" id="etc_lang">
                                             ETC</th>
                                     </tr>
                                 </thead>
@@ -83,9 +109,6 @@
                                                     <p class="text-xs text-secondary text-center mb-0">{{ $cell_phone->email }}</p>
                                                 </div>
                                             </div>
-                                        </td>
-                                        <td>
-                                            <p class="text-xs font-weight-bold text-center mb-0">{{ $cell_phone->cpb_nationality }}</p>
                                         </td>
                                         <td class="align-middle text-center text-sm">
                                             <span class="badge badge-sm
@@ -119,14 +142,14 @@
 
                                             @else
                                                 <a href="{{ route('userpage.modify', ['page' => 'tables', 'num' => $cell_phone->id]) }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                                                    Edit
+                                                    Modify
                                                 </a>
                                             @endif
                                         </td>
                                     </tr>
                                     @empty
                                     <tr>
-                                        <td class="align-middle text-center" colspan="6">don't have a history of applying for Prepaid Application Form</td>
+                                        <td class="align-middle text-center" colspan="5" id="dontcheck_lang">Don't have a history of applying for Prepaid Application Form</td>
                                     </tr>
                                     @endforelse
                                 </tbody>
