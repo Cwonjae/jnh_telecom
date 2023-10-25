@@ -70,6 +70,11 @@
                         $('#service_lang').html("Service <span style='color:red'>*</span>");
                         $('#connectivity_lang').html("Connectivity <span style='color:red'>*</span>");
                         $('#signature_note').text("The signature you registered will be used on the Korean mobile communication subscription form.");
+                        $('#plan_notice_lang').text("If your device is not purchased in Korea, it may not be compatible with our 5G plan.");
+                        $('#choose_notice_lang').text("If the phone number you have chosen is already taken, please note that it can be activated with different last four digits.");
+                        $('#signature_drwa_lang').text("Use your mouse or finger to draw your signature above");
+                        $('#form_submit').text("Submit Form");
+                        $('#write_notice_lang').text("When filling out the registration form, please enter it in English.");
                         break;
                     case 'russian' :
                         $('#name_lang').html("Полное имя <span style='color:red'>*</span>");
@@ -89,6 +94,11 @@
                         $('#service_lang').html("услуга <span style='color:red'>*</span>");
                         $('#connectivity_lang').html("возможность подключения <span style='color:red'>*</span>");
                         $('#signature_note').text("Зарегистрированная вами подпись будет использоваться в форме подписки на мобильную связь в Корее.");
+                        $('#plan_notice_lang').text("Если ваше устройство куплено не в Корее, оно может быть несовместимо с нашим планом 5G.");
+                        $('#choose_notice_lang').text("Если выбранный вами номер телефона уже занят, обратите внимание, что его можно активировать с помощью разных последних четырех цифр.");
+                        $('#signature_drwa_lang').text("Используйте мышь или палец, чтобы нарисовать свою подпись выше.");
+                        $('#form_submit').text("Представить форму");
+                        $('#write_notice_lang').text("При заполнении регистрационной формы, пожалуйста, вводите ее на английском языке.");
                         break;
                     case 'uzbek' :
                         $('#name_lang').html("to'liq ism <span style='color:red'>*</span>");
@@ -108,6 +118,11 @@
                         $('#service_lang').html("xizmat <span style='color:red'>*</span>");
                         $('#connectivity_lang').html("ulanish <span style='color:red'>*</span>");
                         $('#signature_note').text("Siz roʻyxatdan oʻtgan imzo Koreya mobil aloqasi obuna formasida qoʻllaniladi.");
+                        $('#plan_notice_lang').text("Agar qurilmangiz Koreyada xarid qilinmagan bo‘lsa, u bizning 5G tarifimizga mos kelmasligi mumkin.");
+                        $('#choose_notice_lang').text("Agar siz tanlagan telefon raqamingiz allaqachon olingan bo'lsa, uni har xil oxirgi to'rtta raqam bilan faollashtirish mumkinligini unutmang.");
+                        $('#signature_drwa_lang').text("Yuqoridagi imzoingizni chizish uchun sichqonchangiz yoki barmog'ingizdan foydalaning");
+                        $('#form_submit').text("Shaklni yuborish");
+                        $('#write_notice_lang').text("Ro'yxatdan o'tish shaklini to'ldirganda uni ingliz tilida kiriting.");
                         break;
                     case 'tagalog' :
                         $('#name_lang').html("buong pangalan <span style='color:red'>*</span>");
@@ -127,6 +142,11 @@
                         $('#service_lang').html("serbisyo <span style='color:red'>*</span>");
                         $('#connectivity_lang').html("pagkakakonekta <span style='color:red'>*</span>");
                         $('#signature_note').text("Ang pirma na iyong inirehistro ay gagamitin sa Korean mobile communication na subscription form.");
+                        $('#plan_notice_lang').text("Kung hindi binili ang iyong device sa Korea, maaaring hindi ito tugma sa aming 5G plan.");
+                        $('#choose_notice_lang').text("Kung ang numero ng telepono na iyong pinili ay nakuha na, pakitandaan na maaari itong i-activate gamit ang iba't ibang huling apat na digit.");
+                        $('#signature_drwa_lang').text("Gamitin ang iyong mouse o daliri upang iguhit ang iyong lagda sa itaas");
+                        $('#form_submit').text("Isumite ang Form");
+                        $('#write_notice_lang').text("Kapag pinupunan ang form ng pagpaparehistro, mangyaring ilagay ito sa Ingles.");
                         break;
                     case 'vietnamese' :
                         $('#name_lang').html("Họ và tên <span style='color:red'>*</span>");
@@ -146,6 +166,11 @@
                         $('#service_lang').html("dịch vụ <span style='color:red'>*</span>");
                         $('#connectivity_lang').html("kết nối <span style='color:red'>*</span>");
                         $('#signature_note').text("Chữ ký bạn đã đăng ký sẽ được sử dụng trên mẫu đăng ký liên lạc di động của Hàn Quốc.");
+                        $('#plan_notice_lang').text("Nếu thiết bị của bạn không được mua ở Hàn Quốc, thiết bị đó có thể không tương thích với gói 5G của chúng tôi.");
+                        $('#choose_notice_lang').text("Nếu số điện thoại bạn chọn đã được sử dụng, xin lưu ý rằng số điện thoại này có thể được kích hoạt bằng bốn chữ số cuối khác nhau.");
+                        $('#signature_drwa_lang').text("Sử dụng chuột hoặc ngón tay để vẽ chữ ký của bạn ở trên");
+                        $('#form_submit').text("Gửi biểu mẫu");
+                        $('#write_notice_lang').text("Khi điền vào mẫu đăng ký, vui lòng nhập nó bằng tiếng Anh.");
                         break;
                     default :
                         break;
@@ -208,13 +233,13 @@
         }
     </script>
 
-    @include('layouts.navbars.auth.user.topnav', ['title' => 'Olleh Prepaid Application Form'])
+    @include('layouts.navbars.auth.user.topnav', ['title' => 'Prepaid Application Form'])
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <h6>Olleh Prepaid Application Form</h6>
+                        <h6>Prepaid Application Form</h6>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0" style="width:92%; margin:auto; margin-top:30px;">
@@ -226,6 +251,7 @@
                                     <option value="tagalog">Tagalog</option>
                                     <option value="vietnamese">Vietnamese</option>
                                 </select>
+                                <span id="write_notice_lang">When filling out the registration form, please enter it in English.</span>
                             </div>
                             
                             <form method="POST" action="{{ route('userpage.insert', ['page' => 'tables']) }}" id="cellPhone_register" enctype="multipart/form-data">
@@ -311,21 +337,21 @@
                                     <h6 id="plan_lang">Plan <span style="color:red">*</span></h6>
                                     <input class="form-radio-input" type="radio" name="plan" id="flexRadioDefault_p" value="ok">
                                     <label class="form-radio-label" for="flexRadioDefault_p">30,000 KRW($23)</label>
-                                    <p>Please note that devices purchased from the United States may not be compatible with our 5G plan.</p>
+                                    <p id="plan_notice_lang">If your device is not purchased in Korea, it may not be compatible with our 5G plan.</p>
                                     @error('plan') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
                                 </div>
                                 <div class="flex flex-col mb-3">
                                     <h6 id="choose_lang">Please choose the last four digits of your phone number (Up to 3 items can be entered) </h6>
                                     <input type="text" name="chooselastnumber" class="form-control" placeholder="Please choose the last four digits of your phone number." aria-label="Please choose the last four digits of your phone number." value="{{ old('chooselastnumber') }}" onKeyPress="javascript:checkInputNum();" onKeyUp="javascript:checkInputValue(this);" maxlength="14" id="chooselastnumber">
                                     @error('chooselastnumber') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
-                                    <p>If the phone number you have chosen is already taken, please note that it can be activated with different last four digits.</p>
+                                    <p id="choose_notice_lang">If the phone number you have chosen is already taken, please note that it can be activated with different last four digits.</p>
                                 </div>
                                 <div class="flex flex-col mb-3">
                                     <h6 id="signature_lang">Signature <span style="color:red">*</span></h6>
                                     <div class='js-signature'></div>
                                     <a id="clearBtn" class="btn btn-default" onclick="clearCanvas();">Clear Canvas</a>
                                     <a id="saveBtn" class="btn btn-default" onclick="saveSignature();" style="display:none;">Save Signature</a>
-                                    <p>Use your mouse or finger to draw your signature above</p>
+                                    <p id="signature_drwa_lang">Use your mouse or finger to draw your signature above</p>
                                     <input type="checkbox" id="consent" name="consent" />
                                     <label for="consent">Consent</label>
                                     <p id="signature_note" style="color:red">The signature you registered will be used on the Korean mobile communication subscription form.</p>
@@ -361,7 +387,7 @@
                             </form>
 
                             <div class="text-center">
-                                    <a class="btn bg-gradient-dark w-100 my-4 mb-2" id="form_submit">Submit Form</a>
+                                <a class="btn bg-gradient-dark w-100 my-4 mb-2" id="form_submit">Submit Form</a>
                             </div>
                             <div id="alert">
                                 @include('components.alert')

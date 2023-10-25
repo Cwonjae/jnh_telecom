@@ -56,7 +56,7 @@ class UserRegisterController extends Controller
               $message->subject('Verify Email Addresses');
           });
          
-        Alert::warning('Verify Email Addresses', 'You can login after checking your email');
+        Alert::warning('Verify Email Addresses', 'You can login after checking your email, If it is not in your mailbox, please also check your spam mailbox');
         return redirect("/user/login")->withErrors([
             'verify' => 'You can login after checking your email',
         ]);
