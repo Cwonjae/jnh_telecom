@@ -680,7 +680,7 @@ class UserPageController extends Controller
                                         ->where('u_id', Auth::id())
                                         ->where('id', $num)
                                         ->update([
-                                            'cpb_after_status' => 'processing',
+                                            'cpb_after_status' => 'applying',
                                             'updated_at' => $now_date_time
                                         ]);
 
@@ -698,10 +698,10 @@ class UserPageController extends Controller
                          */
                         Mail::send('mobileForm.admin.form', ['tables' => 'tables'], function($message) use($request, $user_name_check){
                             $message->to('kt.foreigner@jinnhyun.com');
-                            $message->subject('후불제 가입 신청이 등록되었습니다._'.$user_name_check);
+                            $message->subject('선불제에서 후불제로 가입 신청이 등록되었습니다._'.$user_name_check);
                         });
                           
-                        Alert::success('Olleh Mobile Registered', 'The Registration Card was uploaded successfully');
+                        Alert::success('Olleh Mobile Registered', 'The Alien registration card was uploaded successfully');
                         return redirect('/user/tables');
                     }
                 }

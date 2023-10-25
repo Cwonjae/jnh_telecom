@@ -129,10 +129,12 @@
                                         <td class="align-middle text-center text-sm">
                                             @if ($cell_phone->cpb_after_status == 'apply')
                                                 <span class="badge badge-sm bg-gradient-success">Complete</span>
+                                            @elseif ($cell_phone->cpb_after_status == 'applying')
+                                                <span class="badge badge-sm bg-gradient-success">Applying</span>
                                             @else
                                                 <span class="badge badge-sm bg-gradient-danger">
                                                     @if ($cell_phone->iccm_id)
-                                                    <a href="{{ route('userpage.idcard', ['page' => 'tables', 'num' => $cell_phone->id]) }}" target="_blank" style="color:#fff;">Apply  Click</a>
+                                                        <a href="{{ route('userpage.idcard', ['page' => 'tables', 'num' => $cell_phone->id]) }}" target="_blank" style="color:#fff;">Apply  Click</a>
                                                     @else
                                                         Unapplied
                                                     @endif
