@@ -77,7 +77,7 @@ class UserPageController extends Controller
         if($page == "tables") {
             // Form validate 구성
             $validated = $request->validate([
-                'applicant' => 'required',
+                'applicant' => 'required|regex:/^[a-zA-Z]+$/u',
                 'nationality' => 'required',
                 'passport' => 'required',
                 'passportnumber' => 'required',
