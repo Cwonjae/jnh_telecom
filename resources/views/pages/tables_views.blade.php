@@ -46,12 +46,12 @@
                             </div>
                             <div class="flex flex-col mb-3">
                                 <h6>Device Model <span style="color:red">*</span></h6>
-                                <input type="text" name="devicemodel" class="form-control" placeholder="Ex) Iphone 13, Iphone 13 mini, Galaxy S22, etc" aria-label="Device Model" value="{{ $cell_phones[0]->cpb_devicemodel }}" id="devicemodel">
+                                <input type="text" name="devicemodel" class="form-control" placeholder="Ex) Iphone 13, Iphone 13 mini, Galaxy S22, etc" aria-label="Device Model" value="{{ $cell_phones[0]->cpb_devicemodel }}" id="devicemodel" readonly>
                                 @error('devicemodel') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                             </div>
                             <div class="flex flex-col mb-3">
                                 <h6>OS Version <span style="color:red">*</span></h6>
-                                <input type="text" name="osversion" class="form-control" placeholder="Ex) Android Version 13, IOS version 16.5, etc" aria-label="Os Version" value="{{ $cell_phones[0]->cpb_osversion }}" id="osversion">
+                                <input type="text" name="osversion" class="form-control" placeholder="Ex) Android Version 13, IOS version 16.5, etc" aria-label="Os Version" value="{{ $cell_phones[0]->cpb_osversion }}" id="osversion" readonly>
                                 @error('osversion') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                             </div>
                             <div class="flex flex-col mb-3">
@@ -79,15 +79,6 @@
                                 <h6 style="float:left;">Referral </h6><h4 id="referral_lang"></h4>
                                 <input type="text" name="referral" class="form-control" placeholder="Please enter the referral's email address, phone number and name" aria-label="Referral" value="{{ $cell_phones[0]->cpb_referral }}" id="referral" readonly>
                             </div>
-                            <!-- <div class="form-radio form-check-info text-start">
-                                <h6>Add International Calling Service <span style="color:red">*</span></h6>
-                                <input class="form-radio-input" type="radio" name="callservice" id="flexRadioDefault_y" value="yes" @if($cell_phones[0]->cpb_callservice == "yes") checked @else @endif>
-                                <label class="form-radio-label" for="flexRadioDefault_y">Yes</label>
-                                <input class="form-radio-input" type="radio" name="callservice" id="flexRadioDefault_n" value="no" @if($cell_phones[0]->cpb_callservice == "no") checked @else @endif>
-                                <label class="form-radio-label" for="flexRadioDefault_n">No</label>
-                                @error('callservice') <p class='text-danger text-xs'> {{ $message }} </p> @enderror
-                                <p>Extra $5/ month per line</p>
-                            </div> -->
                             <div class="form-radio form-check-info text-start">
                                 <h6>Service <span style="color:red">*</span></h6><h4 id="service_lang"></h4>
                                 <input class="form-radio-input" type="radio" name="service" id="flexRadioDefault_ag" value="annual_agreement" @if($cell_phones[0]->cpb_service == "annual_agreement") checked @else @endif>
