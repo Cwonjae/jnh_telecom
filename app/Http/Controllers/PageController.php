@@ -269,7 +269,7 @@ class PageController extends Controller
                 $user_check = DB::table('cellphone_boards')
                                         ->join('users', 'cellphone_boards.u_id', '=', 'users.id')
                                         ->where('cellphone_boards.id', $num)
-                                        ->select('users.email')
+                                        ->select('users.email', 'cellphone_boards.cpb_applicant')
                                         ->first();
                                         
                 $datae = [];
