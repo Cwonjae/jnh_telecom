@@ -9,7 +9,6 @@
                 "최종완료": function() { 
                     $(this).dialog('close');
                     location.href = "/admin/posts/change/"+value+"/apply";
-                    
                 },
                 "보류": function() { 
                     $(this).dialog('close');
@@ -76,9 +75,13 @@
                                         <td class="align-middle text-center text-sm">
                                             <span 
                                                 @if ($cell_phone->cpb_after_status == 'apply') 
-                                                    class="badge badge-sm bg-gradient-success"
+                                                    class="badge badge-sm bg-gradient-secondary"
+                                                @elseif ($cell_phone->cpb_after_status == 'processing')
+                                                    class="badge badge-sm bg-gradient-danger" onclick="confirm_status({{ $cell_phone->id }})" style="cursor:pointer"
+                                                @elseif ($cell_phone->cpb_after_status == 'pending')
+                                                    class="badge badge-sm bg-gradient-danger" onclick="confirm_status({{ $cell_phone->id }})" style="cursor:pointer"
                                                 @else
-                                                    class="badge badge-sm bg-gradient-danger"
+                                                    class="badge badge-sm bg-gradient-success"
                                                 @endif
                                                 >{{ $cell_phone->cpb_after_status }}</span>
                                         </td>

@@ -9,7 +9,6 @@
                 "최종완료": function() { 
                     $(this).dialog('close');
                     location.href = "/admin/tables/change/"+value+"/closing";
-                    
                 },
                 "보류": function() { 
                     $(this).dialog('close');
