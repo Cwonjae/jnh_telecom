@@ -227,6 +227,7 @@ class PageController extends Controller
                     $cellphone_update = DB::table('cellphone_boards')
                                             ->where('id', $num)
                                             ->update([
+                                                'cpb_after_status' => 'processing',
                                                 'cpb_phonenumber' => $phone_number,
                                                 'updated_at' => $now_date_time
                                             ]);
