@@ -32,7 +32,7 @@
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <h6>Phone Number Insert</h6>
+                        <h6>Phone Number & USIM Number Insert</h6>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0" style="width:92%; margin:auto; margin-top:30px;">
@@ -42,6 +42,11 @@
                                         <h6>Phone Number <span style="color:red">*</span></h6>
                                         <input type="text" name="phone_number" class="form-control" aria-label="phone_number" id="phone_number" value="{{ $cellphone[0]->cpb_phonenumber }}">
                                         @error('phone_number') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
+                                    </div>
+                                    <div class="flex flex-col mb-3">
+                                        <h6>USIM Number <span style="color:red">*</span></h6>
+                                        <input type="text" name="usim_number" class="form-control" aria-label="usim_number" id="usim_number" value="{{ $cellphone[0]->cpb_phonenumber }}">
+                                        @error('usim_number') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                     </div>
                             </form>
 
