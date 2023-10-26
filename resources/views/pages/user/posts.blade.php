@@ -1,13 +1,74 @@
 @extends('layouts.user.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
-    @include('layouts.navbars.auth.user.topnav', ['title' => 'Olleh Postpaid Application Form'])
+    <script>
+        $(function () {
+            $('#lang_check').change(function() {
+                var value = $(this).val();
+                switch(value) {
+                    case 'english' :
+                        $('#title_lang').text("Postpaid Application Form");
+                        $('#register_lang').text("Register");
+                        $('#applicant_lang').text("Applicant");
+                        $('#openingstatus_lang').text("Opening Status");
+                        $('#deferredpaymentstatus_lang').text("Deferred Payment Status");
+                        $('#registrationdate_lang').text("Registration date");
+                        $('#etc_lang').text("ETC");
+                        $('#dontcheck_lang').text("Don't have a history of applying for Postpaid Application Form");
+                        break;
+                    case 'russian' :
+                        $('#title_lang').text("Форма заявки на постоплату");
+                        $('#register_lang').text("регистр");
+                        $('#applicant_lang').text("Заявитель");
+                        $('#openingstatus_lang').text("Статус открытия");
+                        $('#deferredpaymentstatus_lang').text("Статус отсроченного платежа");
+                        $('#registrationdate_lang').text("Дата регистрации");
+                        $('#etc_lang').text("И Т. Д");
+                        $('#dontcheck_lang').text("У вас нет истории подачи заявки на постоплатную форму заявки.");
+                        break;
+                    case 'uzbek' :
+                        $('#title_lang').text("Postpaid ariza shakli");
+                        $('#register_lang').text("ro'yxatdan o'tish");
+                        $('#applicant_lang').text("Ariza beruvchi");
+                        $('#openingstatus_lang').text("Ochilish holati");
+                        $('#deferredpaymentstatus_lang').text("Kechiktirilgan to'lov holati");
+                        $('#registrationdate_lang').text("Ro'yxatdan o'tish sanasi");
+                        $('#etc_lang').text("VA BOSHQALAR");
+                        $('#dontcheck_lang').text("Postpaid anketasiga ariza topshirish tarixi yo'q");
+                        break;
+                    case 'tagalog' :
+                        $('#title_lang').text("Postpaid Application Form");
+                        $('#register_lang').text("magparehistro");
+                        $('#applicant_lang').text("Aplikante");
+                        $('#openingstatus_lang').text("Katayuan ng Pagbubukas");
+                        $('#deferredpaymentstatus_lang').text("Katayuan ng Deferred Payment");
+                        $('#registrationdate_lang').text("Petsa ng pagpaparehistro");
+                        $('#etc_lang').text("ETC");
+                        $('#dontcheck_lang').text("Walang kasaysayan ng pag-apply para sa Postpaid Application Form");
+                        break;
+                    case 'vietnamese' :
+                        $('#title_lang').text("Đơn đăng ký trả sau");
+                        $('#register_lang').text("đăng ký");
+                        $('#applicant_lang').text("Người xin việc");
+                        $('#openingstatus_lang').text("Trạng thái mở");
+                        $('#deferredpaymentstatus_lang').text("Trạng thái thanh toán trả chậm");
+                        $('#registrationdate_lang').text("Ngày đăng kí");
+                        $('#etc_lang').text("VÂN VÂN");
+                        $('#dontcheck_lang').text("Không có lịch sử nộp đơn đăng ký trả sau");
+                        break;
+                    default :
+                        break;
+                }
+            });
+        });
+    </script>
+    @include('layouts.navbars.auth.user.topnav', ['title' => 'Postpaid Application Form'])
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <h6>Olleh Postpaid Application Form</h6>
+                        <h6>Postpaid Application Form</h6>
                     </div>
                     <div class="pb-0">
                         <div style="float:right; width:120px; height:40px;">
@@ -15,6 +76,15 @@
                             href="{{ route('userpage.register', ['page' => 'posts']) }}">
                                 Register
                             </a>
+                        </div>
+                        <div style="float:right; width:130px; height:40px;">
+                            <select class="lang_check" id="lang_check">
+                                <option value="english" selected="">English</option>
+                                <option value="russian">Russian</option>
+                                <option value="uzbek">Uzbek</option>
+                                <option value="tagalog">Tagalog</option>
+                                <option value="vietnamese">Vietnamese</option>
+                            </select>
                         </div>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
@@ -24,8 +94,6 @@
                                     <tr>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Applicant</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            Nationality</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Deferred Payment Status</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -46,9 +114,6 @@
                                                     <p class="text-xs text-secondary text-center mb-0">{{ $cell_phone->email }}</p>
                                                 </div>
                                             </div>
-                                        </td>
-                                        <td>
-                                            <p class="text-xs font-weight-bold text-center mb-0">{{ $cell_phone->cpb_nationality }}</p>
                                         </td>
                                         <td class="align-middle text-center text-sm">
                                             @if ($cell_phone->cpb_after_status == 'apply')
@@ -91,7 +156,7 @@
                                     </tr>
                                     @empty
                                     <tr>
-                                        <td class="align-middle text-center" colspan="6">don't have a history of applying for Olleh Mobile Application Form</td>
+                                        <td class="align-middle text-center" colspan="5">Don't have a history of applying for Postpaid Application Form</td>
                                     </tr>
                                     @endforelse
                                 </tbody>
