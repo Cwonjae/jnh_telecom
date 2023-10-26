@@ -26,6 +26,11 @@
                                         @error('phone_number') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
                                     </div>
                                     <div class="flex flex-col mb-3">
+                                        <h6>USIM Number <span style="color:red">*</span></h6>
+                                        <input type="text" name="usim_number" class="form-control" aria-label="usim_number" id="usim_number" value="{{ $idcard[0]->cpb_usimnumber }}">
+                                        @error('usim_number') <p class='text-danger text-xs pt-1'> {{ $message }} </p> @enderror
+                                    </div>
+                                    <div class="flex flex-col mb-3">
                                         <h6>Saved Alien registration card Images<span style="color:red">*</span></h6>
                                         @if($idcard[0]->icu_filename)
                                         @php

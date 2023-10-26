@@ -138,7 +138,7 @@ class PageController extends Controller
                                 ->join('cellphone_boards', 'idcard_comparison.cpb_id', '=', 'cellphone_boards.id')
                                 ->join('idcard_uploads', 'idcard_comparison.icu_id', '=', 'idcard_uploads.id')
                                 ->where('idcard_comparison.id', $num)
-                                ->select('cellphone_boards.id', 'cellphone_boards.cpb_phonenumber', 'idcard_uploads.icu_filename', 'idcard_uploads.icu_encode_filename')
+                                ->select('cellphone_boards.id', 'cellphone_boards.cpb_phonenumber', 'cellphone_boards.cpb_usimnumber', 'idcard_uploads.icu_filename', 'idcard_uploads.icu_encode_filename')
                                 ->get();
     
                 if (view()->exists("pages.{$page}")) {
@@ -201,11 +201,11 @@ class PageController extends Controller
                 $usim_number = $request->post('usim_number');
 
                 if(DB::table('cellphone_boards')->where('cpb_phonenumber', $phone_number)->whereNotIn('id',[$num])->exists()) { 
-                    Alert::error('휴대폰번호 및 유심번호', '해당 휴대폰번호는 이미 등록되어있습니다.');
+                    Alert::error('검증', '해당 휴대폰번호는 이미 등록되어있습니다.');
                     return redirect("/admin/users");
                 } else {
                     if(DB::table('cellphone_boards')->where('cpb_usimnumber', $usim_number)->whereNotIn('id',[$num])->exists()) {
-                        Alert::error('휴대폰번호 및 유심번호', '해당 유심번호는 이미 등록되어있습니다.');
+                        Alert::error('검증', '해당 유심번호는 이미 등록되어있습니다.');
                         return redirect("/admin/users");
                     } else {
                         $cellphone_update = DB::table('cellphone_boards')
@@ -216,7 +216,7 @@ class PageController extends Controller
                                                 'updated_at' => $now_date_time
                                             ]);
             
-                        Alert::success('휴대폰번호 및 유심번호', '휴대폰번호와 유심번호 입력이 완료되었습니다.');
+                        Alert::success('검증', '휴대폰번호와 유심번호 입력이 완료되었습니다.');
                         return redirect("/admin/users");
                     }
                 }
@@ -224,36 +224,43 @@ class PageController extends Controller
             } else if($page == "registration_card") {
                 // Form validate 구성
                 $validated = $request->validate([
-                    'phone_number' => 'required'
+                    'phone_number' => 'required',
+                    'usim_number' => 'required'
                 ]);
                 
                 $phone_number = $request->post('phone_number');
+                $usim_number = $request->post('usim_number');
     
                 if(DB::table('cellphone_boards')->where('cpb_phonenumber', $phone_number)->whereNotIn('id',[$num])->exists()) { 
-                    Alert::error('휴대폰번호 및 외국인등록증', '해당 휴대폰번호는 이미 등록되어있습니다.');
+                    Alert::error('검증', '해당 휴대폰번호는 이미 등록되어있습니다.');
                     return redirect("/admin/users");
                 } else {
-                    $cellphone_update = DB::table('cellphone_boards')
-                                            ->where('id', $num)
-                                            ->update([
-                                                'cpb_after_status' => 'processing',
-                                                'cpb_phonenumber' => $phone_number,
-                                                'updated_at' => $now_date_time
-                                            ]);
-    
-                    if($cellphone_update) {
-                        $comparison_update = DB::table('idcard_comparison')
-                                                ->where('cpb_id', $num)
+                    if(DB::table('cellphone_boards')->where('cpb_usimnumber', $usim_number)->whereNotIn('id',[$num])->exists()) { 
+                        Alert::error('검증', '해당 유심번호는 이미 등록되어있습니다.');
+                        return redirect("/admin/users");
+                    } else { 
+                        $cellphone_update = DB::table('cellphone_boards')
+                                                ->where('id', $num)
                                                 ->update([
-                                                    'icc_status' => 'Y',
+                                                    'cpb_after_status' => 'processing',
+                                                    'cpb_phonenumber' => $phone_number,
                                                     'updated_at' => $now_date_time
                                                 ]);
-
-                        Alert::success('휴대폰번호 및 외국인등록증', '휴대폰번호 및 외국인등록증 확인이 완료되었습니다.');
-                        return redirect("/admin/users");
-                    } else {
-                        Alert::error('휴대폰번호 및 외국인등록증', '휴대폰번호 및 외국인등록증 확인에 실패하였습니다.');
-                        return redirect("/admin/users");
+        
+                        if($cellphone_update) {
+                            $comparison_update = DB::table('idcard_comparison')
+                                                    ->where('cpb_id', $num)
+                                                    ->update([
+                                                        'icc_status' => 'Y',
+                                                        'updated_at' => $now_date_time
+                                                    ]);
+    
+                            Alert::success('검증', '휴대폰번호 및 외국인등록증 확인이 완료되었습니다.');
+                            return redirect("/admin/users");
+                        } else {
+                            Alert::error('검증', '휴대폰번호 및 외국인등록증 확인에 실패하였습니다.');
+                            return redirect("/admin/users");
+                        }
                     }
                 }
             }
