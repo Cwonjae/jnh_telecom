@@ -68,12 +68,12 @@
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <h6>Postpaid Application Form</h6>
+                        <h6 id="title_lang">Postpaid Application Form</h6>
                     </div>
                     <div class="pb-0">
                         <div style="float:right; width:120px; height:40px;">
                             <a class="bg-gradient-success" style="padding:10px; font-weight:bold; color:#fff; border-radius:10px 10px 10px 10px; cursor: pointer" 
-                            href="{{ route('userpage.register', ['page' => 'posts']) }}">
+                            href="{{ route('userpage.register', ['page' => 'posts']) }}" id="register_lang">
                                 Register
                             </a>
                         </div>
@@ -92,15 +92,15 @@
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" id="applicant_lang">
                                             Applicant</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" id="deferredpaymentstatus_lang">
                                             Deferred Payment Status</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" id="openingstatus_lang">
                                             Opening Status</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" id="registrationdate_lang">
                                             Registration date</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" id="etc_lang">
                                             ETC</th>
                                     </tr>
                                 </thead>
@@ -156,7 +156,7 @@
                                     </tr>
                                     @empty
                                     <tr>
-                                        <td class="align-middle text-center" colspan="5">Don't have a history of applying for Postpaid Application Form</td>
+                                        <td class="align-middle text-center" colspan="5" id="dontcheck_lang">Don't have a history of applying for Postpaid Application Form</td>
                                     </tr>
                                     @endforelse
                                 </tbody>
