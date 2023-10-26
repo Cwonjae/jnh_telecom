@@ -119,7 +119,7 @@ class PageController extends Controller
             if($cellphone_check) {
                 $cellphone = DB::table('cellphone_boards')
                                 ->where('cellphone_boards.id', $num)
-                                ->select('cellphone_boards.id', 'cellphone_boards.cpb_phonenumber')
+                                ->select('cellphone_boards.id', 'cellphone_boards.cpb_phonenumber', 'cellphone_boards.cpb_usimnumber')
                                 ->get();
     
                 if (view()->exists("pages.{$page}")) {
