@@ -280,7 +280,7 @@ class UserPageController extends Controller
                 'cpb_applicant' => $applicant,
                 'cpb_nationality' => $nationality,
                 'cpb_phonenumber' => $phone_number,
-                'cpb_status' => 'opening',
+                'cpb_status' => 'closing',
                 'cpb_after_status' => 'applying',
                 'u_id' => $user_id_check,
                 'icu_id' => $idcard_insert_id,

@@ -92,7 +92,11 @@
                                             @if (!$cell_phone->cpb_phonenumber)
                                                 <a style="color: red;" href="{{ route('page.print', ['page' => 'phone_number', 'num' => $cell_phone->id]) }}">입력</a>
                                             @else
-                                                <span style="color: green;">{{ $cell_phone->cpb_phonenumber }}</span>
+                                                @if (!$cell_phone->cpb_usimnumber)
+                                                    <a style="color: red;" href="{{ route('page.print', ['page' => 'phone_number', 'num' => $cell_phone->id]) }}">{{ $cell_phone->cpb_phonenumber }}</a>
+                                                @else
+                                                    <span style="color: green;">{{ $cell_phone->cpb_phonenumber }}</span>
+                                                @endif
                                             @endif
                                         </td>
                                         <td class="align-middle text-center">
