@@ -71,7 +71,7 @@
                         <h6 id="title_lang">Postpaid Application Form</h6>
                     </div>
                     <div class="pb-0">
-                        <div style="float:right; width:120px; height:40px;">
+                        <div style="float:right; width:160px; height:40px;">
                             <a class="bg-gradient-success" style="padding:10px; font-weight:bold; color:#fff; border-radius:10px 10px 10px 10px; cursor: pointer" 
                             href="{{ route('userpage.register', ['page' => 'posts']) }}" id="register_lang">
                                 Register
