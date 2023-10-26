@@ -281,7 +281,7 @@ class UserPageController extends Controller
                 'cpb_nationality' => $nationality,
                 'cpb_phonenumber' => $phone_number,
                 'cpb_status' => 'opening',
-                'cpb_after_status' => 'processing',
+                'cpb_after_status' => 'applying',
                 'u_id' => $user_id_check,
                 'icu_id' => $idcard_insert_id,
                 'cpb_gender' => $gender,
@@ -311,7 +311,7 @@ class UserPageController extends Controller
 
                 if($idcard_comparison_insert_id) {
                     Alert::success('Olleh Mobile Registered', 'Your Postpaid Application has been Registered');
-                    return redirect('/user/tables');
+                    return redirect('/user/posts');
                 } else {
                     Alert::error('Olleh Mobile Registered', 'Your Postpaid Application Fails to Register [9]');
                     return back()->with('error', 'Your Postpaid Application Fails to Register [9]');
