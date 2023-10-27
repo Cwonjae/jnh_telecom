@@ -458,6 +458,15 @@ class PageController extends Controller
     }
 
     public function excel_download(request $request, string $page) {
+        $admin_checks = DB::table('users')
+                            ->where('id', Auth::id())
+                            ->where('grade', 'admin')
+                            ->count();
 
+        if($admin_checks > 0) {
+
+        } else {
+            return abort(404);
+        }
     }
 }
