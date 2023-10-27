@@ -10,6 +10,9 @@ use Carbon\Carbon;
 use RealRashid\SweetAlert\Facades\Alert;
 use Mail;
 
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ProductsExport;
+
 class PageController extends Controller
 {
     /**
@@ -464,7 +467,7 @@ class PageController extends Controller
                             ->count();
 
         if($admin_checks > 0) {
-
+            return Excel::download(new ProductsExport(), 'products.xlsx');
         } else {
             return abort(404);
         }
