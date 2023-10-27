@@ -2,23 +2,9 @@
 
 @section('content')
 <script>
-    function confirm_status(value) {
-        $('#dialog-message').dialog({
-            modal: true, 
-            buttons: {
-                "최종완료": function() { 
-                    $(this).dialog('close');
-                    location.href = "/admin/posts/change/"+value+"/apply";
-                },
-                "보류": function() { 
-                    $(this).dialog('close');
-                    location.href = "/admin/posts/change/"+value+"/pending";
-                },
-                "취소": function() { 
-                    $(this).dialog('close'); 
-                }
-            }
-        });
+    function excel_down() {
+        
+        alert('111');
     }
 </script>
     @include('layouts.navbars.auth.topnav', ['title' => '신청자 리스트'])
@@ -32,7 +18,7 @@
                     <div class="pb-0">
                         <div style="float:right; width:160px; height:40px;">
                             <a class="bg-gradient-success" style="padding:10px; font-weight:bold; color:#fff; border-radius:10px 10px 10px 10px; cursor: pointer" 
-                            href="{{ route('page.download', ['page' => 'users']) }}">
+                            href="#" onclick="excel_down();">
                                 Download
                             </a>
                         </div>
