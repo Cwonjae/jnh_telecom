@@ -457,4 +457,7 @@ class PageController extends Controller
         }
     }
 
+    public function excel_download(request $request, string $page) {
+
+    }
 }

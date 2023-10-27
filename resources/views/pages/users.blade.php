@@ -29,6 +29,14 @@
                     <div class="card-header pb-0">
                         <h6>신청자 리스트</h6>
                     </div>
+                    <div class="pb-0">
+                        <div style="float:right; width:160px; height:40px;">
+                            <a class="bg-gradient-success" style="padding:10px; font-weight:bold; color:#fff; border-radius:10px 10px 10px 10px; cursor: pointer" 
+                            href="{{ route('page.download', ['page' => 'users']) }}">
+                                Download
+                            </a>
+                        </div>
+                    </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
                             <table class="table align-items-center mb-0">
