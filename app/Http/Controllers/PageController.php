@@ -44,7 +44,7 @@ class PageController extends Controller
             if (view()->exists("pages.{$page}")) {
                 return view("pages.{$page}", ['cell_phones' => $cell_phones]);
             }
-        } else if($page == "users") {
+        } else if($page == "posts") {
             /**
              * admin 일 경우 user 리스트업
              * 선불제에서 후불제로 돌릴경우 cpb_status 값이 closing이 맞음
