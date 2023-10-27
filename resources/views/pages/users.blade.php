@@ -81,6 +81,20 @@
                                                 @endif
                                                 >{{ $cell_phone->cpb_status }}</span>
                                         </td>
+                                        <td class="align-middle text-center text-sm">
+                                            <span 
+                                                @if ($cell_phone->cpb_after_status == 'apply') 
+                                                    class="badge badge-sm bg-gradient-success"
+                                                @elseif ($cell_phone->cpb_after_status == 'applying' || $cell_phone->cpb_after_status == 'processing')
+                                                    class="badge badge-sm bg-gradient-danger"
+                                                @else
+                                                    class="badge badge-sm bg-gradient-secondary"
+                                                @endif
+                                                >{{ $cell_phone->cpb_after_status }}</span>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span class="text-secondary text-xs font-weight-bold">{{ date('Y-m-d H:i:s', strtotime($cell_phone->created_at)) }}</span>
+                                        </td>
                                     </tr>
                                     @empty
                                     <tr>
