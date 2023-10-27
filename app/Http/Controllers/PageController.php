@@ -46,9 +46,8 @@ class PageController extends Controller
             }
         } else if($page == "posts") {
             /**
-             * admin 일 경우 user 리스트업
              * 선불제에서 후불제로 돌릴경우 cpb_status 값이 closing이 맞음
-             * 하지만 그냥 후불제로 신청할경우는 closing값으로 하면 안될듯함
+             * 하지만 그냥 후불제로 신청할경우는 closing값으로 하면 안될듯함(processing 값 추가 후 processing으로 구분했음)
              * 
              */
             if($admin_checks > 0) {
@@ -61,6 +60,23 @@ class PageController extends Controller
                                           ->orwhere('cellphone_boards.cpb_status', 'pending');
                                 })
                                 ->select('users.username', 'users.email', 'cellphone_boards.id', 'cellphone_boards.cpb_applicant', 'cellphone_boards.cpb_nationality', 'cellphone_boards.cpb_status', 'cellphone_boards.cpb_after_status', 'cellphone_boards.cpb_telecoms', 'cellphone_boards.created_at', 'idcard_comparison.icc_status', 'idcard_comparison.id AS icc_id', 'cellphone_boards.cpb_phonenumber', 'cellphone_boards.cpb_usimnumber')
+                                ->paginate(10);
+            } else {
+                return abort(404);
+            }
+
+            if (view()->exists("pages.{$page}")) {
+                return view("pages.{$page}", ['cell_phones' => $cell_phones]);
+            }
+        } else if($page == "users") { 
+            /**
+             * 선불제, 후불제 신청을 각각이라도 한 user 리스트업
+             */
+            if($admin_checks > 0) {
+                $cell_phones = DB::table('cellphone_boards')
+                                ->join('users', 'cellphone_boards.u_id', '=' ,'users.id')
+                                ->where('cellphone_boards.cpb_telecoms', 'kt')
+                                ->select('users.username', 'users.email', 'cellphone_boards.id', 'cellphone_boards.cpb_applicant', 'cellphone_boards.cpb_nationality', 'cellphone_boards.cpb_status', 'cellphone_boards.cpb_after_status', 'cellphone_boards.cpb_telecoms', 'cellphone_boards.created_at', 'cellphone_boards.cpb_phonenumber', 'cellphone_boards.cpb_usimnumber')
                                 ->paginate(10);
             } else {
                 return abort(404);
