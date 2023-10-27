@@ -62,13 +62,13 @@
                                             </div>
                                         </td>
                                         <td class="align-middle text-center text-sm">
-                                            <span class="badge badge-sm">{{ $cell_phone->cpb_nationality }}</span>
+                                            <span class="text-sm text-center">{{ $cell_phone->cpb_nationality }}</span>
                                         </td>
                                         <td class="align-middle text-center text-sm">
-                                            <span class="badge badge-sm">{{ $cell_phone->cpb_phonenumber }}</span>
+                                            <span class="text-sm text-center">{{ $cell_phone->cpb_phonenumber }}</span>
                                         </td>
                                         <td class="align-middle text-center text-sm">
-                                            <span class="badge badge-sm">{{ $cell_phone->cpb_usimnumber }}</span>
+                                            <span class="text-sm text-center">{{ $cell_phone->cpb_usimnumber }}</span>
                                         </td>
                                         <td class="align-middle text-center text-sm">
                                             <span 
