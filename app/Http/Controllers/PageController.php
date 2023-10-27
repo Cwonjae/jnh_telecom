@@ -168,6 +168,20 @@ class PageController extends Controller
             } else {
                 return abort(404);
             }
+        } else if($page == "users" && $num == "download") {
+
+        
+            echo "19238901280398123912830128290813";
+
+            echo "<script>alert('뭔데!!!!');</script>";
+            exit;
+    
+            // if($admin_checks > 0) {
+            //     return Excel::download(new ProductsExport(), 'products.xlsx');
+            // } else {
+            //     return abort(404);
+            // }
+            
         } else {
             return abort(404);
         }
@@ -458,19 +472,5 @@ class PageController extends Controller
             Alert::error('이메일 발송', '해당 가입자는 선불 가입절차가 종료되지 않았습니다.');
             return redirect("/admin/posts");
         }
-    }
-
-    public function excel_download(string $page) {
-        
-        echo "19238901280398123912830128290813";
-
-        echo "<script>alert('뭔데!!!!');</script>";
-        exit;
-
-        // if($admin_checks > 0) {
-        //     return Excel::download(new ProductsExport(), 'products.xlsx');
-        // } else {
-        //     return abort(404);
-        // }
     }
 }
