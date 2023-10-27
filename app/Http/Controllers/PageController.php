@@ -465,7 +465,8 @@ class PageController extends Controller
                             ->where('id', Auth::id())
                             ->where('grade', 'admin')
                             ->count();
-
+        echo $admin_checks;
+        exit;
         if($admin_checks > 0) {
             return Excel::download(new ProductsExport(), 'products.xlsx');
         } else {
