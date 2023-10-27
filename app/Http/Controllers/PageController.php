@@ -202,11 +202,11 @@ class PageController extends Controller
 
                 if(DB::table('cellphone_boards')->where('cpb_phonenumber', $phone_number)->whereNotIn('id',[$num])->exists()) { 
                     Alert::error('검증', '해당 휴대폰번호는 이미 등록되어있습니다.');
-                    return redirect("/admin/users");
+                    return redirect("/admin/posts");
                 } else {
                     if(DB::table('cellphone_boards')->where('cpb_usimnumber', $usim_number)->whereNotIn('id',[$num])->exists()) {
                         Alert::error('검증', '해당 유심번호는 이미 등록되어있습니다.');
-                        return redirect("/admin/users");
+                        return redirect("/admin/posts");
                     } else {
                         $cellphone_update = DB::table('cellphone_boards')
                                             ->where('id', $num)
@@ -217,7 +217,7 @@ class PageController extends Controller
                                             ]);
             
                         Alert::success('검증', '휴대폰번호와 유심번호 입력이 완료되었습니다.');
-                        return redirect("/admin/users");
+                        return redirect("/admin/posts");
                     }
                 }
     
@@ -233,11 +233,11 @@ class PageController extends Controller
     
                 if(DB::table('cellphone_boards')->where('cpb_phonenumber', $phone_number)->whereNotIn('id',[$num])->exists()) { 
                     Alert::error('검증', '해당 휴대폰번호는 이미 등록되어있습니다.');
-                    return redirect("/admin/users");
+                    return redirect("/admin/posts");
                 } else {
                     if(DB::table('cellphone_boards')->where('cpb_usimnumber', $usim_number)->whereNotIn('id',[$num])->exists()) { 
                         Alert::error('검증', '해당 유심번호는 이미 등록되어있습니다.');
-                        return redirect("/admin/users");
+                        return redirect("/admin/posts");
                     } else { 
                         $cellphone_update = DB::table('cellphone_boards')
                                                 ->where('id', $num)
@@ -256,10 +256,10 @@ class PageController extends Controller
                                                     ]);
     
                             Alert::success('검증', '휴대폰번호 및 외국인등록증 확인이 완료되었습니다.');
-                            return redirect("/admin/users");
+                            return redirect("/admin/posts");
                         } else {
                             Alert::error('검증', '휴대폰번호 및 외국인등록증 확인에 실패하였습니다.');
-                            return redirect("/admin/users");
+                            return redirect("/admin/posts");
                         }
                     }
                 }
@@ -289,9 +289,9 @@ class PageController extends Controller
                                             ->where('cellphone_boards.id', $num)
                                             ->select('users.email', 'cellphone_boards.cpb_applicant')
                                             ->first();
-                                            
-                    $datae = [];
-                    Mail::send('mobileForm.user.status', $datae, function($message) use ($user_check, $now_date_time) {
+                                 
+                    $text = "Prepaid";
+                    Mail::send('mobileForm.user.status', ['text' => $text], function($message) use ($user_check, $now_date_time) {
                         $message->to($user_check->email);
                         $message->subject('Olleh Prepaid Application Form is finally complete.'.$now_date_time);
                     });
@@ -327,9 +327,9 @@ class PageController extends Controller
                                             ->where('cellphone_boards.id', $num)
                                             ->select('users.email', 'cellphone_boards.cpb_applicant')
                                             ->first();
-                                            
-                    $datae = [];
-                    Mail::send('mobileForm.user.status', $datae, function($message) use ($user_check, $now_date_time) {
+
+                    $text = "Postpaid";
+                    Mail::send('mobileForm.user.status', ['text' => $text], function($message) use ($user_check, $now_date_time) {
                         $message->to($user_check->email);
                         $message->subject('Olleh Postpaid Application Form is finally complete.'.$now_date_time);
                     });
@@ -345,10 +345,10 @@ class PageController extends Controller
                     });
     
                     Alert::success('가입신청 상태 변경', '가입신청 상태 변경이 완료되었습니다.');
-                    return redirect("/admin/users");
+                    return redirect("/admin/posts");
                 } else {
                     Alert::error('가입신청 상태 변경', '가입신청 상태 변경이 실패하였습니다.');
-                    return redirect("/admin/users");
+                    return redirect("/admin/posts");
                 }
             }
         }
@@ -424,20 +424,20 @@ class PageController extends Controller
                         $message->subject('Olleh mobile Please apply for a postpaid payment.');
                     });
                     Alert::success('이메일 발송', '해당 가입자에게 후불제 가입 요청 메일 발송 완료');
-                    return redirect("/admin/users");
+                    return redirect("/admin/posts");
                 } else {
                     Alert::error('이메일 발송', '메일 발송 실패 [11]');
-                    return redirect("/admin/users");
+                    return redirect("/admin/posts");
                 }
 
             } else if($cell_phones->cpb_after_status == "apply" || $cell_phones->cpb_after_status == "applying") {
                 Alert::error('이메일 발송', '해당 가입자는 이미 후불제를 사용 또는 후불제 가입신청 중입니다.');
-                return redirect("/admin/users");
+                return redirect("/admin/posts");
             }
 
         } else {
             Alert::error('이메일 발송', '해당 가입자는 선불 가입절차가 종료되지 않았습니다.');
-            return redirect("/admin/users");
+            return redirect("/admin/posts");
         }
     }
 
