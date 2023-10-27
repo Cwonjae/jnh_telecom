@@ -467,10 +467,10 @@ class PageController extends Controller
                             ->count();
         echo $admin_checks;
         exit;
-        if($admin_checks > 0) {
-            return Excel::download(new ProductsExport(), 'products.xlsx');
-        } else {
-            return abort(404);
-        }
+        // if($admin_checks > 0) {
+        //     return Excel::download(new ProductsExport(), 'products.xlsx');
+        // } else {
+        //     return abort(404);
+        // }
     }
 }
