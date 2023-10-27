@@ -5,14 +5,13 @@ namespace App\Exports;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
-use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class ProductsExport implements FromQuery, FromCollection, ShouldAutoSize, WithStyles, WithHeadings
+class ProductsExport implements FromCollection, ShouldAutoSize, WithStyles, WithHeadings
 {
     /**
     * @return \Illuminate\Support\Collection
