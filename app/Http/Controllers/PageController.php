@@ -461,14 +461,12 @@ class PageController extends Controller
     }
 
     public function excel_download(request $request, string $page) {
-        $admin_checks = DB::table('users')
-                            ->where('id', Auth::id())
-                            ->where('grade', 'admin')
-                            ->count();
+        
+        echo "19238901280398123912830128290813";
 
         echo "<script>alert('뭔데!!!!');</script>";
         exit;
-        
+
         // if($admin_checks > 0) {
         //     return Excel::download(new ProductsExport(), 'products.xlsx');
         // } else {
