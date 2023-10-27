@@ -460,7 +460,7 @@ class PageController extends Controller
         }
     }
 
-    public function excel_download(request $request, string $page) {
+    public function excel_download(string $page) {
         
         echo "19238901280398123912830128290813";
 
