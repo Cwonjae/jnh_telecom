@@ -21,13 +21,13 @@
         });
     }
 </script>
-    @include('layouts.navbars.auth.topnav', ['title' => '가입신청 (후불)'])
+    @include('layouts.navbars.auth.topnav', ['title' => '신청자 리스트'])
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <h6>가입신청 (후불)</h6>
+                        <h6>신청자 리스트</h6>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
@@ -37,17 +37,17 @@
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             신청자명 / 이메일</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            국적</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            핸드폰번호</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            유심번호</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             선불 가입신청 상태</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             후불 가입신청 상태</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             가입신청일</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            핸드폰번호</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            외국인등록증 확인</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            메일 전송(외국인등록증 등록 메일)</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -60,6 +60,15 @@
                                                     <p class="text-xs text-secondary text-center mb-0">{{ $cell_phone->email }}</p>
                                                 </div>
                                             </div>
+                                        </td>
+                                        <td class="align-middle text-center text-sm">
+                                            <span class="badge badge-sm">{{ $cell_phone->cpb_nationality }}</span>
+                                        </td>
+                                        <td class="align-middle text-center text-sm">
+                                            <span class="badge badge-sm">{{ $cell_phone->cpb_phonenumber }}</span>
+                                        </td>
+                                        <td class="align-middle text-center text-sm">
+                                            <span class="badge badge-sm">{{ $cell_phone->cpb_usimnumber }}</span>
                                         </td>
                                         <td class="align-middle text-center text-sm">
                                             <span 
@@ -75,7 +84,7 @@
                                     </tr>
                                     @empty
                                     <tr>
-                                        <td class="align-middle text-center" colspan="7">선불제 가입신청이 완료된 내역 또는 후불제 가입신청한 내역이 없습니다.</td>
+                                        <td class="align-middle text-center" colspan="7">선불제 또는 후불제 가입 신청한 신청자가 없습니다.</td>
                                     </tr>
                                     @endforelse
                                 </tbody>
