@@ -4,7 +4,8 @@
 <script>
     function excel_down() {
         
-        alert('111');
+        location.href = "/admin/users/download";
+        return false;
     }
 </script>
     @include('layouts.navbars.auth.topnav', ['title' => '신청자 리스트'])
