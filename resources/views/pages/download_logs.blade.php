@@ -18,6 +18,7 @@
             .select_div .reason { width:200px; }
             .textarea_div { width: 100%; height: auto; }
             .textarea_div textarea { resize:none; }
+            label { float:left; }
 
             .button_div { width: 100%; height: 60px; margin-top: 30px; }
             .submit_div { width: 50%; height: auto; float: left; }

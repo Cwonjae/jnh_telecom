@@ -189,7 +189,7 @@ class PageController extends Controller
                     return Excel::download(new ProductsExport(), 'user_list_'.$now_date_time.'.xlsx');
                 } else {
                     $url = "/admin/users/download_log/user_list_".$datetime_timestamp;
-                    echo "<script>window.open('".$url."', '_blank', 'witdh=400,height=600'); window.history.back();</script>";
+                    echo "<script>window.open('".$url."', '_blank', 'witdh=400,height=330'); window.history.back();</script>";
                     exit;
                 }
             } else {
