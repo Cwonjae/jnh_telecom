@@ -177,7 +177,7 @@ class PageController extends Controller
             if($admin_checks > 0) {
                 $currentDateTime = Carbon::now()->timezone('Asia/Seoul');
                 $now_date_time = $currentDateTime->toDateTimeString();
-                $datetime_timestamp = $now_date_time->getTimestamp();
+                $datetime_timestamp = $currentDateTime->getTimestamp();
 
                 echo $currentDateTime;
                 echo "<br>";
