@@ -494,6 +494,12 @@ class PageController extends Controller
     }
 
     public function logs_insert(request $request, string $page, string $filename) {
+        echo print_r($request);
+        echo "<br>";
+        echo $page;
+        echo "<br>";
+        echo $filename;
+        echo "<br>";
         echo "logs_insert 탔음";
         exit;
     }

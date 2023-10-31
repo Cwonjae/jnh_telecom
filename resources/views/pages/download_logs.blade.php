@@ -4,14 +4,32 @@
         <script src="/assets/js/core/jquery-3.7.1.min.js"></script>
         <script>
             $(function () {
+                $('#form_submit').click(function() {
+                    formCheck();
+                });
 
+                $('#cancel').click(function() {
+                    window.close();
+                });
             });
+
+            function formCheck() {
+                if($('#reason').val() == 'etc') {
+                    var details_reason = document.getElementById('#details_reason');
+                    if(!details_reason) {
+                        alert('상세사유를 작성해주세요');
+                    } else {
+                        $('#download_logs').submit();
+                    }
+                } else {
+                    $('#download_logs').submit();
+                }
+            }
         </script>
         <style>
             .main_div { width: 100%; text-align: center; margin: 0 auto; }
             .title_div { width: 100%; height: 60px; margin-bottom: 20px; }
             .title { text-align: center; display: inline-block; clear: both; width: 90%; padding-top: 20px; }
-
             .form_div { width: 100%; height: auto; }
             .sub_div { width: 90%; margin: 0 auto; }
             .select_div { width: 100%; height: 40px; }
@@ -54,10 +72,10 @@
                 </div>
                 <div class="button_div">
                     <div class="submit_div">
-                        <a class="form_submit">다운로드</a>
+                        <a class="form_submit" id="form_submit">다운로드</a>
                     </div>
                     <div class="cancel_div">
-                        <a class="cancel">취소</a>
+                        <a class="cancel" id="cancel">취소</a>
                     </div>
                 </div>
             </div>
