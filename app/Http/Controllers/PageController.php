@@ -179,25 +179,19 @@ class PageController extends Controller
                 $now_date_time = $currentDateTime->toDateTimeString();
                 $datetime_timestamp = $currentDateTime->getTimestamp();
 
-                echo $currentDateTime;
-                echo "<br>";
-                echo $now_date_time;
-                echo "<br>";
-                echo $datetime_timestamp;
-
                 /**
                  * 다운로드 받을때 개인정보가 적재되어 있다보니 어떤 사람이 받았는지 log Table 생성 후 DB Insert 작업해야됨
                  * 어떤 사유로 받는 건지도 체크하면 좋을 듯
                  * 해당 파일 다운로드 로그가 존재한다면 바로 다운로드
                  * 로그가 존재하지 않는 다면 로그를 기록하고 다운로드 가능하게
                  */
-                // if(DB::table('download_logs')->where('u_id', Auth::id())->where('dl_file_name', 'user_list_'.$now_date_time)->exists()) {
-                //     return Excel::download(new ProductsExport(), 'user_list_'.$now_date_time.'.xlsx');
-                // } else {
-                //     $url = "/admin/users/download_log/user_list_".$now_date_time;
-                //     echo "<script>window.open('".$url."', '_blank')</script>";
-                //     exit;
-                // }
+                if(DB::table('download_logs')->where('u_id', Auth::id())->where('dl_file_name', 'user_list_'.$datetime_timestamp)->exists()) {
+                    return Excel::download(new ProductsExport(), 'user_list_'.$now_date_time.'.xlsx');
+                } else {
+                    $url = "/admin/users/download_log/user_list_".$datetime_timestamp;
+                    echo "<script>window.open('".$url."', '_blank')</script>";
+                    exit;
+                }
             } else {
                 return abort(404);
             }
@@ -497,5 +491,10 @@ class PageController extends Controller
         if (view()->exists("pages.download_logs")) {
             return view("pages.download_logs", ['filename' => $filename]);
         }
+    }
+
+    public function logs_insert(request $request, string $page, string $filename) {
+        echo "logs_insert 탔음";
+        exit;
     }
 }

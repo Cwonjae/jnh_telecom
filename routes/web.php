@@ -68,6 +68,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/admin/{page}/checking/{num}', [PageController::class, 'comparison'])->name('page.comparisons');
 	Route::get('/admin/{page}/change/{num}/{status}', [PageController::class, 'status_change'])->name('page.statuschange');
 	Route::get('/admin/{page}/download_log/{filename}', [PageController::class, 'logs_view'])->name('page.logsview');
+	Route::post('/admin/{page}/download_log/{filename}', [PageController::class, 'logs_insert'])->name('page.logsinsert');
 
 	// Route::get('/admin/{page}/download', [PageController::class, 'excel_download'])->name('page.download');
 	// Route::get('/admin/comparisons-close', [PageController::class, 'close_alert'])->name('page.close_alert');
