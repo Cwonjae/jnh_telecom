@@ -16,7 +16,7 @@
             function formCheck() {
                 if($('#reason').val() == 'etc') {
                     var details_reason = document.getElementById('#details_reason');
-                    if(!details_reason) {
+                    if(!details_reason.value) {
                         alert('상세사유를 작성해주세요');
                     } else {
                         $('#download_logs').submit();
