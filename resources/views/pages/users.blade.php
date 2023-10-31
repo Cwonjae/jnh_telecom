@@ -3,7 +3,6 @@
 @section('content')
 <script>
     function excel_down() {
-        
         location.href = "/admin/users/download";
         return false;
     }

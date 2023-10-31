@@ -175,7 +175,26 @@ class PageController extends Controller
                                 ->count();
 
             if($admin_checks > 0) {
-                return Excel::download(new ProductsExport(), 'products.xlsx');
+                $currentDateTime = Carbon::now()->timezone('Asia/Seoul');
+                $now_date_time = $currentDateTime->toDateTimeString();
+
+                echo $currentDateTime;
+                echo "<br>";
+                echo $now_date_time;
+
+                /**
+                 * 다운로드 받을때 개인정보가 적재되어 있다보니 어떤 사람이 받았는지 log Table 생성 후 DB Insert 작업해야됨
+                 * 어떤 사유로 받는 건지도 체크하면 좋을 듯
+                 * 해당 파일 다운로드 로그가 존재한다면 바로 다운로드
+                 * 로그가 존재하지 않는 다면 로그를 기록하고 다운로드 가능하게
+                 */
+                // if(DB::table('download_logs')->where('u_id', Auth::id())->where('dl_file_name', 'user_list_'.$now_date_time)->exists()) {
+                //     return Excel::download(new ProductsExport(), 'user_list_'.$now_date_time.'.xlsx');
+                // } else {
+                //     $url = "/admin/users/download_log/user_list_".$now_date_time;
+                //     echo "<script>window.open('".$url."', '_blank')</script>";
+                //     exit;
+                // }
             } else {
                 return abort(404);
             }
@@ -468,6 +487,12 @@ class PageController extends Controller
         } else {
             Alert::error('이메일 발송', '해당 가입자는 선불 가입절차가 종료되지 않았습니다.');
             return redirect("/admin/posts");
+        }
+    }
+
+    public function logs_view(string $page, string $filename) {
+        if (view()->exists("pages.download_logs")) {
+            return view("pages.download_logs", ['filename' => $filename]);
         }
     }
 }
