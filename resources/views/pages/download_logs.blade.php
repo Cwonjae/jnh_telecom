@@ -58,7 +58,7 @@
                     @csrf
                         <div class="select_div">
                             <label for="reason">사유</label>
-                            <select class="reason" id="reason">
+                            <select class="reason" id="reason" name="reason">
                                 <option value="agency_check" selected>통신사 비교용</option>
                                 <option value="agency_submission">제출용</option>
                                 <option value="etc">기타사유</option>
