@@ -494,20 +494,17 @@ class PageController extends Controller
     }
 
     public function logs_insert(Request $request, string $page, string $filename) {
-        $validated = $request->validate([
-            'reason' => 'required'
-        ]);
 
         $reason = $request->post('reason');
         $details_reason = $request->post('details_reason');
         
-        echo print_r($reason);
+        echo "reason : ".$reason;
         echo "<br>";
-        echo print_r($details_reason);
+        echo "details_reason : ".$details_reason;
         echo "<br>";
-        echo $page;
+        echo "page : ".$page;
         echo "<br>";
-        echo $filename;
+        echo "filename : ".$filename;
         echo "<br>";
         echo "logs_insert 탔음";
         exit;
