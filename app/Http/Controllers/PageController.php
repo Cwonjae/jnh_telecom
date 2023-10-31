@@ -177,10 +177,13 @@ class PageController extends Controller
             if($admin_checks > 0) {
                 $currentDateTime = Carbon::now()->timezone('Asia/Seoul');
                 $now_date_time = $currentDateTime->toDateTimeString();
+                $datetime_timestamp = $now_date_time->getTimestamp();
 
                 echo $currentDateTime;
                 echo "<br>";
                 echo $now_date_time;
+                echo "<br>";
+                echo $datetime_timestamp;
 
                 /**
                  * 다운로드 받을때 개인정보가 적재되어 있다보니 어떤 사람이 받았는지 log Table 생성 후 DB Insert 작업해야됨
