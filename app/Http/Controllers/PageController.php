@@ -493,8 +493,13 @@ class PageController extends Controller
         }
     }
 
-    public function logs_insert(request $request, string $page, string $filename) {
-        echo print_r($request);
+    public function logs_insert(Request $request, string $page, string $filename) {
+        $reason = $request->post('reason');
+        $details_reason = $request->post('details_reason');
+        
+        echo print_r($reason);
+        echo "<br>";
+        echo print_r($details_reason);
         echo "<br>";
         echo $page;
         echo "<br>";
