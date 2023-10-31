@@ -494,6 +494,10 @@ class PageController extends Controller
     }
 
     public function logs_insert(Request $request, string $page, string $filename) {
+        $validated = $request->validate([
+            'reason' => 'required'
+        ]);
+
         $reason = $request->post('reason');
         $details_reason = $request->post('details_reason');
         
