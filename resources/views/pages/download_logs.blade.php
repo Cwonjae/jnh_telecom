@@ -15,7 +15,7 @@
             </div>
             <div>
                 <div>
-                    <form method="POST" action="{{ route('page.logsinsert', ['page' => 'users', 'filename' => {{ $filename }}]) }}" id="download_logs" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('page.logsinsert', ['page' => 'users', 'filename' => $filename ]) }}" id="download_logs" enctype="multipart/form-data">
                     @csrf
                         <label for="reason">사유</label>
                         <select class="reason" id="reason">
@@ -34,4 +34,4 @@
             </div>
         </div>
     </body>
-</html>
+</html>a
