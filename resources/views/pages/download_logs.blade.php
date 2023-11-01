@@ -20,10 +20,16 @@
                         alert('상세사유를 작성해주세요');
                     } else {
                         $('#download_logs').submit();
+                        setTimeout('closed()',10000);
                     }
                 } else {
                     $('#download_logs').submit();
+                    setTimeout('closed()',10000);
                 }
+            }
+
+            function selfClose() {
+                self.close();
             }
         </script>
         <style>
