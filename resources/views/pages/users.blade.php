@@ -6,6 +6,10 @@
         location.href = "/admin/users/download";
         return false;
     }
+
+    function search_go() {
+        console.log('ss');
+    }
 </script>
     @include('layouts.navbars.auth.topnav', ['title' => '신청자 리스트'])
     <div class="container-fluid py-4">
@@ -21,6 +25,19 @@
                             href="#" onclick="excel_down();">
                                 Download
                             </a>
+                        </div>
+                        <div style="float:right; width:300px; height:40px;">
+                            <div>
+                                <select class="search_tag" id="search_tag" namd="search_tag">
+                                    <option value="name" selected>신청자</option>
+                                    <option value="email">이메일</option>
+                                    <option value="phonenumber">핸드폰번호</option>
+                                    <option value="usimnumber">유심번호</option>
+                                </select>
+                            </div>
+                            <div>
+                                <a href="javascript:void(0);" onclick="search_go();"><i class="bi bi-search"></i></a>
+                            </div>
                         </div>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
