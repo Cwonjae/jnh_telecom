@@ -516,7 +516,7 @@ class PageController extends Controller
                                     ]);
 
             if($download_logs_sql) {
-                return Excel::download(new ProductsExport(), $filename.'.xlsx');
+                Excel::download(new ProductsExport(), $filename.'.xlsx');
                 echo "<script>window.close();</script>";
                 exit;
             } else {
