@@ -29,9 +29,9 @@
 
 <body class="{{ $class ?? '' }}">
 
-    @stack('js');
-    @include('sweetalert::alert');
-    
+    @stack('js')
+    @include('sweetalert::alert')
+
     @guest
         @yield('content')
     @endguest
