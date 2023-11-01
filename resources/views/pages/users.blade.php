@@ -37,7 +37,7 @@
                                     </select>
                                     <input type="text" id="search_text" name="search_text" style="height:40px;"/>
                                 </form>
-                                <a href="javascript:void(0);" onclick="search_go();" class="bg-gradient-warning" style="padding:10px; font-weight:bold; color:#fff; border-radius:10px 10px 10px 10px; cursor: pointer">검색</a>
+                                <a href="javascript:void(0);" onclick="search_go();" class="bg-gradient-warning" style="padding: 8px; font-weight: bold; color: #fff; border-radius: 10px 10px 10px 10px; cursor: pointer; float: right; position: relative; margin-top: -40px; margin-right: 18px; width: 60px; height: 40px; text-align: center;">검색</a>
                             </div>
                         </div>
                     </div>
