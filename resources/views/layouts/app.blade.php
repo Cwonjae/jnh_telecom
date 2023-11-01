@@ -29,9 +29,6 @@
 
 <body class="{{ $class ?? '' }}">
 
-    @stack('js')
-    @include('sweetalert::alert')
-
     @guest
         @yield('content')
     @endguest
@@ -69,6 +66,8 @@
             Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
         }
     </script>
+    @stack('js')
+    @include('sweetalert::alert')
 </body>
 
 </html>
