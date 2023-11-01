@@ -494,19 +494,38 @@ class PageController extends Controller
     }
 
     public function logs_insert(Request $request, string $page, string $filename) {
+        $currentDateTime = Carbon::now()->timezone('Asia/Seoul');
+        $now_date_time = $currentDateTime->toDateTimeString();
 
         $reason = $request->post('reason');
         $details_reason = $request->post('details_reason');
-        
-        echo "reason : ".$reason;
-        echo "<br>";
-        echo "details_reason : ".$details_reason;
-        echo "<br>";
-        echo "page : ".$page;
-        echo "<br>";
-        echo "filename : ".$filename;
-        echo "<br>";
-        echo "logs_insert 탔음";
-        exit;
+
+        $admin_checks = DB::table('users')
+                            ->where('id', Auth::id())
+                            ->where('grade', 'admin')
+                            ->count();
+
+        if($admin_checks > 0) {
+            $download_logs_sql = DB::table('download_logs')->insertGetId([
+                                        'dl_file_type' => 'Excel',
+                                        'dl_file_name' => $filename,
+                                        'dl_reason' => $reason,
+                                        'u_id' => Auth::id(),
+                                        'dl_details_reason' => $details_reason,
+                                        'created_at' => $now_date_time
+                                    ]);
+
+            if($download_logs_sql) {
+                return Excel::download(new ProductsExport(), $filename.'.xlsx');
+                echo "<script>window.close();</script>";
+                exit;
+            } else {
+                echo "<script>alert('로그 기록에 실패했습니다.'); window.close();</script>";
+                exit;
+            }
+        } else {
+            echo "<script>alert('파일다운로드 권한이 없습니다.'); window.close();</script>";
+            exit;
+        }
     }
 }
