@@ -20,11 +20,11 @@
                         alert('상세사유를 작성해주세요');
                     } else {
                         $('#download_logs').submit();
-                        setTimeout('closed()',10000);
+                        setTimeout('selfClose()',3000);
                     }
                 } else {
                     $('#download_logs').submit();
-                    setTimeout('closed()',10000);
+                    setTimeout('selfClose()',3000);
                 }
             }
 
