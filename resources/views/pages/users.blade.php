@@ -34,9 +34,8 @@
                                     <option value="phonenumber">핸드폰번호</option>
                                     <option value="usimnumber">유심번호</option>
                                 </select>
-                            </div>
-                            <div>
-                                <a href="javascript:void(0);" onclick="search_go();"><i class="bi bi-search"></i></a>
+                                <input type="text" id="search_text" namd="search_text" />
+                                <a href="javascript:void(0);" onclick="search_go();">검색<i class="bi bi-search"></i></a>
                             </div>
                         </div>
                     </div>
