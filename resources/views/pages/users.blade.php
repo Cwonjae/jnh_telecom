@@ -20,22 +20,22 @@
                         <h6>신청자 리스트</h6>
                     </div>
                     <div class="pb-0">
-                        <div style="float:right; width:160px; height:40px;">
+                        <div style="float:right; width:160px; height:40px; margin-top:7px">
                             <a class="bg-gradient-success" style="padding:10px; font-weight:bold; color:#fff; border-radius:10px 10px 10px 10px; cursor: pointer" 
                             href="#" onclick="excel_down();">
                                 Download
                             </a>
                         </div>
-                        <div style="float:right; width:300px; height:40px;">
+                        <div style="float:right; width:400px; height:40px;">
                             <div>
-                                <select class="search_tag" id="search_tag" namd="search_tag">
+                                <select class="search_tag" id="search_tag" namd="search_tag" style="height:40px;">
                                     <option value="name" selected>신청자</option>
                                     <option value="email">이메일</option>
                                     <option value="phonenumber">핸드폰번호</option>
                                     <option value="usimnumber">유심번호</option>
                                 </select>
-                                <input type="text" id="search_text" namd="search_text" />
-                                <a href="javascript:void(0);" onclick="search_go();">검색<i class="bi bi-search"></i></a>
+                                <input type="text" id="search_text" namd="search_text" style="height:40px;"/>
+                                <a href="javascript:void(0);" onclick="search_go();" class="bg-gradient-warning" style="padding:10px; font-weight:bold; color:#fff; border-radius:10px 10px 10px 10px; cursor: pointer">검색</a>
                             </div>
                         </div>
                     </div>
