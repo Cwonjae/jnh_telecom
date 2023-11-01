@@ -21,7 +21,7 @@ class PageController extends Controller
      * @param string $page
      * @return \Illuminate\View\View
      */
-    public function index(string $page)
+    public function index(Request $request, string $page)
     {
         $admin_checks = DB::table('users')
                             ->where('id', Auth::id())
@@ -76,10 +76,28 @@ class PageController extends Controller
              * 선불제, 후불제 신청을 각각이라도 한 user 리스트업
              */
             if($admin_checks > 0) {
-                $cell_phones = DB::table('cellphone_boards')
-                                ->join('users', 'cellphone_boards.u_id', '=' ,'users.id')
-                                ->where('cellphone_boards.cpb_telecoms', 'kt')
-                                ->select('users.username', 'users.email', 'cellphone_boards.id', 'cellphone_boards.cpb_applicant', 'cellphone_boards.cpb_nationality', 'cellphone_boards.cpb_status', 'cellphone_boards.cpb_after_status', 'cellphone_boards.cpb_telecoms', 'cellphone_boards.created_at', 'cellphone_boards.cpb_phonenumber', 'cellphone_boards.cpb_usimnumber')
+                $cell_phones_check = DB::table('cellphone_boards')
+                                    ->join('users', 'cellphone_boards.u_id', '=' ,'users.id')
+                                    ->where('cellphone_boards.cpb_telecoms', 'kt');
+
+                if($request->get('search_tag') && $request->get('search_text')) {
+                    switch($request->get('search_tag')) {
+                        case 'username' :
+                            $cell_phones_check->where('users.username', $request->get('search_text'));
+                            break;
+                        case 'email' :
+                            $cell_phones_check->where('users.email', $request->get('search_text'));
+                            break;
+                        case 'phonenumber' :
+                            $cell_phones_check->where('cellphone_boards.cpb_phonenumber', $request->get('search_text'));
+                            break;
+                        case 'usimnumber' :
+                            $cell_phones_check->where('cellphone_boards.cpb_usimnumber', $request->get('search_text'));
+                            break;
+                    }
+                }
+
+                $cell_phones = $cell_phones_check->select('users.username', 'users.email', 'cellphone_boards.id', 'cellphone_boards.cpb_applicant', 'cellphone_boards.cpb_nationality', 'cellphone_boards.cpb_status', 'cellphone_boards.cpb_after_status', 'cellphone_boards.cpb_telecoms', 'cellphone_boards.created_at', 'cellphone_boards.cpb_phonenumber', 'cellphone_boards.cpb_usimnumber')
                                 ->paginate(10);
             } else {
                 return abort(404);

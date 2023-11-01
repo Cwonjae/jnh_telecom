@@ -8,7 +8,7 @@
     }
 
     function search_go() {
-        console.log('ss');
+        $('#search_form').submit();
     }
 </script>
     @include('layouts.navbars.auth.topnav', ['title' => '신청자 리스트'])
@@ -28,13 +28,15 @@
                         </div>
                         <div style="float:right; width:400px; height:40px;">
                             <div>
-                                <select class="search_tag" id="search_tag" namd="search_tag" style="height:40px;">
-                                    <option value="name" selected>신청자</option>
-                                    <option value="email">이메일</option>
-                                    <option value="phonenumber">핸드폰번호</option>
-                                    <option value="usimnumber">유심번호</option>
-                                </select>
-                                <input type="text" id="search_text" namd="search_text" style="height:40px;"/>
+                                <form method="GET" name="search_form" id="search_form">
+                                    <select class="search_tag" id="search_tag" name="search_tag" style="height:40px;">
+                                        <option value="username" selected>신청자</option>
+                                        <option value="email">이메일</option>
+                                        <option value="phonenumber">핸드폰번호</option>
+                                        <option value="usimnumber">유심번호</option>
+                                    </select>
+                                    <input type="text" id="search_text" name="search_text" style="height:40px;"/>
+                                </form>
                                 <a href="javascript:void(0);" onclick="search_go();" class="bg-gradient-warning" style="padding:10px; font-weight:bold; color:#fff; border-radius:10px 10px 10px 10px; cursor: pointer">검색</a>
                             </div>
                         </div>
