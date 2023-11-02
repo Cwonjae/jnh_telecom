@@ -95,6 +95,7 @@ class PageController extends Controller
                             $cell_phones_check->where('cellphone_boards.cpb_usimnumber', $request->get('search_text'));
                             break;
                     }
+                    echo "<script>console.log('".$request->get('search_text')."')</script>";
                 }
 
                 $cell_phones = $cell_phones_check->select('users.username', 'users.email', 'cellphone_boards.id', 'cellphone_boards.cpb_applicant', 'cellphone_boards.cpb_nationality', 'cellphone_boards.cpb_status', 'cellphone_boards.cpb_after_status', 'cellphone_boards.cpb_telecoms', 'cellphone_boards.created_at', 'cellphone_boards.cpb_phonenumber', 'cellphone_boards.cpb_usimnumber')

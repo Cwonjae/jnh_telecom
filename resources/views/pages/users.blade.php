@@ -28,7 +28,7 @@
                         </div>
                         <div style="float:right; width:400px; height:40px;">
                             <div>
-                                <form method="GET" name="search_form" id="search_form">
+                                <form method="GET" name="search_form" id="search_form" accept-charset="UTF-8">
                                     <select class="search_tag" id="search_tag" name="search_tag" style="height:40px;">
                                         <option value="username" selected>신청자</option>
                                         <option value="email">이메일</option>
