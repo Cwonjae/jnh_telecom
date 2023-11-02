@@ -8,7 +8,13 @@
     }
 
     function search_go() {
-        $('#search_form').submit();
+        var search_text = $('#search_text').val();
+        if(!search_text) {
+            alert('검색어를 입력해주세요.');
+            return false;
+        } else {
+            $('#search_form').submit();
+        }
     }
 </script>
     @include('layouts.navbars.auth.topnav', ['title' => '신청자 리스트'])
@@ -30,10 +36,10 @@
                             <div>
                                 <form method="GET" name="search_form" id="search_form" accept-charset="UTF-8">
                                     <select class="search_tag" id="search_tag" name="search_tag" style="height:40px;">
-                                        <option value="username" selected>신청자</option>
-                                        <option value="email">이메일</option>
-                                        <option value="phonenumber">핸드폰번호</option>
-                                        <option value="usimnumber">유심번호</option>
+                                        <option value="username" @if($select1) selected @endif>신청자</option>
+                                        <option value="email" @if($select2) selected @endif>이메일</option>
+                                        <option value="phonenumber" @if($select3) selected @endif>핸드폰번호</option>
+                                        <option value="usimnumber" @if($select4) selected @endif>유심번호</option>
                                     </select>
                                     <input type="text" id="search_text" name="search_text" style="height:40px;"/>
                                 </form>

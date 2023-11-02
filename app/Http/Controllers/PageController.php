@@ -80,19 +80,27 @@ class PageController extends Controller
                                     ->join('users', 'cellphone_boards.u_id', '=' ,'users.id')
                                     ->where('cellphone_boards.cpb_telecoms', 'kt');
 
+                $select1 = "";
+                $select2 = "";
+                $select3 = "";
+                $select4 = "";
                 if($request->get('search_tag') && $request->get('search_text')) {
                     switch($request->get('search_tag')) {
                         case 'username' :
                             $cell_phones_check->where('cellphone_boards.cpb_applicant', $request->get('search_text'));
+                            $select1 = "selected";
                             break;
                         case 'email' :
                             $cell_phones_check->where('users.email', $request->get('search_text'));
+                            $select2 = "selected";
                             break;
                         case 'phonenumber' :
                             $cell_phones_check->where('cellphone_boards.cpb_phonenumber', $request->get('search_text'));
+                            $select3 = "selected";
                             break;
                         case 'usimnumber' :
                             $cell_phones_check->where('cellphone_boards.cpb_usimnumber', $request->get('search_text'));
+                            $select4 = "selected";
                             break;
                     }
                 }
@@ -104,7 +112,7 @@ class PageController extends Controller
             }
 
             if (view()->exists("pages.{$page}")) {
-                return view("pages.{$page}", ['cell_phones' => $cell_phones]);
+                return view("pages.{$page}", ['cell_phones' => $cell_phones, 'select1' => $select1, 'select2' => $select2, 'select3' => $select3, 'select4' => $select4]);
             }
         } else {
             return abort(404);
