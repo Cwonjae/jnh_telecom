@@ -41,7 +41,7 @@
                                         <option value="phonenumber" @if($select3) selected @endif>핸드폰번호</option>
                                         <option value="usimnumber" @if($select4) selected @endif>유심번호</option>
                                     </select>
-                                    <input type="text" id="search_text" name="search_text" style="height:40px;"/>
+                                    <input type="text" id="search_text" name="search_text" style="height:40px;" @if($select_text) value="{{ $select_text }}" @endif/>
                                 </form>
                                 <a href="javascript:void(0);" onclick="search_go();" class="bg-gradient-warning" style="padding: 8px; font-weight: bold; color: #fff; border-radius: 10px 10px 10px 10px; cursor: pointer; float: right; position: relative; margin-top: -40px; margin-right: 18px; width: 60px; height: 40px; text-align: center;">검색</a>
                             </div>

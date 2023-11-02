@@ -84,6 +84,7 @@ class PageController extends Controller
                 $select2 = "";
                 $select3 = "";
                 $select4 = "";
+                $select_text = "";
                 if($request->get('search_tag') && $request->get('search_text')) {
                     switch($request->get('search_tag')) {
                         case 'username' :
@@ -103,6 +104,7 @@ class PageController extends Controller
                             $select4 = "selected";
                             break;
                     }
+                    $select_text = $request->get('search_text');
                 }
 
                 $cell_phones = $cell_phones_check->select('users.username', 'users.email', 'cellphone_boards.id', 'cellphone_boards.cpb_applicant', 'cellphone_boards.cpb_nationality', 'cellphone_boards.cpb_status', 'cellphone_boards.cpb_after_status', 'cellphone_boards.cpb_telecoms', 'cellphone_boards.created_at', 'cellphone_boards.cpb_phonenumber', 'cellphone_boards.cpb_usimnumber')
@@ -112,7 +114,7 @@ class PageController extends Controller
             }
 
             if (view()->exists("pages.{$page}")) {
-                return view("pages.{$page}", ['cell_phones' => $cell_phones, 'select1' => $select1, 'select2' => $select2, 'select3' => $select3, 'select4' => $select4]);
+                return view("pages.{$page}", ['cell_phones' => $cell_phones, 'select1' => $select1, 'select2' => $select2, 'select3' => $select3, 'select4' => $select4, 'select_text' => $select_text]);
             }
         } else {
             return abort(404);
