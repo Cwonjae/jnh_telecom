@@ -526,8 +526,8 @@ class PageController extends Controller
     }
 
     public function logs_view(Request $request, string $page, string $filename) {
-        $search_tag;
-        $search_text;
+        $search_tag = "";
+        $search_text = "";
         if($request->get('search_tag') && $request->get('search_text')) {
             $search_tag = $request->get('search_tag');
             $search_text = $request->get('search_text');
