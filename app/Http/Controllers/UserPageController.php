@@ -25,36 +25,47 @@ class UserPageController extends Controller
                             ->where('grade', 'admin')
                             ->count();
 
-        /**
-         * page = tables(선불제가입), posts(후불제가입)
-         */
-        if($page == "tables") {
-            $where_add = "prepaid";
-        } else {
-            $where_add = "postpaid";
-        }
-        
-        /**
-         * admin 일 경우 등록된 모든 정보 리스트업
-         * 등록한사람(일반 user)일 경우 본인이 작성한 정보 리스트업
-         */
-        if($admin_checks > 0) {
-            $cell_phones = DB::table('cellphone_boards')
-                            ->join('users', 'cellphone_boards.u_id', '=' ,'users.id')
-                            ->select('users.username', 'users.email', 'cellphone_boards.id', 'cellphone_boards.cpb_applicant', 'cellphone_boards.cpb_nationality', 'cellphone_boards.cpb_status', 'cellphone_boards.cpb_after_status', 'cellphone_boards.created_at')
-                            ->paginate(10);
-        } else {
-            $cell_phones = DB::table('cellphone_boards')
-                            ->join('users', 'cellphone_boards.u_id', '=' ,'users.id')
-                            ->leftjoin('idcard_check_mails', 'cellphone_boards.id', '=', 'idcard_check_mails.cpb_id')
-                            ->where('cellphone_boards.u_id', Auth::id())
-                            ->where('cellphone_boards.cpb_board_type', $where_add)
-                            ->select('users.username', 'users.email', 'cellphone_boards.id', 'cellphone_boards.cpb_applicant', 'cellphone_boards.cpb_nationality', 'cellphone_boards.cpb_status', 'cellphone_boards.cpb_after_status', 'cellphone_boards.created_at', 'idcard_check_mails.id as iccm_id')
-                            ->paginate(10);
+        if($page == "tables" || $page == "posts") {
+            /**
+             * page = tables(선불제가입), posts(후불제가입)
+             */
+            if($page == "tables") {
+                $where_add = "prepaid";
+            } else {
+                $where_add = "postpaid";
+            }
+            
+            /**
+             * admin 일 경우 등록된 모든 정보 리스트업
+             * 등록한사람(일반 user)일 경우 본인이 작성한 정보 리스트업
+             */
+            if($admin_checks > 0) {
+                $cell_phones = DB::table('cellphone_boards')
+                                ->join('users', 'cellphone_boards.u_id', '=' ,'users.id')
+                                ->select('users.username', 'users.email', 'cellphone_boards.id', 'cellphone_boards.cpb_applicant', 'cellphone_boards.cpb_nationality', 'cellphone_boards.cpb_status', 'cellphone_boards.cpb_after_status', 'cellphone_boards.created_at')
+                                ->paginate(10);
+            } else {
+                $cell_phones = DB::table('cellphone_boards')
+                                ->join('users', 'cellphone_boards.u_id', '=' ,'users.id')
+                                ->leftjoin('idcard_check_mails', 'cellphone_boards.id', '=', 'idcard_check_mails.cpb_id')
+                                ->where('cellphone_boards.u_id', Auth::id())
+                                ->where('cellphone_boards.cpb_board_type', $where_add)
+                                ->select('users.username', 'users.email', 'cellphone_boards.id', 'cellphone_boards.cpb_applicant', 'cellphone_boards.cpb_nationality', 'cellphone_boards.cpb_status', 'cellphone_boards.cpb_after_status', 'cellphone_boards.created_at', 'idcard_check_mails.id as iccm_id')
+                                ->paginate(10);
+            }
+
+            if (view()->exists("pages.user.{$page}")) {
+                return view("pages.user.{$page}", ['cell_phones' => $cell_phones]);
+            }
         }
 
-        if (view()->exists("pages.user.{$page}")) {
-            return view("pages.user.{$page}", ['cell_phones' => $cell_phones]);
+        /**
+         * prepaid_guide(선불제 가입작성 가이드 페이지), postpaid_guide(후불제 가입작성 가이드 페이지)
+         */
+        if($page == "prepaid_guide" || $page == "postpaid_guide") {
+            if (view()->exists("pages.user.{$page}")) {
+                return view("pages.user.{$page}");
+            }
         }
 
         return abort(404);
