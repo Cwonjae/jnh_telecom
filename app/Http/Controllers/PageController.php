@@ -223,7 +223,7 @@ class PageController extends Controller
                     return Excel::download(new ProductsExport($search_tag, $search_text), 'user_list_'.$now_date_time.'.xlsx');
                 } else {
                     if($request->get('search_tag') && $request->get('search_text')) {
-                        $url = "/admin/users/download_log/user_list_".$datetime_timestamp."?search_tag=".$search_tag."&search_text".$search_text;
+                        $url = "/admin/users/download_log/user_list_".$datetime_timestamp."?search_tag=".$search_tag."&search_text=".$search_text;
                     } else {
                         $url = "/admin/users/download_log/user_list_".$datetime_timestamp;
                     }
