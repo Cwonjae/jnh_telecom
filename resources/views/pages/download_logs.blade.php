@@ -74,6 +74,8 @@
                             <label for="details_reason">상세사유</label>
                             <textarea id="details_reason" name="details_reason" rows="5" cols="33"></textarea>
                         </div>
+                        <input type="hidden" value="{{ $search_tag }}" id="search_tag" name="search_tag" />
+                        <input type="hidden" value="{{ $search_text }}" id="search_text" name="search_text" />
                     </form>
                 </div>
                 <div class="button_div">

@@ -3,7 +3,14 @@
 @section('content')
 <script>
     function excel_down() {
-        location.href = "/admin/users/download";
+        var search_tag = $('#search_tag > option:selected').val();
+        var search_text = $('#search_text').val();
+
+        if(search_tag && search_text) {
+            location.href = "/admin/users/download?search_tag="+search_tag+"&search_text="+search_text;
+        } else {
+            location.href = "/admin/users/download";
+        }
         return false;
     }
 

@@ -123,7 +123,7 @@ class PageController extends Controller
         return abort(404);
     }
 
-    public function print(string $page, $num) {
+    public function print(Request $request, string $page, $num) {
         if($page == "print") {
             $board_check = DB::table('cellphone_boards')->where('id', $num)->exists();
             if($board_check) {
@@ -207,6 +207,12 @@ class PageController extends Controller
                 $now_date_time = $currentDateTime->toDateTimeString();
                 $datetime_timestamp = $currentDateTime->getTimestamp();
 
+                $search_tag;
+                $search_text;
+                if($request->get('search_tag') && $request->get('search_text')) {
+                    $search_tag = $request->get('search_tag');
+                    $search_text = $request->get('search_text');
+                }
                 /**
                  * 다운로드 받을때 개인정보가 적재되어 있다보니 어떤 사람이 받았는지 log Table 생성 후 DB Insert 작업해야됨
                  * 어떤 사유로 받는 건지도 체크하면 좋을 듯
@@ -214,9 +220,13 @@ class PageController extends Controller
                  * 로그가 존재하지 않는 다면 로그를 기록하고 다운로드 가능하게
                  */
                 if(DB::table('download_logs')->where('u_id', Auth::id())->where('dl_file_name', 'user_list_'.$datetime_timestamp)->exists()) {
-                    return Excel::download(new ProductsExport(), 'user_list_'.$now_date_time.'.xlsx');
+                    return Excel::download(new ProductsExport($search_tag, $search_text), 'user_list_'.$now_date_time.'.xlsx');
                 } else {
-                    $url = "/admin/users/download_log/user_list_".$datetime_timestamp;
+                    if($request->get('search_tag') && $request->get('search_text')) {
+                        $url = "/admin/users/download_log/user_list_".$datetime_timestamp."?search_tag=".$search_tag."&search_text".$search_text;
+                    } else {
+                        $url = "/admin/users/download_log/user_list_".$datetime_timestamp;
+                    }
                     echo "<script>window.open('".$url."', '_blank', 'witdh=400,height=330'); window.history.back();</script>";
                     exit;
                 }
@@ -515,9 +525,16 @@ class PageController extends Controller
         }
     }
 
-    public function logs_view(string $page, string $filename) {
+    public function logs_view(Request $request, string $page, string $filename) {
+        $search_tag;
+        $search_text;
+        if($request->get('search_tag') && $request->get('search_text')) {
+            $search_tag = $request->get('search_tag');
+            $search_text = $request->get('search_text');
+        }
+
         if (view()->exists("pages.download_logs")) {
-            return view("pages.download_logs", ['filename' => $filename]);
+            return view("pages.download_logs", ['filename' => $filename, 'search_tag' => $search_tag, 'search_text' => $search_text]);
         }
     }
 
@@ -527,6 +544,8 @@ class PageController extends Controller
 
         $reason = $request->post('reason');
         $details_reason = $request->post('details_reason');
+        $search_tag = $request->post('search_tag');
+        $search_text = $request->post('search_text');
 
         $admin_checks = DB::table('users')
                             ->where('id', Auth::id())
