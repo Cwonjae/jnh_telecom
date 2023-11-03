@@ -16,25 +16,34 @@ class ProductsExport implements FromCollection, ShouldAutoSize, WithStyles, With
     /**
     * @return \Illuminate\Support\Collection
     */
-    public function collection(string $search_tag, string $search_text)
+
+    private $search_tag;
+    private $search_text;
+
+    public function __construct(string $search_tag, string $search_text) {
+        $this->search_tag = $search_tag;
+        $this->search_text = $search_text;
+    }
+
+    public function collection()
     {
         $cell_phones_check = DB::table('cellphone_boards')
                             ->join('users', 'cellphone_boards.u_id', '=' ,'users.id')
                             ->where('cellphone_boards.cpb_telecoms', 'kt');
 
-        if($search_tag && $search_text) {
-            switch($search_tag) {
+        if($this->search_tag && $this->search_text) {
+            switch($this->search_tag) {
                 case 'username' :
-                    $cell_phones_check->where('cellphone_boards.cpb_applicant', $search_text);
+                    $cell_phones_check->where('cellphone_boards.cpb_applicant', $this->search_text);
                     break;
                 case 'email' :
-                    $cell_phones_check->where('users.email', $search_text);
+                    $cell_phones_check->where('users.email', $this->search_text);
                     break;
                 case 'phonenumber' :
-                    $cell_phones_check->where('cellphone_boards.cpb_phonenumber', $search_text);
+                    $cell_phones_check->where('cellphone_boards.cpb_phonenumber', $this->search_text);
                     break;
                 case 'usimnumber' :
-                    $cell_phones_check->where('cellphone_boards.cpb_usimnumber', $search_text);
+                    $cell_phones_check->where('cellphone_boards.cpb_usimnumber', $this->search_text);
                     break;
             }
         }
