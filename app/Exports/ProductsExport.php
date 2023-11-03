@@ -51,12 +51,6 @@ class ProductsExport implements FromCollection, ShouldAutoSize, WithStyles, With
         $cell_phones = $cell_phones_check->select('cellphone_boards.cpb_applicant', 'users.email', 'cellphone_boards.cpb_nationality', 'cellphone_boards.cpb_phonenumber', 'cellphone_boards.cpb_usimnumber', 'cellphone_boards.created_at')
         ->get();
 
-
-        // $cell_phones = DB::table('cellphone_boards')
-        //                 ->join('users', 'cellphone_boards.u_id', '=' ,'users.id')
-        //                 ->where('cellphone_boards.cpb_telecoms', 'kt')
-        //                 ->select('cellphone_boards.cpb_applicant', 'users.email', 'cellphone_boards.cpb_nationality', 'cellphone_boards.cpb_phonenumber', 'cellphone_boards.cpb_usimnumber', 'cellphone_boards.created_at')
-        //                 ->get();
         return $cell_phones;
     }
 
