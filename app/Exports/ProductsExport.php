@@ -16,13 +16,38 @@ class ProductsExport implements FromCollection, ShouldAutoSize, WithStyles, With
     /**
     * @return \Illuminate\Support\Collection
     */
-    public function collection()
+    public function collection(string $search_tag, string $search_text)
     {
-        $cell_phones = DB::table('cellphone_boards')
-                        ->join('users', 'cellphone_boards.u_id', '=' ,'users.id')
-                        ->where('cellphone_boards.cpb_telecoms', 'kt')
-                        ->select('cellphone_boards.cpb_applicant', 'users.email', 'cellphone_boards.cpb_nationality', 'cellphone_boards.cpb_phonenumber', 'cellphone_boards.cpb_usimnumber', 'cellphone_boards.created_at')
-                        ->get();
+        $cell_phones_check = DB::table('cellphone_boards')
+                            ->join('users', 'cellphone_boards.u_id', '=' ,'users.id')
+                            ->where('cellphone_boards.cpb_telecoms', 'kt');
+
+        if($search_tag && $search_text) {
+            switch($search_tag) {
+                case 'username' :
+                    $cell_phones_check->where('cellphone_boards.cpb_applicant', $search_text);
+                    break;
+                case 'email' :
+                    $cell_phones_check->where('users.email', $search_text);
+                    break;
+                case 'phonenumber' :
+                    $cell_phones_check->where('cellphone_boards.cpb_phonenumber', $search_text);
+                    break;
+                case 'usimnumber' :
+                    $cell_phones_check->where('cellphone_boards.cpb_usimnumber', $search_text);
+                    break;
+            }
+        }
+
+        $cell_phones = $cell_phones_check->select('cellphone_boards.cpb_applicant', 'users.email', 'cellphone_boards.cpb_nationality', 'cellphone_boards.cpb_phonenumber', 'cellphone_boards.cpb_usimnumber', 'cellphone_boards.created_at')
+        ->get();
+
+
+        // $cell_phones = DB::table('cellphone_boards')
+        //                 ->join('users', 'cellphone_boards.u_id', '=' ,'users.id')
+        //                 ->where('cellphone_boards.cpb_telecoms', 'kt')
+        //                 ->select('cellphone_boards.cpb_applicant', 'users.email', 'cellphone_boards.cpb_nationality', 'cellphone_boards.cpb_phonenumber', 'cellphone_boards.cpb_usimnumber', 'cellphone_boards.created_at')
+        //                 ->get();
         return $cell_phones;
     }
 

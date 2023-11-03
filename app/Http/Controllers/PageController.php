@@ -563,7 +563,7 @@ class PageController extends Controller
                                     ]);
 
             if($download_logs_sql) {
-                return Excel::download(new ProductsExport(), $filename.'.xlsx');
+                return Excel::download(new ProductsExport($search_tag, $search_text), $filename.'.xlsx');
                 exit;
             } else {
                 echo "<script>alert('로그 기록에 실패했습니다.'); window.close();</script>";
