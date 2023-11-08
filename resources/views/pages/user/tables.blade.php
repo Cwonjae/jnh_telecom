@@ -131,6 +131,8 @@
                                                 <span class="badge badge-sm bg-gradient-success">Complete</span>
                                             @elseif ($cell_phone->cpb_after_status == 'applying')
                                                 <span class="badge badge-sm bg-gradient-success">Applying</span>
+                                            @elseif ($cell_phone->cpb_after_status == 'processing')
+                                                <span class="badge badge-sm bg-gradient-success">Processing</span>
                                             @else
                                                 <span class="badge badge-sm bg-gradient-danger">
                                                     @if ($cell_phone->iccm_id)
