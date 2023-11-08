@@ -71,12 +71,6 @@
                         <h6 id="title_lang">Postpaid Form Guide Documents</h6>
                     </div>
                     <div class="pb-0">
-                        <div style="float:right; width:160px; height:40px;">
-                            <a class="bg-gradient-success" style="padding:10px; font-weight:bold; color:#fff; border-radius:10px 10px 10px 10px; cursor: pointer" 
-                            href="{{ route('userpage.register', ['page' => 'tables']) }}" id="register_lang">
-                                Register
-                            </a>
-                        </div>
                         <div style="float:right; width:130px; height:40px;">
                             <select class="lang_check" id="lang_check">
                                 <option value="english" selected="">English</option>

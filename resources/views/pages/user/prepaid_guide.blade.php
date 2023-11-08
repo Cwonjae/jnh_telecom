@@ -83,7 +83,43 @@
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
-
+                            <div>
+                                <div>
+                                    <h4>Before issuance of alien registration card (issued in Korea)</h4>
+                                </div>
+                                <div>
+                                    <p> - 메뉴 중 Prepaid Application Form 메뉴를 선택 후 Register 버튼 클릭</p>
+                                    <div>
+                                        <img src="/img/tables/before_1.png" alt="Prepaid Plan" style="max-width: 100%; height: auto;">
+                                        <img src="/img/tables/before_2.png" alt="Prepaid Plan" style="max-width: 100%; height: auto;">
+                                    </div>
+                                    <p> - 해당되는 언어를 선택 후 제공되는 양식에 맞춰 가입신청서 작성</p>
+                                    <div>
+                                        <img src="/img/tables/before_3.png" alt="Prepaid Plan" style="max-width: 100%; height: auto;">
+                                    </div>
+                                    <p> - 작성 완료 후 Opening Status가 Opening일 경우 작성한 가입신청서 수정 가능</p>
+                                    <div>
+                                        <img src="/img/tables/before_4.png" alt="Prepaid Plan" style="max-width: 100%; height: auto;">
+                                    </div>
+                                    <p> - KT 가입 관련 프로세스 진행시 Prepaid Application Form 메뉴를 통해 진행상황 확인 가능</p>
+                                    <p> - 선불제 가입신청이 최종 완료되면 회원가입시 작성된 E-mail로 안내 메일 발송</p>
+                                    <div>
+                                        <img src="/img/tables/before_5.png" alt="Prepaid Plan" style="max-width: 100%; height: auto;">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <h4>After issuance of alien registration card (issued in Korea)</h4>
+                                </div>
+                                <div>
+                                    <p> - 메뉴 중 Prepaid Application Form 메뉴를 선택 후 작성한 선불제 가입신청 이력 중 Deferred Payment Status 부분의 등록버튼을 클릭</p>
+                                    <p> - 해당되는 언어를 선택 후 제공되는 양식에 맞춰 가입신청서 작성</p>
+                                    <p> - 작성 완료 후 한국 담당자가 가입신청 작업 전까지 작성한 가입신청서 수정 가능</p>
+                                    <p> - KT 가입 관련 프로세스 진행시 Prepaid Application Form 메뉴를 통해 진행상황 확인 가능</p>
+                                    <p> - 선불제 가입신청이 최종 완료되면 회원가입시 작성된 E-mail로 안내 메일 발송</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

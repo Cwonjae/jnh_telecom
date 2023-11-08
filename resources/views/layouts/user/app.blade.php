@@ -68,8 +68,8 @@
             Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
         }
     </script>
-    @stack('js');
-    @include('sweetalert::alert');
+    @stack('js')
+    @include('sweetalert::alert')
 </body>
 
 </html>
