@@ -9,22 +9,42 @@
                     case 'english' :
                         $('#title_lang').text("Postpaid Form Guide Documents");
                         $('#postpaid_title_lang').text("If you sign up for a prepaid plan at another dealership and sign up for a postpaid plan separately");
-                        $('#postpaid_1_lang').text("Select the Postpaid Application form menu from the menu and click the Register button.");
+                        $('#postpaid_1_lang').text("Select the Postpaid Application form menu from the menu and click the Register button");
                         $('#postpaid_2_lang').text("Select the applicable language and fill out the membership application form in the form provided");
                         $('#postpaid_3_lang').text("When completed properly, you can check the Deferred Payment Status on the Postpaid Application Form page");
                         $('#postpaid_4_lang').text("Once the postpaid application is finalized, a notification email will be sent to the email address provided during membership registration");
                         break;
                     case 'russian' :
                         $('#title_lang').text("Руководство по формам постоплаты");
+                        $('#postpaid_title_lang').text("Если вы подписались на предоплаченный план в другом дилерском центре и отдельно подписались на постоплатный план");
+                        $('#postpaid_1_lang').text("Выберите в меню форму заявления с постоплатой и нажмите кнопку «Зарегистрироваться»");
+                        $('#postpaid_2_lang').text("Выберите подходящий язык и заполните форму заявки на членство в предоставленной форме");
+                        $('#postpaid_3_lang').text("При правильном заполнении вы можете проверить статус отсроченного платежа на странице формы заявления с постоплатой");
+                        $('#postpaid_4_lang').text("Как только постоплатная заявка будет завершена, на адрес электронной почты, указанный при регистрации членства, будет отправлено уведомление по электронной почте");
                         break;
                     case 'uzbek' :
                         $('#title_lang').text("Postpaid shakli uchun qo'llanma hujjatlari");
+                        $('#postpaid_title_lang').text("Agar siz boshqa dilerda oldindan to'lov rejasiga ro'yxatdan o'tsangiz va keyin to'lov rejasiga alohida ro'yxatdan o'tsangiz");
+                        $('#postpaid_1_lang').text("Menyudan Postpaid ariza shakli menyusini tanlang va Ro'yxatdan o'tish tugmasini bosing");
+                        $('#postpaid_2_lang').text("Tegishli tilni tanlang va taqdim etilgan shaklda a'zolik ariza shaklini to'ldiring");
+                        $('#postpaid_3_lang').text("To'g'ri to'ldirilgandan so'ng, keyin to'lov shakli sahifasida kechiktirilgan to'lov holatini tekshirishingiz mumkin");
+                        $('#postpaid_4_lang').text("Postpaid arizasi yakunlangandan so'ng, a'zolikni ro'yxatdan o'tkazish paytida ko'rsatilgan elektron pochta manziliga xabarnoma yuboriladi");
                         break;
                     case 'tagalog' :
                         $('#title_lang').text("Postpaid Form Guide Documents");
+                        $('#postpaid_title_lang').text("Kung mag-sign up ka para sa isang prepaid plan sa ibang dealership at mag-sign up para sa isang postpaid plan nang hiwalay");
+                        $('#postpaid_1_lang').text("Piliin ang Postpaid Application form menu mula sa menu at i-click ang Register button");
+                        $('#postpaid_2_lang').text("Piliin ang naaangkop na wika at punan ang form ng aplikasyon ng membership sa ibinigay na form");
+                        $('#postpaid_3_lang').text("Kapag nakumpleto nang maayos, maaari mong tingnan ang Deferred Payment Status sa Postpaid Application Form na pahina");
+                        $('#postpaid_4_lang').text("Kapag natapos na ang postpaid application, magpapadala ng notification email sa email address na ibinigay sa panahon ng membership registration");
                         break;
                     case 'vietnamese' :
                         $('#title_lang').text("Tài liệu hướng dẫn biểu mẫu trả sau");
+                        $('#postpaid_title_lang').text("Nếu bạn đăng ký gói trả trước tại một đại lý khác và đăng ký riêng gói trả sau");
+                        $('#postpaid_1_lang').text("Chọn menu mẫu Đơn đăng ký trả sau từ menu và nhấp vào nút Đăng ký");
+                        $('#postpaid_2_lang').text("Chọn ngôn ngữ áp dụng và điền vào mẫu đơn đăng ký thành viên theo mẫu được cung cấp");
+                        $('#postpaid_3_lang').text("Khi hoàn thành đúng cách, bạn có thể kiểm tra Trạng thái thanh toán trả chậm trên trang Mẫu đơn đăng ký trả sau");
+                        $('#postpaid_4_lang').text("Sau khi hoàn tất đăng ký trả sau, một email thông báo sẽ được gửi đến địa chỉ email được cung cấp trong quá trình đăng ký thành viên");
                         break;
                     default :
                         break;
