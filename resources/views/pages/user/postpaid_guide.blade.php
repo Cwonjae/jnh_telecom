@@ -61,23 +61,20 @@
                                     <div>
                                         <p id="postpaid_1_lang"> - Select the Postpaid Application form menu from the menu and click the Register button.</p>
                                         <div style="text-align:center; width:80%; margin:0 auto;">
-                                            <img src="/img/tables/before_1.png" alt="Prepaid Plan" style="max-width: 100%; height: auto;">
-                                            <img src="/img/tables/before_2.png" alt="Prepaid Plan" style="max-width: 100%; height: auto;">
+                                            <img src="/img/tables/postpaid_1.png" alt="Prepaid Plan" style="max-width: 100%; height: auto;">
+                                            <img src="/img/tables/postpaid_2.png" alt="Prepaid Plan" style="max-width: 100%; height: auto;">
                                         </div>
                                         <br/>
                                         <p id="postpaid_2_lang"> - Select the applicable language and fill out the membership application form in the form provided</p>
-                                        <div style="text-align:center; width:80%; margin:0 auto;">
-                                            <img src="/img/tables/before_3.png" alt="Prepaid Plan" style="max-width: 100%; height: auto;">
-                                        </div>
                                         <br/>
                                         <p id="postpaid_3_lang"> - When completed properly, you can check the Deferred Payment Status on the Postpaid Application Form page</p>
                                         <div style="text-align:center; width:80%; margin:0 auto;">
-                                            <img src="/img/tables/before_4.png" alt="Prepaid Plan" style="max-width: 100%; height: auto;">
+                                            <img src="/img/tables/postpaid_3.png" alt="Prepaid Plan" style="max-width: 100%; height: auto;">
                                         </div>
                                         <br/>
                                         <p id="postpaid_4_lang"> - Once the postpaid application is finalized, a notification email will be sent to the email address provided during membership registration</p>
                                         <div style="text-align:center; width:80%; margin:0 auto;">
-                                            <img src="/img/tables/before_5.png" alt="Prepaid Plan" style="max-width: 100%; height: auto;">
+                                            <img src="/img/tables/postpaid_4.png" alt="Prepaid Plan" style="max-width: 100%; height: auto;">
                                         </div>
                                     </div>
                                 </div>
