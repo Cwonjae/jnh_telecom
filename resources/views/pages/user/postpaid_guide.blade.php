@@ -8,53 +8,23 @@
                 switch(value) {
                     case 'english' :
                         $('#title_lang').text("Postpaid Form Guide Documents");
-                        $('#register_lang').text("Register");
-                        $('#applicant_lang').text("Applicant");
-                        $('#openingstatus_lang').text("Opening Status");
-                        $('#deferredpaymentstatus_lang').text("Deferred Payment Status");
-                        $('#registrationdate_lang').text("Registration date");
-                        $('#etc_lang').text("ETC");
-                        $('#dontcheck_lang').text("Don't have a history of applying for Prepaid Application Form");
+                        $('#postpaid_title_lang').text("If you sign up for a prepaid plan at another dealership and sign up for a postpaid plan separately");
+                        $('#postpaid_1_lang').text("Select the Postpaid Application form menu from the menu and click the Register button.");
+                        $('#postpaid_2_lang').text("Select the applicable language and fill out the membership application form in the form provided");
+                        $('#postpaid_3_lang').text("When completed properly, you can check the Deferred Payment Status on the Postpaid Application Form page");
+                        $('#postpaid_4_lang').text("Once the postpaid application is finalized, a notification email will be sent to the email address provided during membership registration");
                         break;
                     case 'russian' :
                         $('#title_lang').text("Руководство по формам постоплаты");
-                        $('#register_lang').text("регистр");
-                        $('#applicant_lang').text("Заявитель");
-                        $('#openingstatus_lang').text("Статус открытия");
-                        $('#deferredpaymentstatus_lang').text("Статус отсроченного платежа");
-                        $('#registrationdate_lang').text("Дата регистрации");
-                        $('#etc_lang').text("И Т. Д");
-                        $('#dontcheck_lang').text("У вас нет истории подачи заявки на предоплаченную форму заявки.");
                         break;
                     case 'uzbek' :
                         $('#title_lang').text("Postpaid shakli uchun qo'llanma hujjatlari");
-                        $('#register_lang').text("ro'yxatdan o'tish");
-                        $('#applicant_lang').text("Ariza beruvchi");
-                        $('#openingstatus_lang').text("Ochilish holati");
-                        $('#deferredpaymentstatus_lang').text("Kechiktirilgan to'lov holati");
-                        $('#registrationdate_lang').text("Ro'yxatdan o'tish sanasi");
-                        $('#etc_lang').text("VA BOSHQALAR");
-                        $('#dontcheck_lang').text("Oldindan to'langan ariza shakliga ariza topshirish tarixi yo'q");
                         break;
                     case 'tagalog' :
                         $('#title_lang').text("Postpaid Form Guide Documents");
-                        $('#register_lang').text("magparehistro");
-                        $('#applicant_lang').text("Aplikante");
-                        $('#openingstatus_lang').text("Katayuan ng Pagbubukas");
-                        $('#deferredpaymentstatus_lang').text("Katayuan ng Deferred Payment");
-                        $('#registrationdate_lang').text("Petsa ng pagpaparehistro");
-                        $('#etc_lang').text("ETC");
-                        $('#dontcheck_lang').text("Walang kasaysayan ng pag-apply para sa Prepaid Application Form");
                         break;
                     case 'vietnamese' :
                         $('#title_lang').text("Tài liệu hướng dẫn biểu mẫu trả sau");
-                        $('#register_lang').text("đăng ký");
-                        $('#applicant_lang').text("Người xin việc");
-                        $('#openingstatus_lang').text("Trạng thái mở");
-                        $('#deferredpaymentstatus_lang').text("Trạng thái thanh toán trả chậm");
-                        $('#registrationdate_lang').text("Ngày đăng kí");
-                        $('#etc_lang').text("VÂN VÂN");
-                        $('#dontcheck_lang').text("Không có lịch sử đăng ký Mẫu đơn đăng ký trả trước");
                         break;
                     default :
                         break;
@@ -83,7 +53,35 @@
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
-
+                            <div class="card-header pb-0">
+                                    <div>
+                                        <h4 id="postpaid_title_lang">If you sign up for a prepaid plan at another dealership and sign up for a postpaid plan separately</h4>
+                                    </div>
+                                    <br/>
+                                    <div>
+                                        <p id="postpaid_1_lang"> - Select the Postpaid Application form menu from the menu and click the Register button.</p>
+                                        <div style="text-align:center; width:80%; margin:0 auto;">
+                                            <img src="/img/tables/before_1.png" alt="Prepaid Plan" style="max-width: 100%; height: auto;">
+                                            <img src="/img/tables/before_2.png" alt="Prepaid Plan" style="max-width: 100%; height: auto;">
+                                        </div>
+                                        <br/>
+                                        <p id="postpaid_2_lang"> - Select the applicable language and fill out the membership application form in the form provided</p>
+                                        <div style="text-align:center; width:80%; margin:0 auto;">
+                                            <img src="/img/tables/before_3.png" alt="Prepaid Plan" style="max-width: 100%; height: auto;">
+                                        </div>
+                                        <br/>
+                                        <p id="postpaid_3_lang"> - When completed properly, you can check the Deferred Payment Status on the Postpaid Application Form page</p>
+                                        <div style="text-align:center; width:80%; margin:0 auto;">
+                                            <img src="/img/tables/before_4.png" alt="Prepaid Plan" style="max-width: 100%; height: auto;">
+                                        </div>
+                                        <br/>
+                                        <p id="postpaid_4_lang"> - Once the postpaid application is finalized, a notification email will be sent to the email address provided during membership registration</p>
+                                        <div style="text-align:center; width:80%; margin:0 auto;">
+                                            <img src="/img/tables/before_5.png" alt="Prepaid Plan" style="max-width: 100%; height: auto;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

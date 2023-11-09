@@ -118,7 +118,7 @@
                                         <td class="align-middle text-center text-sm">
                                             @if ($cell_phone->cpb_after_status == 'apply')
                                                 <span class="badge badge-sm bg-gradient-success">Complete</span>
-                                            @elseif ($cell_phone->cpb_after_status == 'applying')
+                                            @elseif ($cell_phone->cpb_after_status == 'applying' || $cell_phone->cpb_after_status == 'processing')
                                                 <span class="badge badge-sm bg-gradient-primary">Applying</span>
                                             @else
                                                 <span class="badge badge-sm bg-gradient-danger">
