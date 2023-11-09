@@ -61,7 +61,7 @@
                                     <div>
                                         <p id="postpaid_1_lang"> - Select the Postpaid Application form menu from the menu and click the Register button.</p>
                                         <div style="text-align:center; width:80%; margin:0 auto;">
-                                            <img src="/img/tables/postpaid_1.png" alt="Prepaid Plan" style="max-width: 100%; height: auto;">
+                                            <img src="/img/tables/postpaid_1.png" alt="Prepaid Plan" style="width: 236px; max-width: 100%; height: auto;">
                                             <img src="/img/tables/postpaid_2.png" alt="Prepaid Plan" style="max-width: 100%; height: auto;">
                                         </div>
                                         <br/>
